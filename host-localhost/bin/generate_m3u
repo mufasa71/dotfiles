@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+# generate m3u playlist for mpc
+
+OUTPUT_FOLDER="$HOME/.config/mpd/playlists"
+MUSIC_FOLDER="/net/linkstation/srv/nfs4/music/"
+
+if [ ! -d "$OUTPUT_FOLDER" ]; then
+  mkdir "$OUTPUT_FOLDER"
+fi
+
+usage() {
+  echo "$PROGNAME: usage: $PROGNAME [-f file | -t type]"
+  return
+}
+
+if [[ ! -n $1 ]]; then
+  usage >&2
+  exit 1
+fi
+
+origin_folder="$1"
+shift
+
+while [[ -n $1 ]]; do
+  case $1 in
+    -f | --file)    shift
+                    filename=$1
+                    ;;
+    -t | --type)    shift
+                    file_type=$1
+                    ;;
+    *)              usage >&2
+                    exit 1
+                    ;;
+  esac
+  shift
+done
+
+if [[ ! -n $file_type ]]; then
+  usage >&2
+  exit 1
+fi
+
+find "$origin_folder" -name "*.$file_type" | sed "s:$MUSIC_FOLDER::" | sort -n >> "${OUTPUT_FOLDER}/${filename}.m3u"

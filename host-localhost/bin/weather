@@ -1,0 +1,8 @@
+#!/bin/env bash
+### Yahoo weather RSS
+RSS=http://weather.yahooapis.com/forecastrss
+WOEID=2272113
+METR=c
+URL="${RSS}?w=${WOEID}&u=${METR}"
+curl -s "$URL" | grep "C<BR" | sed 's/^\(.*\)<.*$/\1/'
+

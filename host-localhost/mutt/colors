@@ -1,0 +1,6 @@
+# vim: ft=muttrc:
+color body brightblue default "(https?|ftp|news|telnet|finger)://[^ \"\t\r\n]*"
+color body brightblue default "[-a-z_0-9.%$]+@[-a-z_0-9.]+\\.[-a-z][-a-z]+"
+color body brightblue default "mailto:[-a-z_0-9.]+@[-a-z_0-9.]+"
+color index red default "~N"
+color indicator brightwhite red

@@ -1,0 +1,113 @@
+" vim: ft=vim
+
+set nocompatible                     " use Vim settings, rather then Vi settings
+
+filetype plugin indent on
+
+let mapleader=","                    " leader key
+set backspace=indent,eol,start       " backspace deletes like most programs in insert mode
+set incsearch                        " show search pattern as it was typed so far
+set hlsearch                         " highlight search results
+set laststatus=2                     " always display the status line
+set nobackup
+set noswapfile
+set nowritebackup
+set ruler                            " show line and column number of the cursor position
+set scrolloff=2                      " start scrolling (n) lines before window ends
+set tabstop=2 shiftwidth=2 " softtabs, 2 spaces
+set number                           " show line numbers
+set numberwidth=5
+set wildmode=list:longest,list:full  " will insert tab at beginning of line,
+set complete=.,b,t,s                 " complete with respect of current buffer, buffer list, tags, thesaurus
+set showmatch                        " show matching brackets
+set mat=2                            " 2 seconds blink on matching brackets
+set encoding=utf8                    " standard encoding
+set cursorline                       " highlight the current line
+set autoindent
+set smartindent
+set wrap
+set guioptions-=m
+set guioptions-=T
+set guioptions-=r
+set guioptions-=L
+
+syntax on
+
+" return to last edit position automaticaly
+autocmd BufReadPost *
+      \ if line("'\"") > 0 && line("'\"") <= line("$") |
+      \   exe "normal g`\"" |
+      \ endif
+
+" fast saving
+nmap <leader>w :w!<cr>
+" close current buffer
+map <leader>bd :bd<cr>
+" clear search highlight
+nmap <silent> <leader>/ :let @/=""<cr>
+" pull word under cursor into LHS of a substitute (for quick search and replace)
+nmap <leader>ss :%s#<C-r>=expand("<cword>")<cr>#
+" quick jump to a line which contains word under the cursor
+nmap <leader>f [I:let nr = input("Which one: ")<Bar>exe "normal " . nr ."[\t"<cr>
+" copy the current word or visually selected into system clipboard
+nnoremap <F4> "+yiw
+vnoremap <F4> "+y
+" replace the current word or visually selected from system clipboard
+nnoremap <F5> viw"+p
+vnoremap <F5> "+p
+" selecting pasted text
+nnoremap gp `[v`]
+" sort line (horizontally)
+vnoremap <F2> d:execute 'normal i' . join(sort(split(getreg('"'))), ' ')<CR>"'))))
+" clean code
+nmap <silent> <leader>cc :call <SID>CleanCode()<cr>
+
+function! <SID>CleanCode()
+  " preparation save last search, and cursor position.
+  let _s=@/
+  let l = line(".")
+  let c = col(".")
+  " Do the business:
+  %s/\s\+$//e
+  %retab          " Replace tabs with spaces
+  %s/\r/\r/eg     " Turn DOS returns ^M into real returns
+  %s=  *$==e      " Delete end of line blanks
+  echo "Cleaned"
+  " clean up: restore previous search history, and cursor position
+  let @/=_s
+  call cursor(l, c)
+endfunction
+
+if has('gui_running')
+  filetype off
+  set lines=999 columns=999       " maximize window
+
+  if filereadable(glob("~/.vimrc.bundles"))
+    source ~/.vimrc.bundles
+  endif
+
+  filetype plugin indent on
+  if has("gui_win32")
+    set guifont=Hack:h10
+  endif
+  let g:syntastic_javascript_checkers = ['eslint']
+  let g:syntastic_javascript_eslint_exec = 'eslint_d'
+  let g:syntastic_javascript_eslint_args = '--fix'
+  let g:syntastic_always_populate_loc_list = 1
+  let g:syntastic_enable_signs = 1
+  let g:ctrlp_working_path_mode = 'a'
+  let g:ctrlp_mruf_include = '\.js$\|\.jsx$|\.scss$'
+  let g:ctrlp_max_depth = 40
+  noremap <F3> :Autoformat<CR><CR>
+  nnoremap <F9> :Dispatch! npm run build<CR>
+  map  / <Plug>(easymotion-sn)
+  omap / <Plug>(easymotion-tn)
+  nmap s <Plug>(easymotion-s2)
+  nmap t <Plug>(easymotion-t2)
+  " autocmd GUIEnter * call libcallnr("gvimfullscreen.dll", "ToggleFullScreen", 0)
+  autocmd StdinReadPre * let s:std_in=1
+  color molokai
+  let @x = 'ysw"vf"S)iget'
+  let g:user_emmet_settings = webapi#json#decode(join(readfile(expand('~/.snippets.json')), "\n"))
+  let g:jsx_ext_required = 0
+endif

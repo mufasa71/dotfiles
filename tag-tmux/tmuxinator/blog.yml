@@ -1,0 +1,4 @@
+project_name: blog
+project_root: ~/Github/blog
+windows:
+    - vim: cd ~/Github/blog && vim

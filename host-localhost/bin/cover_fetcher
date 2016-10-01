@@ -1,0 +1,48 @@
+#!/bin/env bash
+
+# this is a simple operation, really. all we do is fetch data from last.fm, get
+# the albm cover links, download them, and put them in the right place.
+# There are no heuristics going on here, it only works on exact matches!
+
+(( $# != 2 )) && echo "Usage: $0 Artist Album" && exit 1
+
+if [[ -e ~/.covers/$1-$2.png ]]; then
+  echo "Error: File exists: $1-$2.png"
+  exit 2
+fi
+
+echo "Fetching Artist $1, Album $2..."
+
+# simple http get request for album.getinfo, with artist + album
+data=$(curl \
+  --data-urlencode method=album.getinfo \
+  --data-urlencode api_key=2f63459bcb2578a277c5cf5ec4ca62f7 \
+  --data-urlencode artist="$1" \
+  --data-urlencode album="$2" \
+  -G -s http://ws.audioscrobbler.com/2.0/)
+
+[[ $? -gt 0 ]] && echo "Error: Unable to fetch album data!" && exit 3
+
+# try to find a cover art link
+image_tag="<image size=\"medium\">([^<]+)</image>"
+if [[ $data =~ $image_tag ]]; then
+  echo "Found data url: ${BASH_REMATCH[1]}"
+
+  artist=${1//\//_}
+  album=${2//\//_}
+
+  # download and convert
+  echo "Downloading and converting.."
+  curl -s "${BASH_REMATCH[1]}" | convert - -resize 64x64 ~/.covers/"$artist-$album.png"
+
+  if [[ $? == 0 ]]; then
+    echo "All done!"
+  else
+    echo "Error fetching or converting.."
+    exit 5
+  fi
+else
+  echo "Error: No cover art found in album info."
+  exit 4
+fi
+

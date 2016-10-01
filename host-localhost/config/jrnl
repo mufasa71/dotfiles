@@ -1,0 +1,13 @@
+{
+  "tagsymbols": "@",
+  "timeformat": "%Y-%m-%d %H:%M",
+  "encrypt": true,
+  "editor": "vim",
+  "linewrap": 79,
+  "default_minute": 0,
+  "highlight": true,
+  "journals": {
+    "default": "~/Documents/journal.txt"
+  },
+  "default_hour": 9
+}

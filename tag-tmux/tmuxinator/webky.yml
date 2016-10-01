@@ -1,0 +1,10 @@
+# ~/.tmuxinator/webky.yml
+
+name: webky
+root: ~/Github/webky
+
+windows:
+  - livereload: grunt
+  - compile: grunt compile
+  - server: grunt server
+  - editor: vim

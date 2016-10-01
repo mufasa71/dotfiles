@@ -1,0 +1,5 @@
+[trusted]
+groups = users
+users = root
+[ui]
+username = Shukhrat Mukimov <mukimov@gmail.com>

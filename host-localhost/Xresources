@@ -1,0 +1,11 @@
+Xcursor.theme: whiteglass
+dzen2.foreground: #CCCCC6
+dzen2.background: #1B1D1E
+dzen2.font: DejaVu Sans Mono:pixelsize=12:lcdfilter=lcddefault:hintstyle=hintfull:hinting=true:rgba=rgb:antialias=true:autohint=false
+Xft.antialias: 1
+Xft.autohint: 0
+Xft.dpi: 95
+Xft.hinting: 1
+Xft.hintstyle: hintfull
+Xft.lcdfilter: lcddefault
+Xft.rgba: rgb

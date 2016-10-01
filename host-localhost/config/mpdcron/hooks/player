@@ -1,0 +1,1 @@
+/home/eagle/.bin/cover_fetcher "$MPD_SONG_TAG_ARTIST" "$MPD_SONG_TAG_ALBUM"

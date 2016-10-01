@@ -1,0 +1,6 @@
+auto-reload yes
+browser firefox
+download-full-page yes
+text-width 72
+bind-key k up
+bind-key j down

@@ -1,0 +1,5 @@
+#/bin/bash
+RESULT=$(curl -s https://dweet.io/get/latest/dweet/for/nurkhon17 \
+  | jq '.with[0].content.temp')
+
+echo "$RESULT"

@@ -1,0 +1,39 @@
+if has("unix")
+  call plug#begin('~/.vim/plugged')
+else
+  call plug#begin('~/vimfiles/plugged')
+endif
+Plug 'gmarik/vundle.vim'
+Plug 'scrooloose/syntastic'
+Plug 'tomasr/molokai'
+Plug 'kana/vim-textobj-user'
+Plug 'kana/vim-textobj-entire'
+Plug 'Lokaltog/vim-easymotion'
+Plug 'kien/ctrlp.vim'
+Plug 'wincent/ferret'
+Plug 'danro/rename.vim'
+Plug 'airblade/vim-gitgutter'
+Plug 'ervandew/supertab'
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-fugitive'
+Plug 'Chiel92/vim-autoformat'
+Plug 'mattn/emmet-vim'
+Plug 'mxw/vim-jsx'
+Plug 'tommcdo/vim-exchange'
+Plug 'pangloss/vim-javascript', { 'branch': 'develop' }
+Plug 'mxw/vim-jsx'
+Plug 'mattn/webapi-vim'
+Plug 'itchyny/lightline.vim'
+Plug 'mhinz/vim-signify'
+Plug 'chriskempson/base16-vim'
+Plug 'morhetz/gruvbox'
+if has("unix")
+  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+  Plug 'junegunn/fzf.vim'
+endif
+call plug#end()
+

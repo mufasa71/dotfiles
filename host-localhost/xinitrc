@@ -1,0 +1,32 @@
+#!/bin/bash
+
+setxkbmap -model pc104 -layout us,ru -variant -option grp:alt_shift_toggle caps:escape
+envoy -t gpg-agent # lets start envoy, the keyring manager
+source <(envoy -p) # source agent environment variables
+
+[[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
+
+# feh --bg-max --randomize ~/Pictures/wallpapers/Ubuntu15/* &
+# feh --bg-fill --randomize ~/Pictures/wallpapers/*.jpg &
+~/.bin/apod &
+xwrits &
+
+while true; do
+    conky -c ~/.conky/conkyrc | while read -r; do
+      DWM_CLOCK=$( date '+%e %b %Y %a | %k:%M' );
+      xsetroot -name "$DWM_CLOCK;$REPLY"
+    done &
+    unclutter -root &
+
+    # start dwm
+    dwm > ~/.dwm.log
+    # read exit status
+    if [ $? -eq 0 ]; then
+        exit 0 # means exit clean => quit
+    elif [ $? -ne 5 ]; then
+        mv ~/.dwm.log ~/.dwm.failure.log # a failure occured, save the log, never happened so far
+    fi
+    # dwm should be recompiled if changes were done
+    # kill running processes
+    killall conky unclutter
+done
