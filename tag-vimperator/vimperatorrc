@@ -1,0 +1,161 @@
+set runtimepath=~/.vimperator
+
+" theme
+source ~/.vimperator/color/molokai.vimp
+
+let mapleader = ","
+
+" colemak
+" =======================================
+map j 3<C-e>
+map k 3<C-y>
+
+" next search -> down
+"nnoremap n 3j
+"vnoremap n j
+
+" Faster viewport scrolling
+nnoremap <C-d> 9j
+vnoremap <C-d> 3j
+
+" down -> next search
+"nnoremap j n
+"vnoremap j n
+
+" join lines -> previous search
+nnoremap J N
+vnoremap J N
+
+" end -> up
+nnoremap e 3k
+vnoremap e k
+
+noremap l gt
+noremap h gT
+
+" Move tabs
+map <S-Left> :tabmove! -1<CR>
+map <S-Right> :tabmove! +1<CR>
+
+" Close tab and move to previous tab
+map d <c-w>
+
+" options
+" ======================================
+" minimal gui
+set gui=noaddons,nobookmarks,nomenu,nonavigation
+" Try to always switch to normal mode on page load
+set focuscontent
+" Hide navigation bar
+set gui=nonavigation
+" I don't like beeps
+set visualbell
+" useful for command-line completion
+set autocomplete
+set wildmode=list:longest,full
+" text editor
+set editor="st -e vim -f"
+set hintinputs="label,name"
+set hintmatching="wordstartswith"
+" default search engine
+set defsearch="duckduckgo"
+" sethint and colors
+set hintchars=hjklasdfgyuiopqwertnmzxcvb
+highlight Hint font:"DejaVu Sans Mono";font-size:100%;color:white;background-color:red;padding:1px;
+let g:wallabag_url="https://wallabag.lpool.info";
+let g:microsoft_translator_client_id="vimperator_translator"
+let g:microsoft_translator_client_secret="Gpb0p8W9odJVOa3B1XUOs2kJJUIWGWYlB8cmjDphq/w="
+let g:microsoft_translator_pair="en ru"
+let g:yout_watch_list="~/ytdl/ytdl.lst"
+
+" autoignore mode on certain pages
+"autocmd PageLoad .* :js if (/facebook\.com/.test(buffer.URL)) { modes.passAllKeysExceptSome(['d', ':']) }
+"autocmd PageLoad .* :js modes.passAllKeys = /www\.nicovideo\.jp\/watch/.test(buffer.URL)
+
+command! -nargs=+ lazy autocmd VimperatorEnter .* <args>
+lazy fmaps -u='mail\.google\.com/mail' c / y j k n p o u e x s r a # [ ] ? gi gs gt gd ga gc gk gl + *a *n *r *u *s *t <C-v> . ` ~
+lazy fmaps -u=^https://www\\.facebook\\.com/ -events vkeydown j k
+lazy fmaps -u=^https:\\/\\/habrahabr\\.ru/ -events vkeydown j k
+lazy fmaps -u=^https://twitter\\.com/ j k . b gf / ?
+lazy fmaps -u=^http:\\/\\/doc\\.rust-lang\\.org\\/ -events=vkeyup s
+
+" noscript
+" noremap <leader>n :noscript popup<cr>
+
+" commands
+" noremap <leader>S :source ~/.vimperatorrc<cr>
+
+" new function to override search keys to show center box when typing selecting text
+javascript <<EOF
+  Finder.prototype.openNewPrompt = function (mode) {
+      this._backwards = mode == modes.SEARCH_BACKWARD;
+      commandline.input(this._backwards ? "Find backwards" : "Find", this.closure.onSubmit, {
+          onChange: function() {
+            if (options["incsearch"]){
+              finder.find(commandline.command);
+              plugins.center_select.CenterSelect.Selector.center();
+            }
+          }
+      });
+  }
+  mappings.addUserMap([modes.NORMAL, modes.CARET], ["/"], "Search forward for a pattern and center", function () { finder.openNewPrompt(modes.SEARCH_FORWARD);});
+  mappings.addUserMap([modes.NORMAL, modes.CARET], ["?"], "Search backward for a pattern and center", function () { finder.openNewPrompt(modes.SEARCH_BACKWARD);});
+EOF
+
+js services.services.autoCompleteSearch.class_="@mozilla.org/autocomplete/search;1?name=unifiedcomplete"
+
+" ==================
+"" Cyrillic letters:
+
+map Ф A
+map И B
+map С C
+map В D
+map У E
+map А F
+map П G
+map Р H
+map Ш I
+map О J
+map Л K
+map Д L
+map Ь M
+map Т N
+map Щ O
+map З P
+map Й Q
+map К R
+map Ы S
+map Е T
+map Г U
+map М V
+map Ц W
+map Ч X
+map Н Y
+map Я Z
+map ф a
+map и b
+map с c
+map в d
+map у e
+map а f
+map п g
+map р h
+map ш i
+map о j
+map л k
+map д l
+map ь m
+map т n
+map щ o
+map з p
+map й q
+map к r
+map ы s
+map е t
+map г u
+map м v
+map ц w
+map ч x
+map н y
+map я z

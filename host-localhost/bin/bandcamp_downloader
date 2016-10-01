@@ -1,0 +1,33 @@
+#!/bin/env zsh
+
+o_dir=$(pwd)/bandcamp-show
+
+zparseopts -K -- u:=o_url o:=o_dir h=o_help
+if [[ $? != 0 || "$o_url" == "" || "$o_help" != "" ]]; then
+    echo Usage: "$(basename "$0")" "[-u URL]"
+    exit 1
+fi
+
+url=$o_url[2]
+cover_src="cover_src"
+cover_file="cover.jpg"
+
+curl -s "$url"| pup '.bcweekly-track-item a.track-details json{}' | jq -r '.[] | .href + "?" + .children[0].text' |
+gawk '
+@include "join"
+BEGIN {
+  FS = "?"
+  cover_src = "cover_src"
+}
+{
+  system(sprintf("curl -s %s | pup \"#tralbumArt a.popupImage img attr{src}\" >> %s", $1, cover_src))
+  sub(/album.*$/, "", $1);
+  gsub(/\s-|:|&|\/|\(|\)|\.|\,|\xc3a8|\x27/, "", $3);
+  if(index($1, "http") > 0) {
+    printf("%strack/%s\n", $1, tolower(join(s, 1, split($3, s, " "), "-")));
+  }
+}
+' | youtube-dl -ia - -o "$o_dir-$(date +'%m%d%Y')/%(title)s.%(ext)s" --exec 'curl -s $(head -1 cover_src) -o cover.jpg && eyeD3 --add-image cover.jpg:FRONT_COVER:cover {}; sed -i 1d cover_src'
+
+rm "$cover_src" "$cover_file"
+

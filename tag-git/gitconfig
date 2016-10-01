@@ -1,0 +1,38 @@
+
+[user]
+  email = ***REMOVED***
+  name =***REMOVED***
+
+[push]
+  default = current
+
+[color]
+  ui = auto
+
+[alias]
+  cleanup = ! rm -rf .git/refs/original/ && git reflog expire --expire=now --all && git gc --prune=now && git gc --aggressive --prune=now
+  rank = shortlog -sn --no-merges
+  hist = log --graph --pretty=format:\"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset %C(blue)[%an]%Creset\" --abbrev-commit --date=relative
+
+[core]
+  excludesfile = ~/.gitignore
+  autocrlf = input
+  editor = vim
+
+[merge]
+  ff = only
+  tool = vimdiff
+  summary = true
+  verbosity = 1
+
+[commit]
+  template = ~/.gitmessage
+
+[apply]
+  whitespace = fix
+
+[pull]
+  rebase = true
+
+[github]
+  user = ***REMOVED***

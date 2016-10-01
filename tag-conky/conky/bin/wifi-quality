@@ -1,0 +1,7 @@
+#!/bin/env bash
+
+if [ "$(ip link show "$1" | grep -c UP)" -eq 1 ]
+then
+  _linkQual="$(iwconfig "$1" | grep Quality | awk '{print substr($2, 9, 2)}')"
+  echo "$_linkQual"%
+fi

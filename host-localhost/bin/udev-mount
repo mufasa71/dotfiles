@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# USB-Stick mounten
+sleep 5
+device=`dmesg | grep -e sd.: | tail -n 1 | sed -n 's/.*sd.:\s\+\?\(.*\)/\1/i p'`
+name=`dmesg | grep -i product: | tail -n 1 | sed -n 's/.*product:\s\+\(.*\)/\1/i p' | sed -n 's/\ /_/g p'`
+
+if [ ! -d /media/$name ]; then
+mkdir /media/$name
+fi
+mount /dev/$device /media/$name
+username=`who | head -n 1 | cut -d " " -f 1`
+export DISPLAY=:0.0
+su $username -c "notify-send 'USB-Speicherstick eingehaengt auf /media/$name'"

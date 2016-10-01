@@ -1,0 +1,4 @@
+TAGS="git"
+EXCLUDES="README.md build base16-monokai.dark.256.xresources"
+HOSTNAME="localhost"
+SYMLINK_DIRS=""

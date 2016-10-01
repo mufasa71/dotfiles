@@ -1,0 +1,7 @@
+# ~/_tmuxinator/***REMOVED***_github_io_yml
+
+name: github_io
+root: ~/Github/***REMOVED***.github.io
+windows:
+  - editor: vim
+  - server: jekyll serve --watch

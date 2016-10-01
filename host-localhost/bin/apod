@@ -1,0 +1,11 @@
+#!/usr/bin/perl
+# Set OS X desktop background to Astronomy Picture of the Day
+# (http://apod.nasa.gov/apod/)
+# Written by Greg Methvin
+
+chdir "/tmp";
+$_ = `curl "http://apod.nasa.gov/apod/astropix.html"`;
+/href\="image\/([^\/]+)\/(.*?)"/i or die "Could not find image\n";
+`curl -O "http://apod.nasa.gov/apod/image/$1/$2"`;
+print "Setting desktop image\n";
+`/usr/bin/feh --bg-center "/tmp/$2"`;

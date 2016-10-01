@@ -1,0 +1,38 @@
+[ui]
+username =***REMOVED*** <s***REMOVED***@***REMOVED***>
+merge = kdiff3
+
+[merge-tools]
+vimdiff.executable = vim
+vimdiff.args = -d -c "wincmd J" "$output" "$local" "$other" "$base"
+
+[extensions]
+mercurial_keyring =
+mq =
+shelve =
+eol=
+rebase =
+highlight =
+hgext.highlight =
+hglist =
+[auth]
+bitbucket.org.prefix = bitbucket.org
+bitbucket.org.username = s***REMOVED***
+
+[trusted]
+users = Unknown+User
+groups = Unknown+Group
+
+[tortoisehg]
+vdiff = kdiff3
+editor = gvim
+tabwidth = 4
+showfamilyline = True
+authorcolor = True
+branchcolors = default:#2E882E Staging:#7D2A69
+graphlimit = 100
+fontcomment = Consolas,10,-1,5,50,0,0,0,0,0
+fontdiff = Consolas,10,-1,5,50,0,0,0,0,0
+fontoutputlog = Consolas,10,-1,5,50,0,0,0,0,0
+fontlist = Consolas,10,-1,5,50,0,0,0,0,0
+fontlog = Consolas,10,-1,5,50,0,0,0,0,0

@@ -1,0 +1,47 @@
+{
+  "javascript": {
+    "snippets": {
+      "describe": "describe(\"${0}\", () => {\n\t${0}\n});",
+      "it": "it(\"${0}\", () => {\n\t${0}\n});",
+      "beforeEach": "beforeEach(() => {\n\t${0}\n});",
+      "afterEach": "afterEach(() => {\n\t${0}\n});",
+      "after": "after(() => {\n\t${0}\n});",
+      "before": "before(() => {\n\t${0}\n});",
+      "cdm": "componentDidMount() {\n\t${0}\n}",
+      "cs": "import cx from \"classnames\";",
+      "cdup": "componentDidUpdate(prevProps, prevState) {\n\t${0}\n}",
+      "cwm": "componentWillMount() {\n\t${0}\n}",
+      "cwr": "componentWillReceiveProps(nextProps) {\n\t${0}\n}",
+      "cwun": "componentWillUnmount() {\n\t${0}\n}",
+      "cwu": "componentWillUpdate(nextProps, nextState) {\n\t ${0}\n}",
+      "cx": "cx({\n\t${1}: ${2}\n});",
+      "gis": "this.state = {\n\t${1}: ${2},\n};",
+      "ren": "render() {\n\treturn (${0:<div />});\n}",
+      "sst": "this.setState({\n\t${0}: ${1}\n});",
+      "scu": "shouldComponentUpdate(nextProps, nextState) {\n\t${0}\n}",
+      "props": "this.props.${0}",
+      "refs": "this.refs.${0}",
+      "state": "this.state.${0}",
+      "rcc": "import React, { Component } from \"react\";\n\nexport default class ${1} extends Component {\n\tconstructor(props) {\n\t\tsuper(props);\n\t}\n\trender() {\n\t\treturn (<${2:div}></${2:div}>);\n\t}\n}",
+      "rrc": "import React from \"react\";\nimport { connect } from \"react-redux\";\n\nfunction mapStateToProps(state) {\n\treturn {\n\t};\n}\n\nexport class ${0} extends Component {\n\tconstructor(props) {\n\t\tsuper(props);\n\t}\n\trender() {\n\t\treturn (<${1:div}></${1:div}>);\n\t}\n}\n\nexport default connect(mapStateToProps)(${2});"
+    }
+  },
+  "javascript.jsx": {
+  	"extends": "javascript"
+  },
+  "rust": {
+    "filters": "rust",
+    "profile": "rust",
+    "snippets": {
+      "main": "fn main() {\n\t${1}\n}",
+      "fn": "fn ${1}(${2}) {\n\t${3}\n}"
+    }
+  },
+  "eruby": {
+    "filters": "eruby",
+    "extends": "html",
+    "snippets": {
+      "=": "<%= {1} %>"
+    }
+  }
+}

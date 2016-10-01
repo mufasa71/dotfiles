@@ -1,0 +1,4 @@
+EXCLUDES="_vimrc README.md apt-list.cygwin"
+TAGS="git"
+HOSTNAME="***REMOVED***-pc"
+SYMLINK_DIRS=""
