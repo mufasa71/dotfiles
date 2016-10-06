@@ -14,7 +14,7 @@ eol=
 rebase =
 highlight =
 hgext.highlight =
-hglist =
+
 [auth]
 bitbucket.org.prefix = bitbucket.org
 bitbucket.org.username = s***REMOVED***
