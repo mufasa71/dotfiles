@@ -1,4 +1,0 @@
-EXCLUDES="_vimrc README.md apt-list.cygwin"
-TAGS="git"
-HOSTNAME="eagle-pc"
-SYMLINK_DIRS=""
