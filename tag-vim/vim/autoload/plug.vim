@@ -814,9 +814,6 @@ function! s:do(pull, force, todo)
       if type == s:TYPE.string
         if spec.do[0] == ':'
           call s:load_plugin(spec)
-<<<<<<< af41a74b290226c6bcee90011e0310eefe8f70a9
-          execute spec.do[1:]
-=======
           try
             execute spec.do[1:]
           catch
@@ -826,7 +823,6 @@ function! s:do(pull, force, todo)
             cd -
             throw 'Warning: vim-plug was terminated by the post-update hook of '.name
           endif
->>>>>>> update plug
         else
           let error = s:bang(spec.do)
         endif
@@ -1083,9 +1079,6 @@ function! s:update_finish()
       redraw
     endfor
     silent 4 d _
-<<<<<<< af41a74b290226c6bcee90011e0310eefe8f70a9
-    call s:do(s:update.pull, s:update.force, filter(copy(s:update.all), 'index(s:update.errors, v:key) < 0 && has_key(v:val, "do")'))
-=======
     try
       call s:do(s:update.pull, s:update.force, filter(copy(s:update.all), 'index(s:update.errors, v:key) < 0 && has_key(v:val, "do")'))
     catch
@@ -1093,7 +1086,6 @@ function! s:update_finish()
       call s:warn('echo', '')
       return
     endtry
->>>>>>> update plug
     call s:finish(s:update.pull)
     call setline(1, 'Updated. Elapsed time: ' . split(reltimestr(reltime(s:update.start)))[0] . ' sec.')
     call s:switch_out('normal! gg')
@@ -1157,34 +1149,10 @@ function! s:job_cb(fn, job, ch, data)
   call call(a:fn, [a:job, a:data])
 endfunction
 
-<<<<<<< af41a74b290226c6bcee90011e0310eefe8f70a9
-  if a:event == 'stdout'
-    let complete = empty(a:data[-1])
-    let lines = map(filter(a:data, 'v:val =~ "[^\r\n]"'), 'split(v:val, "[\r\n]")[-1]')
-    call extend(self.lines, lines)
-    let self.result = join(self.lines, "\n")
-    if !complete
-      call remove(self.lines, -1)
-    endif
-    " To reduce the number of buffer updates
-    let self.tick = get(self, 'tick', -1) + 1
-    if self.tick % len(s:jobs) == 0
-      call s:log(self.new ? '+' : '*', self.name, self.result)
-    endif
-  elseif a:event == 'exit'
-    let self.running = 0
-    if a:data != 0
-      let self.error = 1
-    endif
-    call s:reap(self.name)
-    call s:tick()
-  endif
-=======
 function! s:nvim_cb(job_id, data, event) abort
   return a:event == 'stdout' ?
     \ s:job_cb('s:job_out_cb',  self, 0, join(a:data, "\n")) :
     \ s:job_cb('s:job_exit_cb', self, 0, a:data)
->>>>>>> update plug
 endfunction
 
 function! s:spawn(name, cmd, opts)
@@ -1272,19 +1240,11 @@ endfunction
 
 function! s:log(bullet, name, lines)
   if s:switch_in()
-<<<<<<< af41a74b290226c6bcee90011e0310eefe8f70a9
-    let pos = s:logpos(a:name)
-    if pos > 0
-      silent execute pos 'd _'
-      if pos > winheight('.')
-        let pos = 4
-=======
     let [b, e] = s:logpos(a:name)
     if b > 0
       silent execute printf('%d,%d d _', b, e)
       if b > winheight('.')
         let b = 4
->>>>>>> update plug
       endif
     else
       let b = 4
