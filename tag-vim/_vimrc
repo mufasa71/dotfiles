@@ -14,7 +14,7 @@ set noswapfile
 set nowritebackup
 set ruler                            " show line and column number of the cursor position
 set scrolloff=2                      " start scrolling (n) lines before window ends
-set tabstop=2 shiftwidth=2 " softtabs, 2 spaces
+set tabstop=2 shiftwidth=2           " softtabs, 2 spaces
 set number                           " show line numbers
 set numberwidth=5
 set wildmode=list:longest,list:full  " will insert tab at beginning of line,
