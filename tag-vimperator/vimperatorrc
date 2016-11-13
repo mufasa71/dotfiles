@@ -46,8 +46,6 @@ map d <c-w>
 set gui=noaddons,nobookmarks,nomenu,nonavigation
 " Try to always switch to normal mode on page load
 set focuscontent
-" Hide navigation bar
-set gui=nonavigation
 " I don't like beeps
 set visualbell
 " useful for command-line completion
