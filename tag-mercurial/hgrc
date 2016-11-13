@@ -7,6 +7,10 @@ vimdiff.executable = vim
 vimdiff.args = -d -c "wincmd J" "$output" "$local" "$other" "$base"
 
 [extensions]
+color =
+pager =
+fetch =
+graphlog =
 mercurial_keyring =
 mq =
 shelve =
