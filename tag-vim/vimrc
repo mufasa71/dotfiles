@@ -3,37 +3,9 @@
 set nocompatible                     " use Vim settings, rather then Vi settings
 
 filetype off
-set rtp+=~/.fzf
-call plug#begin('~/.vim/plugged')
-Plug 'gmarik/vundle.vim'
-Plug 'scrooloose/syntastic'
-Plug 'tomasr/molokai'
-Plug 'kana/vim-textobj-user'
-Plug 'kana/vim-textobj-entire'
-Plug 'Lokaltog/vim-easymotion'
-Plug 'kien/ctrlp.vim'
-Plug 'rking/ag.vim'
-Plug 'danro/rename.vim'
-Plug 'airblade/vim-gitgutter'
-Plug 'ervandew/supertab'
-Plug 'tpope/vim-unimpaired'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-abolish'
-Plug 'tpope/vim-fugitive'
-Plug 'Chiel92/vim-autoformat'
-Plug 'mattn/emmet-vim'
-Plug 'mxw/vim-jsx'
-Plug 'tommcdo/vim-exchange'
-Plug 'pangloss/vim-javascript', { 'branch': 'develop' }
-Plug 'mattn/webapi-vim'
-Plug 'itchyny/lightline.vim'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-Plug 'ternjs/tern_for_vim'
-call plug#end()
-
+if filereadable(glob("~/.vimrc.bundles"))
+  source ~/.vimrc.bundles
+endif
 filetype plugin indent on
 
 let mapleader=","                    " leader key
