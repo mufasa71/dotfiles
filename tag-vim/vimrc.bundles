@@ -31,9 +31,12 @@ Plug 'itchyny/lightline.vim'
 Plug 'mhinz/vim-signify'
 Plug 'chriskempson/base16-vim'
 Plug 'morhetz/gruvbox'
+Plug 'chilicuil/vim-sprunge'
 if has("unix")
+  set rtp+=~/.fzf
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
   Plug 'junegunn/fzf.vim'
+  Plug 'ternjs/tern_for_vim'
 endif
 call plug#end()
 
