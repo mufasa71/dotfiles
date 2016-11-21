@@ -5,6 +5,9 @@ else
 endif
 Plug 'gmarik/vundle.vim'
 Plug 'scrooloose/syntastic'
+if filereadable(glob("~/.syntasticrc"))
+  source ~/.syntasticrc
+endif
 Plug 'tomasr/molokai'
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-entire'
@@ -24,7 +27,7 @@ Plug 'Chiel92/vim-autoformat'
 Plug 'mattn/emmet-vim'
 Plug 'mxw/vim-jsx'
 Plug 'tommcdo/vim-exchange'
-Plug 'pangloss/vim-javascript', { 'branch': 'develop' }
+Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'mattn/webapi-vim'
 Plug 'itchyny/lightline.vim'

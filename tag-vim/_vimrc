@@ -90,11 +90,7 @@ if has('gui_running')
   if has("gui_win32")
     set guifont=Hack:h10
   endif
-  let g:syntastic_javascript_checkers = ['eslint']
-  let g:syntastic_javascript_eslint_exec = 'eslint_d'
-  let g:syntastic_javascript_eslint_args = '--fix'
-  let g:syntastic_always_populate_loc_list = 1
-  let g:syntastic_enable_signs = 1
+
   let g:ctrlp_working_path_mode = 'a'
   let g:ctrlp_mruf_include = '\.js$\|\.jsx$|\.scss$'
   let g:ctrlp_max_depth = 40
