@@ -33,6 +33,7 @@ set smartindent
 set wrap
 set shortmess+=I                     " no intro text on open
 set cm=blowfish2
+set autoread                         " automatically refresh any files that have been edited outside Vim
 
 syntax on
 " return to last edit position automaticaly
