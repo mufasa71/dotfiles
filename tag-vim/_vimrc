@@ -30,6 +30,7 @@ set guioptions-=m
 set guioptions-=T
 set guioptions-=r
 set guioptions-=L
+set autoread                         " automatically refresh any files that have been edited outside Vim
 
 syntax on
 
