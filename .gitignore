@@ -4,3 +4,4 @@ tag-vimperator/vimperator/info
 tag-vim/vim/plugged
 .netrwhist
 plug.vim.old
+plug.vim
