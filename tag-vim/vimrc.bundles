@@ -35,6 +35,7 @@ Plug 'mhinz/vim-signify'
 Plug 'chriskempson/base16-vim'
 Plug 'morhetz/gruvbox'
 Plug 'chilicuil/vim-sprunge'
+Plug 'rust-lang/rust.vim'
 if has("unix")
   set rtp+=~/.fzf
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
