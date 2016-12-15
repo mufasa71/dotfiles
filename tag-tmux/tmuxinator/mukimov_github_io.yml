@@ -1,7 +1,0 @@
-# ~/_tmuxinator/mukimov_github_io_yml
-
-name: github_io
-root: ~/Github/mukimov.github.io
-windows:
-  - editor: vim
-  - server: jekyll serve --watch
