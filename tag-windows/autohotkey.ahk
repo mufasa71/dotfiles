@@ -14,6 +14,8 @@ Return
 Return
 #e::
 	Run, C:\cygwin64\bin\mintty.exe -i /Cygwin-Terminal.ico -
+  WinWait, "eagle-pc"
+  WinMaximize
 Return
 #w::
 	Run, "C:\Program Files (x86)\Mozilla Firefox\firefox.exe"
@@ -21,52 +23,6 @@ Return
 #q::
 	WinGetActiveTitle, Title
 	WinClose, %Title%
-Return
-#1::
-	IfWinExist, ahk_exe chrome.exe
-	{
-		WinActivate
-	}
-Return
-#2::
-  IfWinExist, ahk_exe gvim.exe
-	{
-		WinActivate
-	}
-Return
-#3::
-	IfWinExist, ahk_exe mintty.exe
-	{
-		WinActivate
-	}
-Return
-#4::
-  IfWinExist, Skype
-  {
-    WinActivate
-  }
-Return
-#5::
-  IfWinExist, ahk_exe devenv.exe
-    WinActivate
-  else
-    Run, "C:\Projects\Appulate\Sources\Appulate.sln"
-Return
-#6::
-  IfWinExist, TortoiseHg Workbench
-    WinActivate
-  else
-    Run, "C:\Program Files\TortoiseHg\thgw.exe"
-Return
-#F12::
-	Send +{F8}
-Return
-#7::
-	InputBox, taskCommand, todo.txt, Enter task command.
-		if ErrorLevel
-			return
-		else
-			run, C:\cygwin64\bin\bash.exe -l -c "exec /cygdrive/c/cygwin64/bin/pass %taskCommand% -c"
 Return
 
 $CapsLock::LControl
