@@ -33,7 +33,7 @@ THE POSSIBILITY OF SUCH DAMAGE.
 }}} */
 
 // PLUGIN_INFO {{{
-let PLUGIN_INFO = xml`
+var PLUGIN_INFO = xml`
 <VimperatorPlugin>
   <name>{NAME}</name>
   <description>Write a memo to the specified file.</description>
@@ -66,7 +66,7 @@ let PLUGIN_INFO = xml`
 //    http://developer.mozilla.org/index.php?title=Ja/Code_snippets/File_I%2F%2FO
 
 (function () {
-  let localfilepath = liberator.globalVariables.memo_filepath || io.expandPath('~/Dropbox/memos.txt');
+  let localfilepath = liberator.globalVariables.memo_filepath || io.expandPath('~/Sync/memos.txt');
   let charset = 'UTF-8';
 
   //ネタ的
