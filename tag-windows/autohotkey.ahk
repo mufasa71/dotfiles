@@ -14,8 +14,8 @@ Return
 Return
 #e::
 	Run, C:\cygwin64\bin\mintty.exe -i /Cygwin-Terminal.ico -
-  WinWait, "***REMOVED***-pc"
-  WinMaximize
+  	WinWait, ***REMOVED***-pc
+  	WinMaximize
 Return
 #w::
 	Run, "C:\Program Files (x86)\Mozilla Firefox\firefox.exe"
