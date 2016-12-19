@@ -14,8 +14,8 @@ Return
 Return
 #e::
 	Run, C:\cygwin64\bin\mintty.exe -i /Cygwin-Terminal.ico -
-  WinWait, "eagle-pc"
-  WinMaximize
+  	WinWait, eagle-pc
+  	WinMaximize
 Return
 #w::
 	Run, "C:\Program Files (x86)\Mozilla Firefox\firefox.exe"
