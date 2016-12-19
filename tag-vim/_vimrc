@@ -96,7 +96,6 @@ if has('gui_running')
   let g:ctrlp_mruf_include = '\.js$\|\.jsx$|\.scss$'
   let g:ctrlp_max_depth = 40
   noremap <F3> :Autoformat<CR><CR>
-  nnoremap <F9> :Dispatch! npm run build<CR>
   map  / <Plug>(easymotion-sn)
   omap / <Plug>(easymotion-tn)
   nmap s <Plug>(easymotion-s2)
