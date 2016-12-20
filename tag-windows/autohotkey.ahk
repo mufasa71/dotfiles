@@ -4,7 +4,7 @@ SendMode Input  ; Recommended for new scripts due to its superior speed and reli
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 #v::
 	Run, C:\Program Files (x86)\Vim\vim80\gvim.exe
-		WinWait, [No Name] - GVIM1
+		WinWait, [No Name] - GVIM
 		WinMaximize
 Return
 #+w::
@@ -12,7 +12,7 @@ Return
 Return
 #e::
 	Run, C:\cygwin64\bin\mintty.exe -i /Cygwin-Terminal.ico -
-		WinWait, ***REMOVED***-pc
+		WinWait, ahk_exe mintty.exe
 		WinMaximize
 Return
 #w::
