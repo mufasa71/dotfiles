@@ -1,9 +1,11 @@
 if has("unix")
   call plug#begin('~/.vim/plugged')
+  set rtp+=~/.fzf
+  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+  Plug 'junegunn/fzf.vim'
 else
   call plug#begin('~/vimfiles/plugged')
 endif
-Plug 'gmarik/vundle.vim'
 Plug 'scrooloose/syntastic'
 if filereadable(glob("~/.syntasticrc"))
   source ~/.syntasticrc
@@ -38,11 +40,5 @@ Plug 'chilicuil/vim-sprunge'
 Plug 'rust-lang/rust.vim'
 Plug 'justinmk/vim-dirvish'
 Plug 'mbbill/undotree'
-if has("unix")
-  set rtp+=~/.fzf
-  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-  Plug 'junegunn/fzf.vim'
-  Plug 'ternjs/tern_for_vim'
-endif
 call plug#end()
 
