@@ -18,13 +18,8 @@ set noswapfile
 set nowritebackup
 set ruler                            " show line and column number of the cursor position
 set scrolloff=2                      " start scrolling (n) lines before window ends
-set tabstop=2 shiftwidth=2           " softtabs, 2 spaces
-if has("unix")
-set lcs=tab:▸\ ,trail:·,eol:¬,nbsp:_ " show invisible characters
-else
-set cursorline                       " highlight the current line
-endif
-set list 
+set tabstop=2 shiftwidth=2 expandtab " softtabs, 2 spaces, use spaces instead of tabs
+set smarttab                         " be smart when using tabs
 set number                           " show line numbers
 set numberwidth=5
 set wildmode=list:longest,list:full  " will insert tab at beginning of line,
@@ -45,6 +40,15 @@ set guioptions-=r
 set guioptions-=L
 set guifont=Hack:h10
 
+if has("unix")
+  set listchars=tab:▸\ ,trail:·,eol:¬,nbsp:_ " show invisible characters
+else
+  set cursorline                       " highlight the current line
+  set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
+  if &shell =~ '\\bash$'
+    set shell=bash shellcmdflag=-c
+  endif
+endif
 
 syntax on
 " return to last edit position automaticaly
@@ -83,21 +87,6 @@ set omnifunc=syntaxcomplete#Complete
 
 " some macro
 let @x = 'ysw"vf"S)iget'
-
-" use the silver searcher https://github.com/ggreer/the_silver_searcher
-if executable('ag')
-  " use ag over grep
-  set grepprg=ag\ --nogroup\ --nocolor
-
-  " use ag in ctrlp for listing files
-  " also a lot faster in git projects with respects .gitignore
-  let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'ag %s -l --nocolor -g ""']
-  " global quick search-replace with ag aka silver_searcher
-  nmap <leader>sr :args `ag -l '<C-r>=expand("<cword>")<cr>' .` \|
-        \ argdo %s/<C-r>=expand("<cword>")<cr>//gc \| w<left><left><left><left><left><left><left>
-else
-  let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
-endif
 
 " enable jsx syntax highlighting for js files also
 let g:jsx_ext_required = 0
