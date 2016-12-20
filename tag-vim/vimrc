@@ -18,13 +18,17 @@ set noswapfile
 set nowritebackup
 set ruler                            " show line and column number of the cursor position
 set scrolloff=2                      " start scrolling (n) lines before window ends
-set tabstop=2 shiftwidth=2 expandtab " softtabs, 2 spaces
+set tabstop=2 shiftwidth=2           " softtabs, 2 spaces
+if has("unix")
 set lcs=tab:▸\ ,trail:·,eol:¬,nbsp:_ " show invisible characters
+else
+set cursorline                       " highlight the current line
+endif
 set list 
 set number                           " show line numbers
 set numberwidth=5
 set wildmode=list:longest,list:full  " will insert tab at beginning of line,
-set complete=.,b,t                   " complete with respect of current buffer, buffer list, tags
+set complete=.,b,t,s                 " complete with respect of current buffer, buffer list, tags
 set showmatch                        " show matching brackets
 set mat=2                            " 2 seconds blink on matching brackets
 set encoding=utf8                    " standard encoding
@@ -34,6 +38,13 @@ set wrap
 set shortmess+=I                     " no intro text on open
 set cm=blowfish2
 set autoread                         " automatically refresh any files that have been edited outside Vim
+set signcolumn=yes                   " turn off the sign column when no errors are found
+set guioptions-=m
+set guioptions-=T
+set guioptions-=r
+set guioptions-=L
+set guifont=Hack:h10
+
 
 syntax on
 " return to last edit position automaticaly
@@ -69,6 +80,9 @@ set thesaurus+=~/Documents/mthesaur.txt
 set dictionary-=/usr/share/dict/words
 set dictionary+=/usr/share/dict/words
 set omnifunc=syntaxcomplete#Complete
+
+" some macro
+let @x = 'ysw"vf"S)iget'
 
 " use the silver searcher https://github.com/ggreer/the_silver_searcher
 if executable('ag')
@@ -125,14 +139,12 @@ map <leader><leader>h <Plug>(easymotion-linebackward)
   " 2-chars search motion
 nmap s <Plug>(easymotion-s2)
 nmap t <Plug>(easymotion-t2)
+map  / <Plug>(easymotion-sn)
+omap / <Plug>(easymotion-tn)
 
 " autoformat
 noremap <F3> :Autoformat<CR><CR>
 let g:formatprg_args_expr_java = '"--mode=java --style=java -pcH".(&expandtab ? "s".&shiftwidth : "t")'
-
-" tern
-let g:tern_map_keys=1
-let g:tern_map_prefix="\\"
 
 " sort line (horizontally)
 vnoremap <F2> d:execute 'normal i' . join(sort(split(getreg('"'))), ' ')<CR>"'))))
