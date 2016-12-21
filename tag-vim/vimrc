@@ -22,7 +22,6 @@ set expandtab                        " use spaces instead of tabs
 set tabstop=2 shiftwidth=2           " softtabs, 2 spaces
 set smarttab                         " be smart when using tabs
 set number                           " show line numbers
-set numberwidth=5
 set wildmode=list:longest,list:full  " will insert tab at beginning of line,
 set complete=.,b,t,s                 " complete with respect of current buffer, buffer list, tags
 set showmatch                        " show matching brackets
@@ -34,7 +33,6 @@ set wrap
 set shortmess+=I                     " no intro text on open
 set cm=blowfish2
 set autoread                         " automatically refresh any files that have been edited outside Vim
-set signcolumn=yes                   " turn off the sign column when no errors are found
 set listchars=tab:▸\ ,trail:·,eol:¬,nbsp:_ " show invisible characters
 set guioptions-=m
 set guioptions-=T
