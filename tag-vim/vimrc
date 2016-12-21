@@ -18,7 +18,8 @@ set noswapfile
 set nowritebackup
 set ruler                            " show line and column number of the cursor position
 set scrolloff=2                      " start scrolling (n) lines before window ends
-set tabstop=2 shiftwidth=2 expandtab " softtabs, 2 spaces, use spaces instead of tabs
+set expandtab                        " use spaces instead of tabs
+set tabstop=2 shiftwidth=2           " softtabs, 2 spaces
 set smarttab                         " be smart when using tabs
 set number                           " show line numbers
 set numberwidth=5
@@ -34,17 +35,15 @@ set shortmess+=I                     " no intro text on open
 set cm=blowfish2
 set autoread                         " automatically refresh any files that have been edited outside Vim
 set signcolumn=yes                   " turn off the sign column when no errors are found
+set listchars=tab:▸\ ,trail:·,eol:¬,nbsp:_ " show invisible characters
 set guioptions-=m
 set guioptions-=T
 set guioptions-=r
 set guioptions-=L
 set guifont=Hack:h10
 
-if has("unix")
-  set listchars=tab:▸\ ,trail:·,eol:¬,nbsp:_ " show invisible characters
-else
+if has("win64")
   set cursorline                       " highlight the current line
-  set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
   if &shell =~ '\\bash$'
     set shell=bash shellcmdflag=-c
   endif
@@ -87,9 +86,6 @@ set omnifunc=syntaxcomplete#Complete
 
 " some macro
 let @x = 'ysw"vf"S)iget'
-
-" enable jsx syntax highlighting for js files also
-let g:jsx_ext_required = 0
 
 " easy Motion
 let g:EasyMotion_mapping_f = '<leader>}'
