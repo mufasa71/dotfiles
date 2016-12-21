@@ -91,13 +91,6 @@ let @x = 'ysw"vf"S)iget'
 let g:EasyMotion_mapping_f = '<leader>}'
 let g:EasyMotion_mapping_F = '<leader>{'
 
-" ctrlp
-let g:ctrlp_custom_ignore = '\v[\/](vendor|node_modules)$'
-let g:ctrlp_reuse_window = 'startify'
-let g:ctrlp_use_caching = 0
-let g:ctrlp_working_path_mode = 'a'
-let g:ctrlp_max_depth = 40
-
 " supertab
 let g:SuperTabDefaultCompletionType = "context"
 
