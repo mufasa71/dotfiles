@@ -6,6 +6,7 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 	Run, C:\Program Files (x86)\Vim\vim80\gvim.exe
 		WinWait, [No Name] - GVIM
 		WinMaximize
+    WinActivate
 Return
 #+w::
 	Run, https://www.wrike.com/workspace.htm
