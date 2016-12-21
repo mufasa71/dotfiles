@@ -9,5 +9,5 @@ conky.config = {
 };
 
 conky.text = [[
-${cpu cpu1}% / ${cpu cpu2}%  ${loadavg 1} ${loadavg 2 3} :: ${acpitemp}c :: $memperc% ($mem) ${if_existing /sys/class/net/enp6s0/operstate up}:: ${downspeed enp6s0} ${upspeed enp6s0}${endif}:: $fs_free_perc% Free :: Mail ${new_mails /home/***REMOVED***/Mail/gmail/INBOX} :: VPN ${if_up tun0}Up${else}Down$endif
+${cpu cpu1}% / ${cpu cpu2}%  ${loadavg 1} ${loadavg 2 3} :: ${acpitemp}c :: $memperc% ($mem) ${if_existing /sys/class/net/wlp3s0u1u3/operstate up}:: ${downspeed wlp3s0u1u3} ${upspeed wlp3s0u1u3}${endif} ${if_existing /sys/class/net/enp6s0/operstate up}:: ${downspeed enp6s0} ${upspeed enp6s0}${endif}:: $fs_free_perc% Free :: Mail ${new_mails /home/***REMOVED***/Mail/gmail/INBOX} :: VPN ${if_up tun0}Up${else}Down$endif :: ${rss https://planet.archlinux.org/rss20.xml 1 item_titles 1 }
 ]];
