@@ -5,3 +5,4 @@ tag-vim/vim/plugged
 .netrwhist
 plug.vim.old
 plug.vim
+history.cmdline
