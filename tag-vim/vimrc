@@ -34,13 +34,13 @@ set shortmess+=I                     " no intro text on open
 set cm=blowfish2
 set autoread                         " automatically refresh any files that have been edited outside Vim
 set listchars=tab:▸\ ,trail:·,eol:¬,nbsp:_ " show invisible characters
-set guioptions-=m
-set guioptions-=T
-set guioptions-=r
-set guioptions-=L
-set guifont=Hack:h10
 
-if has("win64")
+if has("gui_running")
+  set guioptions-=m
+  set guioptions-=T
+  set guioptions-=r
+  set guioptions-=L
+  set guifont=Hack:h10
   set cursorline                       " highlight the current line
   if &shell =~ '\\bash$'
     set shell=bash shellcmdflag=-c
