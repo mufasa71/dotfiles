@@ -9,6 +9,7 @@ endif
 filetype plugin indent on
 
 let mapleader=","                    " leader key
+let g:mapleader=","
 set backspace=indent,eol,start       " backspace deletes like most programs in insert mode
 set incsearch                        " show search pattern as it was typed so far
 set hlsearch                         " highlight search results
@@ -31,7 +32,7 @@ set autoindent
 set smartindent
 set wrap
 set shortmess+=I                     " no intro text on open
-set cm=blowfish2
+set cryptmethod=blowfish2
 set autoread                         " automatically refresh any files that have been edited outside Vim
 set listchars=tab:▸\ ,trail:·,eol:¬,nbsp:_ " show invisible characters
 
@@ -55,25 +56,34 @@ autocmd BufReadPost *
       \ endif
 " fast saving
 nmap <leader>w :w!<cr>
+
 " close current buffer
 map <leader>bd :bdelete<cr>
+
 " clear search highlight
 nmap <silent> <leader>/ :let @/=""<cr>
+
 " use very magic mode by default
 nnoremap / /\v
 cnoremap %s/ %s/\v
+
 " run write with root perms
 noremap <leader>W :w !sudo tee % > /dev/null<cr>:e!<cr><cr>
+
 " pull word under cursor into LHS of a substitute (for quick search and replace)
 nmap <leader>ss :%s#<C-r>=expand("<cword>")<cr>#
+
 " quick jump to a line which contains word under the cursor
 nmap <leader>f [I:let nr = input("Which one: ")<Bar>exe "normal " . nr ."[\t"<cr>
+
 " copy the current word or visually selected into system clipboard
 nnoremap <F4> "+yiw
 vnoremap <F4> "+y
+
 " replace the current word or visually selected from system clipboard
 nnoremap <F5> viw"+p
 vnoremap <F5> "+p
+
 " selecting pasted text
 nnoremap gp `[v`]
 
