@@ -2,10 +2,6 @@
 
 set nocompatible                     " use Vim settings, rather then Vi settings
 
-filetype off
-if filereadable(glob("~/.vimrc.bundles"))
-  source ~/.vimrc.bundles
-endif
 filetype plugin indent on
 
 let mapleader=","                    " leader key
@@ -106,8 +102,6 @@ let g:SuperTabDefaultCompletionType = "context"
 let g:molokai_original=1
 colorscheme molokai
 
-let g:user_emmet_settings = webapi#json#decode(join(readfile(expand('~/.snippets.json')), "\n"))
-
 " index ctags
 map <leader>ct :!ctags --exclude="node_modules" --exclude="bower_components" -R .<CR>
 
@@ -177,3 +171,4 @@ function! ToggleVExplorer()
 endfunction
 
 nnoremap <f2> :call ToggleVExplorer()<cr>
+
