@@ -1,0 +1,9 @@
+[submodule "tag-vim/vim/pack/***REMOVED***/opt/molokai"]
+	path = tag-vim/vim/pack/***REMOVED***/opt/molokai
+	url = https://github.com/tomasr/molokai
+[submodule "tag-vim/vim/pack/***REMOVED***/opt/neomake"]
+	path = tag-vim/vim/pack/***REMOVED***/opt/neomake
+	url = https://github.com/neomake/neomake
+[submodule "tag-vim/vim/pack/***REMOVED***/start/vim-airline"]
+	path = tag-vim/vim/pack/***REMOVED***/start/vim-airline
+	url = https://github.com/vim-airline/vim-airline
