@@ -133,8 +133,6 @@ map <leader><leader>h <Plug>(easymotion-linebackward)
   " 2-chars search motion
 nmap s <Plug>(easymotion-s2)
 nmap t <Plug>(easymotion-t2)
-map  / <Plug>(easymotion-sn)
-omap / <Plug>(easymotion-tn)
 
 " autoformat
 noremap <F3> :Autoformat<CR><CR>

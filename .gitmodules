@@ -7,3 +7,6 @@
 [submodule "tag-vim/vim/pack/***REMOVED***/start/vim-airline"]
 	path = tag-vim/vim/pack/***REMOVED***/start/vim-airline
 	url = https://github.com/vim-airline/vim-airline
+[submodule "tag-vim/vim/pack/***REMOVED***/start/mru"]
+	path = tag-vim/vim/pack/***REMOVED***/start/mru
+	url = https://github.com/yegappan/mru
