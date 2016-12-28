@@ -10,3 +10,6 @@
 [submodule "tag-vim/vim/pack/eagle/start/mru"]
 	path = tag-vim/vim/pack/eagle/start/mru
 	url = https://github.com/yegappan/mru
+[submodule "tag-vim/vim/pack/eagle/start/vim-unimpaired"]
+	path = tag-vim/vim/pack/eagle/start/vim-unimpaired
+	url = https://github.com/tpope/vim-unimpaired
