@@ -2,6 +2,15 @@
 
 set nocompatible                     " use Vim settings, rather then Vi settings
 
+try
+  if has('unix')
+    source ~/.vim/plugins_config.vim
+  else
+    source ~/vimfiles/plugins_config.vim
+  end
+catch
+endtry
+
 filetype plugin indent on
 
 let mapleader=","                    " leader key
@@ -23,33 +32,39 @@ set wildmode=list:longest,list:full  " will insert tab at beginning of line,
 set complete=.,b,t,s                 " complete with respect of current buffer, buffer list, tags
 set showmatch                        " show matching brackets
 set mat=2                            " 2 seconds blink on matching brackets
-set encoding=utf8                    " standard encoding
 set autoindent
 set smartindent
 set wrap
 set shortmess+=I                     " no intro text on open
 set cryptmethod=blowfish2
 set autoread                         " automatically refresh any files that have been edited outside Vim
-set listchars=tab:▸\ ,trail:·,eol:¬,nbsp:_ " show invisible characters
 
-if has("gui_running")
+if has('gui_running')
   set guioptions-=m
   set guioptions-=T
   set guioptions-=r
   set guioptions-=L
   set guifont=Hack:h10
-  set cursorline                       " highlight the current line
-  if &shell =~ '\\bash$'
-    set shell=bash shellcmdflag=-c
-  endif
+  set cursorline                           " highlight the current line
 endif
 
-syntax on
+" => Colors and Fonts
+syntax enable                              " enable syntax highlighting
+
+try
+  colorscheme molokai
+catch
+endtry
+
+set encoding=utf8                          " standard encoding
+set listchars=tab:▸\ ,trail:·,eol:¬,nbsp:_ " show invisible characters
+
 " return to last edit position automaticaly
 autocmd BufReadPost *
       \ if line("'\"") > 0 && line("'\"") <= line("$") |
       \   exe "normal g`\"" |
       \ endif
+
 " fast saving
 nmap <leader>w :w!<cr>
 
@@ -100,7 +115,6 @@ let g:SuperTabDefaultCompletionType = "context"
 
 " color scheme
 let g:molokai_original=1
-colorscheme molokai
 
 " index ctags
 map <leader>ct :!ctags --exclude="node_modules" --exclude="bower_components" -R .<CR>
