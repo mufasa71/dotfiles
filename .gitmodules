@@ -7,3 +7,6 @@
 [submodule "tag-vim/vim/pack/eagle/start/vim-airline"]
 	path = tag-vim/vim/pack/eagle/start/vim-airline
 	url = https://github.com/vim-airline/vim-airline
+[submodule "tag-vim/vim/pack/eagle/start/mru"]
+	path = tag-vim/vim/pack/eagle/start/mru
+	url = https://github.com/yegappan/mru
