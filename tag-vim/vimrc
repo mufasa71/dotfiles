@@ -38,6 +38,7 @@ set wrap
 set shortmess+=I                     " no intro text on open
 set cryptmethod=blowfish2
 set autoread                         " automatically refresh any files that have been edited outside Vim
+set secure                           " restrict to exrc
 
 if has('gui_running')
   set guioptions-=m
@@ -113,9 +114,6 @@ let g:EasyMotion_mapping_F = '<leader>{'
 " supertab
 let g:SuperTabDefaultCompletionType = "context"
 
-" color scheme
-let g:molokai_original=1
-
 " index ctags
 map <leader>ct :!ctags --exclude="node_modules" --exclude="bower_components" -R .<CR>
 
@@ -159,28 +157,3 @@ function! <SID>CleanCode()
   let @/=_s
   call cursor(l, c)
 endfunction
-
-" restrict to exrc
-set secure
-
-function! ToggleVExplorer()
-  if exists("t:expl_buf_num")
-    let expl_win_num = bufwinnr(t:expl_buf_num)
-    if expl_win_num != -1
-      let cur_win_nr = winnr()
-      exec expl_win_num . 'wincmd w'
-      close
-      exec cur_win_nr . 'wincmd w'
-      unlet t:expl_buf_num
-    else
-      unlet t:expl_buf_num
-    endif
-  else
-    exec '1wincmd w'
-    Vexplore
-    let t:expl_buf_num = bufnr("%")
-  endif
-endfunction
-
-nnoremap <f2> :call ToggleVExplorer()<cr>
-
