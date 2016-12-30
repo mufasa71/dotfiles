@@ -13,3 +13,6 @@
 [submodule "tag-vim/vim/pack/***REMOVED***/start/vim-unimpaired"]
 	path = tag-vim/vim/pack/***REMOVED***/start/vim-unimpaired
 	url = https://github.com/tpope/vim-unimpaired
+[submodule "tag-vim/vim/pack/***REMOVED***/start/bufexplorer"]
+	path = tag-vim/vim/pack/***REMOVED***/start/bufexplorer
+	url = https://github.com/corntrace/bufexplorer
