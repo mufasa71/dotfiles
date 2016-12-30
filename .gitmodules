@@ -13,3 +13,6 @@
 [submodule "tag-vim/vim/pack/eagle/start/vim-unimpaired"]
 	path = tag-vim/vim/pack/eagle/start/vim-unimpaired
 	url = https://github.com/tpope/vim-unimpaired
+[submodule "tag-vim/vim/pack/eagle/start/bufexplorer"]
+	path = tag-vim/vim/pack/eagle/start/bufexplorer
+	url = https://github.com/corntrace/bufexplorer
