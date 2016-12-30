@@ -18,6 +18,8 @@ let g:mapleader=","
 set backspace=indent,eol,start       " backspace deletes like most programs in insert mode
 set incsearch                        " show search pattern as it was typed so far
 set hlsearch                         " highlight search results
+set ignorecase                       " ignore case when searching
+set smartcase                        " when searching try to be smart about cases
 set laststatus=2                     " always display the status line
 set nobackup
 set noswapfile
@@ -39,6 +41,16 @@ set shortmess+=I                     " no intro text on open
 set cryptmethod=blowfish2
 set autoread                         " automatically refresh any files that have been edited outside Vim
 set secure                           " restrict to exrc
+set lazyredraw                       " don't redraw while executing macros (good performance config)
+set magic                            " for regular expressions turn magic on
+
+" ignore compiled files
+set wildignore=*.o,*~,*.pyc
+if has("win16") || has("win32")
+  set wildignore+=.git\*,.hg\*,.svn\*
+else
+  set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
+endif
 
 if has('gui_running')
   set guioptions-=m
@@ -69,8 +81,8 @@ autocmd BufReadPost *
 " fast saving
 nmap <leader>w :w!<cr>
 
-" close current buffer
-map <leader>bd :bdelete<cr>
+" close the current buffer
+map <leader>bd :bdelete<cr>:tabclose<cr>gT
 
 " clear search highlight
 nmap <silent> <leader>/ :let @/=""<cr>
