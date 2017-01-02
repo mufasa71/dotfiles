@@ -178,6 +178,46 @@ endfunction
 
 nnoremap <f2> :call ToggleVExplorer()<cr>
 
+function! Start()
+  " don't run if: we have commandline arguments, we don't have an empty
+  " buffer, if we've not invoked as vim or gvim, or if we'e start in insert mode
+  if argc() || line2byte('$') != -1 || v:progname !~? '^[-gmnq]\=vim\=x\=\%[\.exe]$' || &insertmode
+    return
+  endif
+
+  " start a new buffer ...
+  enew
+
+  " ... and set some options for it
+  setlocal
+        \ bufhidden=wipe
+        \ buftype=nofile
+        \ nobuflisted
+        \ nocursorcolumn
+        \ nocursorline
+        \ nolist
+        \ nonumber
+        \ noswapfile
+        \ norelativenumber
+
+  " now we can just write to the buffer, whatever you want.
+  call append('$', "")
+  for line in split(system('fortune 70% vim 10% javascript 20% git'), '\n')
+    call append('$', '        ' . l:line)
+  endfor
+
+  " no modifications to this buffer
+  setlocal nomodifiable nomodified
+
+  " when we go to insert mode start a new buffer, and start insert
+  nnoremap <buffer><silent> e :enew<CR>
+  nnoremap <buffer><silent> i :enew <bar> startinsert<CR>
+  nnoremap <buffer><silent> o :enew <bar> startinsert<CR>
+endfunction
+
+" run after "doing all the startup stuff"
+autocmd VimEnter * call Start()
+
 function! Incr()
   let a = line('.') - line("'<")
   let c = virtcol("'<")
