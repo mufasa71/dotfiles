@@ -16,3 +16,9 @@
 [submodule "tag-vim/vim/pack/eagle/start/bufexplorer"]
 	path = tag-vim/vim/pack/eagle/start/bufexplorer
 	url = https://github.com/corntrace/bufexplorer
+[submodule "tag-vim/vim/pack/eagle/start/fzf"]
+	path = tag-vim/vim/pack/eagle/start/fzf
+	url = https://github.com/junegunn/fzf
+[submodule "tag-vim/vim/pack/eagle/start/fzf.vim"]
+	path = tag-vim/vim/pack/eagle/start/fzf.vim
+	url = https://github.com/junegunn/fzf.vim

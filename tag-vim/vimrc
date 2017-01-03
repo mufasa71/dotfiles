@@ -43,6 +43,7 @@ set autoread                         " automatically refresh any files that have
 set secure                           " restrict to exrc
 set lazyredraw                       " don't redraw while executing macros (good performance config)
 set magic                            " for regular expressions turn magic on
+set t_Co=256
 
 " ignore compiled files
 set wildignore=*.o,*~,*.pyc
