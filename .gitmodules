@@ -22,3 +22,6 @@
 [submodule "tag-vim/vim/pack/eagle/start/fzf.vim"]
 	path = tag-vim/vim/pack/eagle/start/fzf.vim
 	url = https://github.com/junegunn/fzf.vim
+[submodule "tag-vim/vim/pack/eagle/opt/rust.vim"]
+	path = tag-vim/vim/pack/eagle/opt/rust.vim
+	url = https://github.com/rust-lang/rust.vim
