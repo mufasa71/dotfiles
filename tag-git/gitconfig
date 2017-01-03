@@ -20,6 +20,7 @@
   editor = vim
 
 [merge]
+  ff = only
   tool = vimdiff
   summary = true
   verbosity = 1
@@ -29,6 +30,9 @@
 
 [apply]
   whitespace = fix
+
+[pull]
+  rebase = true
 
 [github]
   user = mukimov
