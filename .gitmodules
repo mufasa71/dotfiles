@@ -25,3 +25,6 @@
 [submodule "tag-vim/vim/pack/***REMOVED***/opt/rust.vim"]
 	path = tag-vim/vim/pack/***REMOVED***/opt/rust.vim
 	url = https://github.com/rust-lang/rust.vim
+[submodule "tag-vim/vim/pack/***REMOVED***/start/vim-easymotion"]
+	path = tag-vim/vim/pack/***REMOVED***/start/vim-easymotion
+	url = https://github.com/easymotion/vim-easymotion
