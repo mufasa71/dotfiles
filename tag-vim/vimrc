@@ -120,10 +120,6 @@ set omnifunc=syntaxcomplete#Complete
 " some macro
 let @x = 'ysw"vf"S)iget'
 
-" easy Motion
-let g:EasyMotion_mapping_f = '<leader>}'
-let g:EasyMotion_mapping_F = '<leader>{'
-
 " supertab
 let g:SuperTabDefaultCompletionType = "context"
 
@@ -135,15 +131,6 @@ let g:html_indent_tags = 'li\|p'
 
 " rename current file rename.vim plugin
 nmap <leader>r :rename
-
-" hjkl motions easymotion-plugin
-map <leader><leader>l <Plug>(easymotion-lineforward)
-map <leader>j <Plug>(easymotion-j)
-map <leader>k <Plug>(easymotion-k)
-map <leader><leader>h <Plug>(easymotion-linebackward)
-  " 2-chars search motion
-nmap s <Plug>(easymotion-s2)
-nmap t <Plug>(easymotion-t2)
 
 " autoformat
 noremap <F3> :Autoformat<CR><CR>
