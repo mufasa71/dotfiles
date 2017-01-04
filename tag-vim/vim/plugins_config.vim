@@ -59,3 +59,14 @@ map <silent> <C-F> :MRU<CR>
 " => netrw
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:netrw_banner = 0
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => EasyMotion
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+map <leader><leader>l <Plug>(easymotion-lineforward)
+map <leader>j <Plug>(easymotion-j)
+map <leader>k <Plug>(easymotion-k)
+map <leader><leader>h <Plug>(easymotion-linebackward)
+nmap s <Plug>(easymotion-s2)
+" 2-chars search motion
+nmap t <Plug>(easymotion-t2)
