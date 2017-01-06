@@ -28,3 +28,6 @@
 [submodule "tag-vim/vim/pack/eagle/start/vim-easymotion"]
 	path = tag-vim/vim/pack/eagle/start/vim-easymotion
 	url = https://github.com/easymotion/vim-easymotion
+[submodule "tag-vim/vim/pack/eagle/start/neomake"]
+	path = tag-vim/vim/pack/eagle/start/neomake
+	url = https://github.com/neomake/neomake
