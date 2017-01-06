@@ -31,3 +31,6 @@
 [submodule "tag-vim/vim/pack/eagle/start/neomake"]
 	path = tag-vim/vim/pack/eagle/start/neomake
 	url = https://github.com/neomake/neomake
+[submodule "tag-vim/vim/pack/eagle/start/rust.vim"]
+	path = tag-vim/vim/pack/eagle/start/rust.vim
+	url = https://github.com/rust-lang/rust.vim
