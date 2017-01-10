@@ -34,3 +34,6 @@
 [submodule "tag-vim/vim/pack/eagle/start/rust.vim"]
 	path = tag-vim/vim/pack/eagle/start/rust.vim
 	url = https://github.com/rust-lang/rust.vim
+[submodule "tag-vim/vim/pack/eagle/start/vim-racer"]
+	path = tag-vim/vim/pack/eagle/start/vim-racer
+	url = https://github.com/racer-rust/vim-racer
