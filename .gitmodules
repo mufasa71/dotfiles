@@ -46,3 +46,6 @@
 [submodule "tag-vim/vim/pack/***REMOVED***/start/ack.vim"]
 	path = tag-vim/vim/pack/***REMOVED***/start/ack.vim
 	url = https://github.com/mileszs/ack.vim.git
+[submodule "tag-vim/vim/pack/***REMOVED***/start/vim-gitgutter"]
+	path = tag-vim/vim/pack/***REMOVED***/start/vim-gitgutter
+	url = https://github.com/airblade/vim-gitgutter
