@@ -46,3 +46,6 @@
 [submodule "tag-vim/vim/pack/***REMOVED***/start/vim-gitgutter"]
 	path = tag-vim/vim/pack/***REMOVED***/start/vim-gitgutter
 	url = https://github.com/airblade/vim-gitgutter
+[submodule "tag-vim/vim/pack/***REMOVED***/start/ferret"]
+	path = tag-vim/vim/pack/***REMOVED***/start/ferret
+	url = https://github.com/wincent/ferret
