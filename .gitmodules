@@ -52,3 +52,6 @@
 [submodule "tag-vim/vim/pack/***REMOVED***/start/vim-surround"]
 	path = tag-vim/vim/pack/***REMOVED***/start/vim-surround
 	url = https://github.com/tpope/vim-surround
+[submodule "tag-vim/vim/pack/***REMOVED***/start/vim-fugitive"]
+	path = tag-vim/vim/pack/***REMOVED***/start/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive
