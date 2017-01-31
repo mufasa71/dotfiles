@@ -55,3 +55,6 @@
 [submodule "tag-vim/vim/pack/***REMOVED***/start/vim-fugitive"]
 	path = tag-vim/vim/pack/***REMOVED***/start/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive
+[submodule "tag-vim/vim/pack/***REMOVED***/start/vim-repeat"]
+	path = tag-vim/vim/pack/***REMOVED***/start/vim-repeat
+	url = https://github.com/tpope/vim-repeat
