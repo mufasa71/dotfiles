@@ -52,3 +52,6 @@
 [submodule "tag-vim/vim/pack/eagle/start/vim-surround"]
 	path = tag-vim/vim/pack/eagle/start/vim-surround
 	url = https://github.com/tpope/vim-surround
+[submodule "tag-vim/vim/pack/eagle/start/vim-fugitive"]
+	path = tag-vim/vim/pack/eagle/start/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive
