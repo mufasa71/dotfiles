@@ -31,3 +31,13 @@ map <leader><leader>h <Plug>(easymotion-linebackward)
 nmap s <Plug>(easymotion-s2)
 " 2-chars search motion
 nmap t <Plug>(easymotion-t2)
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => vim-racer
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set hidden
+let g:racer_cmd = '~/.cargo/bin/racer'
+au FileType rust nmap gd <Plug>(rust-def)
+au FileType rust nmap gs <Plug>(rust-def-split)
+au FileType rust nmap gx <Plug>(rust-def-vertical)
+au FileType rust nmap <leader>gd <Plug>(rust-doc)
