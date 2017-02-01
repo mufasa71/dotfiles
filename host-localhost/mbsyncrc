@@ -6,7 +6,7 @@ SyncState *
 IMAPAccount gmail
 Host imap.gmail.com
 User ***REMOVED***
-PassCmd "gpg2 -q --for-your-eyes-only --no-tty -d ~/.mailpass.gpg"
+PassCmd +"cat ~/.mailpass"
 SSLType IMAPS
 CertificateFile /etc/ssl/certs/ca-certificates.crt
 
