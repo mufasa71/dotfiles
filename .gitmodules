@@ -61,3 +61,6 @@
 [submodule "tag-vim/vim/pack/eagle/start/emmet-vim"]
 	path = tag-vim/vim/pack/eagle/start/emmet-vim
 	url = https://github.com/mattn/emmet-vim
+[submodule "tag-vim/vim/pack/eagle/opt/webapi-vim"]
+	path = tag-vim/vim/pack/eagle/opt/webapi-vim
+	url = https://github.com/mattn/webapi-vim
