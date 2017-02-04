@@ -2,10 +2,15 @@
 
 set nocompatible                     " use Vim settings, rather then Vi settings
 
-filetype off
-if filereadable(glob("~/.vimrc.bundles"))
-  source ~/.vimrc.bundles
-endif
+try
+  if has('unix')
+    source ~/.vim/plugins_config.vim
+  else
+    source ~/vimfiles/plugins_config.vim
+  end
+catch
+endtry
+
 filetype plugin indent on
 
 let mapleader=","                    " leader key
@@ -13,6 +18,8 @@ let g:mapleader=","
 set backspace=indent,eol,start       " backspace deletes like most programs in insert mode
 set incsearch                        " show search pattern as it was typed so far
 set hlsearch                         " highlight search results
+set ignorecase                       " ignore case when searching
+set smartcase                        " when searching try to be smart about cases
 set laststatus=2                     " always display the status line
 set nobackup
 set noswapfile
@@ -27,38 +34,56 @@ set wildmode=list:longest,list:full  " will insert tab at beginning of line,
 set complete=.,b,t,s                 " complete with respect of current buffer, buffer list, tags
 set showmatch                        " show matching brackets
 set mat=2                            " 2 seconds blink on matching brackets
-set encoding=utf8                    " standard encoding
 set autoindent
 set smartindent
 set wrap
 set shortmess+=I                     " no intro text on open
 set cryptmethod=blowfish2
 set autoread                         " automatically refresh any files that have been edited outside Vim
-set listchars=tab:▸\ ,trail:·,eol:¬,nbsp:_ " show invisible characters
+set secure                           " restrict to exrc
+set lazyredraw                       " don't redraw while executing macros (good performance config)
+set magic                            " for regular expressions turn magic on
+set t_Co=256
 
-if has("gui_running")
+" ignore compiled files
+set wildignore=*.o,*~,*.pyc
+if has("win16") || has("win32")
+  set wildignore+=.git\*,.hg\*,.svn\*
+else
+  set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
+endif
+
+if has('gui_running')
   set guioptions-=m
   set guioptions-=T
   set guioptions-=r
   set guioptions-=L
   set guifont=Hack:h10
-  set cursorline                       " highlight the current line
-  if &shell =~ '\\bash$'
-    set shell=bash shellcmdflag=-c
-  endif
+  set cursorline                           " highlight the current line
 endif
 
-syntax on
+" => Colors and Fonts
+syntax enable                              " enable syntax highlighting
+
+try
+  colorscheme molokai
+catch
+endtry
+
+set encoding=utf8                          " standard encoding
+set listchars=tab:▸\ ,trail:·,eol:¬,nbsp:_ " show invisible characters
+
 " return to last edit position automaticaly
 autocmd BufReadPost *
       \ if line("'\"") > 0 && line("'\"") <= line("$") |
       \   exe "normal g`\"" |
       \ endif
+
 " fast saving
 nmap <leader>w :w!<cr>
 
-" close current buffer
-map <leader>bd :bdelete<cr>
+" close the current buffer
+map <leader>bd :bdelete<cr>:tabclose<cr>gT
 
 " clear search highlight
 nmap <silent> <leader>/ :let @/=""<cr>
@@ -95,18 +120,8 @@ set omnifunc=syntaxcomplete#Complete
 " some macro
 let @x = 'ysw"vf"S)iget'
 
-" easy Motion
-let g:EasyMotion_mapping_f = '<leader>}'
-let g:EasyMotion_mapping_F = '<leader>{'
-
 " supertab
 let g:SuperTabDefaultCompletionType = "context"
-
-" color scheme
-let g:molokai_original=1
-colorscheme molokai
-
-let g:user_emmet_settings = webapi#json#decode(join(readfile(expand('~/.snippets.json')), "\n"))
 
 " index ctags
 map <leader>ct :!ctags --exclude="node_modules" --exclude="bower_components" -R .<CR>
@@ -116,17 +131,6 @@ let g:html_indent_tags = 'li\|p'
 
 " rename current file rename.vim plugin
 nmap <leader>r :rename
-
-" hjkl motions easymotion-plugin
-map <leader><leader>l <Plug>(easymotion-lineforward)
-map <leader>j <Plug>(easymotion-j)
-map <leader>k <Plug>(easymotion-k)
-map <leader><leader>h <Plug>(easymotion-linebackward)
-  " 2-chars search motion
-nmap s <Plug>(easymotion-s2)
-nmap t <Plug>(easymotion-t2)
-map  / <Plug>(easymotion-sn)
-omap / <Plug>(easymotion-tn)
 
 " autoformat
 noremap <F3> :Autoformat<CR><CR>
@@ -153,30 +157,6 @@ function! <SID>CleanCode()
   let @/=_s
   call cursor(l, c)
 endfunction
-
-" restrict to exrc
-set secure
-
-function! ToggleVExplorer()
-  if exists("t:expl_buf_num")
-    let expl_win_num = bufwinnr(t:expl_buf_num)
-    if expl_win_num != -1
-      let cur_win_nr = winnr()
-      exec expl_win_num . 'wincmd w'
-      close
-      exec cur_win_nr . 'wincmd w'
-      unlet t:expl_buf_num
-    else
-      unlet t:expl_buf_num
-    endif
-  else
-    exec '1wincmd w'
-    Vexplore
-    let t:expl_buf_num = bufnr("%")
-  endif
-endfunction
-
-nnoremap <f2> :call ToggleVExplorer()<cr>
 
 function! Start()
   " don't run if: we have commandline arguments, we don't have an empty

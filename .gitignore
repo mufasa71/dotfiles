@@ -6,3 +6,4 @@ tag-vim/vim/plugged
 plug.vim.old
 plug.vim
 history.cmdline
+tag-vim/vim/doc
