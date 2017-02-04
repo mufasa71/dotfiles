@@ -37,6 +37,12 @@
       "fn": "fn ${1}(${2}) {\n\t${3}\n}"
     }
   },
+  "md": {
+    "extends": "html",
+    "snippets": {
+      "image": "![alt](/path/ 'title'')"
+    }
+  },
   "eruby": {
     "filters": "eruby",
     "extends": "html",

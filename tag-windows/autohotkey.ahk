@@ -28,6 +28,8 @@ $CapsLock::LControl
 $CapsLock Up::Send {Escape}
 Return
 
+$AppsKey::Alt
+
 !o::
 	Send, {enter}
 Return
