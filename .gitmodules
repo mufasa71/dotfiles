@@ -58,3 +58,6 @@
 [submodule "tag-vim/vim/pack/***REMOVED***/start/vim-repeat"]
 	path = tag-vim/vim/pack/***REMOVED***/start/vim-repeat
 	url = https://github.com/tpope/vim-repeat
+[submodule "tag-vim/vim/pack/***REMOVED***/start/emmet-vim"]
+	path = tag-vim/vim/pack/***REMOVED***/start/emmet-vim
+	url = https://github.com/mattn/emmet-vim
