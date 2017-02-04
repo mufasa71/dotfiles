@@ -37,10 +37,11 @@
       "fn": "fn ${1}(${2}) {\n\t${3}\n}"
     }
   },
-  "md": {
+  "markdown": {
     "extends": "html",
     "snippets": {
-      "image": "![alt](/path/ 'title'')"
+      "image": "![${1}](${2} 'title'')",
+      "link": "[${1}](${2})"
     }
   },
   "eruby": {
