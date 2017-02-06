@@ -40,7 +40,7 @@
   "markdown": {
     "extends": "html",
     "snippets": {
-      "image": "![${1}](${2} 'title'')",
+      "image": "![${1}](/path/to/image 'title')",
       "link": "[${1}](${2})"
     }
   },
