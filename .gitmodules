@@ -67,3 +67,6 @@
 [submodule "tag-vim/vim/pack/eagle/start/vim-commentary"]
 	path = tag-vim/vim/pack/eagle/start/vim-commentary
 	url = https://github.com/tpope/vim-commentary
+[submodule "tag-vim/vim/pack/eagle/start/vim-autoformat"]
+	path = tag-vim/vim/pack/eagle/start/vim-autoformat
+	url = https://github.com/chiel92/vim-autoformat
