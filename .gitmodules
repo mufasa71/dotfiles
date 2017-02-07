@@ -67,3 +67,6 @@
 [submodule "tag-vim/vim/pack/***REMOVED***/start/vim-commentary"]
 	path = tag-vim/vim/pack/***REMOVED***/start/vim-commentary
 	url = https://github.com/tpope/vim-commentary
+[submodule "tag-vim/vim/pack/***REMOVED***/start/vim-autoformat"]
+	path = tag-vim/vim/pack/***REMOVED***/start/vim-autoformat
+	url = https://github.com/chiel92/vim-autoformat
