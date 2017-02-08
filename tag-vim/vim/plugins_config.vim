@@ -8,6 +8,7 @@ let g:airline#extensions#tabline#enabled = 1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:neomake_javascript_enabled_makers = ['eslint_d']
 autocmd! BufWritePost * Neomake
+autocmd! FileChangedShellPost * Neomake
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => MRU
@@ -15,11 +16,6 @@ autocmd! BufWritePost * Neomake
 let MRU_Max_Entries = 400
 let MRU_Add_Menu = 0
 map <silent> <C-F> :MRU<CR>
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => netrw
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:netrw_banner = 0
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => EasyMotion
