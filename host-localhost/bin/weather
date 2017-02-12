@@ -1,8 +1,3 @@
-#!/bin/env bash
-### Yahoo weather RSS
-RSS=http://weather.yahooapis.com/forecastrss
-WOEID=2272113
-METR=c
-URL="${RSS}?w=${WOEID}&u=${METR}"
-curl -s "$URL" | grep "C<BR" | sed 's/^\(.*\)<.*$/\1/'
+#!/bin/bash
 
+curl "http://api.openweathermap.org/data/2.5/weather?q=Tashkent&units=metric&APPID=344b956ca3c8305b6dfa1d73a9cf0dae" | jq -r '"Tashkent " + (.main.temp | tostring) + "C"' > /home/***REMOVED***/.weather
