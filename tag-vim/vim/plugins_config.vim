@@ -7,6 +7,13 @@ let g:airline#extensions#tabline#enabled = 1
 " => Neovim
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:neomake_javascript_enabled_makers = ['eslint_d']
+let g:neomake_scss_stylelint_d_maker = {
+      \ 'errorformat':
+      \   '%+P%f,'. 
+      \   '%*\s%l:%c  %t  %m,'.
+      \ '%-Q'
+      \}
+let g:neomake_scss_enabled_makers = ['stylelint_d']
 autocmd! BufWritePost * Neomake
 autocmd! FileChangedShellPost * Neomake
 
