@@ -78,4 +78,4 @@
 	url = https://github.com/felipec/notmuch-vim
 [submodule "tag-vim/vim/pack/***REMOVED***/start/vim-javascript"]
 	path = tag-vim/vim/pack/***REMOVED***/start/vim-javascript
-	url = http://github.com/pangloss/vim-javascript
+	url = https://github.com/pangloss/vim-javascript
