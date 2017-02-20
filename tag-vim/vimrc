@@ -26,7 +26,7 @@ set noswapfile
 set nowritebackup
 set ruler                            " show line and column number of the cursor position
 set scrolloff=2                      " start scrolling (n) lines before window ends
-set expandtab                        " use spaces instead of tabs
+set noexpandtab                      " use tabs instead of spaces
 set tabstop=2 shiftwidth=2           " softtabs, 2 spaces
 set smarttab                         " be smart when using tabs
 set number                           " show line numbers
