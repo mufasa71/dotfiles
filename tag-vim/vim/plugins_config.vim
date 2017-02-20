@@ -62,3 +62,8 @@ au FileType rust nmap <leader>gd <Plug>(rust-doc)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 packadd webapi-vim
 let g:user_emmet_settings = webapi#json#decode(join(readfile(expand('~/.snippets.json')), "\n"))
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => vim-jsx
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:jsx_ext_required = 0
