@@ -13,6 +13,7 @@ let g:neomake_scss_stylelint_d_maker = {
       \ '%W%f: line %l\, col %c\, Warning - %m'
       \}
 let g:neomake_javascript_enabled_makers = ['eslint_d']
+let g:neomake_jsx_enabled_makers = ['eslint_d']
 
 let g:neomake_scss_stylelint_d_maker = {
       \ 'errorformat':
