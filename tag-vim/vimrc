@@ -83,7 +83,7 @@ autocmd BufReadPost *
 nmap <leader>w :w!<cr>
 
 " close the current buffer
-map <leader>bd :bdelete<cr>:tabclose<cr>gT
+map <leader>q :Bdelete<cr>
 
 " clear search highlight
 nmap <silent> <leader>/ :let @/=""<cr>

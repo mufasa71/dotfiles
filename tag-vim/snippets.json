@@ -27,7 +27,7 @@
     }
   },
   "javascript.jsx": {
-  	"extends": "javascript"
+  	"extends": "jsx"
   },
   "rust": {
     "filters": "rust",

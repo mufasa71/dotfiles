@@ -11,7 +11,7 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 " => Neovim
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:neomake_scss_stylelint_d_maker = {
+let g:neomake_javascript_eslint_d_maker = {
  	  \ 'args': ['-f', 'compact', '--fix'],
       \ 'errorformat': '%E%f: line %l\, col %c\, Error - %m,' .
       \ '%W%f: line %l\, col %c\, Warning - %m'
