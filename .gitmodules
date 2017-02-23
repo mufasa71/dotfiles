@@ -82,3 +82,6 @@
 [submodule "tag-vim/vim/pack/eagle/start/vim-jsx"]
 	path = tag-vim/vim/pack/eagle/start/vim-jsx
 	url = https://github.com/mxw/vim-jsx
+[submodule "tag-vim/vim/pack/eagle/start/vim-bbye"]
+	path = tag-vim/vim/pack/eagle/start/vim-bbye
+	url = https://github.com/moll/vim-bbye
