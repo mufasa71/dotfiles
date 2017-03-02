@@ -85,3 +85,6 @@
 [submodule "tag-vim/vim/pack/eagle/start/vim-bbye"]
 	path = tag-vim/vim/pack/eagle/start/vim-bbye
 	url = https://github.com/moll/vim-bbye
+[submodule "tag-vim/vim/pack/eagle/start/vim-airline-themes"]
+	path = tag-vim/vim/pack/eagle/start/vim-airline-themes
+	url = https://github.com/vim-airline/vim-airline-themes
