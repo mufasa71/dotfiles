@@ -26,8 +26,8 @@
       "rrc": "import React from \"react\";\nimport { connect } from \"react-redux\";\n\nfunction mapStateToProps(state) {\n\treturn {\n\t};\n}\n\nexport class ${0} extends Component {\n\tconstructor(props) {\n\t\tsuper(props);\n\t}\n\trender() {\n\t\treturn (<${1:div}></${1:div}>);\n\t}\n}\n\nexport default connect(mapStateToProps)(${2});"
     }
   },
-  "javascript.jsx": {
-  	"extends": "jsx"
+  "javascript.js": {
+  	"extends": "js"
   },
   "rust": {
     "filters": "rust",
