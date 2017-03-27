@@ -88,3 +88,6 @@
 [submodule "tag-vim/vim/pack/***REMOVED***/start/vim-airline-themes"]
 	path = tag-vim/vim/pack/***REMOVED***/start/vim-airline-themes
 	url = https://github.com/vim-airline/vim-airline-themes
+[submodule "tag-zsh/antigen"]
+	path = tag-zsh/antigen
+	url = https://github.com/zsh-users/antigen
