@@ -15,7 +15,7 @@ fbr() {
     hg up $(echo "$branch" | awk '{print $1}' | sed "s/.* //")
 }
 
-source ~/antigen.zsh
+source ~/.antigen/antigen.zsh
 
 antigen bundle robbyrussell/oh-my-zsh lib/
 antigen theme dracula/zsh dracula
