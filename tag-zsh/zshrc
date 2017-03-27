@@ -1,0 +1,93 @@
+export TERM=xterm-256color
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+fe() {
+  local files
+  IFS=$'\n' files=($(fzf-tmux --query="$1" --multi --select-1 --exit-0))
+  [[ -n "$files" ]] && ${EDITOR:-vim} "${files[@]}"
+}
+
+fbr() {
+  local branches branch
+  branches=$(hg branches -vv) &&
+    branch=$(echo "$branches" | fzf +m) &&
+    hg up $(echo "$branch" | awk '{print $1}' | sed "s/.* //")
+}
+
+source ~/antigen.zsh
+
+antigen bundle robbyrussell/oh-my-zsh lib/
+antigen theme dracula/zsh dracula
+antigen bundle zsh-users/zsh-history-substring-search
+# antigen bundle hcgraf/zsh-mercurial
+antigen apply
+
+bindkey -M emacs '^P' history-substring-search-up
+bindkey -M emacs '^N' history-substring-search-down
+
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' enable hg
+
+precmd() { 
+	vcs_info
+}
+
+setopt prompt_subst
+zstyle ':vcs_info:*+*:*' debug false
+zstyle ':vcs_info:hg*:*' check-for-changes true
+zstyle ':vcs_info:hg*:*' get-revision true
+
+# rev+changes branch misc
+# zstyle ':vcs_info:hg*'  formats "(%s)[%i%{$fg_bold[red]%}%u %{$fg_bold[green]%}%b%m]"
+zstyle ':vcs_info:hg*'  formats "%{${fg_bold[green]%}[%b%m]%{$fg_bold[red]%}%u"
+zstyle ':vcs_info:hg*' 	actionformats "(%s|%a)[%i%u %b%m]"
+
+zstyle ':vcs_info:hg*:*' unstagedstr "+"
+zstyle ':vcs_info:hg*:*' hgrevformat "%r" # only show local rev.
+zstyle ':vcs_info:hg*:*' branchformat "%b" # only show branch
+
+PROMPT='${ret_status}%{$fg_bold[green]%}%p %{$fg_bold[blue]%}%c%{$vcs_info_msg_0_%} $reset_color%}'
+
+if (( $+commands[tmux] )) && [[ -z "$TMUX" && -z "$EMACS" && -z "$VIM" ]]; then
+	tmux start-server
+
+  # Create a 'prezto' session if no session has been defined in tmux.conf.
+  if ! tmux has-session 2> /dev/null; then
+    tmux_session='muranosoft'
+    tmux \
+      new-session -d -s "$tmux_session" \; \
+      set-option -t "$tmux_session" destroy-unattached off &> /dev/null
+  fi
+
+  # Attach to the 'prezto' session or to the last session used.
+  exec tmux $_tmux_iterm_integration attach-session
+fi
+
+# Mercurial
+alias hgc='hg commit'
+alias hgb='hg branch'
+alias hgba='hg branches'
+alias hgbk='hg bookmarks'
+alias hgco='hg checkout'
+alias hgd='hg diff'
+alias hged='hg diffmerge'
+# pull and update
+alias hgi='hg incoming'
+alias hgl='hg pull -u'
+alias hglr='hg pull --rebase'
+alias hgo='hg outgoing'
+alias hgp='hg push'
+alias hgs='hg status'
+alias hgsl='hg log --limit 20 --template "{node|short} | {date|isodatesec} | {author|user}: {desc|strip|firstline}\n" '
+alias hgca='hg commit --amend'
+# list unresolved files (since hg does not list unmerged files in the status command)
+alias hgun='hg resolve --list'
+
+function hgic() {
+    hg incoming "$@" | grep "changeset" | wc -l
+}
+
+function hgoc() {
+    hg outgoing "$@" | grep "changeset" | wc -l
+}
