@@ -37,28 +37,28 @@ zstyle ':vcs_info:hg*:*' get-revision true
 
 # rev+changes branch misc
 # zstyle ':vcs_info:hg*'  formats "(%s)[%i%{$fg_bold[red]%}%u %{$fg_bold[green]%}%b%m]"
-zstyle ':vcs_info:hg*'  formats "%{${fg_bold[green]%}[%b%m]%{$fg_bold[red]%}%u"
+zstyle ':vcs_info:hg*'  formats "%{${fg_bold[green]%}[%b%m]%{$fg_bold[red]%}%u "
 zstyle ':vcs_info:hg*' 	actionformats "(%s|%a)[%i%u %b%m]"
 
 zstyle ':vcs_info:hg*:*' unstagedstr "+"
 zstyle ':vcs_info:hg*:*' hgrevformat "%r" # only show local rev.
 zstyle ':vcs_info:hg*:*' branchformat "%b" # only show branch
 
-PROMPT='${ret_status}%{$fg_bold[green]%}%p %{$fg_bold[blue]%}%c%{$vcs_info_msg_0_%} $reset_color%}'
+PROMPT='${ret_status}%{$fg_bold[green]%}%p %{$fg_bold[blue]%}%c %{$vcs_info_msg_0_%}%{$reset_color%}'
 
 if (( $+commands[tmux] )) && [[ -z "$TMUX" && -z "$EMACS" && -z "$VIM" ]]; then
 	tmux start-server
 
-  # Create a 'prezto' session if no session has been defined in tmux.conf.
-  if ! tmux has-session 2> /dev/null; then
-    tmux_session='muranosoft'
-    tmux \
-      new-session -d -s "$tmux_session" \; \
-      set-option -t "$tmux_session" destroy-unattached off &> /dev/null
-  fi
+	# Create a 'prezto' session if no session has been defined in tmux.conf.
+	if ! tmux has-session 2> /dev/null; then
+		tmux_session='muranosoft'
+		tmux \
+			new-session -d -s "$tmux_session" \; \
+			set-option -t "$tmux_session" destroy-unattached off &> /dev/null
+	fi
 
-  # Attach to the 'prezto' session or to the last session used.
-  exec tmux $_tmux_iterm_integration attach-session
+	# Attach to the 'prezto' session or to the last session used.
+	exec tmux $_tmux_iterm_integration attach-session
 fi
 
 source ~/.aliases.zsh
