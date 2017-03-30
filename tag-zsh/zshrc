@@ -26,7 +26,7 @@ bindkey -M emacs '^P' history-substring-search-up
 bindkey -M emacs '^N' history-substring-search-down
 
 autoload -Uz vcs_info
-zstyle ':vcs_info:*' enable hg
+zstyle ':vcs_info:*' enable hg git
 
 precmd() { vcs_info }
 
@@ -39,6 +39,9 @@ zstyle ':vcs_info:hg*:*' get-revision true
 # zstyle ':vcs_info:hg*'  formats "(%s)[%i%{$fg_bold[red]%}%u %{$fg_bold[green]%}%b%m]"
 zstyle ':vcs_info:hg*'  formats "%{${fg_bold[green]%}[%b%m]%{$fg_bold[red]%}%u "
 zstyle ':vcs_info:hg*' 	actionformats "(%s|%a)[%i%u %b%m]"
+
+zstyle ':vcs_info:git*' formats "(%s)[%12.12i %u %b %m]"
+zstyle ':vcs_info:git*' actionformats "(%s|%a)[%12.12i %u %b %m]"
 
 zstyle ':vcs_info:hg*:*' unstagedstr "+"
 zstyle ':vcs_info:hg*:*' hgrevformat "%r" # only show local rev.
