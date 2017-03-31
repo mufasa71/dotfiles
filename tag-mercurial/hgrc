@@ -1,10 +1,12 @@
 [ui]
 username =***REMOVED*** <s***REMOVED***@***REMOVED***>
-merge = kdiff3
+merge = vimdiff
+ignore = ~/.hgignore
 
 [merge-tools]
-vimdiff.executable = vim
-vimdiff.args = -d -c "wincmd J" "$output" "$local" "$other" "$base"
+vimdiff.executable = vimdiff
+vimdiff.args = -f -d $output -M $local $base $other -c "wincmd J" -c "set modifiable" -c "set write"
+vimdiff.premerge = keep
 
 [extensions]
 color =
@@ -23,8 +25,8 @@ bitbucket.org.prefix = bitbucket.org
 bitbucket.org.username = s***REMOVED***
 
 [trusted]
-users = Unknown+User
-groups = Unknown+Group
+groups = users
+users = root
 
 [tortoisehg]
 vdiff = kdiff3
