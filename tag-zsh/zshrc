@@ -20,6 +20,9 @@ source ~/.antigen/antigen.zsh
 antigen bundle robbyrussell/oh-my-zsh lib/
 antigen theme dracula/zsh dracula
 antigen bundle zsh-users/zsh-history-substring-search
+if [[ -d ~/git/appulate-misc ]]; then
+	antigen bundle ~/git/appulate-misc
+fi
 antigen apply
 
 bindkey -M emacs '^P' history-substring-search-up
