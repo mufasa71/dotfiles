@@ -1,16 +1,12 @@
 #
-# Executes commands at login pre-zshrc.
-#
-# Authors:
-#   Sorin Ionescu <sorin.ionescu@gmail.com>
-#
-
-#
 # Browser
 #
 
 if [[ "$OSTYPE" == darwin* ]]; then
   export BROWSER='open'
+else
+  export BROWSER='firefox'
+	# export BROWSER=/usr/bin/cygstart
 fi
 
 #
@@ -68,5 +64,10 @@ fi
 
 TMPPREFIX="$(mktemp -d)/zsh"
 
-export BROWSER=/usr/bin/cygstart
 export FZF_DEFAULT_COMMAND='ag -g ""'
+
+for name in /usr/share/java/*.jar ; do
+  CP=$CP:$name
+done
+
+export CLASSPATH=$CP
