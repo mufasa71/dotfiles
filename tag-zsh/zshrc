@@ -38,7 +38,7 @@ zstyle ':vcs_info:hg*:*' get-revision true
 # rev+changes branch misc
 # zstyle ':vcs_info:hg*'  formats "(%s)[%i%{$fg_bold[red]%}%u %{$fg_bold[green]%}%b%m]"
 zstyle ':vcs_info:hg*'  formats "%{${fg_bold[green]%}[%b%m]%{$fg_bold[red]%}%u "
-zstyle ':vcs_info:hg*' 	actionformats "(%s|%a)[%i%u %b%m]"
+zstyle ':vcs_info:hg*' 	actionformats "%{$fg_bold[green]%}(%s|%a)[%i %b%m]%{$fg_bold[red]%}%u "
 
 zstyle ':vcs_info:git*' formats "(%s)[%12.12i %u %b %m]"
 zstyle ':vcs_info:git*' actionformats "(%s|%a)[%12.12i %u %b %m]"
