@@ -16,9 +16,7 @@ source ~/.antigen/antigen.zsh
 antigen bundle robbyrussell/oh-my-zsh lib/
 antigen theme dracula/zsh dracula
 antigen bundle zsh-users/zsh-history-substring-search
-if [[ -d ~/git/appulate-misc ]]; then
-	antigen bundle ~/git/appulate-misc
-fi
+[ -d ~/git/appulate-misc ] && antigen bundle ~/git/appulate-misc
 antigen apply
 
 bindkey -M emacs '^P' history-substring-search-up
@@ -31,36 +29,21 @@ precmd() { vcs_info }
 
 setopt prompt_subst
 zstyle ':vcs_info:*+*:*' debug false
-zstyle ':vcs_info:hg*:*' check-for-changes true
-zstyle ':vcs_info:hg*:*' get-revision true
+zstyle ':vcs_info:(git*|hg*):*' check-for-changes true
 
 # rev+changes branch misc
-zstyle ':vcs_info:hg*'  formats "%{${fg_bold[green]%}[%b%m]%{$fg_bold[red]%}%u "
-zstyle ':vcs_info:hg*' 	actionformats "%{$fg_bold[green]%}(%s|%a)[%i %b%m]%{$fg_bold[red]%}%u "
+zstyle ':vcs_info:hg*'  formats "%{${fg_bold[green]%}(%b%m) %{$fg_bold[yellow]%}%u%c "
+zstyle ':vcs_info:hg*' 	actionformats "%{$fg_bold[green]%}(%b|%a%m) %{$fg_bold[yellow]%}%u%c "
 
-zstyle ':vcs_info:git*' formats "%{${fg_bold[green]%}[%12.12i %b]%{$fg_bold[red]%}%u "
-zstyle ':vcs_info:git*' actionformats "%{${fg_bold[green]%}[%12.12i %b%Q|%a]%{$fg_bold[red]%}%u "
+zstyle ':vcs_info:git*' formats "%{${fg_bold[green]%}(%b) %{$fg_bold[yellow]%}%u%c "
+zstyle ':vcs_info:git*' actionformats "%{${fg_bold[green]%}(%b%Q|%a) %{$fg_bold[yellow]%}%u%c "
 
-zstyle ':vcs_info:hg*:*' unstagedstr "+"
-zstyle ':vcs_info:hg*:*' hgrevformat "%r" # only show local rev.
-zstyle ':vcs_info:hg*:*' branchformat "%b" # only show branch
+zstyle ':vcs_info:(git*|hg*):*' unstagedstr "✗"
+zstyle ':vcs_info:(git*|hg*):*' stagedstr "✔"
+zstyle ':vcs_info:(git*|hg*):*' hgrevformat "%r" # only show local rev.
+zstyle ':vcs_info:(git*|hg*):*' branchformat "%b" # only show branch
 
 PROMPT='${ret_status}%{$fg_bold[green]%}%p %{$fg_bold[blue]%}%c %{$vcs_info_msg_0_%}%{$reset_color%}'
-
-if (( $+commands[tmux] )) && [[ -z "$TMUX" && -z "$EMACS" && -z "$VIM" ]]; then
-	tmux start-server
-
-	# Create a 'prezto' session if no session has been defined in tmux.conf.
-	if ! tmux has-session 2> /dev/null; then
-		tmux_session='muranosoft'
-		tmux \
-			new-session -d -s "$tmux_session" \; \
-			set-option -t "$tmux_session" destroy-unattached off &> /dev/null
-	fi
-
-	# Attach to the 'prezto' session or to the last session used.
-	exec tmux $_tmux_iterm_integration attach-session
-fi
 
 [ -f ~/.aliases.zsh ] && source ~/.aliases.zsh
 
