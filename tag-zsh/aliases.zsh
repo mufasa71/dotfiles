@@ -26,3 +26,35 @@ function hgoc() {
     hg outgoing "$@" | grep "changeset" | wc -l
 }
 
+function fe() {
+  local files
+  IFS=$'\n' files=($(fzf-tmux --query="$1" --multi --select-1 --exit-0))
+  [[ -n "$files" ]] && ${EDITOR:-vim} "${files[@]}"
+}
+
+function fbr() {
+  local branches branch
+  branches=$(hg branches -vv) &&
+    branch=$(echo "$branches" | fzf +m) &&
+    hg up $(echo "$branch" | awk '{print $1}' | sed "s/.* //")
+}
+
+alias ls="ls --color -F"
+alias ll="ls --color -lh"
+alias la='ls -a'
+alias l="ls"
+alias tree='tree -C'
+alias grep='grep --color=auto'
+
+# coloured manuals
+man() {
+	env \
+		LESS_TERMCAP_mb=$(printf "\e[1;31m") \
+		LESS_TERMCAP_md=$(printf "\e[1;31m") \
+		LESS_TERMCAP_me=$(printf "\e[0m") \
+		LESS_TERMCAP_se=$(printf "\e[0m") \
+		LESS_TERMCAP_so=$(printf "\e[1;44;33m") \
+		LESS_TERMCAP_ue=$(printf "\e[0m") \
+		LESS_TERMCAP_us=$(printf "\e[1;32m") \
+		man "$@"
+}

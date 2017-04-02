@@ -1,51 +1,129 @@
-fe() {
-  local files
-  IFS=$'\n' files=($(fzf-tmux --query="$1" --multi --select-1 --exit-0))
-  [[ -n "$files" ]] && ${EDITOR:-vim} "${files[@]}"
+autoload -U vcs_info
+autoload -U colors && colors
+autoload -U compinit && compinit
+autoload -U bashcompinit && bashcompinit
+autoload zsh/terminfo
+
+HISTFILE=$HOME/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+HISTIGNORE=' '
+
+autoload -U url-quote-magic
+zle -N self-insert url-quote-magic
+
+setopt \
+	auto_cd \
+	auto_menu \
+	always_to_end \
+	complete_in_word \
+	path_dirs \
+	auto_list \
+	auto_param_slash \
+	prompt_subst
+
+unsetopt \
+	menu_complete \
+	flow_control
+
+
+export BROWSER='firefox'
+export EDITOR='vim'
+export VISUAL='vim'
+export PAGER='less'
+export LESS='-F -g -i -M -R -S -w -X -z-4'
+export FZF_DEFAULT_COMMAND='ag -g ""'
+
+for name in /usr/share/java/*.jar ; do
+	CP=$CP:$name
+done
+
+export CLASSPATH=$CP
+
+if [[ -z "$LANG" ]]; then
+	export LANG='en_US.UTF-8'
+fi
+
+# Ensure path arrays do not contain duplicates.
+typeset -gU cdpath fpath mailpath path
+
+[[ -f ~/.dircolors ]] && source <(dircolors ~/.dircolors)
+
+precmd () { 
+	vcs_info
+	print -Pn '\e];%n@%m %~\a'
 }
 
-fbr() {
-  local branches branch
-  branches=$(hg branches -vv) &&
-    branch=$(echo "$branches" | fzf +m) &&
-    hg up $(echo "$branch" | awk '{print $1}' | sed "s/.* //")
+preexec () { 
+	local cmd=${1[(wr)^(*=*|sudo|ssh|-*)]}
+	print -Pn "\e];$cmd:q\a"
 }
 
-source ~/.antigen/antigen.zsh
-
-antigen bundle robbyrussell/oh-my-zsh lib/
-antigen theme dracula/zsh dracula
-antigen bundle zsh-users/zsh-history-substring-search
-[ -d ~/git/appulate-misc ] && antigen bundle ~/git/appulate-misc
-antigen apply
-
-bindkey -M emacs '^P' history-substring-search-up
-bindkey -M emacs '^N' history-substring-search-down
-
-autoload -Uz vcs_info
 zstyle ':vcs_info:*' enable hg git
 
-precmd() { vcs_info }
+zstyle ':vcs_info:*' check-for-changes true
 
-setopt prompt_subst
-zstyle ':vcs_info:*+*:*' debug false
-zstyle ':vcs_info:(git*|hg*):*' check-for-changes true
+zstyle ':vcs_info:git*' formats "%{${fg[cyan]}%}[%{${fg[green]}%}%s%{${fg[cyan]}%}][%{${fg[yellow]}%}%r/%S%%{${fg[cyan]}%}][%{${fg[yellow]}%}%b%{${fg[red]}%}%m%u%c%{${fg[cyan]}%}]%{$reset_color%}"
 
-# rev+changes branch misc
-zstyle ':vcs_info:hg*'  formats "%{${fg_bold[green]%}(%b%m) %{$fg_bold[yellow]%}%u%c "
-zstyle ':vcs_info:hg*' 	actionformats "%{$fg_bold[green]%}(%b|%a%m) %{$fg_bold[yellow]%}%u%c "
+zstyle ':vcs_info:git:*' unstagedstr "✗"
+zstyle ':vcs_info:git:*' stagedstr "✔"
 
-zstyle ':vcs_info:git*' formats "%{${fg_bold[green]%}(%b) %{$fg_bold[yellow]%}%u%c "
-zstyle ':vcs_info:git*' actionformats "%{${fg_bold[green]%}(%b%Q|%a) %{$fg_bold[yellow]%}%u%c "
+setprompt() {
+	if [[ -n "$SSH_CLIENT"  ||  -n "$SSH2_CLIENT" ]]; then 
+		p_host='%F{yellow}%M%f'
+	else
+		p_host='%F{green}%M%f'
+	fi
 
-zstyle ':vcs_info:(git*|hg*):*' unstagedstr "✗"
-zstyle ':vcs_info:(git*|hg*):*' stagedstr "✔"
-zstyle ':vcs_info:(git*|hg*):*' hgrevformat "%r" # only show local rev.
-zstyle ':vcs_info:(git*|hg*):*' branchformat "%b" # only show branch
+	PS1=${(j::Q)${(Z:Cn:):-$'
+		%F{cyan}[%f
+		%(!.%F{red}%n%f.%F{green}%n%f)
+		%F{cyan}@%f
+		${p_host}
+		%F{cyan}][%f
+		%F{yellow}%~%f
+		%F{cyan}]%f
+		%(!.%F{red}%#%f.%F{green}%#%f)
+		" "
+	'}}
 
-PROMPT='${ret_status}%{$fg_bold[green]%}%p %{$fg_bold[blue]%}%c %{$vcs_info_msg_0_%}%{$reset_color%}'
+	PS2=$'%_>'
+	RPROMPT=$'${vcs_info_msg_0_}'
+}
+
+setprompt
 
 [ -f ~/.aliases.zsh ] && source ~/.aliases.zsh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+zstyle ':completion::complete:*' use-cache on
+
+# Group matches and describe.
+zstyle ':completion:*:*:*:*:*' menu select
+zstyle ':completion:*:matches' group 'yes'
+zstyle ':completion:*:options' description 'yes'
+zstyle ':completion:*:options' auto-description '%d'
+zstyle ':completion:*:corrections' format ' %F{green}-- %d (errors: %e) --%f'
+zstyle ':completion:*:descriptions' format ' %F{yellow}-- %d --%f'
+zstyle ':completion:*:messages' format ' %F{purple} -- %d --%f'
+zstyle ':completion:*:warnings' format ' %F{red}-- no matches found --%f'
+zstyle ':completion:*:default' list-prompt '%S%M matches%s'
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*' verbose yes
+
+# Directories
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*:*:cd:*' tag-order local-directories directory-stack path-directories
+zstyle ':completion:*:*:cd:*:directory-stack' menu yes select
+zstyle ':completion:*:-tilde-:*' group-order 'named-directories' 'path-directories' 'users' 'expand'
+zstyle ':completion:*' squeeze-slashes true
+
+# Fuzzy match mistyped completions.
+zstyle ':completion:*' completer _complete _match _approximate
+zstyle ':completion:*:match:*' original only
+zstyle ':completion:*:approximate:*' max-errors 1 numeric
+
+# Increase the number of errors based on the length of the typed word.
+zstyle -e ':completion:*:approximate:*' max-errors 'reply=($((($#PREFIX+$#SUFFIX)/3))numeric)'
 
