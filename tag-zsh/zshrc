@@ -4,6 +4,8 @@ autoload -U compinit && compinit
 autoload -U bashcompinit && bashcompinit
 autoload zsh/terminfo
 
+bindkey -e
+
 HISTFILE=$HOME/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
@@ -62,11 +64,15 @@ preexec () {
 zstyle ':vcs_info:*' enable hg git
 
 zstyle ':vcs_info:*' check-for-changes true
+zstyle ':vcs_info:hg*:*' get-revision true
 
-zstyle ':vcs_info:git*' formats "%{${fg[cyan]}%}[%{${fg[green]}%}%s%{${fg[cyan]}%}][%{${fg[yellow]}%}%r/%S%%{${fg[cyan]}%}][%{${fg[yellow]}%}%b%{${fg[red]}%}%m%u%c%{${fg[cyan]}%}]%{$reset_color%}"
+zstyle ':vcs_info:(hg*|git*)' formats "%{${fg[cyan]}%}[%{${fg[green]}%}%s%{${fg[cyan]}%}][%{${fg[yellow]}%}%r/%S%%{${fg[cyan]}%}][%{${fg[yellow]}%}%b%{${fg[red]}%}%m%u%c%{${fg[cyan]}%}]%{$reset_color%}"
 
-zstyle ':vcs_info:git:*' unstagedstr "✗"
-zstyle ':vcs_info:git:*' stagedstr "✔"
+zstyle ':vcs_info:(hg*|git*)' 	actionformats "%{${fg[cyan]}%}[%{${fg[green]}%}%s%{${fg[cyan]}%}][%{${fg[yellow]}%}%r/%S%%{${fg[cyan]}%}][%{${fg[yellow]}%}%b|%a%{${fg[red]}%}%m%u%c%{${fg[cyan]}%}]%{$reset_color%}"
+
+zstyle ':vcs_info:(hg|git):*' unstagedstr "✗"
+zstyle ':vcs_info:(hg|git):*' stagedstr "✔"
+zstyle ':vcs_info:hg*:*' hgrevformat "%h"
 
 setprompt() {
 	if [[ -n "$SSH_CLIENT"  ||  -n "$SSH2_CLIENT" ]]; then 
