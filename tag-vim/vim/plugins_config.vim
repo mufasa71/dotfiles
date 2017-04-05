@@ -44,13 +44,22 @@ let g:netrw_banner = 0
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => EasyMotion
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" move to line
+map <leader>L <Plug>(easymotion-bd-jk)
+nmap <leader>L <Plug>(easymotion-overwin-line)
+" move to word
+map  <leader>w <Plug>(easymotion-bd-w)
+nmap <leader>w <Plug>(easymotion-overwin-w)
 map <leader><leader>l <Plug>(easymotion-lineforward)
 map <leader>j <Plug>(easymotion-j)
 map <leader>k <Plug>(easymotion-k)
 map <leader><leader>h <Plug>(easymotion-linebackward)
-nmap s <Plug>(easymotion-s2)
-" 2-chars search motion
+" s{char}{char} to move to {char}{char}
+nmap s <Plug>(easymotion-overwin-f2)
 nmap t <Plug>(easymotion-t2)
+" <leader>f{char} to move to {char}
+map  <leader>f <Plug>(easymotion-bd-f)
+nmap <leader>f <Plug>(easymotion-overwin-f)
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => vim-racer
