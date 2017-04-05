@@ -80,7 +80,7 @@ autocmd BufReadPost *
       \ endif
 
 " fast saving
-nmap <leader>w :w!<cr>
+inoremap ;w <esc>:w!<cr>
 
 " close the current buffer
 map <leader>q :Bdelete<cr>
@@ -97,9 +97,6 @@ noremap <leader>W :w !sudo tee % > /dev/null<cr>:e!<cr><cr>
 
 " pull word under cursor into LHS of a substitute (for quick search and replace)
 nmap <leader>ss :%s#<C-r>=expand("<cword>")<cr>#
-
-" quick jump to a line which contains word under the cursor
-nmap <leader>f [I:let nr = input("Which one: ")<Bar>exe "normal " . nr ."[\t"<cr>
 
 " copy the current word or visually selected into system clipboard
 nnoremap <F4> "+yiw
@@ -157,46 +154,6 @@ function! <SID>CleanCode()
   let @/=_s
   call cursor(l, c)
 endfunction
-
-function! Start()
-  " don't run if: we have commandline arguments, we don't have an empty
-  " buffer, if we've not invoked as vim or gvim, or if we'e start in insert mode
-  if argc() || line2byte('$') != -1 || v:progname !~? '^[-gmnq]\=vim\=x\=\%[\.exe]$' || &insertmode
-    return
-  endif
-
-  " start a new buffer ...
-  enew
-
-  " ... and set some options for it
-  setlocal
-        \ bufhidden=wipe
-        \ buftype=nofile
-        \ nobuflisted
-        \ nocursorcolumn
-        \ nocursorline
-        \ nolist
-        \ nonumber
-        \ noswapfile
-        \ norelativenumber
-
-  " now we can just write to the buffer, whatever you want.
-  call append('$', "")
-  for line in split(system('fortune 70% vim 10% javascript 20% git'), '\n')
-    call append('$', '        ' . l:line)
-  endfor
-
-  " no modifications to this buffer
-  setlocal nomodifiable nomodified
-
-  " when we go to insert mode start a new buffer, and start insert
-  nnoremap <buffer><silent> e :enew<CR>
-  nnoremap <buffer><silent> i :enew <bar> startinsert<CR>
-  nnoremap <buffer><silent> o :enew <bar> startinsert<CR>
-endfunction
-
-" run after "doing all the startup stuff"
-autocmd VimEnter * call Start()
 
 function! Incr()
   let a = line('.') - line("'<")
