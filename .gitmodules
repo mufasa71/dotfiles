@@ -91,3 +91,6 @@
 [submodule "tag-zsh/antigen"]
 	path = tag-zsh/antigen
 	url = https://github.com/zsh-users/antigen
+[submodule "tag-vim/vim/pack/***REMOVED***/start/vim-searchindex"]
+	path = tag-vim/vim/pack/***REMOVED***/start/vim-searchindex
+	url = https://github.com/google/vim-searchindex
