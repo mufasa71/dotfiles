@@ -19,6 +19,7 @@ setopt \
 	auto_menu \
 	always_to_end \
 	complete_in_word \
+	complete_aliases \
 	path_dirs \
 	auto_list \
 	auto_param_slash \
@@ -35,18 +36,6 @@ export VISUAL='vim'
 export PAGER='less'
 export LESS='-F -g -i -M -R -S -w -X -z-4'
 export FZF_DEFAULT_COMMAND='ag -g ""'
-
-if [[ -d /usr/share/java ]]; then
-	for name in /usr/share/java/*.jar ; do
-		CP=$CP:$name
-	done
-
-	export CLASSPATH=$CP
-fi
-
-if [[ -z "$LANG" ]]; then
-	export LANG='en_US.UTF-8'
-fi
 
 # Ensure path arrays do not contain duplicates.
 typeset -gU cdpath fpath mailpath path
