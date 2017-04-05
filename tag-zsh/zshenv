@@ -5,5 +5,7 @@ if [[ "$SHLVL" -eq 1 && ! -o LOGIN && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprofile"
 fi
 
-export GEM_HOME="$(ruby -e 'print Gem.user_dir')"
-export PATH="$GEM_HOME/bin:$PATH"
+if (( $+commands[ruby] )); then
+	export GEM_HOME="$(ruby -e 'print Gem.user_dir')"
+	export PATH="$GEM_HOME/bin:$PATH"
+fi
