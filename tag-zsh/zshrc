@@ -124,3 +124,8 @@ zstyle ':completion:*:approximate:*' max-errors 1 numeric
 # Increase the number of errors based on the length of the typed word.
 zstyle -e ':completion:*:approximate:*' max-errors 'reply=($((($#PREFIX+$#SUFFIX)/3))numeric)'
 
+# Load all of your custom configurations from custom/
+for config_file ($ZSH_CUSTOM/*.zsh(N)); do
+  source $config_file
+done
+unset config_file
