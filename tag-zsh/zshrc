@@ -36,11 +36,13 @@ export PAGER='less'
 export LESS='-F -g -i -M -R -S -w -X -z-4'
 export FZF_DEFAULT_COMMAND='ag -g ""'
 
-for name in /usr/share/java/*.jar ; do
-	CP=$CP:$name
-done
+if [[ -d /usr/share/java ]]; then
+	for name in /usr/share/java/*.jar ; do
+		CP=$CP:$name
+	done
 
-export CLASSPATH=$CP
+	export CLASSPATH=$CP
+fi
 
 if [[ -z "$LANG" ]]; then
 	export LANG='en_US.UTF-8'
