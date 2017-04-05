@@ -17,3 +17,6 @@ if [[ -z "$LANG" ]]; then
 	export LANG='en_US.UTF-8'
 fi
 
+if [[ -z "$ZSH_CUSTOM" ]]; then
+    ZSH_CUSTOM="${ZDOTDIR:-$HOME}/.zsh/custom"
+fi
