@@ -1,16 +1,6 @@
 " vim: ft=vim
 
 set nocompatible                     " use Vim settings, rather then Vi settings
-
-try
-  if has('unix')
-    source ~/.vim/plugins_config.vim
-  else
-    source ~/vimfiles/plugins_config.vim
-  end
-catch
-endtry
-
 filetype plugin indent on
 
 let mapleader=","                    " leader key
