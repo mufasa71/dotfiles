@@ -2,3 +2,5 @@ out
 .vs
 tags
 .vimrc
+.stfolder
+.stignore
