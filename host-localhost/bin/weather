@@ -1,3 +1,0 @@
-#!/bin/bash
-
-curl "http://api.openweathermap.org/data/2.5/weather?q=Tashkent&units=metric&APPID=344b956ca3c8305b6dfa1d73a9cf0dae" | jq -r '"Tashkent " + (.main.temp | tostring) + "C"' > /home/***REMOVED***/.weather
