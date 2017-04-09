@@ -1,3 +1,6 @@
+# Suffix aliases
+alias -s yml=vim
+
 # Mercurial
 alias hgc='hg commit'
 alias hgb='hg branch'
