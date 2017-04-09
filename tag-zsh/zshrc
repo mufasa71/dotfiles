@@ -47,11 +47,6 @@ precmd () {
 	print -Pn '\e];%n@%m %~\a'
 }
 
-preexec () { 
-	local cmd=${1[(wr)^(*=*|sudo|ssh|-*)]}
-	print -Pn "\e];$cmd:q\a"
-}
-
 zstyle ':vcs_info:*' enable hg git
 
 zstyle ':vcs_info:*' check-for-changes true
@@ -69,10 +64,6 @@ setprompt() {
 
 	PS1=${(j::Q)${(Z:Cn:):-$'
 		%F{cyan}[%f
-		%(!.%F{red}%n%f.%F{green}%n%f)
-		%F{cyan}@%f
-		${p_host}
-		%F{cyan}][%f
 		%F{yellow}%~%f
 		%F{cyan}]%f
 		%(!.%F{red}%#%f.%F{green}%#%f)
