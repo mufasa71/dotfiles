@@ -11,7 +11,7 @@ feh --bg-fill --randomize ~/Pictures/Wallpapers/*.jpg &
 while true; do
   unclutter -root -noevents &
   xwrits &
-  slstatus &
+  # slstatus &
 
   # start dwm
   dwm > ~/.dwm.log
