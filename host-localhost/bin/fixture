@@ -1,0 +1,3 @@
+#!/bin/bash
+
+curl -H 'X-Auth-Token: a2b54a50852740038ae2cd7238689d51' 'http://api.football-data.org/v1/teams/64/fixtures?timeFrame=n5' | jq -r '.fixtures[0] | (.date | fromdate | strftime("%B %d %A %I:%M%p %Z")) + " "  + .homeTeamName +  " vs "  + .awayTeamName' > /home/***REMOVED***/.fixture
