@@ -1,5 +1,6 @@
 # suffix aliases
 alias -s yml=vim
+alias -s zsh=vim
 
 # disable globbing
 alias curl='noglob curl'
@@ -228,3 +229,4 @@ alias gwx='git rm -r'
 alias gwX='git rm -rf'
 
 alias fixture="curl -H 'X-Response-Control: minified' -X GET http://api.football-data.org/v1/competitions/426/fixtures?timeFrame\=n3\ | jq '.fixtures[] | {home: .homeTeamName, away: .awayTeamName, date: .date, goalsHomeTeam: .result.goalsHomeTeam, goalsAwayTeam: .result.goalsAwayTeam}'"
+alias weather="curl wttr.in/Tashkent"
