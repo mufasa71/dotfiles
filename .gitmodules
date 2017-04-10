@@ -61,9 +61,6 @@
 [submodule "tag-vim/vim/pack/***REMOVED***/start/emmet-vim"]
 	path = tag-vim/vim/pack/***REMOVED***/start/emmet-vim
 	url = https://github.com/mattn/emmet-vim
-[submodule "tag-vim/vim/pack/***REMOVED***/opt/webapi-vim"]
-	path = tag-vim/vim/pack/***REMOVED***/opt/webapi-vim
-	url = https://github.com/mattn/webapi-vim
 [submodule "tag-vim/vim/pack/***REMOVED***/start/vim-commentary"]
 	path = tag-vim/vim/pack/***REMOVED***/start/vim-commentary
 	url = https://github.com/tpope/vim-commentary
