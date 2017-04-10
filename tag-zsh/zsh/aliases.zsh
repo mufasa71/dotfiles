@@ -214,6 +214,14 @@ alias gSl='git submodule status'
 alias gSm='git-submodule-move'
 alias gSs='git submodule sync'
 alias gSu='git submodule foreach git pull origin master'
+
+git-submodule-remove()
+{
+	git submodule deinit -f "${1}"
+	rm -rf ".git/modules/${1}"
+	git rm -f "${1}"
+}
+
 alias gSx='git-submodule-remove'
 
 # Working Copy (w)
