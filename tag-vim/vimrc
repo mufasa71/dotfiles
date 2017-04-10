@@ -34,13 +34,19 @@ set secure                           " restrict to exrc
 set lazyredraw                       " don't redraw while executing macros (good performance config)
 set magic                            " for regular expressions turn magic on
 set t_Co=256
+set encoding=utf8                    " standard encoding
+set listchars=tab:▸\ ,trail:·,eol:¬,nbsp:_ " show invisible characters
+set thesaurus+=~/Documents/mthesaur.txt
+set dictionary-=/usr/share/dict/words
+set dictionary+=/usr/share/dict/words
+set omnifunc=syntaxcomplete#Complete
+set hidden
+set wildignore=*.o,*~,*.pyc 					" ignore compiled files
 
-" ignore compiled files
-set wildignore=*.o,*~,*.pyc
-if has("win16") || has("win32")
-  set wildignore+=.git\*,.hg\*,.svn\*
-else
+if has("unix")
   set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
+else
+  set wildignore+=.git\*,.hg\*,.svn\*
 endif
 
 if has('gui_running')
@@ -60,9 +66,6 @@ try
 catch
 endtry
 
-set encoding=utf8                          " standard encoding
-set listchars=tab:▸\ ,trail:·,eol:¬,nbsp:_ " show invisible characters
-
 " return to last edit position automaticaly
 autocmd BufReadPost *
       \ if line("'\"") > 0 && line("'\"") <= line("$") |
@@ -70,7 +73,10 @@ autocmd BufReadPost *
       \ endif
 
 " fast saving
-inoremap ;w <esc>:w!<cr>
+imap ;w <esc>:w!<cr>
+
+" escape alternative
+imap jk <Esc>
 
 " close the current buffer
 map <leader>q :Bdelete<cr>
@@ -99,25 +105,8 @@ vnoremap <F5> "+p
 " selecting pasted text
 nnoremap gp `[v`]
 
-set thesaurus+=~/Documents/mthesaur.txt
-set dictionary-=/usr/share/dict/words
-set dictionary+=/usr/share/dict/words
-set omnifunc=syntaxcomplete#Complete
-
-" some macro
-let @x = 'ysw"vf"S)iget'
-
-" supertab
-let g:SuperTabDefaultCompletionType = "context"
-
 " index ctags
 map <leader>ct :!ctags --exclude="node_modules" --exclude="bower_components" -R .<CR>
-
-" treat <li> and <p> tags like the block tags they are
-let g:html_indent_tags = 'li\|p'
-
-" rename current file rename.vim plugin
-nmap <leader>r :rename
 
 " autoformat
 noremap <F3> :Autoformat<CR><CR>
@@ -191,7 +180,6 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Neovim
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:neomake_javascript_eslint_d_maker = {
  	  \ 'args': ['-f', 'compact', '--fix'],
@@ -226,7 +214,6 @@ let g:netrw_banner = 0
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => vim-racer
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set hidden
 let g:racer_cmd = '~/.cargo/bin/racer'
 au FileType rust nmap gd <Plug>(rust-def)
 au FileType rust nmap gs <Plug>(rust-def-split)
