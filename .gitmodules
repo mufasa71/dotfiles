@@ -94,3 +94,6 @@
 [submodule "tag-vim/vim/pack/eagle/start/vim-searchindex"]
 	path = tag-vim/vim/pack/eagle/start/vim-searchindex
 	url = https://github.com/google/vim-searchindex
+[submodule "tag-vim/vim/pack/eagle/start/vim-exchange"]
+	path = tag-vim/vim/pack/eagle/start/vim-exchange
+	url = https://github.com/tommcdo/vim-exchange
