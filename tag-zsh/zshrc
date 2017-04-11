@@ -20,7 +20,6 @@ setopt \
 	auto_menu \
 	always_to_end \
 	complete_in_word \
-	complete_aliases \
 	path_dirs \
 	auto_list \
 	auto_param_slash \
