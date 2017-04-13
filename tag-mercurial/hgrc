@@ -20,10 +20,6 @@ rebase =
 highlight =
 hgext.highlight =
 
-[auth]
-bitbucket.org.prefix = bitbucket.org
-bitbucket.org.username = s***REMOVED***
-
 [trusted]
 groups = users
 users = root
@@ -41,8 +37,3 @@ fontdiff = Consolas,10,-1,5,50,0,0,0,0,0
 fontoutputlog = Consolas,10,-1,5,50,0,0,0,0,0
 fontlist = Consolas,10,-1,5,50,0,0,0,0,0
 fontlog = Consolas,10,-1,5,50,0,0,0,0,0
-
-[hooks]
-precommit.lint-scripts = [[ -f ./tools/lint-scripts-precommit-hook.js ]] && node ./tools/lint-scripts-precommit-hook
-precommit.lint-styles = [[ -f ./tools/lint-styles-precommit-hook.js ]] && node ./tools/lint-styles-precommit-hook
-precommit.check-csprojs = [[ -f ./tools/check-csprojs/hook.py ]] && python ./tools/check-csprojs/hook.py
