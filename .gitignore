@@ -7,3 +7,4 @@ plug.vim.old
 plug.vim
 history.cmdline
 tag-vim/vim/doc
+history.search
