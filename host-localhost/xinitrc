@@ -9,6 +9,11 @@ source <(envoy -p) # source agent environment variables
 feh --bg-fill --randomize ~/Pictures/Wallpapers/*.jpg &
 
 while true; do
+	xsetroot -name "$( date +"%F %R" )"
+	sleep 1m    # Update time every minute
+done &
+
+while true; do
   unclutter -root -noevents &
   xwrits &
   # slstatus &
