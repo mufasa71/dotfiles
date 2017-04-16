@@ -4,6 +4,7 @@ alias -s zsh=vim
 
 # disable globbing
 alias curl='noglob curl'
+alias youtube-dl='noglob youtube-dl'
 
 # Mercurial
 alias hgc='hg commit'
@@ -148,6 +149,7 @@ alias gix='git rm -r --cached'
 alias giX='git rm -rf --cached'
 
 # Log (l)
+_git_log_medium_format='%C(bold)Commit:%C(reset) %C(green)%H%C(red)%d%n%C(bold)Author:%C(reset) %C(cyan)%an <%ae>%n%C(bold)Date:%C(reset)   %C(blue)%ai (%ar)%C(reset)%n%+B'
 alias gl='git log --topo-order --pretty=format:"${_git_log_medium_format}"'
 alias gls='git log --topo-order --stat --pretty=format:"${_git_log_medium_format}"'
 alias gld='git log --topo-order --stat --patch --full-diff --pretty=format:"${_git_log_medium_format}"'
