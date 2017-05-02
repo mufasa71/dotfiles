@@ -5,6 +5,7 @@ alias -s zsh=vim
 # disable globbing
 alias curl='noglob curl'
 alias youtube-dl='noglob youtube-dl'
+alias gpg='noglob gpg'
 
 # Mercurial
 alias hgc='hg commit'
