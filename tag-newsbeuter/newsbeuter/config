@@ -4,7 +4,3 @@ download-full-page yes
 text-width 72
 bind-key k up
 bind-key j down
-color background white black
-color listnormal white black
-color article white black
-color info white black
