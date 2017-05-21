@@ -1,22 +1,3 @@
-typeset -U path
-
-if (( $+commands[ruby] )); then
-	export GEM_HOME="$(ruby -e 'print Gem.user_dir')"
-	path=($GEM_HOME/bin $path[@])
-fi
-
-if [[ -z "$LANG" && -d /usr/share/java ]]; then
-	for name in /usr/share/java/*.jar ; do
-		CP=$CP:$name
-	done
-
-	export CLASSPATH=$CP
-fi
-
 if [[ -z "$LANG" ]]; then
 	export LANG='en_US.UTF-8'
-fi
-
-if [[ -z "$ZSH_CUSTOM" ]]; then
-    ZSH_CUSTOM="${ZDOTDIR:-$HOME}/.zsh/custom"
 fi
