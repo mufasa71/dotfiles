@@ -58,7 +58,7 @@ set hintmatching="wordstartswith"
 " default search engine
 set defsearch="duckduckgo"
 " sethint and colors
-set hintchars=hjklasdfgyuiopqwertnmzxcvb
+" set hintchars=hjklasdfgyuiopqwertnmzxcvb
 highlight Hint font:"DejaVu Sans Mono";font-size:100%;color:white;background-color:red;padding:1px;
 let g:wallabag_url="https://wallabag.lpool.info";
 let g:microsoft_translator_client_id="vimperator_translator"
