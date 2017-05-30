@@ -35,3 +35,5 @@
 
 [github]
   user = mukimov
+[http "https://gopkg.in"]
+	followRedirects = true
