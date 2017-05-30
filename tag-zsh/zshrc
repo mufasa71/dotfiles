@@ -79,6 +79,7 @@ setprompt
 [ -f ~/.zsh/aliases.zsh ] && source ~/.zsh/aliases.zsh
 [ -f /usr/share/fzf/completion.zsh ] && source /usr/share/fzf/completion.zsh
 [ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
+[ -f /etc/profile.d//autojump.zsh ] && source /etc/profile.d/autojump.zsh
 
 zstyle ':completion::complete:*' use-cache on
 
