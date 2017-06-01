@@ -49,12 +49,12 @@ else
   set wildignore+=.git\*,.hg\*,.svn\*
 endif
 
-if has('gui_running')
+if has("gui_running")
   set guioptions-=m
   set guioptions-=T
   set guioptions-=r
   set guioptions-=L
-  set guifont=Hack:h10
+  set guifont=DejaVu_Sans_Mono:h10
   set cursorline                           " highlight the current line
 endif
 
