@@ -81,6 +81,13 @@ setprompt
 [ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
 [ -f /etc/profile.d//autojump.zsh ] && source /etc/profile.d/autojump.zsh
 
+if [[ -f /usr/share/bash-completion/completions/lxc ]]; then
+	_have() {
+		PATH=$PATH:/usr/sbin:/sbin:/usr/local/sbin type $1 &>/dev/null
+	}
+	source /usr/share/bash-completion/completions/lxc
+fi
+
 zstyle ':completion::complete:*' use-cache on
 
 # Group matches and describe.
