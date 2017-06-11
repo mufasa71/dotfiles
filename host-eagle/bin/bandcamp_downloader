@@ -30,4 +30,3 @@ BEGIN {
 ' | youtube-dl -ia - -o "$o_dir-$(date +'%m%d%Y')/%(title)s.%(ext)s" --exec 'curl -s $(head -1 cover_src) -o cover.jpg && eyeD3 --add-image cover.jpg:FRONT_COVER:cover {}; sed -i 1d cover_src'
 
 rm "$cover_src" "$cover_file"
-
