@@ -45,4 +45,3 @@ else
   echo "Error: No cover art found in album info."
   exit 4
 fi
-

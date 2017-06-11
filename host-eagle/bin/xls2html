@@ -56,4 +56,3 @@ if args:
             firefox.open_new_tab(filepath)
 else:
     print('usage: %s (inputfile)+' % me)
-
