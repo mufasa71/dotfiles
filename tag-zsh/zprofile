@@ -1,3 +1,10 @@
+typeset -U path
+
 if [[ -z "$LANG" ]]; then
 	export LANG='en_US.UTF-8'
 fi
+
+path=(
+	$path
+	"${ZDOTDIR:-$HOME}/.bin"
+)
