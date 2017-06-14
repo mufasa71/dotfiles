@@ -1,0 +1,14 @@
+#!/bin/env bash
+
+prefix=/net/linkstation/srv/nfs4/books/pdf
+pdf_files=( "$prefix"/**/*.pdf )
+pdf_files=( "${pdf_files[@]#"$prefix"/}" )
+pdf_files=( "${pdf_files[@]%.pdf}" )
+
+pdf=$(printf '%s\n' "${pdf_files[@]}" | dmenu "$@")
+
+
+[[ -n $pdf ]] || exit
+
+mupdf "$prefix/$pdf.pdf" &
+xdotool search --sync --onlyvisible "$(basename "$pdf")" windowactivate &> /dev/null

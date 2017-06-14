@@ -1,0 +1,20 @@
+#!/bin/sh
+cmd=$(echo -e "poweroff\nreboot\nsuspend\nlock" | dmenu "$@")
+
+case $cmd in
+  poweroff)
+    systemctl poweroff
+    ;;
+  reboot)
+    systemctl reboot
+    ;;
+  suspend)
+    systemctl suspend
+    ;;
+  lock)
+    slock
+    ;;
+  # killX)
+  #   killall X
+  #   ;;
+esac

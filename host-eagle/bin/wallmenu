@@ -1,0 +1,10 @@
+#!/bin/bash
+
+wallpaper_dir="$HOME/Pictures/Wallpapers"
+
+wallpaper_files=$(ls -t $wallpaper_dir/*.jpg | xargs -n1 basename)
+
+choice=$(printf '%s\n' "$wallpaper_files" | dmenu)
+[[ -z "$choice" ]] && exit
+
+feh --bg-fill "$wallpaper_dir/$choice"
