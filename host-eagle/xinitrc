@@ -1,33 +1,17 @@
 #!/bin/bash
 
-setxkbmap -model pc104 -layout us,ru -variant -option grp:alt_shift_toggle caps:escape
-envoy -t gpg-agent # lets start envoy, the keyring manager
-source <(envoy -p) # source agent environment variables
-
 [[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
 
-feh --bg-fill --randomize ~/Pictures/Wallpapers/*.jpg &
+feh --bg-fill --sort mtime ~/Pictures/Wallpapers/*.jpg &
 
 while true; do
 	xsetroot -name "$( date +"%F %R" )"
-	sleep 1m    # Update time every minute
+	sleep 1m
 done &
 
-while true; do
-  unclutter -root -noevents &
-  xwrits &
-  # slstatus &
+unclutter -root -noevents &
+xwrits &
 
-  # start dwm
-  dwm > ~/.dwm.log
-  # read exit status
-  if [ $? -eq 0 ]; then
-    exit 0 # means exit clean => quit
-  elif [ $? -ne 5 ]; then
-    # a failure occured, save the log, never happened so far
-    mv ~/.dwm.log ~/.dwm.failure.log
-  fi
-  # dwm should be recompiled if changes were done
-  # kill running processes
-  killall slstatus xwrits unclutter
-done
+exec dwm
+
+killall xwrits unclutter
