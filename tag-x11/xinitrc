@@ -11,6 +11,7 @@ done &
 
 unclutter -root -noevents &
 xwrits &
+compton -b
 
 exec dwm
 
