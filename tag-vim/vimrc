@@ -144,11 +144,6 @@ function! Incr()
 endfunction
 vnoremap <C-a> :call Incr()<CR>
 
-hi NeomakeErrorSign     guifg=#F92672 guibg=#232526
-hi NeomakeWarningSign   guifg=#E6DB74 guibg=#232526
-hi NeomakeErrorSign     ctermfg=161 ctermbg=235
-hi NeomakeWarningSign   ctermfg=144 ctermbg=235
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => EasyMotion
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -191,13 +186,18 @@ let g:neomake_jsx_enabled_makers = ['eslint_d']
 
 let g:neomake_scss_stylelint_d_maker = {
       \ 'errorformat':
-      \   '%+P%f,'. 
+      \   '%+P%f,'.
       \   '%*\s%l:%c  %t  %m,'.
       \ '%-Q'
       \}
 let g:neomake_scss_enabled_makers = ['stylelint_d']
 autocmd! BufWritePost * Neomake
 autocmd! FileChangedShellPost * Neomake
+
+hi NeomakeErrorSign     guifg=#F92672 guibg=#232526
+hi NeomakeWarningSign   guifg=#E6DB74 guibg=#232526
+hi NeomakeErrorSign     ctermfg=161 ctermbg=235
+hi NeomakeWarningSign   ctermfg=144 ctermbg=235
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => MRU
