@@ -44,7 +44,7 @@ done &
 
 dunst&
 xwrits&
-compton -b
+# compton --paint-on-overlay --vsync opengl --dbe -f&
 xscreensaver&
 unclutter -root -noevents&
 
