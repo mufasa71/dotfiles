@@ -44,8 +44,8 @@ function fe() {
 function fbr() {
   local branches branch
   branches=$(hg branches -vv) &&
-    branch=$(echo "$branches" | fzf +m) &&
-    hg up $(echo "$branch" | awk '{print $1}' | sed "s/.* //")
+	branch=$(echo "$branches" | fzf +m) &&
+	hg up $(echo "$branch" | awk '{print $1}' | sed "s/.* //")
 }
 
 alias l='ls --color -1A' # Lists in one column, hidden files.
