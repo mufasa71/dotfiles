@@ -100,3 +100,6 @@
 [submodule "tag-vim/vim/pack/eagle/start/vim-sprunge"]
 	path = tag-vim/vim/pack/eagle/start/vim-sprunge
 	url = https://github.com/chilicuil/vim-sprunge
+[submodule "tag-vim/vim/pack/eagle/start/vim-test"]
+	path = tag-vim/vim/pack/eagle/start/vim-test
+	url = https://github.com/janko-m/vim-test
