@@ -20,6 +20,7 @@
     browser = firefox
     icon_position = left
     icon_folders = /usr/share/icons/gnome/32x32/status/:/home/***REMOVED***/.covers/
+    max_icon_size = 32
 
 [frame]
     width = 3
