@@ -5,6 +5,9 @@ usermodmap=$HOME/.Xmodmap
 sysresources=/etc/X11/xinit/.Xresources
 sysmodmap=/etc/X11/xinit/.Xmodmap
 
+# Non-reparenting window managers
+export _JAVA_AWT_WM_NONREPARENTING=1
+
 # merge in defaults and keymaps
 
 if [ -f $sysresources ]; then
@@ -38,7 +41,7 @@ fi
 feh --bg-fill --sort mtime ~/Pictures/Wallpapers/*.jpg &
 
 while true; do
-	xsetroot -name "$( date +"%F %R" )"
+	xsetroot -name "$( date +"%F %R" ) Updates: $( checkupdates | wc -l )"
 	sleep 1m
 done &
 
