@@ -64,7 +64,7 @@ let g:wallabag_url="https://wallabag.lpool.info";
 let g:microsoft_translator_client_id="vimperator_translator"
 let g:microsoft_translator_client_secret="Gpb0p8W9odJVOa3B1XUOs2kJJUIWGWYlB8cmjDphq/w="
 let g:microsoft_translator_pair="en ru"
-let g:yout_watch_list="~/ytdl/ytdl.lst"
+let g:yout_watch_list="/net/linkstation/srv/nfs4/watch.ytdl"
 
 " autoignore mode on certain pages
 "autocmd PageLoad .* :js if (/facebook\.com/.test(buffer.URL)) { modes.passAllKeysExceptSome(['d', ':']) }
