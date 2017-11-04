@@ -10,9 +10,6 @@
 [submodule "tag-vim/vim/pack/***REMOVED***/start/vim-unimpaired"]
 	path = tag-vim/vim/pack/***REMOVED***/start/vim-unimpaired
 	url = https://github.com/tpope/vim-unimpaired
-[submodule "tag-vim/vim/pack/***REMOVED***/start/fzf"]
-	path = tag-vim/vim/pack/***REMOVED***/start/fzf
-	url = https://github.com/junegunn/fzf
 [submodule "tag-vim/vim/pack/***REMOVED***/start/fzf.vim"]
 	path = tag-vim/vim/pack/***REMOVED***/start/fzf.vim
 	url = https://github.com/junegunn/fzf.vim
