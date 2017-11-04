@@ -7,15 +7,9 @@
 [submodule "tag-vim/vim/pack/eagle/start/vim-airline"]
 	path = tag-vim/vim/pack/eagle/start/vim-airline
 	url = https://github.com/vim-airline/vim-airline
-[submodule "tag-vim/vim/pack/eagle/start/mru"]
-	path = tag-vim/vim/pack/eagle/start/mru
-	url = https://github.com/yegappan/mru
 [submodule "tag-vim/vim/pack/eagle/start/vim-unimpaired"]
 	path = tag-vim/vim/pack/eagle/start/vim-unimpaired
 	url = https://github.com/tpope/vim-unimpaired
-[submodule "tag-vim/vim/pack/eagle/start/bufexplorer"]
-	path = tag-vim/vim/pack/eagle/start/bufexplorer
-	url = https://github.com/corntrace/bufexplorer
 [submodule "tag-vim/vim/pack/eagle/start/fzf"]
 	path = tag-vim/vim/pack/eagle/start/fzf
 	url = https://github.com/junegunn/fzf
