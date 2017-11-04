@@ -41,7 +41,7 @@ fi
 feh --bg-fill --sort mtime ~/Pictures/Wallpapers/*.jpg &
 
 while true; do
-	xsetroot -name "$( date +"%F %R" ) Updates: $( checkupdates | wc -l )"
+	xsetroot -name "$( date +"%F %R" )"
 	sleep 1m
 done &
 
