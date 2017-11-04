@@ -106,3 +106,6 @@
 [submodule "tag-vim/vim/pack/eagle/start/scss-syntax.vim"]
 	path = tag-vim/vim/pack/eagle/start/scss-syntax.vim
 	url = https://github.com/cakebaker/scss-syntax.vim
+[submodule "tag-vim/vim/pack/eagle/start/typescript-vim"]
+	path = tag-vim/vim/pack/eagle/start/typescript-vim
+	url = https://github.com/leafgarland/typescript-vim
