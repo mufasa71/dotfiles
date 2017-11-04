@@ -61,9 +61,6 @@
 [submodule "tag-vim/vim/pack/***REMOVED***/start/vim-abolish"]
 	path = tag-vim/vim/pack/***REMOVED***/start/vim-abolish
 	url = https://github.com/tpope/vim-abolish
-[submodule "tag-vim/vim/pack/***REMOVED***/start/notmuch-vim"]
-	path = tag-vim/vim/pack/***REMOVED***/start/notmuch-vim
-	url = https://github.com/felipec/notmuch-vim
 [submodule "tag-vim/vim/pack/***REMOVED***/start/vim-javascript"]
 	path = tag-vim/vim/pack/***REMOVED***/start/vim-javascript
 	url = https://github.com/pangloss/vim-javascript
