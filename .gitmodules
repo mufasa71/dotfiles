@@ -106,3 +106,6 @@
 [submodule "tag-vim/vim/pack/***REMOVED***/start/scss-syntax.vim"]
 	path = tag-vim/vim/pack/***REMOVED***/start/scss-syntax.vim
 	url = https://github.com/cakebaker/scss-syntax.vim
+[submodule "tag-vim/vim/pack/***REMOVED***/start/typescript-vim"]
+	path = tag-vim/vim/pack/***REMOVED***/start/typescript-vim
+	url = https://github.com/leafgarland/typescript-vim
