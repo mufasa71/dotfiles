@@ -200,13 +200,6 @@ hi NeomakeErrorSign     ctermfg=161 ctermbg=235
 hi NeomakeWarningSign   ctermfg=144 ctermbg=235
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => MRU
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let MRU_Max_Entries = 400
-let MRU_Add_Menu = 0
-map <silent> <C-F> :MRU<CR>
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => netrw
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:netrw_banner = 0
@@ -230,3 +223,9 @@ let g:user_emmet_settings = webapi#json#decode(join(readfile(expand('~/.snippets
 " => vim-jsx
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:jsx_ext_required = 0
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => fzf-vim
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nmap <leader>t :FZF<CR>
+nmap <leader>b :Buffers<CR>
