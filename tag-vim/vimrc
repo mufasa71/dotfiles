@@ -43,6 +43,52 @@ set omnifunc=syntaxcomplete#Complete
 set hidden
 set wildignore=*.o,*~,*.pyc 					" ignore compiled files
 
+syntax enable                         " enable syntax highlighting
+
+silent! packadd minpac
+if !exists('*minpac#init')
+else
+	call minpac#init()
+	call minpac#add('k-takata/minpac', {'type': 'opt'})
+	call minpac#add('mattn/webapi-vim', {'type': 'opt'})
+	call minpac#add('easymotion/vim-easymotion')
+	call minpac#add('neomake/neomake')
+	call minpac#add('rust-lang/rust.vim', {'type': 'opt'})
+	call minpac#add('racer-rust/vim-racer', {'type': 'opt'})
+	call minpac#add('tomasr/molokai')
+	call minpac#add('vim-airline/vim-airline')
+	call minpac#add('tpope/vim-unimpaired')
+	call minpac#add('junegunn/fzf.vim')
+	call minpac#add('kana/vim-textobj-entire')
+	call minpac#add('kana/vim-textobj-user')
+	call minpac#add('airblade/vim-gitgutter')
+	call minpac#add('wincent/ferret')
+	call minpac#add('tpope/vim-surround')
+	call minpac#add('tpope/vim-fugitive')
+	call minpac#add('tpope/vim-repeat')
+	call minpac#add('mattn/emmet-vim')
+	call minpac#add('tpope/vim-commentary')
+	call minpac#add('chiel92/vim-autoformat')
+	call minpac#add('tpope/vim-abolish')
+	call minpac#add('pangloss/vim-javascript')
+	call minpac#add('mxw/vim-jsx')
+	call minpac#add('moll/vim-bbye')
+	call minpac#add('vim-airline/vim-airline-themes')
+	call minpac#add('google/vim-searchindex')
+	call minpac#add('tommcdo/vim-exchange')
+	call minpac#add('chilicuil/vim-sprunge')
+	call minpac#add('janko-m/vim-test')
+	call minpac#add('cakebaker/scss-syntax.vim')
+	call minpac#add('leafgarland/typescript-vim')
+
+  colorscheme molokai
+	packadd webapi-vim
+	let g:user_emmet_settings = webapi#json#decode(join(readfile(expand('~/.snippets.json')), "\n"))
+endif
+
+command! PackUpdate packadd minpac | source $MYVIMRC | call minpac#update()
+command! PackClean  packadd minpac | source $MYVIMRC | call minpac#clean()
+
 if has("unix")
   set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
 else
@@ -57,14 +103,6 @@ if has("gui_running")
   set guifont=DejaVu_Sans_Mono:h10
   set cursorline                           " highlight the current line
 endif
-
-" => Colors and Fonts
-syntax enable                              " enable syntax highlighting
-
-try
-  colorscheme molokai
-catch
-endtry
 
 " return to last edit position automaticaly
 autocmd BufReadPost *
@@ -212,12 +250,6 @@ au FileType rust nmap gd <Plug>(rust-def)
 au FileType rust nmap gs <Plug>(rust-def-split)
 au FileType rust nmap gx <Plug>(rust-def-vertical)
 au FileType rust nmap <leader>gd <Plug>(rust-doc)
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => emmet-vim
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-packadd webapi-vim
-let g:user_emmet_settings = webapi#json#decode(join(readfile(expand('~/.snippets.json')), "\n"))
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => vim-jsx
