@@ -5,6 +5,7 @@ filetype plugin indent on
 
 let mapleader=","                    " leader key
 let g:mapleader=","
+let g:netrw_banner = 0
 set backspace=indent,eol,start       " backspace deletes like most programs in insert mode
 set incsearch                        " show search pattern as it was typed so far
 set hlsearch                         " highlight search results
@@ -51,14 +52,90 @@ else
 	call minpac#init()
 	call minpac#add('k-takata/minpac', {'type': 'opt'})
 	call minpac#add('mattn/webapi-vim', {'type': 'opt'})
+	"
+	"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+	" => EasyMotion
 	call minpac#add('easymotion/vim-easymotion')
+
+	" move to line
+	map <leader>L <Plug>(easymotion-bd-jk)
+	nmap <leader>L <Plug>(easymotion-overwin-line)
+	" move to word
+	map  <leader>w <Plug>(easymotion-bd-w)
+	nmap <leader>w <Plug>(easymotion-overwin-w)
+	map <leader><leader>l <Plug>(easymotion-lineforward)
+	map <leader>j <Plug>(easymotion-j)
+	map <leader>k <Plug>(easymotion-k)
+	map <leader><leader>h <Plug>(easymotion-linebackward)
+	" s{char}{char} to move to {char}{char}
+	nmap s <Plug>(easymotion-overwin-f2)
+	nmap t <Plug>(easymotion-t2)
+	" <leader>f{char} to move to {char}
+	map  <leader>f <Plug>(easymotion-bd-f)
+	nmap <leader>f <Plug>(easymotion-overwin-f)
+	"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+	"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+	" => Neovim
 	call minpac#add('neomake/neomake')
+
+	let g:neomake_javascript_eslint_d_maker = {
+				\ 'args': ['-f', 'compact', '--fix'],
+				\ 'errorformat': '%E%f: line %l\, col %c\, Error - %m,' .
+				\ '%W%f: line %l\, col %c\, Warning - %m'
+				\}
+	let g:neomake_javascript_enabled_makers = ['eslint_d']
+	let g:neomake_jsx_enabled_makers = ['eslint_d']
+
+	let g:neomake_scss_stylelint_d_maker = {
+				\ 'errorformat':
+				\   '%+P%f,'.
+				\   '%*\s%l:%c  %t  %m,'.
+				\ '%-Q'
+				\}
+	let g:neomake_scss_enabled_makers = ['stylelint_d']
+	autocmd! BufWritePost * Neomake
+	autocmd! FileChangedShellPost * Neomake
+
+	hi NeomakeErrorSign     guifg=#F92672 guibg=#232526
+	hi NeomakeWarningSign   guifg=#E6DB74 guibg=#232526
+	hi NeomakeErrorSign     ctermfg=161 ctermbg=235
+	hi NeomakeWarningSign   ctermfg=144 ctermbg=235
+	"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 	call minpac#add('rust-lang/rust.vim', {'type': 'opt'})
+
+	" => vim-racer
+	"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 	call minpac#add('racer-rust/vim-racer', {'type': 'opt'})
+	let g:racer_cmd = '~/.cargo/bin/racer'
+	au FileType rust nmap gd <Plug>(rust-def)
+	au FileType rust nmap gs <Plug>(rust-def-split)
+	au FileType rust nmap gx <Plug>(rust-def-vertical)
+	au FileType rust nmap <leader>gd <Plug>(rust-doc)
+	"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 	call minpac#add('tomasr/molokai')
+
+	"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+	" => Airline
 	call minpac#add('vim-airline/vim-airline')
+	call minpac#add('vim-airline/vim-airline-themes')
+	" Enable the list of buffers
+	let g:airline#extensions#tabline#enabled = 1
+	" Show just the filename
+	let g:airline#extensions#tabline#fnamemod = ':t'
+	"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 	call minpac#add('tpope/vim-unimpaired')
+
+	"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+	" => fzf-vim
 	call minpac#add('junegunn/fzf.vim')
+	nmap <leader>t :FZF<CR>
+	nmap <leader>b :Buffers<CR>
+	"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 	call minpac#add('kana/vim-textobj-entire')
 	call minpac#add('kana/vim-textobj-user')
 	call minpac#add('airblade/vim-gitgutter')
@@ -71,9 +148,14 @@ else
 	call minpac#add('chiel92/vim-autoformat')
 	call minpac#add('tpope/vim-abolish')
 	call minpac#add('pangloss/vim-javascript')
+
+	"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+	" => vim-jsx
 	call minpac#add('mxw/vim-jsx')
+	let g:jsx_ext_required = 0
+	"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 	call minpac#add('moll/vim-bbye')
-	call minpac#add('vim-airline/vim-airline-themes')
 	call minpac#add('google/vim-searchindex')
 	call minpac#add('tommcdo/vim-exchange')
 	call minpac#add('chilicuil/vim-sprunge')
@@ -183,82 +265,3 @@ function! Incr()
 endfunction
 vnoremap <C-a> :call Incr()<CR>
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => EasyMotion
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" move to line
-map <leader>L <Plug>(easymotion-bd-jk)
-nmap <leader>L <Plug>(easymotion-overwin-line)
-" move to word
-map  <leader>w <Plug>(easymotion-bd-w)
-nmap <leader>w <Plug>(easymotion-overwin-w)
-map <leader><leader>l <Plug>(easymotion-lineforward)
-map <leader>j <Plug>(easymotion-j)
-map <leader>k <Plug>(easymotion-k)
-map <leader><leader>h <Plug>(easymotion-linebackward)
-" s{char}{char} to move to {char}{char}
-nmap s <Plug>(easymotion-overwin-f2)
-nmap t <Plug>(easymotion-t2)
-" <leader>f{char} to move to {char}
-map  <leader>f <Plug>(easymotion-bd-f)
-nmap <leader>f <Plug>(easymotion-overwin-f)
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Airline
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Enable the list of buffers
-let g:airline#extensions#tabline#enabled = 1
-
-" Show just the filename
-let g:airline#extensions#tabline#fnamemod = ':t'
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Neovim
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:neomake_javascript_eslint_d_maker = {
- 	  \ 'args': ['-f', 'compact', '--fix'],
-      \ 'errorformat': '%E%f: line %l\, col %c\, Error - %m,' .
-      \ '%W%f: line %l\, col %c\, Warning - %m'
-      \}
-let g:neomake_javascript_enabled_makers = ['eslint_d']
-let g:neomake_jsx_enabled_makers = ['eslint_d']
-
-let g:neomake_scss_stylelint_d_maker = {
-      \ 'errorformat':
-      \   '%+P%f,'.
-      \   '%*\s%l:%c  %t  %m,'.
-      \ '%-Q'
-      \}
-let g:neomake_scss_enabled_makers = ['stylelint_d']
-autocmd! BufWritePost * Neomake
-autocmd! FileChangedShellPost * Neomake
-
-hi NeomakeErrorSign     guifg=#F92672 guibg=#232526
-hi NeomakeWarningSign   guifg=#E6DB74 guibg=#232526
-hi NeomakeErrorSign     ctermfg=161 ctermbg=235
-hi NeomakeWarningSign   ctermfg=144 ctermbg=235
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => netrw
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:netrw_banner = 0
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => vim-racer
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:racer_cmd = '~/.cargo/bin/racer'
-au FileType rust nmap gd <Plug>(rust-def)
-au FileType rust nmap gs <Plug>(rust-def-split)
-au FileType rust nmap gx <Plug>(rust-def-vertical)
-au FileType rust nmap <leader>gd <Plug>(rust-doc)
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => vim-jsx
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:jsx_ext_required = 0
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => fzf-vim
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nmap <leader>t :FZF<CR>
-nmap <leader>b :Buffers<CR>
