@@ -80,6 +80,7 @@ else
 	call minpac#add('janko-m/vim-test')
 	call minpac#add('cakebaker/scss-syntax.vim')
 	call minpac#add('leafgarland/typescript-vim')
+	call minpac#add('lifepillar/vim-cheat40')
 
   colorscheme molokai
 	packadd webapi-vim
