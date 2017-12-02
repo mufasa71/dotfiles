@@ -49,105 +49,105 @@ syntax enable                         " enable syntax highlighting
 silent! packadd minpac
 if !exists('*minpac#init')
 else
-	call minpac#init()
-	call minpac#add('k-takata/minpac', {'type': 'opt'})
-	call minpac#add('mattn/webapi-vim', {'type': 'opt'})
+    call minpac#init()
+    call minpac#add('k-takata/minpac', {'type': 'opt'})
+    call minpac#add('mattn/webapi-vim', {'type': 'opt'})
     call minpac#add('editorconfig/editorconfig-vim')
-	"
-	"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-	" => EasyMotion
-	call minpac#add('easymotion/vim-easymotion')
+    "
+    """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+    " => EasyMotion
+    call minpac#add('easymotion/vim-easymotion')
 
-	" move to line
-	map <leader>L <Plug>(easymotion-bd-jk)
-	nmap <leader>L <Plug>(easymotion-overwin-line)
-	" move to word
-	map  <leader>w <Plug>(easymotion-bd-w)
-	nmap <leader>w <Plug>(easymotion-overwin-w)
-	map <leader><leader>l <Plug>(easymotion-lineforward)
-	map <leader>j <Plug>(easymotion-j)
-	map <leader>k <Plug>(easymotion-k)
-	map <leader><leader>h <Plug>(easymotion-linebackward)
-	" s{char}{char} to move to {char}{char}
-	nmap s <Plug>(easymotion-overwin-f2)
-	nmap t <Plug>(easymotion-t2)
-	" <leader>f{char} to move to {char}
-	map  <leader>f <Plug>(easymotion-bd-f)
-	nmap <leader>f <Plug>(easymotion-overwin-f)
-	"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+    " move to line
+    map <leader>L <Plug>(easymotion-bd-jk)
+    nmap <leader>L <Plug>(easymotion-overwin-line)
+    " move to word
+    map  <leader>w <Plug>(easymotion-bd-w)
+    nmap <leader>w <Plug>(easymotion-overwin-w)
+    map <leader><leader>l <Plug>(easymotion-lineforward)
+    map <leader>j <Plug>(easymotion-j)
+    map <leader>k <Plug>(easymotion-k)
+    map <leader><leader>h <Plug>(easymotion-linebackward)
+    " s{char}{char} to move to {char}{char}
+    nmap s <Plug>(easymotion-overwin-f2)
+    nmap t <Plug>(easymotion-t2)
+    " <leader>f{char} to move to {char}
+    map  <leader>f <Plug>(easymotion-bd-f)
+    nmap <leader>f <Plug>(easymotion-overwin-f)
+    """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-	"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-	" => Neovim
-	call minpac#add('neomake/neomake')
+    """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+    " => Neovim
+    call minpac#add('neomake/neomake')
     let g:neomake_open_list = 2
-	let g:neomake_javascript_enabled_makers = ['eslint_d']
-	let g:neomake_jsx_enabled_makers = ['eslint_d']
+    let g:neomake_javascript_enabled_makers = ['eslint_d']
+    let g:neomake_jsx_enabled_makers = ['eslint_d']
     let g:neomake_typescript_enabled_makers = []
-	autocmd! FileChangedShellPost * Neomake
-	hi NeomakeErrorSign     guifg=#F92672 guibg=#232526
-	hi NeomakeWarningSign   guifg=#E6DB74 guibg=#232526
-	hi NeomakeErrorSign     ctermfg=161 ctermbg=235
-	hi NeomakeWarningSign   ctermfg=144 ctermbg=235
-	"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+    autocmd! FileChangedShellPost * Neomake
+    hi NeomakeErrorSign     guifg=#F92672 guibg=#232526
+    hi NeomakeWarningSign   guifg=#E6DB74 guibg=#232526
+    hi NeomakeErrorSign     ctermfg=161 ctermbg=235
+    hi NeomakeWarningSign   ctermfg=144 ctermbg=235
+    """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-	call minpac#add('rust-lang/rust.vim', {'type': 'opt'})
+    call minpac#add('rust-lang/rust.vim', {'type': 'opt'})
 
-	" => vim-racer
-	"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-	call minpac#add('racer-rust/vim-racer', {'type': 'opt'})
-	let g:racer_cmd = '~/.cargo/bin/racer'
-	au FileType rust nmap gd <Plug>(rust-def)
-	au FileType rust nmap gs <Plug>(rust-def-split)
-	au FileType rust nmap gx <Plug>(rust-def-vertical)
-	au FileType rust nmap <leader>gd <Plug>(rust-doc)
-	"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+    " => vim-racer
+    """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+    call minpac#add('racer-rust/vim-racer', {'type': 'opt'})
+    let g:racer_cmd = '~/.cargo/bin/racer'
+    au FileType rust nmap gd <Plug>(rust-def)
+    au FileType rust nmap gs <Plug>(rust-def-split)
+    au FileType rust nmap gx <Plug>(rust-def-vertical)
+    au FileType rust nmap <leader>gd <Plug>(rust-doc)
+    """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-	call minpac#add('tomasr/molokai')
+    call minpac#add('tomasr/molokai')
 
-	"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-	" => Airline
-	call minpac#add('vim-airline/vim-airline')
-	call minpac#add('vim-airline/vim-airline-themes')
-	"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+    """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+    " => Airline
+    call minpac#add('vim-airline/vim-airline')
+    call minpac#add('vim-airline/vim-airline-themes')
+    """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-	call minpac#add('tpope/vim-unimpaired')
+    call minpac#add('tpope/vim-unimpaired')
 
-	"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-	" => fzf-vim
-	call minpac#add('junegunn/fzf.vim')
-	nmap <leader>t :FZF<CR>
-	nmap <leader>b :Buffers<CR>
-	"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+    """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+    " => fzf-vim
+    call minpac#add('junegunn/fzf.vim')
+    nmap <leader>t :FZF<CR>
+    nmap <leader>b :Buffers<CR>
+    """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-	call minpac#add('kana/vim-textobj-entire')
-	call minpac#add('kana/vim-textobj-user')
-	call minpac#add('airblade/vim-gitgutter')
-	call minpac#add('wincent/ferret')
-	call minpac#add('tpope/vim-surround')
-	call minpac#add('tpope/vim-fugitive')
-	call minpac#add('tpope/vim-repeat')
-	call minpac#add('mattn/emmet-vim')
-	call minpac#add('tpope/vim-commentary')
-	call minpac#add('chiel92/vim-autoformat')
-	call minpac#add('tpope/vim-abolish')
-	call minpac#add('pangloss/vim-javascript')
+    call minpac#add('kana/vim-textobj-entire')
+    call minpac#add('kana/vim-textobj-user')
+    call minpac#add('airblade/vim-gitgutter')
+    call minpac#add('wincent/ferret')
+    call minpac#add('tpope/vim-surround')
+    call minpac#add('tpope/vim-fugitive')
+    call minpac#add('tpope/vim-repeat')
+    call minpac#add('mattn/emmet-vim')
+    call minpac#add('tpope/vim-commentary')
+    call minpac#add('chiel92/vim-autoformat')
+    call minpac#add('tpope/vim-abolish')
+    call minpac#add('pangloss/vim-javascript')
 
-	"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-	" => vim-jsx
-	call minpac#add('mxw/vim-jsx')
-	let g:jsx_ext_required = 0
-	"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+    """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+    " => vim-jsx
+    call minpac#add('mxw/vim-jsx')
+    let g:jsx_ext_required = 0
+    """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-	call minpac#add('moll/vim-bbye')
-	call minpac#add('google/vim-searchindex')
-	call minpac#add('tommcdo/vim-exchange')
-	call minpac#add('chilicuil/vim-sprunge')
-	call minpac#add('janko-m/vim-test')
-	call minpac#add('cakebaker/scss-syntax.vim')
-	call minpac#add('leafgarland/typescript-vim')
+    call minpac#add('moll/vim-bbye')
+    call minpac#add('google/vim-searchindex')
+    call minpac#add('tommcdo/vim-exchange')
+    call minpac#add('chilicuil/vim-sprunge')
+    call minpac#add('janko-m/vim-test')
+    call minpac#add('cakebaker/scss-syntax.vim')
+    call minpac#add('leafgarland/typescript-vim')
     let g:tsuquyomi_completion_detail = 1
-	call minpac#add('Quramy/tsuquyomi')
-	call minpac#add('lifepillar/vim-cheat40')
+    call minpac#add('Quramy/tsuquyomi')
+    call minpac#add('lifepillar/vim-cheat40')
 
     colorscheme molokai
     packadd webapi-vim
@@ -163,25 +163,25 @@ command! PackUpdate packadd minpac | source $MYVIMRC | call minpac#update()
 command! PackClean  packadd minpac | source $MYVIMRC | call minpac#clean()
 
 if has("unix")
-  set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
+    set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
 else
-  set wildignore+=.git\*,.hg\*,.svn\*
+    set wildignore+=.git\*,.hg\*,.svn\*
 endif
 
 if has("gui_running")
-  set guioptions-=m
-  set guioptions-=T
-  set guioptions-=r
-  set guioptions-=L
-  set guifont=DejaVu_Sans_Mono:h10
-  set cursorline                           " highlight the current line
+    set guioptions-=m
+    set guioptions-=T
+    set guioptions-=r
+    set guioptions-=L
+    set guifont=DejaVu_Sans_Mono:h10
+    set cursorline                           " highlight the current line
 endif
 
 " return to last edit position automaticaly
 autocmd BufReadPost *
-      \ if line("'\"") > 0 && line("'\"") <= line("$") |
-      \   exe "normal g`\"" |
-      \ endif
+            \ if line("'\"") > 0 && line("'\"") <= line("$") |
+            \   exe "normal g`\"" |
+            \ endif
 
 " fast saving
 imap ;w <esc>:w!<cr>
@@ -230,28 +230,28 @@ vnoremap <F2> d:execute 'normal i' . join(sort(split(getreg('"'))), ' ')<CR>"'))
 nmap <silent> <leader>cc :call <SID>CleanCode()<cr>
 
 function! <SID>CleanCode()
-  " preparation save last search, and cursor position.
-  let _s=@/
-  let l = line(".")
-  let c = col(".")
-  " Do the business:
-  %s/\s\+$//e
-  %retab          " Replace tabs with spaces
-  %s/\r/\r/eg     " Turn DOS returns ^M into real returns
-  %s=  *$==e      " Delete end of line blanks
-  echo "Cleaned"
-  " clean up: restore previous search history, and cursor position
-  let @/=_s
-  call cursor(l, c)
+    " preparation save last search, and cursor position.
+    let _s=@/
+    let l = line(".")
+    let c = col(".")
+    " Do the business:
+    %s/\s\+$//e
+    %retab          " Replace tabs with spaces
+    %s/\r/\r/eg     " Turn DOS returns ^M into real returns
+    %s=  *$==e      " Delete end of line blanks
+    echo "Cleaned"
+    " clean up: restore previous search history, and cursor position
+    let @/=_s
+    call cursor(l, c)
 endfunction
 
 function! Incr()
-  let a = line('.') - line("'<")
-  let c = virtcol("'<")
-  if a > 0
-    execute 'normal! '.c.'|'.a."\<C-a>"
-  endif
-  normal `<
+    let a = line('.') - line("'<")
+    let c = virtcol("'<")
+    if a > 0
+        execute 'normal! '.c.'|'.a."\<C-a>"
+    endif
+    normal `<
 endfunction
 vnoremap <C-a> :call Incr()<CR>
 
