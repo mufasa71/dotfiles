@@ -17,8 +17,8 @@ set noswapfile
 set nowritebackup
 set ruler                            " show line and column number of the cursor position
 set scrolloff=2                      " start scrolling (n) lines before window ends
-set noexpandtab                      " use tabs instead of spaces
-set tabstop=2 shiftwidth=2           " softtabs, 2 spaces
+set expandtab                      
+set tabstop=4 shiftwidth=4           " softtabs, 2 spaces
 set smarttab                         " be smart when using tabs
 set number                           " show line numbers
 set wildmode=list:longest,list:full  " will insert tab at beginning of line,
@@ -52,6 +52,7 @@ else
 	call minpac#init()
 	call minpac#add('k-takata/minpac', {'type': 'opt'})
 	call minpac#add('mattn/webapi-vim', {'type': 'opt'})
+    call minpac#add('editorconfig/editorconfig-vim')
 	"
 	"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 	" => EasyMotion
@@ -78,25 +79,11 @@ else
 	"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 	" => Neovim
 	call minpac#add('neomake/neomake')
-
-	let g:neomake_javascript_eslint_d_maker = {
-				\ 'args': ['-f', 'compact', '--fix'],
-				\ 'errorformat': '%E%f: line %l\, col %c\, Error - %m,' .
-				\ '%W%f: line %l\, col %c\, Warning - %m'
-				\}
+    let g:neomake_open_list = 2
 	let g:neomake_javascript_enabled_makers = ['eslint_d']
 	let g:neomake_jsx_enabled_makers = ['eslint_d']
-
-	let g:neomake_scss_stylelint_d_maker = {
-				\ 'errorformat':
-				\   '%+P%f,'.
-				\   '%*\s%l:%c  %t  %m,'.
-				\ '%-Q'
-				\}
-	let g:neomake_scss_enabled_makers = ['stylelint_d']
-	autocmd! BufWritePost * Neomake
+    let g:neomake_typescript_enabled_makers = []
 	autocmd! FileChangedShellPost * Neomake
-
 	hi NeomakeErrorSign     guifg=#F92672 guibg=#232526
 	hi NeomakeWarningSign   guifg=#E6DB74 guibg=#232526
 	hi NeomakeErrorSign     ctermfg=161 ctermbg=235
@@ -121,10 +108,6 @@ else
 	" => Airline
 	call minpac#add('vim-airline/vim-airline')
 	call minpac#add('vim-airline/vim-airline-themes')
-	" Enable the list of buffers
-	let g:airline#extensions#tabline#enabled = 1
-	" Show just the filename
-	let g:airline#extensions#tabline#fnamemod = ':t'
 	"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 	call minpac#add('tpope/vim-unimpaired')
@@ -162,12 +145,19 @@ else
 	call minpac#add('janko-m/vim-test')
 	call minpac#add('cakebaker/scss-syntax.vim')
 	call minpac#add('leafgarland/typescript-vim')
+    let g:tsuquyomi_completion_detail = 1
+	call minpac#add('Quramy/tsuquyomi')
 	call minpac#add('lifepillar/vim-cheat40')
 
-  colorscheme molokai
-	packadd webapi-vim
-	let g:user_emmet_settings = webapi#json#decode(join(readfile(expand('~/.snippets.json')), "\n"))
+    colorscheme molokai
+    packadd webapi-vim
+    let g:user_emmet_settings = webapi#json#decode(join(readfile(expand('~/.snippets.json')), "\n"))
+    packloadall
+    call neomake#configure#automake('rw', 1000)
+    " let g:neomake_typescript_tsc_maker = neomake#makers#ft#tsx#tsc()
 endif
+
+hi Normal guibg=NONE ctermbg=NONE
 
 command! PackUpdate packadd minpac | source $MYVIMRC | call minpac#update()
 command! PackClean  packadd minpac | source $MYVIMRC | call minpac#clean()
