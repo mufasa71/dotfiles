@@ -154,6 +154,7 @@ else
     let g:user_emmet_settings = webapi#json#decode(join(readfile(expand('~/.snippets.json')), "\n"))
     packloadall
     call neomake#configure#automake('rw', 1000)
+    autocmd FileType typescript nmap <buffer> <Leader>t : <C-u>echo tsuquyomi#hint()<CR>
     " let g:neomake_typescript_tsc_maker = neomake#makers#ft#tsx#tsc()
 endif
 
