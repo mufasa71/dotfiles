@@ -145,16 +145,31 @@ else
     call minpac#add('janko-m/vim-test')
     call minpac#add('cakebaker/scss-syntax.vim')
     call minpac#add('leafgarland/typescript-vim')
-    let g:tsuquyomi_completion_detail = 1
-    call minpac#add('Quramy/tsuquyomi')
     call minpac#add('lifepillar/vim-cheat40')
+    call minpac#add('prabirshrestha/asyncomplete.vim')
+    call minpac#add('prabirshrestha/async.vim')
+    call minpac#add('prabirshrestha/vim-lsp')
+    call minpac#add('prabirshrestha/asyncomplete-lsp.vim')
 
     colorscheme molokai
     packadd webapi-vim
     let g:user_emmet_settings = webapi#json#decode(join(readfile(expand('~/.snippets.json')), "\n"))
     packloadall
     call neomake#configure#automake('rw', 1000)
-    autocmd FileType typescript nmap <buffer> <Leader>t : <C-u>echo tsuquyomi#hint()<CR>
+
+    if executable('typescript-language-server')
+        au User lsp_setup call lsp#register_server({
+                    \ 'name': 'typescript-language-server',
+                    \ 'cmd': {server_info->[&shell, &shellcmdflag, 'typescript-language-server --stdio']},
+                    \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'tsconfig.json'))},
+                    \ 'whitelist': ['typescript'],
+                    \ })
+    endif
+
+    inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+    inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+    inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
+    " autocmd FileType typescript nmap <buffer> <Leader>t : <C-u>echo tsuquyomi#hint()<CR>
     " let g:neomake_typescript_tsc_maker = neomake#makers#ft#tsx#tsc()
 endif
 
