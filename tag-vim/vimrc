@@ -82,7 +82,6 @@ else
     let g:neomake_open_list = 2
     let g:neomake_javascript_enabled_makers = ['eslint_d']
     let g:neomake_jsx_enabled_makers = ['eslint_d']
-    let g:neomake_typescript_enabled_makers = []
     autocmd! FileChangedShellPost * Neomake
     hi NeomakeErrorSign     guifg=#F92672 guibg=#232526
     hi NeomakeWarningSign   guifg=#E6DB74 guibg=#232526
@@ -126,6 +125,8 @@ else
     call minpac#add('tpope/vim-surround')
     call minpac#add('tpope/vim-fugitive')
     call minpac#add('tpope/vim-repeat')
+    packadd webapi-vim
+    let g:user_emmet_settings = webapi#json#decode(join(readfile(expand('~/.snippets.json')), "\n"))
     call minpac#add('mattn/emmet-vim')
     call minpac#add('tpope/vim-commentary')
     call minpac#add('chiel92/vim-autoformat')
@@ -145,6 +146,7 @@ else
     call minpac#add('janko-m/vim-test')
     call minpac#add('cakebaker/scss-syntax.vim')
     call minpac#add('leafgarland/typescript-vim')
+    call minpac#add('ianks/vim-tsx')
     call minpac#add('lifepillar/vim-cheat40')
     call minpac#add('prabirshrestha/asyncomplete.vim')
     call minpac#add('prabirshrestha/async.vim')
@@ -152,8 +154,6 @@ else
     call minpac#add('prabirshrestha/asyncomplete-lsp.vim')
 
     colorscheme molokai
-    packadd webapi-vim
-    let g:user_emmet_settings = webapi#json#decode(join(readfile(expand('~/.snippets.json')), "\n"))
     packloadall
     call neomake#configure#automake('rw', 1000)
 
@@ -162,7 +162,7 @@ else
                     \ 'name': 'typescript-language-server',
                     \ 'cmd': {server_info->[&shell, &shellcmdflag, 'typescript-language-server --stdio']},
                     \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'tsconfig.json'))},
-                    \ 'whitelist': ['typescript'],
+                    \ 'whitelist': ['typescript', 'typescript.tsx'],
                     \ })
     endif
 
