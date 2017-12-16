@@ -76,19 +76,6 @@ else
     nmap <leader>f <Plug>(easymotion-overwin-f)
     """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-    """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-    " => Neovim
-    call minpac#add('neomake/neomake')
-    let g:neomake_open_list = 2
-    let g:neomake_javascript_enabled_makers = ['eslint_d']
-    let g:neomake_jsx_enabled_makers = ['eslint_d']
-    autocmd! FileChangedShellPost * Neomake
-    hi NeomakeErrorSign     guifg=#F92672 guibg=#232526
-    hi NeomakeWarningSign   guifg=#E6DB74 guibg=#232526
-    hi NeomakeErrorSign     ctermfg=161 ctermbg=235
-    hi NeomakeWarningSign   ctermfg=144 ctermbg=235
-    """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
     call minpac#add('rust-lang/rust.vim', {'type': 'opt'})
 
     " => vim-racer
@@ -155,7 +142,6 @@ else
 
     colorscheme molokai
     packloadall
-    call neomake#configure#automake('rw', 1000)
 
     if executable('typescript-language-server')
         au User lsp_setup call lsp#register_server({
@@ -170,7 +156,6 @@ else
     inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
     inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
     " autocmd FileType typescript nmap <buffer> <Leader>t : <C-u>echo tsuquyomi#hint()<CR>
-    " let g:neomake_typescript_tsc_maker = neomake#makers#ft#tsx#tsc()
 endif
 
 hi Normal guibg=NONE ctermbg=NONE
