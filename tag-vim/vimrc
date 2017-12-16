@@ -135,6 +135,11 @@ else
     call minpac#add('leafgarland/typescript-vim')
     call minpac#add('ianks/vim-tsx')
     call minpac#add('lifepillar/vim-cheat40')
+    let g:ale_fixers = {
+                \   'javascript': ['prettier'],
+                \   'typescript': ['prettier'],
+                \}
+    call minpac#add('w0rp/ale')
     call minpac#add('prabirshrestha/asyncomplete.vim')
     call minpac#add('prabirshrestha/async.vim')
     call minpac#add('prabirshrestha/vim-lsp')
@@ -152,6 +157,8 @@ else
                     \ })
     endif
 
+    nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+    nmap <silent> <C-j> <Plug>(ale_next_wrap)
     inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
     inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
     inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
