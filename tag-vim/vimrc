@@ -162,7 +162,6 @@ else
     inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
     inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
     inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
-    " autocmd FileType typescript nmap <buffer> <Leader>t : <C-u>echo tsuquyomi#hint()<CR>
 endif
 
 hi Normal guibg=NONE ctermbg=NONE
