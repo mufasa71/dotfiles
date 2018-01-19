@@ -118,7 +118,10 @@ else
     call minpac#add('tpope/vim-commentary')
     call minpac#add('chiel92/vim-autoformat')
     call minpac#add('tpope/vim-abolish')
-    call minpac#add('pangloss/vim-javascript')
+    " call minpac#add('pangloss/vim-javascript')
+    call minpac#add('othree/yajs.vim')
+    let g:used_javascript_libs = 'react'
+    call minpac#add('othree/javascript-libraries-syntax.vim')
 
     """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
     " => vim-jsx
@@ -135,27 +138,22 @@ else
     call minpac#add('leafgarland/typescript-vim')
     call minpac#add('ianks/vim-tsx')
     call minpac#add('lifepillar/vim-cheat40')
+    call minpac#add('styled-components/vim-styled-components')
+    call minpac#add('hail2u/vim-css3-syntax')
+    
+    """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+    " => ale
     let g:ale_fixers = {
                 \   'javascript': ['prettier'],
                 \   'typescript': ['prettier'],
                 \}
+    let g:ale_fix_on_save = 1
+    let g:ale_completion_enabled = 1
     call minpac#add('w0rp/ale')
-    call minpac#add('prabirshrestha/asyncomplete.vim')
-    call minpac#add('prabirshrestha/async.vim')
-    call minpac#add('prabirshrestha/vim-lsp')
-    call minpac#add('prabirshrestha/asyncomplete-lsp.vim')
 
+    """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
     colorscheme molokai
     packloadall
-
-    if executable('typescript-language-server')
-        au User lsp_setup call lsp#register_server({
-                    \ 'name': 'typescript-language-server',
-                    \ 'cmd': {server_info->[&shell, &shellcmdflag, 'typescript-language-server --stdio']},
-                    \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'tsconfig.json'))},
-                    \ 'whitelist': ['typescript', 'typescript.tsx'],
-                    \ })
-    endif
 
     nmap <silent> <C-k> <Plug>(ale_previous_wrap)
     nmap <silent> <C-j> <Plug>(ale_next_wrap)
