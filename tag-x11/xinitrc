@@ -46,8 +46,6 @@ while true; do
 done &
 
 dunst&
-xwrits&
-compton -b
 xscreensaver&
 unclutter -root -noevents&
 
