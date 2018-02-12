@@ -113,12 +113,12 @@ else
     call minpac#add('tpope/vim-surround')
     call minpac#add('tpope/vim-fugitive')
     call minpac#add('tpope/vim-repeat')
+    call minpac#add('tpope/vim-commentary')
+    call minpac#add('tpope/vim-abolish')
     packadd webapi-vim
     let g:user_emmet_settings = webapi#json#decode(join(readfile(expand('~/.snippets.json')), "\n"))
     call minpac#add('mattn/emmet-vim')
-    call minpac#add('tpope/vim-commentary')
     call minpac#add('chiel92/vim-autoformat')
-    call minpac#add('tpope/vim-abolish')
     " call minpac#add('pangloss/vim-javascript')
     call minpac#add('othree/yajs.vim')
     let g:used_javascript_libs = 'react'
