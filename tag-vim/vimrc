@@ -152,6 +152,12 @@ else
     call minpac#add('w0rp/ale')
 
     """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+    """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+    " => vim-flow
+    call minpac#add('flowtype/vim-flow')
+    let g:flow#enable = 0 " disable check on save
+
     colorscheme molokai
     packloadall
 
