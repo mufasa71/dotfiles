@@ -1,6 +1,6 @@
 [global]
     font = "Sans 8"
-    allow_markup = yes
+    markup = yes
     format = "<b>%s %p</b>\n%b"
     sort = yes
     indicate_hidden = true
@@ -19,12 +19,10 @@
     dmenu = "/usr/bin/dmenu -p dunst: -nb #FFFFFF -nf #000000 -sb #94DBFF -sf #000000"
     browser = firefox
     icon_position = left
-    icon_folders = /usr/share/icons/gnome/32x32/status/:/home/***REMOVED***/.covers/
+    icon_path = /usr/share/icons/gnome/32x32/status/:/home/***REMOVED***/.covers/
     max_icon_size = 32
-
-[frame]
-    width = 3
-    color = "#000000"
+    frame_width = 3
+    frame_color = "#000000"
 
 [shortcuts]
     close = ctrl+space
