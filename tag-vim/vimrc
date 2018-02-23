@@ -43,6 +43,7 @@ set dictionary+=/usr/share/dict/words
 set omnifunc=syntaxcomplete#Complete
 set hidden
 set wildignore=*.o,*~,*.pyc 					" ignore compiled files
+set updatetime=100
 
 syntax enable                         " enable syntax highlighting
 
