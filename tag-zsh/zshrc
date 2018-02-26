@@ -125,3 +125,4 @@ done
 unset config_file
 
 [[ -f /usr/local/bin/direnv ]] && eval "$(direnv hook zsh)"
+[[ -f /usr/bin/hub ]] && eval "$(hub alias -s)"
