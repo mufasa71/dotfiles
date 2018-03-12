@@ -12,6 +12,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'roxma/nvim-completion-manager'
 Plug 'leafgarland/typescript-vim'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
 Plug 'joshdick/onedark.vim'
 Plug 'itchyny/lightline.vim'
 call plug#end()
