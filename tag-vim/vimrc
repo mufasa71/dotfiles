@@ -90,6 +90,7 @@ else
     """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
     call minpac#add('tomasr/molokai')
+    call minpac#add('joshdick/onedark.vim')
 
     """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
     " => Airline
@@ -159,8 +160,8 @@ else
     call minpac#add('flowtype/vim-flow')
     let g:flow#enable = 0 " disable check on save
 
-    colorscheme molokai
     packloadall
+    colorscheme onedark
 
     nmap <silent> <C-k> <Plug>(ale_previous_wrap)
     nmap <silent> <C-j> <Plug>(ale_next_wrap)
