@@ -13,9 +13,27 @@ Plug 'roxma/nvim-completion-manager'
 Plug 'leafgarland/typescript-vim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
+Plug 'airblade/vim-gitgutter'
 Plug 'joshdick/onedark.vim'
 Plug 'itchyny/lightline.vim'
+Plug 'Shougo/neosnippet'
+Plug 'Shougo/neosnippet-snippets'
 call plug#end()
+
+imap <expr> <CR>  (pumvisible() ?  "\<c-y>\<Plug>(neosnippet_expand_or_jump)" : "\<CR>")
+imap <expr> <Plug>(expand_or_nl) (cm#completed_is_snippet() ? "\<C-U>":"\<CR>")
+
+imap <expr><TAB>
+     \ pumvisible() ? "\<C-n>" :
+     \ neosnippet#expandable_or_jumpable() ?
+     \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+      \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+if has('conceal')
+    set conceallevel=2 concealcursor=niv
+endif
 
 let g:LanguageClient_serverCommands = {
             \ 'javascript': ['javascript-typescript-stdio'],
