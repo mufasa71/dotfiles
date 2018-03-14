@@ -1,3 +1,4 @@
+let mapleader=","                    " leader key
 let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
 execute "set rtp+=" . g:opamshare . "/merlin/vim"
 
@@ -11,13 +12,16 @@ Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'roxma/nvim-completion-manager'
 Plug 'leafgarland/typescript-vim'
+Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
 Plug 'airblade/vim-gitgutter'
 Plug 'joshdick/onedark.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 call plug#end()
 
 imap <expr> <CR>  (pumvisible() ?  "\<c-y>\<Plug>(neosnippet_expand_or_jump)" : "\<CR>")
@@ -51,13 +55,15 @@ let g:lightline = {
 nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
 nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
 nnoremap <silent> gf :call LanguageClient_textDocument_formatting()<CR>
+nmap <leader>t :Files<CR>
+nmap <leader>b :Buffers<CR>
 
 colorscheme onedark
 set noshowmode
 
 set expandtab
 set smarttab
-set shiftwidth=4
+set shiftwidth=2
 set tabstop=4
 set lbr
 set tw=500
