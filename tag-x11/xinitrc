@@ -46,9 +46,8 @@ while true; do
 done &
 
 dunst&
-xscreensaver&
 unclutter -root -noevents&
 
 exec dwm
 
-killall dunst xwrits compton xscreensaver unclutter 
+killall dunst unclutter 
