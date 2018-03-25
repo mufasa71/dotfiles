@@ -126,3 +126,6 @@ unset config_file
 
 [[ -f /usr/local/bin/direnv ]] && eval "$(direnv hook zsh)"
 [[ -f /usr/bin/hub ]] && eval "$(hub alias -s)"
+
+# OPAM configuration
+. ~/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
