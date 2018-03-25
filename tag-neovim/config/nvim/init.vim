@@ -69,3 +69,4 @@ set lbr
 set tw=500
 
 set ai si wrap
+set backupcopy=yes
