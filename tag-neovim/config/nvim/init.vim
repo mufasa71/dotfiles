@@ -22,6 +22,20 @@ Plug 'itchyny/lightline.vim'
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+Plug 'justinmk/vim-sneak'
+Plug 'kana/vim-textobj-entire'
+Plug 'kana/vim-textobj-user'
+Plug 'tpope/vim-repeat'
+Plug 'othree/yajs.vim'
+Plug 'othree/javascript-libraries-syntax.vim'
+Plug 'mxw/vim-jsx'
+Plug 'moll/vim-bbye'
+Plug 'google/vim-searchindex'
+Plug 'tommcdo/vim-exchange'
+Plug 'chilicuil/vim-sprunge'
+Plug 'lifepillar/vim-cheat40'
+Plug 'styled-components/vim-styled-components'
+Plug 'hail2u/vim-css3-syntax'
 call plug#end()
 
 imap <expr> <CR>  (pumvisible() ?  "\<c-y>\<Plug>(neosnippet_expand_or_jump)" : "\<CR>")
@@ -57,6 +71,9 @@ nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
 nnoremap <silent> gf :call LanguageClient_textDocument_formatting()<CR>
 nmap <leader>t :Files<CR>
 nmap <leader>b :Buffers<CR>
+map <leader>q :Bdelete<cr>
+
+let g:sneak#label = 1
 
 colorscheme onedark
 set noshowmode
