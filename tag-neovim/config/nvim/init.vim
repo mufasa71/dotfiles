@@ -12,6 +12,7 @@ Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'roxma/nvim-completion-manager'
 Plug 'leafgarland/typescript-vim'
+Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
@@ -36,6 +37,7 @@ Plug 'chilicuil/vim-sprunge'
 Plug 'lifepillar/vim-cheat40'
 Plug 'styled-components/vim-styled-components'
 Plug 'hail2u/vim-css3-syntax'
+Plug 'flowtype/vim-flow'
 call plug#end()
 
 imap <expr> <CR>  (pumvisible() ?  "\<c-y>\<Plug>(neosnippet_expand_or_jump)" : "\<CR>")
@@ -74,6 +76,13 @@ nmap <leader>b :Buffers<CR>
 map <leader>q :Bdelete<cr>
 
 let g:sneak#label = 1
+let local_flow = finddir('node_modules', '.;') . '/.bin/flow'
+if matchstr(local_flow, "^\/\\w") == ''
+    let local_flow= getcwd() . "/" . local_flow
+endif
+if executable(local_flow)
+    let g:flow#flowpath = local_flow
+endif
 
 colorscheme onedark
 set noshowmode
