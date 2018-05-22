@@ -1,6 +1,6 @@
 let mapleader=","                    
-let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
-execute "set rtp+=" . g:opamshare . "/merlin/vim"
+" let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
+" execute "set rtp+=" . g:opamshare . "/merlin/vim"
 
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'reasonml-editor/vim-reason-plus'
@@ -27,7 +27,7 @@ Plug 'justinmk/vim-sneak'
 Plug 'kana/vim-textobj-entire'
 Plug 'kana/vim-textobj-user'
 Plug 'tpope/vim-repeat'
-Plug 'othree/yajs.vim'
+Plug 'pangloss/vim-javascript'
 Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'mxw/vim-jsx'
 Plug 'moll/vim-bbye'
@@ -75,8 +75,10 @@ nmap <leader>t :Files<CR>
 nmap <leader>b :Buffers<CR>
 map <leader>q :Bdelete<cr>
 
+let g:javascript_plugin_flow = 1 
 let g:sneak#label = 1
 let local_flow = finddir('node_modules', '.;') . '/.bin/flow'
+let g:flow#autoclose = 1
 if matchstr(local_flow, "^\/\\w") == ''
     let local_flow= getcwd() . "/" . local_flow
 endif
