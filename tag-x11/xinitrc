@@ -39,12 +39,7 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
 fi
 
 feh --bg-fill --sort mtime ~/Pictures/Wallpapers/*.jpg &
-
-# while true; do
-# 	xsetroot -name "$( date +"%F %R" )"
-# 	sleep 1m
-# done &
-
+xbindkeys
 dunst&
 slstatus&
 unclutter -root -noevents&
