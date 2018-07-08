@@ -6,6 +6,7 @@ fi
 
 path=(
 	$path
+	"${ZDOTDIR:-$HOME}/go/bin"
 	"${ZDOTDIR:-$HOME}/.bin"
 	"${ZDOTDIR:-$HOME}/.yarn/bin"
 	"${ZDOTDIR:-$HOME}/.cargo/bin"
