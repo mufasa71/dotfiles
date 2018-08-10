@@ -21,8 +21,6 @@ Plug 'airblade/vim-gitgutter'
 Plug 'joshdick/onedark.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'maximbaz/lightline-ale'
-Plug 'Shougo/neosnippet'
-Plug 'Shougo/neosnippet-snippets'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'justinmk/vim-sneak'
 Plug 'kana/vim-textobj-entire'
@@ -43,6 +41,9 @@ Plug 'jparise/vim-graphql'
 Plug 'w0rp/ale'
 Plug 'ncm2/ncm2'
 Plug 'roxma/nvim-yarp'
+Plug 'ncm2/ncm2-ultisnips'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 Plug 'ncm2/ncm2-bufword'
 Plug 'ncm2/ncm2-path'
 Plug 'ncm2/ncm2-tern',  {'do': 'npm install'}
@@ -52,34 +53,33 @@ call plug#end()
 autocmd BufEnter * call ncm2#enable_for_buffer()
 set completeopt=noinsert,menuone,noselect
 
-imap <expr> <CR>  (pumvisible() ?  "\<c-y>\<Plug>(neosnippet_expand_or_jump)" : "\<CR>")
-imap <expr> <Plug>(expand_or_nl) (cm#completed_is_snippet() ? "\<C-U>":"\<CR>")
+inoremap <silent> <expr> <CR> ncm2_ultisnips#expand_or("\<CR>", 'n')
 
-imap <expr><TAB>
-     \ pumvisible() ? "\<C-n>" :
-     \ neosnippet#expandable_or_jumpable() ?
-     \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+let g:UltiSnipsExpandTrigger = "<Plug>(ultisnips_expand)"
+let g:UltiSnipsJumpForwardTrigger = "<c-j>"
+let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
+let g:UltiSnipsRemoveSelectModeMappings = 0
+let g:UltiSnipsUsePythonVersion = 3
 
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-      \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+autocmd FileType javascript.jsx UltiSnipsAddFiletypes javascript-es6-react
 
 if has('conceal')
-    set conceallevel=2 concealcursor=niv
+  set conceallevel=2 concealcursor=niv
 endif
 
 let g:LanguageClient_serverCommands = {
-            \ 'javascript': ['javascript-typescript-stdio'],
-            \ 'typescript': ['javascript-typescript-stdio'],
-            \ 'reason': ['ocaml-language-server', '--stdio'],
-            \ 'ocaml': ['ocaml-language-server', '--stdio'],
-            \ 'go': ['go-langserver'],
-            \ }
+      \ 'javascript': ['javascript-typescript-stdio'],
+      \ 'typescript': ['javascript-typescript-stdio'],
+      \ 'reason': ['ocaml-language-server', '--stdio'],
+      \ 'ocaml': ['ocaml-language-server', '--stdio'],
+      \ 'go': ['go-langserver'],
+      \ }
 
 let g:LanguageClient_autoStart = 1
 
 let g:lightline = {
-  \ 'colorscheme': 'onedark',
-  \ }
+      \ 'colorscheme': 'onedark',
+      \ }
 
 let g:lightline.component_expand = {
       \  'linter_checking': 'lightline#ale#checking',
@@ -111,10 +111,10 @@ let g:sneak#label = 1
 let local_flow = finddir('node_modules', '.;') . '/.bin/flow'
 let g:flow#autoclose = 1
 if matchstr(local_flow, "^\/\\w") == ''
-    let local_flow= getcwd() . "/" . local_flow
+  let local_flow= getcwd() . "/" . local_flow
 endif
 if executable(local_flow)
-    let g:flow#flowpath = local_flow
+  let g:flow#flowpath = local_flow
 endif
 
 colorscheme onedark
