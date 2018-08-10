@@ -21,7 +21,6 @@ Plug 'airblade/vim-gitgutter'
 Plug 'joshdick/onedark.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'maximbaz/lightline-ale'
-Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'justinmk/vim-sneak'
 Plug 'kana/vim-textobj-entire'
 Plug 'kana/vim-textobj-user'
@@ -46,7 +45,8 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'ncm2/ncm2-bufword'
 Plug 'ncm2/ncm2-path'
-Plug 'ncm2/ncm2-tern',  {'do': 'npm install'}
+Plug 'ncm2/ncm2-tern'
+Plug 'galooshi/vim-import-js'
 
 call plug#end()
 
@@ -81,6 +81,10 @@ let g:lightline = {
       \ 'colorscheme': 'onedark',
       \ }
 
+let g:ale_fix_on_save = 1
+let g:ale_fixers = {
+\   'javascript': ['eslint', 'prettier', 'importjs', 'remove_trailing_lines', 'trim_whitespace'],
+\}
 let g:lightline.component_expand = {
       \  'linter_checking': 'lightline#ale#checking',
       \  'linter_warnings': 'lightline#ale#warnings',
@@ -103,6 +107,7 @@ nnoremap <silent> gf :call LanguageClient_textDocument_formatting()<CR>
 nmap <leader>t :Files<CR>
 nmap <leader>b :Buffers<CR>
 map <leader>q :Bdelete<cr>
+nmap <leader>p :ALEFix<CR>
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
