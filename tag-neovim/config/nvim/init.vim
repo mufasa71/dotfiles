@@ -9,8 +9,8 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ 'do': 'bash install.sh',
     \ }
 Plug 'junegunn/fzf'
+Plug '/usr/bin/fzf'
 Plug 'junegunn/fzf.vim'
-Plug 'roxma/nvim-completion-manager'
 Plug 'leafgarland/typescript-vim'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-commentary'
@@ -41,8 +41,16 @@ Plug 'hail2u/vim-css3-syntax'
 Plug 'flowtype/vim-flow'
 Plug 'jparise/vim-graphql'
 Plug 'w0rp/ale'
+Plug 'ncm2/ncm2'
+Plug 'roxma/nvim-yarp'
+Plug 'ncm2/ncm2-bufword'
+Plug 'ncm2/ncm2-path'
+Plug 'ncm2/ncm2-tern',  {'do': 'npm install'}
 
 call plug#end()
+
+autocmd BufEnter * call ncm2#enable_for_buffer()
+set completeopt=noinsert,menuone,noselect
 
 imap <expr> <CR>  (pumvisible() ?  "\<c-y>\<Plug>(neosnippet_expand_or_jump)" : "\<CR>")
 imap <expr> <Plug>(expand_or_nl) (cm#completed_is_snippet() ? "\<C-U>":"\<CR>")
