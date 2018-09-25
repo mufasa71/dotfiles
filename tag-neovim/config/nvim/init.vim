@@ -135,3 +135,4 @@ set number
 
 set ai si wrap
 set backupcopy=yes
+set hidden
