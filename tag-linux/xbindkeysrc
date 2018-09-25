@@ -50,6 +50,9 @@
 "xterm"
   control + b:2
 
+"loginctl lock-session"
+  control+shift + l
+
 #"xterm -geom 50x20+20+20"
 #   Shift+Mod2+alt + s
 #
@@ -71,19 +74,19 @@
 
 # Play/Pause
 "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
-XF86AudioPlay
+  XF86AudioPlay
 
 # Next
 "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
-XF86AudioNext
+  XF86AudioNext
 
 # Previous
 "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"
-XF86AudioPrev
+  XF86AudioPrev
 
 # Stop
 "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Stop"
-XF86AudioStop
+  XF86AudioStop
 
 # Increase volume
 "pactl set-sink-volume @DEFAULT_SINK@ +1000"
