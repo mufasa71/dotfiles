@@ -12,9 +12,6 @@ case $cmd in
     systemctl suspend
     ;;
   lock)
-    slock
+    loginctl lock-session c1
     ;;
-  # killX)
-  #   killall X
-  #   ;;
 esac
