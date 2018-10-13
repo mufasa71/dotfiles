@@ -41,9 +41,10 @@ fi
 feh --bg-fill --sort mtime ~/Pictures/Wallpapers/*.jpg &
 xbindkeys
 dunst&
+sbxkb&
 slstatus&
 unclutter -root -noevents&
 
 exec dwm
 
-killall slstatus dunst unclutter 
+killall sbxkb slstatus dunst unclutter 

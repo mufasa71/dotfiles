@@ -45,8 +45,8 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'ncm2/ncm2-bufword'
 Plug 'ncm2/ncm2-path'
-Plug 'ncm2/ncm2-tern'
 Plug 'galooshi/vim-import-js'
+Plug 'posva/vim-vue'
 
 call plug#end()
 
@@ -81,6 +81,7 @@ let g:lightline = {
       \ 'colorscheme': 'onedark',
       \ }
 
+let g:ale_completion_enabled = 1
 let g:ale_fix_on_save = 1
 let g:ale_fixers = {
 \   'javascript': ['eslint', 'prettier', 'importjs', 'remove_trailing_lines', 'trim_whitespace'],
