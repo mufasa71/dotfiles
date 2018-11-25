@@ -38,24 +38,30 @@ Plug 'hail2u/vim-css3-syntax'
 Plug 'flowtype/vim-flow'
 Plug 'jparise/vim-graphql'
 Plug 'w0rp/ale'
-Plug 'ncm2/ncm2'
 Plug 'roxma/nvim-yarp'
-Plug 'ncm2/ncm2-ultisnips'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
-Plug 'ncm2/ncm2-bufword'
-Plug 'ncm2/ncm2-path'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'carlitux/deoplete-ternjs', { 'do': 'yarn global add tern' }
 Plug 'galooshi/vim-import-js'
 Plug 'posva/vim-vue'
+Plug 'tpope/vim-rhubarb'
+
+let g:deoplete#enable_at_startup = 1
 
 call plug#end()
 
-autocmd BufEnter * call ncm2#enable_for_buffer()
+" Plug 'ncm2/ncm2'
+" Plug 'ncm2/ncm2-ultisnips'
+" Plug 'ncm2/ncm2-bufword'
+" Plug 'ncm2/ncm2-path'
+" autocmd BufEnter * call ncm2#enable_for_buffer()
+" inoremap <silent> <expr> <CR> ncm2_ultisnips#expand_or("\<CR>", 'n')
 set completeopt=noinsert,menuone,noselect
+set laststatus=2
 
-inoremap <silent> <expr> <CR> ncm2_ultisnips#expand_or("\<CR>", 'n')
 
-let g:UltiSnipsExpandTrigger = "<Plug>(ultisnips_expand)"
+" let g:UltiSnipsExpandTrigger = "<Plug>(ultisnips_expand)"
 let g:UltiSnipsJumpForwardTrigger = "<c-j>"
 let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
 let g:UltiSnipsRemoveSelectModeMappings = 0
@@ -78,29 +84,36 @@ let g:LanguageClient_serverCommands = {
 let g:LanguageClient_autoStart = 1
 
 let g:lightline = {
-      \ 'colorscheme': 'onedark',
-      \ }
-
-let g:ale_completion_enabled = 1
-let g:ale_fix_on_save = 1
-let g:ale_fixers = {
-\   'javascript': ['eslint', 'prettier', 'importjs', 'remove_trailing_lines', 'trim_whitespace'],
-\}
-let g:lightline.component_expand = {
+      \ 'active': {
+      \   'left': [[ 'mode', 'paste' ],
+      \            [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
+      \   'right':[[ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok' ],
+      \            ['lineinfo'], ['percent'], [ 'fileformat', 'fileencoding', 'filetype', 'charvaluehex' ],
+      \            ],
+      \ },
+      \ 'component_expand': {
       \  'linter_checking': 'lightline#ale#checking',
       \  'linter_warnings': 'lightline#ale#warnings',
       \  'linter_errors': 'lightline#ale#errors',
       \  'linter_ok': 'lightline#ale#ok',
-      \ }
-
-let g:lightline.component_type = {
+      \ },
+      \ 'component_type': {
       \     'linter_checking': 'left',
       \     'linter_warnings': 'warning',
       \     'linter_errors': 'error',
       \     'linter_ok': 'left',
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'fugitive#head'
+      \ },
       \ }
 
-let g:lightline.active = { 'right': [[ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok' ]] }
+let g:ale_completion_enabled = 1
+let g:ale_lint_on_enter = 0
+let g:ale_fix_on_save = 0
+let g:ale_fixers = {
+\   'javascript': ['eslint', 'prettier', 'importjs', 'remove_trailing_lines', 'trim_whitespace'],
+\}
 
 nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
 nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
