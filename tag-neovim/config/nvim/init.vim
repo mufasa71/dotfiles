@@ -113,6 +113,7 @@ let g:ale_linters = {
 let g:ale_fixers = {
 \   'javascript': ['eslint', 'prettier', 'remove_trailing_lines', 'trim_whitespace'],
 \   'typescript': ['eslint', 'prettier'],
+\   'reason': ['refmt'],
 \}
 
 nmap <leader>t :Files<CR>
