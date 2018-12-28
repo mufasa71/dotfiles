@@ -37,12 +37,12 @@ Plug 'honza/vim-snippets'
 Plug 'galooshi/vim-import-js'
 Plug 'tpope/vim-rhubarb'
 Plug 'posva/vim-vue'
-Plug 'roxma/nvim-yarp'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 call plug#end()
 
 let g:deoplete#enable_at_startup = 1
+
 let g:UltiSnipsExpandTrigger = "<Plug>(ultisnips_expand)"
 let g:UltiSnipsJumpForwardTrigger = "<c-j>"
 let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
