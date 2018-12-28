@@ -18,7 +18,7 @@ set nowritebackup
 set ruler                            " show line and column number of the cursor position
 set scrolloff=2                      " start scrolling (n) lines before window ends
 set expandtab                      
-set tabstop=4 shiftwidth=4           " softtabs, 2 spaces
+set tabstop=4 shiftwidth=2           " softtabs, 4 spaces
 set smarttab                         " be smart when using tabs
 set number                           " show line numbers
 set wildmode=list:longest,list:full  " will insert tab at beginning of line,
@@ -120,7 +120,7 @@ else
     let g:user_emmet_settings = webapi#json#decode(join(readfile(expand('~/.snippets.json')), "\n"))
     call minpac#add('mattn/emmet-vim')
     call minpac#add('chiel92/vim-autoformat')
-    " call minpac#add('pangloss/vim-javascript')
+    call minpac#add('pangloss/vim-javascript')
     call minpac#add('othree/yajs.vim')
     let g:used_javascript_libs = 'react'
     call minpac#add('othree/javascript-libraries-syntax.vim')
@@ -145,21 +145,10 @@ else
     
     """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
     " => ale
-    let g:ale_fixers = {
-                \   'javascript': ['prettier'],
-                \   'typescript': ['prettier'],
-                \}
-    let g:ale_fix_on_save = 1
-    let g:ale_completion_enabled = 1
+    let g:ale_fixers = ['prettier', 'eslint']
     call minpac#add('w0rp/ale')
 
     """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-    """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-    " => vim-flow
-    call minpac#add('flowtype/vim-flow')
-    let g:flow#enable = 0 " disable check on save
-
     packloadall
     colorscheme onedark
 
