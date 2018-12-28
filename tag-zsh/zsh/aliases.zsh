@@ -244,3 +244,4 @@ alias weather="curl wttr.in/Tashkent"
 alias mellowplayer="lxc exec arch-gui -- sudo -ib -u archie MellowPlayer"
 
 alias mutt=neomutt
+alias cat=bat
