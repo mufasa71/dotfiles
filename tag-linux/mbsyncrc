@@ -6,7 +6,7 @@ SyncState *
 IMAPAccount gmail
 Host imap.gmail.com
 User mukimov@gmail.com
-PassCmd +"cat ~/.mailpass"
+PassCmd +"pass show Email/mukimov@gmail.com"
 SSLType IMAPS
 CertificateFile /etc/ssl/certs/ca-certificates.crt
 
@@ -29,6 +29,10 @@ Channel gmail-drafts
 Master :gmail-remote:[Gmail]/Drafts
 Slave :gmail-local:drafts
 
+Channel gmail-github
+Master :gmail-remote:Github
+Slave :gmail-local:github
+
 Channel gmail-sent
 Master ":gmail-remote:[Gmail]/Sent Mail"
 Slave :gmail-local:sent
@@ -48,3 +52,46 @@ Channel gmail-drafts
 Channel gmail-sent
 Channel gmail-spam
 Channel gmail-trash
+Channel gmail-github
+
+IMAPAccount auto1
+Host imap.gmail.com
+User shukhrat.mukimov@auto1.com
+PassCmd +"pass show a1/shukhrat.mukimov@auto1.com"
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+IMAPStore auto1-remote
+Account auto1
+
+MaildirStore auto1-local
+Path ~/Mail/auto1/
+Inbox ~/Mail/auto1/INBOX
+
+Channel auto1-inbox
+Master :auto1-remote:INBOX
+Slave :auto1-local:INBOX
+
+# Channel auto1-archive
+# Master ":auto1-remote:[Gmail]/All Mail"
+# Slave :auto1-local:archive
+
+Channel auto1-drafts
+Master :auto1-remote:[Gmail]/Drafts
+Slave :auto1-local:drafts
+
+Channel auto1-spam
+Master :auto1-remote:[Gmail]/Spam
+Slave :auto1-local:spam
+
+Channel auto1-trash
+Master :auto1-remote:[Gmail]/Trash
+Slave :auto1-local:trash
+
+Group auto1
+Channel auto1-inbox
+# Channel gmail-archive
+Channel auto1-drafts
+Channel auto1-sent
+Channel auto1-spam
+Channel auto1-trash

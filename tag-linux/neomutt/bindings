@@ -1,0 +1,16 @@
+# vim: ft=muttrc
+bind index i noop
+bind pager q toggle-quoted
+bind pager / search
+bind pager j next-line
+bind pager k previous-line
+bind pager G bottom
+bind index,pager \# noop
+bind index,pager \& noop
+bind editor <Tab> complete-query
+
+bind index,pager \CP sidebar-prev       # Ctrl-Shift-P - Previous Mailbox
+bind index,pager \CN sidebar-next       # Ctrl-Shift-N - Next Mailbox
+bind index,pager \CO sidebar-open       # Ctrl-Shift-O - Open Highlighted Mailbox
+
+bind index,pager B sidebar-toggle-visible
