@@ -143,3 +143,10 @@ unset config_file
 
 # OPAM configuration
 . ~/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[[ -f /home/***REMOVED***/.config/yarn/global/node_modules/tabtab/.completions/serverless.zsh ]] && . /home/***REMOVED***/.config/yarn/global/node_modules/tabtab/.completions/serverless.zsh
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[[ -f /home/***REMOVED***/.config/yarn/global/node_modules/tabtab/.completions/sls.zsh ]] && . /home/***REMOVED***/.config/yarn/global/node_modules/tabtab/.completions/sls.zsh
