@@ -6,7 +6,7 @@ SyncState *
 IMAPAccount gmail
 Host imap.gmail.com
 User ***REMOVED***
-PassCmd +"cat ~/.mailpass"
+PassCmd +"pass show Email/***REMOVED***"
 SSLType IMAPS
 CertificateFile /etc/ssl/certs/ca-certificates.crt
 
@@ -29,6 +29,10 @@ Channel gmail-drafts
 Master :gmail-remote:[Gmail]/Drafts
 Slave :gmail-local:drafts
 
+Channel gmail-github
+Master :gmail-remote:Github
+Slave :gmail-local:github
+
 Channel gmail-sent
 Master ":gmail-remote:[Gmail]/Sent Mail"
 Slave :gmail-local:sent
@@ -48,3 +52,46 @@ Channel gmail-drafts
 Channel gmail-sent
 Channel gmail-spam
 Channel gmail-trash
+Channel gmail-github
+
+IMAPAccount ***REMOVED***
+Host imap.gmail.com
+User ***REMOVED***
+PassCmd +"pass show a1/***REMOVED***"
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+IMAPStore ***REMOVED***-remote
+Account ***REMOVED***
+
+MaildirStore ***REMOVED***-local
+Path ~/Mail/***REMOVED***/
+Inbox ~/Mail/***REMOVED***/INBOX
+
+Channel ***REMOVED***-inbox
+Master :***REMOVED***-remote:INBOX
+Slave :***REMOVED***-local:INBOX
+
+# Channel ***REMOVED***-archive
+# Master ":***REMOVED***-remote:[Gmail]/All Mail"
+# Slave :***REMOVED***-local:archive
+
+Channel ***REMOVED***-drafts
+Master :***REMOVED***-remote:[Gmail]/Drafts
+Slave :***REMOVED***-local:drafts
+
+Channel ***REMOVED***-spam
+Master :***REMOVED***-remote:[Gmail]/Spam
+Slave :***REMOVED***-local:spam
+
+Channel ***REMOVED***-trash
+Master :***REMOVED***-remote:[Gmail]/Trash
+Slave :***REMOVED***-local:trash
+
+Group ***REMOVED***
+Channel ***REMOVED***-inbox
+# Channel gmail-archive
+Channel ***REMOVED***-drafts
+Channel ***REMOVED***-sent
+Channel ***REMOVED***-spam
+Channel ***REMOVED***-trash
