@@ -36,16 +36,13 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'galooshi/vim-import-js'
 Plug 'tpope/vim-rhubarb'
-
+Plug 'posva/vim-vue'
 Plug 'roxma/nvim-yarp'
-  Plug 'ncm2/ncm2' | Plug 'ncm2/ncm2-ultisnips' | Plug 'ncm2/ncm2-bufword' | Plug 'ncm2/ncm2-path'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 call plug#end()
 
-autocmd BufEnter * call ncm2#enable_for_buffer()
-inoremap <silent> <expr> <CR> ncm2_ultisnips#expand_or("\<CR>", 'n')
-set completeopt=noinsert,menuone,noselect
-
+let g:deoplete#enable_at_startup = 1
 let g:UltiSnipsExpandTrigger = "<Plug>(ultisnips_expand)"
 let g:UltiSnipsJumpForwardTrigger = "<c-j>"
 let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
@@ -63,8 +60,8 @@ endif
 " Required for operations modifying multiple buffers like rename.
 set hidden
 let g:LanguageClient_serverCommands = {
-      \ 'javascript': ['flow-language-server', '--stdio'],
-      \ 'javascript.jsx': ['flow-language-server', '--stdio'],
+      \ 'javascript': ['npx', 'flow', 'lsp'],
+      \ 'javascript.jsx': ['npx', 'flow', 'lsp'],
       \ 'typescript': ['javascript-typescript-stdio'],
       \ 'reason': ['ocaml-language-server', '--stdio'],
       \ 'ocaml': ['ocaml-language-server', '--stdio'],
@@ -72,11 +69,8 @@ let g:LanguageClient_serverCommands = {
       \ }
 
 let g:LanguageClient_rootMarkers = {
-      \ 'javascript': ['lerna.json', 'package.json']
+      \ 'javascript': ['.flowconfig']
       \ }
-
-let g:LanguageClient_settingsPath = '/home/eagle/.config/nvim/settings.json'
-let g:LanguageClient_completionPreferTextEdit = 1
 
 nnoremap <F5> :call LanguageClient_contextMenu()<CR>
 """"""""""""""""
@@ -95,7 +89,7 @@ let g:lightline = {
       \  'linter_errors': 'lightline#ale#errors',
       \  'linter_ok': 'lightline#ale#ok',
       \ },
-\ 'component_type': {
+      \ 'component_type': {
       \     'linter_checking': 'left',
       \     'linter_warnings': 'warning',
       \     'linter_errors': 'error',
@@ -108,13 +102,21 @@ let g:lightline = {
 
 let g:ale_sign_column_always = 1
 let g:ale_linters = {
-\    'javascript': ['eslint', 'flow-language-server']
+\    'javascript': ['prettier', 'eslint', 'flow'],
+\    'vue': ['eslint', 'vls'],
 \}
 let g:ale_fixers = {
-\   'javascript': ['eslint', 'prettier', 'remove_trailing_lines', 'trim_whitespace'],
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'javascript': ['eslint', 'prettier'],
+\   'vue': ['eslint', 'prettier'],
 \   'typescript': ['eslint', 'prettier'],
 \   'reason': ['refmt'],
 \}
+let g:ale_linter_aliases = {'vue': ['vue', 'javascript']}
+let g:ale_set_loclist = 1
+
+highlight clear ALEErrorSign " otherwise uses error bg color (typically red)
+highlight clear ALEWarningSign " otherwise uses error bg color (typically red)
 
 nmap <leader>t :Files<CR>
 nmap <leader>b :Buffers<CR>
