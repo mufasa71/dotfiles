@@ -14,3 +14,7 @@ bind index,pager \CN sidebar-next       # Ctrl-Shift-N - Next Mailbox
 bind index,pager \CO sidebar-open       # Ctrl-Shift-O - Open Highlighted Mailbox
 
 bind index,pager B sidebar-toggle-visible
+bind index,pager X change-vfolder
+macro index A \
+    "<tag-pattern>~N<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>" \
+    "mark all new as read"
