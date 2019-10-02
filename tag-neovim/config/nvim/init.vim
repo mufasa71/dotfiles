@@ -43,7 +43,7 @@ call plug#end()
 
 let g:deoplete#enable_at_startup = 1
 
-let g:UltiSnipsExpandTrigger = "<Plug>(ultisnips_expand)"
+let g:UltiSnipsExpandTrigger = "<tab>"
 let g:UltiSnipsJumpForwardTrigger = "<c-j>"
 let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
 let g:UltiSnipsRemoveSelectModeMappings = 0
