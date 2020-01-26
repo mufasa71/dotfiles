@@ -52,9 +52,7 @@ let g:UltiSnipsUsePythonVersion = 3
 autocmd FileType javascript.jsx UltiSnipsAddFiletypes javascript-es6-react
 let g:vim_jsx_pretty_colorful_config = 1
 
-if has('conceal')
-  set conceallevel=2 concealcursor=niv
-endif
+set conceallevel=2 concealcursor=niv
 
 """"""""""""""" LSP
 " Required for operations modifying multiple buffers like rename.
