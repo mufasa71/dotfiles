@@ -34,5 +34,6 @@
 
 [github]
   user = ***REMOVED***
+
 [http "https://gopkg.in"]
-	followRedirects = true
+  followRedirects = true
