@@ -78,7 +78,7 @@ nnoremap <F5> :call LanguageClient_contextMenu()<CR>
 let g:lightline = {
       \ 'active': {
       \   'left': [[ 'mode', 'paste' ],
-      \            [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
+      \            [ 'gitbranch', 'readonly', 'filename', 'relativepath', 'modified' ] ],
       \   'right':[[ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok' ],
       \            ['lineinfo'], ['percent'], [ 'fileformat', 'fileencoding', 'filetype', 'charvaluehex' ],
       \            ],
