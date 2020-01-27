@@ -245,3 +245,4 @@ alias mellowplayer="lxc exec arch-gui -- sudo -ib -u archie MellowPlayer"
 
 alias mutt=neomutt
 alias cat=bat
+alias tp=trash-put
