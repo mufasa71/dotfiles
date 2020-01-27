@@ -38,6 +38,7 @@ Plug 'galooshi/vim-import-js'
 Plug 'tpope/vim-rhubarb'
 Plug 'posva/vim-vue'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'scrooloose/nerdtree'
 
 call plug#end()
 
