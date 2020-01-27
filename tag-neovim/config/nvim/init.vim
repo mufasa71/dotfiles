@@ -62,6 +62,7 @@ let g:LanguageClient_serverCommands = {
       \ 'javascript': ['npx', 'flow', 'lsp'],
       \ 'javascript.jsx': ['npx', 'flow', 'lsp'],
       \ 'typescript': ['javascript-typescript-stdio'],
+      \ 'typescriptreact': ['javascript-typescript-stdio'],
       \ 'reason': ['ocaml-language-server', '--stdio'],
       \ 'ocaml': ['ocaml-language-server', '--stdio'],
       \ 'go': ['go-langserver']
@@ -109,6 +110,7 @@ let g:ale_fixers = {
 \   'javascript': ['eslint', 'importjs', 'prettier'],
 \   'vue': ['eslint', 'prettier'],
 \   'typescript': ['eslint', 'prettier'],
+\   'typescriptreact': ['eslint', 'prettier'],
 \   'reason': ['refmt'],
 \}
 let g:ale_linter_aliases = {'vue': ['vue', 'javascript']}
