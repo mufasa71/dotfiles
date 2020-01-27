@@ -37,6 +37,7 @@ Plug 'honza/vim-snippets'
 Plug 'galooshi/vim-import-js'
 Plug 'tpope/vim-rhubarb'
 Plug 'posva/vim-vue'
+Plug 'acro5piano/import-js-from-history'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'scrooloose/nerdtree'
 
