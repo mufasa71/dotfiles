@@ -1,13 +1,9 @@
+set nocompatible
+filetype off
+
 let mapleader=","                    
 
 call plug#begin('~/.local/share/nvim/plugged')
-Plug 'reasonml-editor/vim-reason-plus'
-
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
-Plug 'leafgarland/typescript-vim'
 
 Plug '/usr/bin/fzf' | Plug 'junegunn/fzf' | Plug 'junegunn/fzf.vim'
 
@@ -17,33 +13,31 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-repeat'
+ Plug 'tpope/vim-rhubarb'
 
 Plug 'airblade/vim-gitgutter'
-Plug 'joshdick/onedark.vim'
-Plug 'itchyny/lightline.vim' | Plug 'maximbaz/lightline-ale'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'mhartington/oceanic-next'
+Plug 'ryanoasis/vim-devicons'
+
 Plug 'justinmk/vim-sneak'
 Plug 'kana/vim-textobj-entire' | Plug 'kana/vim-textobj-user'
-Plug 'pangloss/vim-javascript' | Plug 'MaxMEllon/vim-jsx-pretty'
+Plug 'othree/yajs.vim' | Plug 'HerringtonDarkholme/yats.vim' | Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'moll/vim-bbye'
 Plug 'google/vim-searchindex'
 Plug 'tommcdo/vim-exchange'
 Plug 'chilicuil/vim-sprunge'
 Plug 'lifepillar/vim-cheat40'
-Plug 'styled-components/vim-styled-components', { 'branch': 'main' } | Plug 'hail2u/vim-css3-syntax'
-Plug 'jparise/vim-graphql'
-Plug 'w0rp/ale'
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
-Plug 'galooshi/vim-import-js'
-Plug 'tpope/vim-rhubarb'
-Plug 'posva/vim-vue'
-Plug 'acro5piano/import-js-from-history'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'scrooloose/nerdtree'
+" Plug 'styled-components/vim-styled-components', { 'branch': 'main' } | Plug 'hail2u/vim-css3-syntax'
+" Plug 'jparise/vim-graphql'
+" Plug 'galooshi/vim-import-js'
+Plug 'brooth/far.vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 call plug#end()
 
-let g:deoplete#enable_at_startup = 1
+filetype plugin indent on
 
 let g:UltiSnipsExpandTrigger = "<tab>"
 let g:UltiSnipsJumpForwardTrigger = "<c-j>"
@@ -51,97 +45,64 @@ let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
 let g:UltiSnipsRemoveSelectModeMappings = 0
 let g:UltiSnipsUsePythonVersion = 3
 
-autocmd FileType javascript.jsx UltiSnipsAddFiletypes javascript-es6-react
-let g:vim_jsx_pretty_colorful_config = 1
-
 set conceallevel=2 concealcursor=niv
-
-""""""""""""""" LSP
-" Required for operations modifying multiple buffers like rename.
 set hidden
-let g:LanguageClient_serverCommands = {
-      \ 'javascript': ['npx', 'flow', 'lsp'],
-      \ 'javascript.jsx': ['npx', 'flow', 'lsp'],
-      \ 'typescript': ['javascript-typescript-stdio'],
-      \ 'typescriptreact': ['javascript-typescript-stdio'],
-      \ 'reason': ['ocaml-language-server', '--stdio'],
-      \ 'ocaml': ['ocaml-language-server', '--stdio'],
-      \ 'go': ['go-langserver']
-      \ }
 
-let g:LanguageClient_rootMarkers = {
-      \ 'javascript': ['.flowconfig']
-      \ }
-
-nnoremap <F5> :call LanguageClient_contextMenu()<CR>
-""""""""""""""""
-
-let g:lightline = {
-      \ 'active': {
-      \   'left': [[ 'mode', 'paste' ],
-      \            [ 'gitbranch', 'readonly', 'filename', 'relativepath', 'modified' ] ],
-      \   'right':[[ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok' ],
-      \            ['lineinfo'], ['percent'], [ 'fileformat', 'fileencoding', 'filetype', 'charvaluehex' ],
-      \            ],
-      \ },
-      \ 'component_expand': {
-      \  'linter_checking': 'lightline#ale#checking',
-      \  'linter_warnings': 'lightline#ale#warnings',
-      \  'linter_errors': 'lightline#ale#errors',
-      \  'linter_ok': 'lightline#ale#ok',
-      \ },
-      \ 'component_type': {
-      \     'linter_checking': 'left',
-      \     'linter_warnings': 'warning',
-      \     'linter_errors': 'error',
-      \     'linter_ok': 'left',
-      \ },
-      \ 'component_function': {
-      \   'gitbranch': 'fugitive#head'
-      \ },
-      \ }
-
-let g:ale_sign_column_always = 1
-let g:ale_linters = {
-\    'javascript': ['prettier', 'eslint', 'flow'],
-\    'vue': ['eslint', 'vls'],
-\}
-let g:ale_fixers = {
-\   '*': ['remove_trailing_lines', 'trim_whitespace'],
-\   'javascript': ['eslint', 'importjs', 'prettier'],
-\   'vue': ['eslint', 'prettier'],
-\   'typescript': ['eslint', 'prettier'],
-\   'typescriptreact': ['eslint', 'prettier'],
-\   'reason': ['refmt'],
-\}
-let g:ale_linter_aliases = {'vue': ['vue', 'javascript']}
-let g:ale_set_loclist = 1
-
-highlight clear ALEErrorSign " otherwise uses error bg color (typically red)
-highlight clear ALEWarningSign " otherwise uses error bg color (typically red)
-
+let g:airline_theme='oceanicnext'
 nmap <leader>t :Files<CR>
 nmap <leader>b :Buffers<CR>
 map <leader>q :Bdelete<cr>
-nmap <leader>p :ALEFix<CR>
-nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-nmap <silent> <C-j> <Plug>(ale_next_wrap)
+vmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+vmap <leader>T  <Plug>(coc-codeaction)
+nmap <leader>T  <Plug>(coc-codeaction)
 
-let g:jsx_ext_required = 0
-let g:javascript_conceal_null = "ø"
-let g:javascript_conceal_arrow_function = "⇒"
-let g:sneak#label = 1
-
-colorscheme onedark
-set noshowmode
-
+let g:oceanic_next_terminal_bold = 1
+let g:oceanic_next_terminal_italic = 1
+colorscheme OceanicNext
 set expandtab
 set smarttab
 set shiftwidth=2
 set tabstop=4
-set lbr
-set tw=500
+set linebreak
+set textwidth=500
 set number
+set autoindent ai wrap
+set encoding=UTF-8
+set nobackup
+set nowritebackup
+set updatetime=300
+set shortmess+=c
+set signcolumn=yes
 
-set ai si wrap
-set backupcopy=yes
+if (has("termguicolors"))
+  set termguicolors
+endif
+
+let g:coc_global_extensions = ['coc-tslint-plugin', 'coc-tsserver', 'coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-yank', 'coc-prettier']
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
+command! -nargs=0 ESlint :CocCommand eslint.executeAutofix
