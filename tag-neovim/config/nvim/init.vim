@@ -29,11 +29,11 @@ Plug 'google/vim-searchindex'
 Plug 'tommcdo/vim-exchange'
 Plug 'chilicuil/vim-sprunge'
 Plug 'lifepillar/vim-cheat40'
-" Plug 'styled-components/vim-styled-components', { 'branch': 'main' } | Plug 'hail2u/vim-css3-syntax'
-" Plug 'jparise/vim-graphql'
-" Plug 'galooshi/vim-import-js'
+Plug 'styled-components/vim-styled-components', { 'branch': 'main' } | Plug 'hail2u/vim-css3-syntax'
+Plug 'jparise/vim-graphql'
 Plug 'brooth/far.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'honza/vim-snippets'
 
 call plug#end()
 
@@ -47,6 +47,10 @@ let g:UltiSnipsUsePythonVersion = 3
 
 set conceallevel=2 concealcursor=niv
 set hidden
+set nobackup
+set nowritebackup
+" Better display for messages
+set cmdheight=2
 
 let g:airline_theme='oceanicnext'
 nmap <leader>t :Files<CR>
@@ -79,7 +83,19 @@ if (has("termguicolors"))
   set termguicolors
 endif
 
-let g:coc_global_extensions = ['coc-tslint-plugin', 'coc-tsserver', 'coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-yank', 'coc-prettier']
+let g:coc_global_extensions = [
+  \ 'coc-tslint-plugin',
+  \ 'coc-tsserver',
+  \ 'coc-emmet',
+  \ 'coc-snippets',
+  \ 'coc-css',
+  \ 'coc-html',
+  \ 'coc-json',
+  \ 'coc-yank',
+  \ 'coc-prettier',
+  \ 'coc-styled-components',
+  \ 'coc-flow']
+
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
@@ -90,12 +106,6 @@ function! s:show_documentation()
   endif
 endfunction
 
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
 function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
@@ -104,5 +114,30 @@ endfunction
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
 
+" Highlight symbol under cursor on CursorHold
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+nmap <leader>rn <Plug>(coc-rename)
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+nmap <leader>ac  <Plug>(coc-codeaction)
+nmap <silent> <TAB> <Plug>(coc-range-select)
+xmap <silent> <TAB> <Plug>(coc-range-select)
+
+nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
+
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
+" Coc only does snippet and additional edit on confirm.
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 command! -nargs=0 ESlint :CocCommand eslint.executeAutofix
+command! -nargs=0 Format :call CocAction('format')
+command! -nargs=? Fold :call CocAction('fold', <f-args>)
+command! -nargs=0 OR :call CocAction('runCommand', 'editor.action.organizeImport')
