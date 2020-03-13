@@ -28,8 +28,8 @@ if [[ -z "$ZSH_CUSTOM" ]]; then
     ZSH_CUSTOM="${ZDOTDIR:-$HOME}/.zsh/custom"
 fi
 
-if [[ -d "${ZDOTDIR:-$HOME}/.nvm" ]]; then
-	source "${ZDOTDIR:-$HOME}/.nvm/nvm.sh"
+if [[ -d "${ZDOTDIR:-$HOME}/node" ]]; then
+	export NODE_VERSIONS="${ZDOTDIR:-$HOME}/node"
 fi
 
 if [[ -d "${ZDOTDIR:-$HOME}/go" ]]; then
