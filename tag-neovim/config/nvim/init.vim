@@ -29,11 +29,12 @@ Plug 'google/vim-searchindex'
 Plug 'tommcdo/vim-exchange'
 Plug 'chilicuil/vim-sprunge'
 Plug 'lifepillar/vim-cheat40'
-Plug 'styled-components/vim-styled-components', { 'branch': 'main' } | Plug 'hail2u/vim-css3-syntax'
+Plug 'hail2u/vim-css3-syntax'
 Plug 'jparise/vim-graphql'
 Plug 'brooth/far.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'honza/vim-snippets'
+Plug 'burner/vim-svelte'
 
 call plug#end()
 
