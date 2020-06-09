@@ -4,7 +4,7 @@ unset confirmappend
   set delete
   set editor = "vim +:silent+?^$"
   set fast_reply
-  set folder = ~/Mail
+  set folder = ~/.mail
   set forward_format = "Fwd: %s"
   set forward_quote
   set header_cache = ~/.cache/mutt/headers
@@ -28,7 +28,7 @@ unset record
   set signature = $HOME/.mutt/signature
   set sort = threads
   set sort_aux = reverse-last-date-received
-  set spoolfile = "+gmail/INBOX"
+  set spoolfile = "+gmail/Inbox"
   set status_format = "-%r- %f%?t? Tagged:%t?%?p? Drafts:%p? -%>-"
   set strict_threads
   set thorough_search
@@ -46,10 +46,11 @@ unset record
 	set sidebar_delim_chars="/"             # Delete everything up to the last / character
 	set sidebar_folder_indent               # Indent folders whose names we've shortened
 	set sidebar_indent_string="  "          # Indent with two spaces
-	mailboxes =gmail
-	mailboxes =gmail/INBOX =gmail/github
-	mailboxes =***REMOVED***
-	mailboxes =***REMOVED***/INBOX
+    named-mailboxes "Personal" =gmail/Inbox
+    named-mailboxes "Github" =gmail/github
+    named-mailboxes "Auto1" =***REMOVED***/Inbox
+    named-mailboxes "Auto1-Technical" =***REMOVED***/technical
+    named-mailboxes "Auto1-Github" =***REMOVED***/github
 
 auto_view text/html
 alternative_order text/plain text/enriched text/html
