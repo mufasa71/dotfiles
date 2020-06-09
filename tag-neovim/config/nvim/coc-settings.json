@@ -1,4 +1,6 @@
 {
+  "coc.preferences.formatOnSaveFiletypes": ["javascript", "css", "typescript", "typescriptreact"],
+  "eslint.autoFixOnSave": true,
   "javascript.validate.enable": false,
   "tsserver.enableJavascript": false
 }

@@ -35,6 +35,7 @@ Plug 'brooth/far.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'honza/vim-snippets'
 Plug 'burner/vim-svelte'
+Plug 'preservim/nerdtree'
 
 call plug#end()
 
@@ -142,3 +143,5 @@ command! -nargs=0 ESlint :CocCommand eslint.executeAutofix
 command! -nargs=0 Format :call CocAction('format')
 command! -nargs=? Fold :call CocAction('fold', <f-args>)
 command! -nargs=0 OR :call CocAction('runCommand', 'editor.action.organizeImport')
+command! -nargs=0 Tsc :call CocAction('runCommand', 'tsserver.watchBuild')
+
