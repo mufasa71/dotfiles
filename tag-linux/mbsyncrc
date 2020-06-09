@@ -6,7 +6,7 @@ SyncState *
 IMAPAccount gmail
 Host imap.gmail.com
 User ***REMOVED***
-PassCmd +"pass show Email/***REMOVED***"
+Pass
 SSLType IMAPS
 CertificateFile /etc/ssl/certs/ca-certificates.crt
 
@@ -14,50 +14,32 @@ IMAPStore gmail-remote
 Account gmail
 
 MaildirStore gmail-local
-Path ~/Mail/gmail/
-Inbox ~/Mail/gmail/INBOX
+SubFolders Verbatim
+Path ~/.mail/gmail/
+Inbox ~/.mail/gmail/Inbox
 
-Channel gmail-inbox
-Master :gmail-remote:INBOX
-Slave :gmail-local:INBOX
+Channel sync-googlemail-default
+Master :gmail-remote:
+Slave :gmail-local:
+Patterns "INBOX"
 
-# Channel gmail-archive
-# Master ":gmail-remote:[Gmail]/All Mail"
-# Slave :gmail-local:archive
-
-Channel gmail-drafts
-Master :gmail-remote:[Gmail]/Drafts
-Slave :gmail-local:drafts
-
-Channel gmail-github
+Channel sync-googlemail-github
 Master :gmail-remote:Github
 Slave :gmail-local:github
+Create Slave
 
-Channel gmail-sent
-Master ":gmail-remote:[Gmail]/Sent Mail"
-Slave :gmail-local:sent
+Group googlemail
+Channel sync-googlemail-default
+Channel sync-googlemail-github
 
-Channel gmail-spam
-Master :gmail-remote:[Gmail]/Spam
-Slave :gmail-local:spam
-
-Channel gmail-trash
-Master :gmail-remote:[Gmail]/Trash
-Slave :gmail-local:trash
-
-Group gmail
-Channel gmail-inbox
-# Channel gmail-archive
-Channel gmail-drafts
-Channel gmail-sent
-Channel gmail-spam
-Channel gmail-trash
-Channel gmail-github
+Create Slave
+Expunge Both
+SyncState *
 
 IMAPAccount ***REMOVED***
 Host imap.gmail.com
 User ***REMOVED***
-PassCmd +"pass show a1/***REMOVED***"
+Pass
 SSLType IMAPS
 CertificateFile /etc/ssl/certs/ca-certificates.crt
 
@@ -65,33 +47,25 @@ IMAPStore ***REMOVED***-remote
 Account ***REMOVED***
 
 MaildirStore ***REMOVED***-local
-Path ~/Mail/***REMOVED***/
-Inbox ~/Mail/***REMOVED***/INBOX
+Path ~/.mail/***REMOVED***/
+Inbox ~/.mail/***REMOVED***/Inbox
 
 Channel ***REMOVED***-inbox
-Master :***REMOVED***-remote:INBOX
-Slave :***REMOVED***-local:INBOX
+Master :***REMOVED***-remote:
+Slave :***REMOVED***-local:
+Patterns "INBOX"
 
-# Channel ***REMOVED***-archive
-# Master ":***REMOVED***-remote:[Gmail]/All Mail"
-# Slave :***REMOVED***-local:archive
+Channel ***REMOVED***-technical
+Master :***REMOVED***-remote:Technical
+Slave :***REMOVED***-local:technical
+Create Slave
 
-Channel ***REMOVED***-drafts
-Master :***REMOVED***-remote:[Gmail]/Drafts
-Slave :***REMOVED***-local:drafts
-
-Channel ***REMOVED***-spam
-Master :***REMOVED***-remote:[Gmail]/Spam
-Slave :***REMOVED***-local:spam
-
-Channel ***REMOVED***-trash
-Master :***REMOVED***-remote:[Gmail]/Trash
-Slave :***REMOVED***-local:trash
+Channel ***REMOVED***-github
+Master :***REMOVED***-remote:Github
+Slave :***REMOVED***-local:github
+Create Slave
 
 Group ***REMOVED***
 Channel ***REMOVED***-inbox
-# Channel gmail-archive
-Channel ***REMOVED***-drafts
-Channel ***REMOVED***-sent
-Channel ***REMOVED***-spam
-Channel ***REMOVED***-trash
+Channel ***REMOVED***-technical
+Channel ***REMOVED***-github
