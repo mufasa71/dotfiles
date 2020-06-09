@@ -43,6 +43,7 @@ xbindkeys
 dunst&
 sbxkb&
 slstatus&
+xwrits t=50 b=10&
 unclutter -root -noevents&
 
 exec dwm
