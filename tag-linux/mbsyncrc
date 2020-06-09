@@ -6,7 +6,7 @@ SyncState *
 IMAPAccount gmail
 Host imap.gmail.com
 User mukimov@gmail.com
-PassCmd +"pass show Email/mukimov@gmail.com"
+Pass
 SSLType IMAPS
 CertificateFile /etc/ssl/certs/ca-certificates.crt
 
@@ -14,50 +14,32 @@ IMAPStore gmail-remote
 Account gmail
 
 MaildirStore gmail-local
-Path ~/Mail/gmail/
-Inbox ~/Mail/gmail/INBOX
+SubFolders Verbatim
+Path ~/.mail/gmail/
+Inbox ~/.mail/gmail/Inbox
 
-Channel gmail-inbox
-Master :gmail-remote:INBOX
-Slave :gmail-local:INBOX
+Channel sync-googlemail-default
+Master :gmail-remote:
+Slave :gmail-local:
+Patterns "INBOX"
 
-# Channel gmail-archive
-# Master ":gmail-remote:[Gmail]/All Mail"
-# Slave :gmail-local:archive
-
-Channel gmail-drafts
-Master :gmail-remote:[Gmail]/Drafts
-Slave :gmail-local:drafts
-
-Channel gmail-github
+Channel sync-googlemail-github
 Master :gmail-remote:Github
 Slave :gmail-local:github
+Create Slave
 
-Channel gmail-sent
-Master ":gmail-remote:[Gmail]/Sent Mail"
-Slave :gmail-local:sent
+Group googlemail
+Channel sync-googlemail-default
+Channel sync-googlemail-github
 
-Channel gmail-spam
-Master :gmail-remote:[Gmail]/Spam
-Slave :gmail-local:spam
-
-Channel gmail-trash
-Master :gmail-remote:[Gmail]/Trash
-Slave :gmail-local:trash
-
-Group gmail
-Channel gmail-inbox
-# Channel gmail-archive
-Channel gmail-drafts
-Channel gmail-sent
-Channel gmail-spam
-Channel gmail-trash
-Channel gmail-github
+Create Slave
+Expunge Both
+SyncState *
 
 IMAPAccount auto1
 Host imap.gmail.com
 User shukhrat.mukimov@auto1.com
-PassCmd +"pass show a1/shukhrat.mukimov@auto1.com"
+Pass
 SSLType IMAPS
 CertificateFile /etc/ssl/certs/ca-certificates.crt
 
@@ -65,33 +47,25 @@ IMAPStore auto1-remote
 Account auto1
 
 MaildirStore auto1-local
-Path ~/Mail/auto1/
-Inbox ~/Mail/auto1/INBOX
+Path ~/.mail/auto1/
+Inbox ~/.mail/auto1/Inbox
 
 Channel auto1-inbox
-Master :auto1-remote:INBOX
-Slave :auto1-local:INBOX
+Master :auto1-remote:
+Slave :auto1-local:
+Patterns "INBOX"
 
-# Channel auto1-archive
-# Master ":auto1-remote:[Gmail]/All Mail"
-# Slave :auto1-local:archive
+Channel auto1-technical
+Master :auto1-remote:Technical
+Slave :auto1-local:technical
+Create Slave
 
-Channel auto1-drafts
-Master :auto1-remote:[Gmail]/Drafts
-Slave :auto1-local:drafts
-
-Channel auto1-spam
-Master :auto1-remote:[Gmail]/Spam
-Slave :auto1-local:spam
-
-Channel auto1-trash
-Master :auto1-remote:[Gmail]/Trash
-Slave :auto1-local:trash
+Channel auto1-github
+Master :auto1-remote:Github
+Slave :auto1-local:github
+Create Slave
 
 Group auto1
 Channel auto1-inbox
-# Channel gmail-archive
-Channel auto1-drafts
-Channel auto1-sent
-Channel auto1-spam
-Channel auto1-trash
+Channel auto1-technical
+Channel auto1-github
