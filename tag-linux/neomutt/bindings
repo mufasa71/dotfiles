@@ -4,10 +4,15 @@ bind pager q toggle-quoted
 bind pager / search
 bind pager j next-line
 bind pager k previous-line
+bind index,pager g noop
+bind pager g top
 bind pager G bottom
+bind attach,index g first-entry
+bind attach,index G last-entry
 bind index,pager \# noop
 bind index,pager \& noop
 bind editor <Tab> complete-query
+bind index v next-unread-mailbox
 
 bind index,pager \CP sidebar-prev       # Ctrl-Shift-P - Previous Mailbox
 bind index,pager \CN sidebar-next       # Ctrl-Shift-N - Next Mailbox
