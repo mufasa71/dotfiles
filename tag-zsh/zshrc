@@ -61,7 +61,7 @@ precmd () {
 	print -Pn '\e];%n@%m %~\a'
 }
 
-zstyle ':vcs_info:*' enable hg git
+zstyle ':vcs_info:*' disable hg git
 
 zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:hg*:*' get-revision true
