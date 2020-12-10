@@ -13,7 +13,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-repeat'
- Plug 'tpope/vim-rhubarb'
+Plug 'tpope/vim-rhubarb'
 
 Plug 'airblade/vim-gitgutter'
 Plug 'vim-airline/vim-airline'
@@ -36,6 +36,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'honza/vim-snippets'
 Plug 'burner/vim-svelte'
 Plug 'preservim/nerdtree'
+Plug 'arcticicestudio/nord-vim'
+Plug 'neoclide/jsonc.vim'
 
 call plug#end()
 
@@ -54,7 +56,7 @@ set nowritebackup
 " Better display for messages
 set cmdheight=2
 
-let g:airline_theme='oceanicnext'
+" let g:airline_theme='oceanicnext'
 nmap <leader>t :Files<CR>
 nmap <leader>b :Buffers<CR>
 map <leader>q :Bdelete<cr>
@@ -63,9 +65,9 @@ nmap <leader>f  <Plug>(coc-format-selected)
 vmap <leader>T  <Plug>(coc-codeaction)
 nmap <leader>T  <Plug>(coc-codeaction)
 
-let g:oceanic_next_terminal_bold = 1
-let g:oceanic_next_terminal_italic = 1
-colorscheme OceanicNext
+" let g:oceanic_next_terminal_bold = 1
+" let g:oceanic_next_terminal_italic = 1
+colorscheme nord
 set expandtab
 set smarttab
 set shiftwidth=2
@@ -145,3 +147,4 @@ command! -nargs=? Fold :call CocAction('fold', <f-args>)
 command! -nargs=0 OR :call CocAction('runCommand', 'editor.action.organizeImport')
 command! -nargs=0 Tsc :call CocAction('runCommand', 'tsserver.watchBuild')
 
+autocmd BufRead,BufNewFile tsconfig.json set filetype=jsonc
