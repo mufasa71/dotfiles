@@ -1,5 +1,5 @@
 {
-  "coc.preferences.formatOnSaveFiletypes": ["css", "graphql", "typescript", "javascript", "typescriptreact"],
+  "coc.preferences.formatOnSaveFiletypes": ["javascript", "css", "typescript", "typescriptreact", "graphql"],
   "eslint.autoFixOnSave": true,
   "javascript.validate.enable": false,
   "tsserver.enableJavascript": false
