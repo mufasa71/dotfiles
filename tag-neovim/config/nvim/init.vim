@@ -34,7 +34,9 @@ Plug 'jparise/vim-graphql'
 Plug 'brooth/far.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'honza/vim-snippets'
-Plug 'burner/vim-svelte'
+Plug 'NLKNguyen/papercolor-theme'
+" Plug 'burner/vim-svelte'
+Plug 'rescript-lang/vim-rescript'
 Plug 'preservim/nerdtree'
 Plug 'arcticicestudio/nord-vim'
 Plug 'neoclide/jsonc.vim'
@@ -56,6 +58,7 @@ set nowritebackup
 " Better display for messages
 set cmdheight=2
 
+let maplocalleader = "\\"
 " let g:airline_theme='oceanicnext'
 nmap <leader>t :Files<CR>
 nmap <leader>b :Buffers<CR>
@@ -148,3 +151,8 @@ command! -nargs=0 OR :call CocAction('runCommand', 'editor.action.organizeImport
 command! -nargs=0 Tsc :call CocAction('runCommand', 'tsserver.watchBuild')
 
 autocmd BufRead,BufNewFile tsconfig.json set filetype=jsonc
+
+autocmd FileType rescript nnoremap <silent> <buffer> <localleader>r :RescriptFormat<CR>
+autocmd FileType rescript nnoremap <silent> <buffer> <localleader>t :RescriptTypeHint<CR>
+autocmd FileType rescript nnoremap <silent> <buffer> <localleader>b :RescriptBuild<CR>
+autocmd FileType rescript nnoremap <silent> <buffer> gd :RescriptJumpToDefinition<CR>
