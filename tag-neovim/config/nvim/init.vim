@@ -100,6 +100,7 @@ let g:coc_global_extensions = [
   \ 'coc-json',
   \ 'coc-yank',
   \ 'coc-prettier',
+  \ 'coc-graphql',
   \ 'coc-styled-components',
   \ 'coc-flow']
 
