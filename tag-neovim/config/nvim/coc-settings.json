@@ -11,6 +11,7 @@
     }
   },
   "javascript.validate.enable": false,
+  "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
   "tsserver.enableJavascript": false,
   "tsserver.log": "normal",
   "css.customData": ["~/.config/nvim/custom.css-data.json"],

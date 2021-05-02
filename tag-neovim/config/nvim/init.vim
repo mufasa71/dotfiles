@@ -47,12 +47,6 @@ call plug#end()
 
 filetype plugin indent on
 
-let g:UltiSnipsExpandTrigger = "<tab>"
-let g:UltiSnipsJumpForwardTrigger = "<c-j>"
-let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
-let g:UltiSnipsRemoveSelectModeMappings = 0
-let g:UltiSnipsUsePythonVersion = 3
-
 set conceallevel=2 concealcursor=niv
 set hidden
 set nobackup
@@ -141,6 +135,7 @@ nmap <silent> gr <Plug>(coc-references)
 nmap <leader>ac  <Plug>(coc-codeaction)
 nmap <silent> <TAB> <Plug>(coc-range-select)
 xmap <silent> <TAB> <Plug>(coc-range-select)
+imap <C-l> <Plug>(coc-snippets-expand)
 
 nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
 
