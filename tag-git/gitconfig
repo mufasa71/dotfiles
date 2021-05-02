@@ -34,3 +34,5 @@
 
 [github]
   user = mufasa71
+[init]
+  defaultBranch = main
