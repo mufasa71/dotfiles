@@ -34,3 +34,5 @@
 
 [github]
   user = ***REMOVED***
+[init]
+  defaultBranch = main
