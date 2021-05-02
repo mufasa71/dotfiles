@@ -40,6 +40,8 @@ Plug 'rescript-lang/vim-rescript'
 Plug 'preservim/nerdtree'
 Plug 'arcticicestudio/nord-vim'
 Plug 'neoclide/jsonc.vim'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 call plug#end()
 
@@ -67,6 +69,8 @@ vmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
 vmap <leader>T  <Plug>(coc-codeaction)
 nmap <leader>T  <Plug>(coc-codeaction)
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
 
 " let g:oceanic_next_terminal_bold = 1
 " let g:oceanic_next_terminal_italic = 1
@@ -143,6 +147,18 @@ nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
 " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
 " Coc only does snippet and additional edit on confirm.
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+let g:coc_snippet_next = '<tab>'
 
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 command! -nargs=0 ESlint :CocCommand eslint.executeAutofix
@@ -158,3 +174,19 @@ autocmd FileType rescript nnoremap <silent> <buffer> <localleader>r :RescriptFor
 autocmd FileType rescript nnoremap <silent> <buffer> <localleader>t :RescriptTypeHint<CR>
 autocmd FileType rescript nnoremap <silent> <buffer> <localleader>b :RescriptBuild<CR>
 autocmd FileType rescript nnoremap <silent> <buffer> gd :RescriptJumpToDefinition<CR>
+
+nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
+
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = { "javascript", "typescript", "css", "go", "graphql" }, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  ignore_install = {}, -- List of parsers to ignore installing
+  highlight = {
+    enable = true,              -- false will disable the whole extension
+    disable = { "c", "rust" },  -- list of language that will be disabled
+  },
+}
+EOF
