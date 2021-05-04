@@ -42,6 +42,7 @@ Plug 'arcticicestudio/nord-vim'
 Plug 'neoclide/jsonc.vim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'ryanoasis/vim-devicons'
 
 call plug#end()
 
