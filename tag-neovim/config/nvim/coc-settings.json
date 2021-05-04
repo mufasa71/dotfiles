@@ -2,9 +2,9 @@
   "coc.preferences.formatOnSaveFiletypes": ["javascript", "css", "typescript", "typescriptreact", "graphql"],
   "eslint.autoFixOnSave": true,
   "eslint.options": {
-     "useEslintrc": false,
+    "useEslintrc": true,
     "parserOptions": {
-        "ecmaVersion": 2020
+        "ecmaVersion": 6
     },
     "env": {
         "es6": true
@@ -29,6 +29,20 @@
       "args": ["server", "-m", "stream"],
       // customize filetypes to your needs
       "filetypes": ["graphql"]
+    },
+    "flow": {
+      "command": "${workspaceFolder}/node_modules/.bin/flow",
+      "args": ["lsp"],
+      "filetypes": ["javascript", "javascriptreact"],
+      "initializationOptions": {},
+      "requireRootPattern": true,
+      "settings": {},
+      "rootPatterns": [".flowconfig"]
+    },
+    "groovy": {
+      "command": "java",
+      "args" : ["-jar", "/usr/share/java/groovy-language-server/groovy-language-server-all.jar"],
+      "filetypes": ["groovy"]
     }
   }
 }
