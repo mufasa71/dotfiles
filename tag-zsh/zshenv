@@ -29,7 +29,7 @@ if [[ -z "$ZSH_CUSTOM" ]]; then
 fi
 
 if [[ -d "${ZDOTDIR:-$HOME}/node" ]]; then
-	export NODE_VERSIONS="${ZDOTDIR:-$HOME}/node"
+	# export NODE_VERSIONS="${ZDOTDIR:-$HOME}/node"
 fi
 
 if [[ -d "${ZDOTDIR:-$HOME}/go" ]]; then
@@ -43,4 +43,5 @@ if (( $+commands[gpg-connect-agent] && $+commands[tty] )); then
 fi
 
 export SCRIPT_DIR="${ZDOTDIR:-$HOME}/.config/i3blocks"
+export VOLTA_HOME=$HOME/.volta
 #
