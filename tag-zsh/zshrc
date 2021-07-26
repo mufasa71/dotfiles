@@ -151,3 +151,5 @@ unset config_file
 # uninstall by removing these lines or running `tabtab uninstall sls`
 [[ -f /home/***REMOVED***/.config/yarn/global/node_modules/tabtab/.completions/sls.zsh ]] && . /home/***REMOVED***/.config/yarn/global/node_modules/tabtab/.completions/sls.zsh
 
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
