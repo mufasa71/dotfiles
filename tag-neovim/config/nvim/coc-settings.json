@@ -1,15 +1,6 @@
 {
   "coc.preferences.formatOnSaveFiletypes": ["javascript", "css", "typescript", "typescriptreact", "graphql"],
   "eslint.autoFixOnSave": true,
-  "eslint.options": {
-    "useEslintrc": true,
-    "parserOptions": {
-        "ecmaVersion": 6
-    },
-    "env": {
-        "es6": true
-    }
-  },
   "javascript.validate.enable": false,
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
   "tsserver.enableJavascript": false,
