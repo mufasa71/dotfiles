@@ -86,9 +86,15 @@ label=wifi:
 interval=10
 separator=false
 
-[bandwidth]
-INTERFACE=enp3s0
-interval=5
+# [bandwidth]
+# INTERFACE=enp3s0
+# interval=5
+
+# [github]
+# command=$SCRIPT_DIR/github/github
+# interval=60
+# format=json
+# markup=pango
 
 # CPU usage
 #
@@ -122,6 +128,26 @@ interval=5
 # color=#0db7ed
 # interval=10
 # LABEL=🐳
+
+[weather]
+command=curl -Ss 'https://wttr.in?0&T&Q' | cut -c 16- | head -2 | xargs echo
+interval=3600
+color=#A4C2F4
+
+[mail]
+command=ls ~/.mail/auto1/Inbox/new | wc -l | xargs echo "📧"
+interval=200
+color=#A4C2F4
+
+# [brightness]
+# command=./brightness/bin/brightness -a /sys/class/backlight/intel_backlight/actual_brightness -m /sys/class/backlight/intel_backlight/max_brightness
+# interval=persist
+
+# [arch-update]
+# command=$SCRIPT_DIR/arch-update 
+# interval=3600
+# markup=pango
+# LABEL=Updates:
 
 [dunst]
 interval=once
