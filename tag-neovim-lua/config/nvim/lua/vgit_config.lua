@@ -1,0 +1,43 @@
+-- require('vgit').setup {
+--   predict_hunk_throttle_ms = 300,
+--   history = {
+--     indicator = {
+--         hl = 'VGitIndicator'
+--     },
+--     horizontal_window = {
+--         title = 'Preview',
+--         border = { '╭', '─', '╮', '│', '╯', '─', '╰', '│' },
+--         border_hl = 'VGitBorder',
+--         border_focus_hl = 'VGitBorderFocus'
+--     },
+--     current_window = {
+--         title = 'Current',
+--         border = { '╭', '─', '╮', '│', '╯', '─', '╰', '│' },
+--         border_hl = 'VGitBorder',
+--         border_focus_hl = 'VGitBorderFocus'
+--     },
+--     previous_window = {
+--         title = 'Previous',
+--         border = { '╭', '─', '╮', '│', '╯', '─', '╰', '│' },
+--         border_hl = 'VGitBorder',
+--         border_focus_hl = 'VGitBorderFocus'
+--     },
+--     history_window = {
+--         title = 'Git History',
+--         border = { '╭', '─', '╮', '│', '╯', '─', '╰', '│' },
+--         border_hl = 'VGitBorder',
+--         border_focus_hl = 'VGitBorderFocus'
+--     },
+--   },
+-- }
+
+-- vim.api.nvim_set_keymap('n', '<C-k>', ':VGit hunk_up<CR>', {
+--     noremap = true,
+--     silent = true,
+-- })
+
+-- vim.api.nvim_set_keymap('n', '<C-j>', ':VGit hunk_down<CR>', {
+--     noremap = true,
+--     silent = true,
+-- })
+-- print('loaded vgit')
