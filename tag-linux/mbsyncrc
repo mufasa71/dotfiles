@@ -1,5 +1,5 @@
 # vim: ft=cfg:
-Create Slave
+Create Near
 Expunge Both
 SyncState *
 
@@ -19,22 +19,22 @@ Path ~/.mail/gmail/
 Inbox ~/.mail/gmail/Inbox
 
 Channel sync-googlemail-default
-Master :gmail-remote:
-Slave :gmail-local:
+Far :gmail-remote:
+Near :gmail-local:
 Patterns "INBOX"
 
 Channel sync-googlemail-github
-Master :gmail-remote:Github
-Slave :gmail-local:github
-Create Slave
+Far :gmail-remote:Github
+Near :gmail-local:github
+Create Near
 
 Group googlemail
 Channel sync-googlemail-default
 Channel sync-googlemail-github
 
-Create Slave
-Expunge Both
-SyncState *
+# Create Near
+# Expunge Both
+# SyncState *
 
 IMAPAccount ***REMOVED***
 Host imap.gmail.com
@@ -51,19 +51,19 @@ Path ~/.mail/***REMOVED***/
 Inbox ~/.mail/***REMOVED***/Inbox
 
 Channel ***REMOVED***-inbox
-Master :***REMOVED***-remote:
-Slave :***REMOVED***-local:
+Far :***REMOVED***-remote:
+Near :***REMOVED***-local:
 Patterns "INBOX"
 
 Channel ***REMOVED***-technical
-Master :***REMOVED***-remote:Technical
-Slave :***REMOVED***-local:technical
-Create Slave
+Far :***REMOVED***-remote:Technical
+Near :***REMOVED***-local:technical
+Create Near
 
 Channel ***REMOVED***-github
-Master :***REMOVED***-remote:Github
-Slave :***REMOVED***-local:github
-Create Slave
+Far :***REMOVED***-remote:Github
+Near :***REMOVED***-local:github
+Create Near
 
 Group ***REMOVED***
 Channel ***REMOVED***-inbox
