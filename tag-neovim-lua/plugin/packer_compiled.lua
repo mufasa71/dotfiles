@@ -85,6 +85,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/***REMOVED***/.local/share/nvim/site/pack/packer/start/lightline.vim"
   },
+  neoformat = {
+    loaded = true,
+    path = "/home/***REMOVED***/.local/share/nvim/site/pack/packer/start/neoformat"
+  },
   ["nvim-compe"] = {
     loaded = true,
     path = "/home/***REMOVED***/.local/share/nvim/site/pack/packer/start/nvim-compe"
@@ -93,6 +97,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/***REMOVED***/.local/share/nvim/site/pack/packer/start/nvim-lspconfig"
   },
+  ["nvim-lspinstall"] = {
+    loaded = true,
+    path = "/home/***REMOVED***/.local/share/nvim/site/pack/packer/start/nvim-lspinstall"
+  },
   ["nvim-treesitter"] = {
     loaded = true,
     path = "/home/***REMOVED***/.local/share/nvim/site/pack/packer/start/nvim-treesitter"
@@ -100,6 +108,14 @@ _G.packer_plugins = {
   ["nvim-treesitter-textobjects"] = {
     loaded = true,
     path = "/home/***REMOVED***/.local/share/nvim/site/pack/packer/start/nvim-treesitter-textobjects"
+  },
+  ["nvim-web-devicons"] = {
+    loaded = true,
+    path = "/home/***REMOVED***/.local/share/nvim/site/pack/packer/start/nvim-web-devicons"
+  },
+  ["oceanic-next"] = {
+    loaded = true,
+    path = "/home/***REMOVED***/.local/share/nvim/site/pack/packer/start/oceanic-next"
   },
   ["onedark.vim"] = {
     loaded = true,
@@ -117,9 +133,17 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/***REMOVED***/.local/share/nvim/site/pack/packer/start/popup.nvim"
   },
+  ["telescope-fzf-native.nvim"] = {
+    loaded = true,
+    path = "/home/***REMOVED***/.local/share/nvim/site/pack/packer/start/telescope-fzf-native.nvim"
+  },
   ["telescope.nvim"] = {
     loaded = true,
     path = "/home/***REMOVED***/.local/share/nvim/site/pack/packer/start/telescope.nvim"
+  },
+  ["vgit.nvim"] = {
+    loaded = true,
+    path = "/home/***REMOVED***/.local/share/nvim/site/pack/packer/start/vgit.nvim"
   },
   ["vim-commentary"] = {
     loaded = true,
@@ -129,13 +153,33 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/***REMOVED***/.local/share/nvim/site/pack/packer/start/vim-fugitive"
   },
+  ["vim-graphql"] = {
+    loaded = true,
+    path = "/home/***REMOVED***/.local/share/nvim/site/pack/packer/start/vim-graphql"
+  },
+  ["vim-repeat"] = {
+    loaded = true,
+    path = "/home/***REMOVED***/.local/share/nvim/site/pack/packer/start/vim-repeat"
+  },
   ["vim-rhubarb"] = {
     loaded = true,
     path = "/home/***REMOVED***/.local/share/nvim/site/pack/packer/start/vim-rhubarb"
   },
+  ["vim-rzip"] = {
+    loaded = true,
+    path = "/home/***REMOVED***/.local/share/nvim/site/pack/packer/start/vim-rzip"
+  },
   ["vim-sleuth"] = {
     loaded = true,
     path = "/home/***REMOVED***/.local/share/nvim/site/pack/packer/start/vim-sleuth"
+  },
+  ["vim-surround"] = {
+    loaded = true,
+    path = "/home/***REMOVED***/.local/share/nvim/site/pack/packer/start/vim-surround"
+  },
+  ["vim-terraform"] = {
+    loaded = true,
+    path = "/home/***REMOVED***/.local/share/nvim/site/pack/packer/start/vim-terraform"
   }
 }
 
