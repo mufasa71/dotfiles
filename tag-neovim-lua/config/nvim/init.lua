@@ -1,3 +1,7 @@
+if vim.fn.executable('volta') then
+  vim.g.node_host_prog = vim.fn.trim(vim.fn.system("volta which neovim-node-host"))
+end
+
 -- Install packer
 local install_path = vim.fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
 
@@ -141,7 +145,7 @@ require('telescope').setup {
       previewer = false,
       mappings = {
         i = {
-          ["<c-d>"] = require("telescope.actions").delete_buffer,
+          -- ["<c-d>"] = require("telescope.actions").delete_buffer,
           ["<c-d>"] = "delete_buffer",
         },
         n = {
@@ -181,22 +185,29 @@ vim.api.nvim_set_keymap('n', '<leader>fg', [[<cmd>lua require('telescope.builtin
 vim.api.nvim_set_keymap('n', '<leader>fo', [[<cmd>lua require('telescope.builtin').tags{ only_current_buffer = true }<CR>]], { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>?', [[<cmd>lua require('telescope.builtin').oldfiles()<CR>]], { noremap = true, silent = true })
 
--- Highlight on yank
 vim.api.nvim_exec(
-  [[
-  augroup YankHighlight
-    autocmd!
-    autocmd TextYankPost * silent! lua vim.highlight.on_yank()
-  augroup end;
+    [[
+    augroup YankHighlight
+      autocmd!
+      autocmd TextYankPost * silent! lua vim.highlight.on_yank()
+    augroup end;
 ]],
   false
 )
 
+-- Highlight on yank
 -- Y yank until the end of line
 vim.api.nvim_set_keymap('n', 'Y', 'y$', { noremap = true })
 
+-- Make runtime files discoverable to the server
+-- local runtime_path = vim.split(package.path, ';')
+-- table.insert(runtime_path, 'lua/?.lua')
+-- table.insert(runtime_path, 'lua/?/init.lua')
+
 -- LSP settings
+
 local nvim_lsp = require 'lspconfig'
+local nvim_lsp_install = require 'lspinstall'
 local on_attach = function(_, bufnr)
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
@@ -240,58 +251,30 @@ local function make_config()
 end
 
 
-require'lspinstall'.setup()
--- Enable the following language servers
--- local servers = { 'clangd', 'rust_analyzer', 'pyright', 'tsserver', 'ocamllsp', }
--- for _, lsp in ipairs(servers) do
---   nvim_lsp[lsp].setup {
---     on_attach = on_attach,
---     capabilities = capabilities,
---   }
--- end
+nvim_lsp_install.setup()
+
 local function setup_servers()
-  local servers = require'lspinstall'.installed_servers()
+  local servers = nvim_lsp_install.installed_servers()
   for _, server in pairs(servers) do
     local config = make_config()
-    require'lspconfig'[server].setup(config)
+    nvim_lsp[server].setup(config)
   end
 end
 
 setup_servers()
 
-require'lspconfig'.rust_analyzer.setup {
-  capabilities = capabilities,
-}
-
-require'lspinstall'.post_install_hook = function ()
-  setup_servers() -- reload installed servers
-  vim.cmd("bufdo e") -- this triggers the FileType autocmd that starts the server
-end
-
--- Example custom server
-local sumneko_root_path = vim.fn.getenv("HOME").."/.local/bin/sumneko_lua" -- Change to your sumneko root installation
-local sumneko_binary = sumneko_root_path .. '/bin/linux/lua-language-server'
-
--- Make runtime files discoverable to the server
-local runtime_path = vim.split(package.path, ';')
-table.insert(runtime_path, 'lua/?.lua')
-table.insert(runtime_path, 'lua/?/init.lua')
-
-require('lspconfig').sumneko_lua.setup {
-  cmd = { sumneko_binary, '-E', sumneko_root_path .. '/main.lua' },
-  on_attach = on_attach,
-  capabilities = capabilities,
+nvim_lsp.lua.setup {
   settings = {
     Lua = {
       runtime = {
         -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
         version = 'LuaJIT',
         -- Setup your lua path
-        path = runtime_path,
+        -- path = runtime_path,
       },
       diagnostics = {
         -- Get the language server to recognize the `vim` global
-        globals = { 'vim' },
+        globals = { 'vim', 'use' },
       },
       workspace = {
         -- Make the server aware of Neovim runtime files
@@ -301,9 +284,14 @@ require('lspconfig').sumneko_lua.setup {
       telemetry = {
         enable = false,
       },
-    },
-  },
+    }
+  }
 }
+
+nvim_lsp_install.post_install_hook = function ()
+  setup_servers() -- reload installed servers
+  vim.cmd("bufdo e") -- this triggers the FileType autocmd that starts the server
+end
 
 -- Treesitter configuration
 -- Parsers must be installed manually via :TSInstall
@@ -360,50 +348,6 @@ require('nvim-treesitter.configs').setup {
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
-
--- require('vgit').setup {
---   predict_hunk_throttle_ms = 300,
---   history = {
---     indicator = {
---         hl = 'VGitIndicator'
---     },
---     horizontal_window = {
---         title = 'Preview',
---         border = { '╭', '─', '╮', '│', '╯', '─', '╰', '│' },
---         border_hl = 'VGitBorder',
---         border_focus_hl = 'VGitBorderFocus'
---     },
---     current_window = {
---         title = 'Current',
---         border = { '╭', '─', '╮', '│', '╯', '─', '╰', '│' },
---         border_hl = 'VGitBorder',
---         border_focus_hl = 'VGitBorderFocus'
---     },
---     previous_window = {
---         title = 'Previous',
---         border = { '╭', '─', '╮', '│', '╯', '─', '╰', '│' },
---         border_hl = 'VGitBorder',
---         border_focus_hl = 'VGitBorderFocus'
---     },
---     history_window = {
---         title = 'Git History',
---         border = { '╭', '─', '╮', '│', '╯', '─', '╰', '│' },
---         border_hl = 'VGitBorder',
---         border_focus_hl = 'VGitBorderFocus'
---     },
---   },
--- }
-
--- vim.api.nvim_set_keymap('n', '<C-k>', ':VGit hunk_up<CR>', {
---     noremap = true,
---     silent = true,
--- })
-
--- vim.api.nvim_set_keymap('n', '<C-j>', ':VGit hunk_down<CR>', {
---     noremap = true,
---     silent = true,
--- })
-
 -- Compe setup
 require('compe').setup {
   source = {
@@ -464,5 +408,4 @@ vim.api.nvim_set_keymap('s', '<S-Tab>', 'v:lua.s_tab_complete()', { expr = true 
 -- Map compe confirm and complete functions
 vim.api.nvim_set_keymap('i', '<cr>', 'compe#confirm("<cr>")', { expr = true })
 vim.api.nvim_set_keymap('i', '<c-space>', 'compe#complete()', { expr = true })
-
 
