@@ -73,6 +73,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/***REMOVED***/.local/share/nvim/site/pack/packer/start/LuaSnip"
   },
+  ["galaxyline.nvim"] = {
+    loaded = true,
+    path = "/home/***REMOVED***/.local/share/nvim/site/pack/packer/start/galaxyline.nvim"
+  },
   ["gitsigns.nvim"] = {
     loaded = true,
     path = "/home/***REMOVED***/.local/share/nvim/site/pack/packer/start/gitsigns.nvim"
@@ -81,17 +85,25 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/***REMOVED***/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim"
   },
-  ["lightline.vim"] = {
-    loaded = true,
-    path = "/home/***REMOVED***/.local/share/nvim/site/pack/packer/start/lightline.vim"
-  },
   neoformat = {
     loaded = true,
     path = "/home/***REMOVED***/.local/share/nvim/site/pack/packer/start/neoformat"
   },
+  ["null-ls.nvim"] = {
+    loaded = true,
+    path = "/home/***REMOVED***/.local/share/nvim/site/pack/packer/start/null-ls.nvim"
+  },
   ["nvim-compe"] = {
     loaded = true,
     path = "/home/***REMOVED***/.local/share/nvim/site/pack/packer/start/nvim-compe"
+  },
+  ["nvim-lightbulb"] = {
+    loaded = true,
+    path = "/home/***REMOVED***/.local/share/nvim/site/pack/packer/start/nvim-lightbulb"
+  },
+  ["nvim-lsp-ts-utils"] = {
+    loaded = true,
+    path = "/home/***REMOVED***/.local/share/nvim/site/pack/packer/start/nvim-lsp-ts-utils"
   },
   ["nvim-lspconfig"] = {
     loaded = true,
@@ -106,6 +118,7 @@ _G.packer_plugins = {
     path = "/home/***REMOVED***/.local/share/nvim/site/pack/packer/start/nvim-treesitter"
   },
   ["nvim-treesitter-textobjects"] = {
+    config = { "require('treesitter')" },
     loaded = true,
     path = "/home/***REMOVED***/.local/share/nvim/site/pack/packer/start/nvim-treesitter-textobjects"
   },
@@ -116,10 +129,6 @@ _G.packer_plugins = {
   ["oceanic-next"] = {
     loaded = true,
     path = "/home/***REMOVED***/.local/share/nvim/site/pack/packer/start/oceanic-next"
-  },
-  ["onedark.vim"] = {
-    loaded = true,
-    path = "/home/***REMOVED***/.local/share/nvim/site/pack/packer/start/onedark.vim"
   },
   ["packer.nvim"] = {
     loaded = true,
@@ -133,6 +142,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/***REMOVED***/.local/share/nvim/site/pack/packer/start/popup.nvim"
   },
+  ["suda.vim"] = {
+    loaded = true,
+    path = "/home/***REMOVED***/.local/share/nvim/site/pack/packer/start/suda.vim"
+  },
   ["telescope-fzf-native.nvim"] = {
     loaded = true,
     path = "/home/***REMOVED***/.local/share/nvim/site/pack/packer/start/telescope-fzf-native.nvim"
@@ -141,13 +154,13 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/***REMOVED***/.local/share/nvim/site/pack/packer/start/telescope.nvim"
   },
-  ["vgit.nvim"] = {
-    loaded = true,
-    path = "/home/***REMOVED***/.local/share/nvim/site/pack/packer/start/vgit.nvim"
-  },
   ["vim-commentary"] = {
     loaded = true,
     path = "/home/***REMOVED***/.local/share/nvim/site/pack/packer/start/vim-commentary"
+  },
+  ["vim-exchange"] = {
+    loaded = true,
+    path = "/home/***REMOVED***/.local/share/nvim/site/pack/packer/start/vim-exchange"
   },
   ["vim-fugitive"] = {
     loaded = true,
@@ -161,14 +174,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/***REMOVED***/.local/share/nvim/site/pack/packer/start/vim-repeat"
   },
-  ["vim-rhubarb"] = {
-    loaded = true,
-    path = "/home/***REMOVED***/.local/share/nvim/site/pack/packer/start/vim-rhubarb"
-  },
-  ["vim-rzip"] = {
-    loaded = true,
-    path = "/home/***REMOVED***/.local/share/nvim/site/pack/packer/start/vim-rzip"
-  },
   ["vim-sleuth"] = {
     loaded = true,
     path = "/home/***REMOVED***/.local/share/nvim/site/pack/packer/start/vim-sleuth"
@@ -180,10 +185,18 @@ _G.packer_plugins = {
   ["vim-terraform"] = {
     loaded = true,
     path = "/home/***REMOVED***/.local/share/nvim/site/pack/packer/start/vim-terraform"
+  },
+  ["vim-which-key"] = {
+    loaded = true,
+    path = "/home/***REMOVED***/.local/share/nvim/site/pack/packer/start/vim-which-key"
   }
 }
 
 time([[Defining packer_plugins]], false)
+-- Config for: nvim-treesitter-textobjects
+time([[Config for nvim-treesitter-textobjects]], true)
+require('treesitter')
+time([[Config for nvim-treesitter-textobjects]], false)
 if should_profile then save_profiles() end
 
 end)

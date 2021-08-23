@@ -19,7 +19,7 @@ packer.init {
 }
 
 local init = function ()
-  use { 'wbthomason/packer.nvim', { opt = true } }
+  use 'wbthomason/packer.nvim'
 
   -- Git support
   use 'tpope/vim-fugitive'
@@ -29,7 +29,8 @@ local init = function ()
   -- Text Object plugins
   use {
     'tpope/vim-surround',
-    'tommcdo/vim-exchange'
+    'tommcdo/vim-exchange',
+    'justinmk/vim-sneak'
   }
 
   -- Tim pope essentials
@@ -91,6 +92,7 @@ local init = function ()
     'jose-elias-alvarez/nvim-lsp-ts-utils',
     requires = { 'jose-elias-alvarez/null-ls.nvim' }
   }
+  use 'gennaro-tedesco/nvim-peekup'
 end
 
 return packer.startup(init)

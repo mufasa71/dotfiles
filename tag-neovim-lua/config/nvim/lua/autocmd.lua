@@ -21,7 +21,6 @@ local autocmds = {
   };
   lua_highlight = {
     { "TextYankPost", "*", "silent! lua vim.highlight.on_yank(timeout=2000)" };
-    { "CursorHold,CursorHoldI", "*", "lua require'nvim-lightbulb'.update_lightbulb()" };
   };
 }
 
