@@ -23,6 +23,14 @@ vim.g.lightline = {
   component_function = { gitbranch = 'fugitive#head' },
 }
 
+-- Needs to be set before nvim-peekup
+vim.g.peekup_paste_before         = '<Leader>P'
+vim.g.peekup_paste_after          = '<Leader>p'
+-- Needs to be set before vim-sneak is loaded
+vim.g['sneak#label']              = 1
+vim.g['sneak#s_next']             = 1
+vim.g['sneak#use_ic_scs']         = 0
+
 -- Needs to set before loading treesitter
 vim.g.indent_blankline_char = '┊'
 vim.g.indent_blankline_filetype_exclude = { 'help', 'packer' }
