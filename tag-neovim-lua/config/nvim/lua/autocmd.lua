@@ -2,7 +2,7 @@ local vim = vim
 local api = vim.api
 
 --- This function is taken from https://github.com/norcalli/nvim_utils
-function Nvim_create_augroups(definitions)
+local function nvim_create_augroups(definitions)
   for group_name, definition in pairs(definitions) do
     api.nvim_command('augroup '..group_name)
     api.nvim_command('autocmd!')
@@ -24,4 +24,4 @@ local autocmds = {
   };
 }
 
-Nvim_create_augroups(autocmds)
+nvim_create_augroups(autocmds)

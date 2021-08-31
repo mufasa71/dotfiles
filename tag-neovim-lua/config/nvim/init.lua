@@ -57,5 +57,6 @@ require 'treesitter'
 require 'finder'
 require 'keymappings'
 require 'lsp'
+require 'format'
 
 vim.api.nvim_command('colorscheme OceanicNext')

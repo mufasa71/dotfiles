@@ -150,7 +150,7 @@ local eslint = {
 }
 
 local efm_settings = {
-  rootMarkers = {".eslintrc.js", ".git/"},
+  rootMarkers = {".eslintrc.js", ".eslintrc.json", ".git/"},
   languages = {
     javascript = {eslint},
     typescript = {eslint},
@@ -218,7 +218,7 @@ local function setup_servers()
       config.filetypes = {"javascript", "typescript", "typescriptreact"}
       config.root_dir = function(fname)
         return util.root_pattern("tsconfig.json")(fname) or
-          util.root_pattern(".eslintrc.js", ".git")(fname);
+          util.root_pattern(".eslintrc.js", ".eslintrc.json", ".git")(fname);
       end
       config.settings = efm_settings
     end
