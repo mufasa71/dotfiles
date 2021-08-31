@@ -92,7 +92,9 @@ local init = function ()
     'jose-elias-alvarez/nvim-lsp-ts-utils',
     requires = { 'jose-elias-alvarez/null-ls.nvim' }
   }
-  use 'gennaro-tedesco/nvim-peekup'
+  use 'brooth/far.vim'
+  use 'phaazon/hop.nvim'
+  use 'mhartington/formatter.nvim'
 end
 
 return packer.startup(init)

@@ -26,3 +26,5 @@ remap('n', '[b', ':bprevious<CR>', { noremap = true })
 remap('n', ']b', ':bnext<CR>',     { noremap = true })
 remap('n', '[B', ':bfirst<CR>',    { noremap = true })
 remap('n', ']B', ':blast<CR>',     { noremap = true })
+
+remap('n', '$', "<cmd>lua require'hop'.hint_words()<cr>", {})
