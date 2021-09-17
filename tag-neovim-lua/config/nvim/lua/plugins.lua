@@ -95,6 +95,8 @@ local init = function ()
   use 'brooth/far.vim'
   use 'phaazon/hop.nvim'
   use 'mhartington/formatter.nvim'
+  use 'lbrayner/vim-rzip'
+  use 'preservim/nerdtree'
 end
 
 return packer.startup(init)
