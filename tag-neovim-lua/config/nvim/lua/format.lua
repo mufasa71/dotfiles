@@ -1,27 +1,23 @@
 local escape = vim.fn.fnameescape
 local buf_name = vim.api.nvim_buf_get_name
+local prettier = function()
+  return {
+    exe = "prettier",
+    args = {"--stdin-filepath", escape(buf_name(0)), ''},
+    stdin = true
+  }
+end
 
 require('formatter').setup({
   filetype = {
     javascript = {
-      -- prettier
-      function()
-        return {
-          exe = "prettier",
-          args = {"--stdin-filepath", escape(buf_name(0)), ''},
-          stdin = true
-        }
-      end
+      prettier
     },
     typescript = {
-      -- prettier
-      function()
-        return {
-          exe = "prettier",
-          args = {"--stdin-filepath", escape(buf_name(0)), ''},
-          stdin = true
-        }
-      end
+      prettier
+    },
+    typescriptreact = {
+      prettier
     },
   }
 })
