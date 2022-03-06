@@ -1,30 +1,32 @@
-local remap = vim.api.nvim_set_keymap
+local wk = require "which-key"
+local remap = vim.keymap.set
 
---Remap comma as leader key
-remap('', '<Space>', '<Nop>', { noremap = true, silent = true })
+remap("n", "k", "v:count == 0 ? 'gk' : 'k'", {expr = true})
+remap("n", "j", "v:count == 0 ? 'gj' : 'j'", {expr = true})
+remap("n", "Y", "y$", {noremap = true, silent = true})
 
---Remap for dealing with word wrap
-remap('n', 'k', "v:count == 0 ? 'gk' : 'k'", { noremap = true, expr = true, silent = true })
-remap('n', 'j', "v:count == 0 ? 'gj' : 'j'", { noremap = true, expr = true, silent = true })
+wk.register({
+  name = "General",
+  w = {"<esc>:w<cr>", "Write current buffer"},
+  ["c."] = {":%s/\\<<C-r><C-w>\\>//g<Left><Left>", "Search and replace"},
+  -- x = {"<esc>:x<cr>", "Write if changes and quite"},
+  q = {"<esc>:q<cr>", "Quit current buffer"},
+  Q = {"<esc>:q<cr>", "Quit all buffers"},
 
--- Highlight on yank
--- Y yank until the end of line
-remap('n', 'Y', 'y$', { noremap = true })
+  ["[b"] = {"<cmd>:bprevious<cr>", "Previous buffer"},
+  ["]b"] = {"<cmd>:bnext<cr>", "Next buffer"},
+  ["[B"] = {"<cmd>:bfirst<cr>", "First buffer"},
+  ["]B"] = {"<cmd>:blast<cr>", "Last buffer"},
 
--- Save
-remap('n', '<Leader>w', '<Esc>:w<CR>', { noremap = true })
+  x = {
+    x = {"<cmd>Trouble<cr>", "Open the list"},
+    w = {"<cmd>Trouble workspace_diagnostics<cr>", "Open workspace"},
+    d = {"<cmd>Trouble document_diagnostics<cr>", "Open diagnostics"},
+    l = {"<cmd>Trouble loclist<cr>", "Open location list"},
+    q = {"<cmd>Trouble quickfix<cr>", "Open quickfix list"},
+    R = {"<cmd>Trouble lsp_references<cr>", "Open quickfix list"}
+  }
+}, {prefix = "<leader>"})
 
--- Search and Replace
-remap('n', '<Leader>c.', ':%s/\\<<C-r><C-w>\\>//g<Left><Left>', { noremap = true })
-
--- Quit
-remap('n', '<Leader>x', '<Esc>:x<CR>',  { noremap = true })
-remap('n', '<Leader>q', '<Esc>:q<CR>',  { noremap = true })
-remap('n', '<Leader>Q', '<Esc>:qa<CR>', { noremap = true })
--- Navigate buffers
-remap('n', '[b', ':bprevious<CR>', { noremap = true })
-remap('n', ']b', ':bnext<CR>',     { noremap = true })
-remap('n', '[B', ':bfirst<CR>',    { noremap = true })
-remap('n', ']B', ':blast<CR>',     { noremap = true })
-
-remap('n', '$', "<cmd>lua require'hop'.hint_words()<cr>", {})
+-- Remap comma as leader key
+vim.keymap.set("", "<Space>", "<Nop>", {noremap = true, silent = true})

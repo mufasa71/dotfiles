@@ -4,7 +4,7 @@ vim.wo.number = true --make line numbers default
 vim.o.hidden = true --do not save when switching buffers
 vim.o.mouse = 'a' --enable mouse mode
 vim.o.breakindent = true --enable break indent
-vim.o.completeopt = 'menuone,noselect' -- set completeopt to have a better completion experience
+vim.o.completeopt = 'menu,menuone,noselect' -- set completeopt to have a better completion experience
 vim.o.ignorecase = true --case insensitive searching UNLESS /C or capital in search
 vim.o.smartcase = true
 vim.o.updatetime = 250 --decrease update time
@@ -15,21 +15,6 @@ vim.cmd [[set undofile]] --save undo history
 -- Map leader
 vim.g.mapleader = ','
 vim.g.maplocalleader = ','
-
--- Needs to set before loading lightline
-vim.g.lightline = {
-  colorscheme = 'oceanicnext',
-  active = { left = { { 'mode', 'paste' }, { 'gitbranch', 'readonly', 'filename', 'modified' } } },
-  component_function = { gitbranch = 'fugitive#head' },
-}
-
--- Needs to be set before nvim-peekup
-vim.g.peekup_paste_before         = '<Leader>P'
-vim.g.peekup_paste_after          = '<Leader>p'
--- Needs to be set before vim-sneak is loaded
-vim.g['sneak#label']              = 1
-vim.g['sneak#s_next']             = 1
-vim.g['sneak#use_ic_scs']         = 0
 
 -- Needs to set before loading treesitter
 vim.g.indent_blankline_char = '┊'
@@ -59,4 +44,4 @@ require 'keymappings'
 require 'lsp'
 require 'format'
 
-vim.api.nvim_command('colorscheme OceanicNext')
+vim.api.nvim_command('colorscheme kanagawa')
