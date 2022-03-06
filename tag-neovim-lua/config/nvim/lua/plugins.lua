@@ -1,102 +1,78 @@
 -- Add the in built Cfilter plugin. Replaces QFGrep.
-vim.cmd 'packadd cfilter'
-vim.cmd 'packadd packer.nvim'
+vim.cmd "packadd cfilter"
+vim.cmd "packadd packer.nvim"
 
 -- Install packer if needed
-local install_path = vim.fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
+local install_path = vim.fn.stdpath "data" ..
+                         "/site/pack/packer/start/packer.nvim"
 
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-  vim.fn.execute('!git clone https://github.com/wbthomason/packer.nvim ' .. install_path)
+  vim.fn.execute("!git clone https://github.com/wbthomason/packer.nvim " ..
+                     install_path)
 end
 
-local packer = require('packer')
+local packer = require("packer")
 local use = packer.use
 
-packer.init {
-  git = {
-    clone_timeout = 60
-  }
-}
+packer.init {git = {clone_timeout = 60}}
 
-local init = function ()
-  use 'wbthomason/packer.nvim'
+local init = function()
+  use "wbthomason/packer.nvim"
 
-  -- Git support
-  use 'tpope/vim-fugitive'
-  use 'lewis6991/gitsigns.nvim' -- add git related info in the signs columns and popups
-  -- use { 'tanvirtin/vgit.nvim', requires = 'nvim-lua/plenary.nvim' }
+  use "tpope/vim-fugitive"
+  use "lewis6991/gitsigns.nvim"
 
-  -- Text Object plugins
+  use {"tpope/vim-surround", "tommcdo/vim-exchange"}
+
+  use {"tpope/vim-commentary", "tpope/vim-sleuth", "tpope/vim-repeat"}
+
+  use {"nvim-telescope/telescope.nvim", requires = {{"nvim-lua/plenary.nvim"}}}
+  use {"nvim-telescope/telescope-fzf-native.nvim", run = "make"}
+
   use {
-    'tpope/vim-surround',
-    'tommcdo/vim-exchange',
-    'justinmk/vim-sneak'
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    requires = {"nvim-treesitter/nvim-treesitter"},
+    config = "require('treesitter')"
   }
 
-  -- Tim pope essentials
+  use {"neovim/nvim-lspconfig", "williamboman/nvim-lsp-installer"}
+
+  use {"kosayoda/nvim-lightbulb"}
+
   use {
-    'tpope/vim-commentary', -- "gc" to comment visual regions/lines
-    'tpope/vim-sleuth',
-    'tpope/vim-repeat'
+    "hrsh7th/nvim-cmp",
+    requires = {
+      {"onsails/lspkind-nvim"}, {"hrsh7th/cmp-vsnip"}, {"hrsh7th/cmp-nvim-lsp"},
+      {"hrsh7th/cmp-buffer"}, {"hrsh7th/cmp-path"}, {"hrsh7th/cmp-cmdline"},
+      {"hrsh7th/vim-vsnip"}
+    }
   }
 
-  -- UI to select things (files, grep results, open buffers...)
-  use { 'nvim-telescope/telescope.nvim', requires = { { 'nvim-lua/popup.nvim' }, } }
-  use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+  use "sbdchd/neoformat"
+  use {"jparise/vim-graphql", "hashivim/vim-terraform"}
 
-  -- use { 'kyazdani42/nvim-web-devicons' }
-
-  -- use 'itchyny/lightline.vim' -- Fancier statusline
-    -- For statusline
   use {
-    'glepnir/galaxyline.nvim',
-    requires = { 'kyazdani42/nvim-web-devicons' }
+    "folke/which-key.nvim",
+    config = function() require("which-key").setup {} end
   }
-
-  -- Add indentation guides even on blank lines
-  use 'lukas-reineke/indent-blankline.nvim'
-
-  -- Treesitter based syntax highlighting
   use {
-    'nvim-treesitter/nvim-treesitter-textobjects',
-    requires = { 'nvim-treesitter/nvim-treesitter' },
-    config = "require('treesitter')",
+    "jose-elias-alvarez/nvim-lsp-ts-utils",
+    requires = {"jose-elias-alvarez/null-ls.nvim"}
   }
-
-  -- LSP
+  use "brooth/far.vim"
+  use "mhartington/formatter.nvim"
+  use "lbrayner/vim-rzip"
+  use "preservim/nerdtree"
+  use "rebelot/kanagawa.nvim"
   use {
-    'neovim/nvim-lspconfig', -- Collection of configurations for built-in LSP client
-    'kabouzeid/nvim-lspinstall',
-    'kosayoda/nvim-lightbulb'
+    "folke/trouble.nvim",
+    requires = "kyazdani42/nvim-web-devicons",
+    config = function() require("trouble").setup {} end
   }
-
-  use 'hrsh7th/nvim-compe' -- Autocompletion plugin
-
-  use 'L3MON4D3/LuaSnip' -- Snippets plugin
-
-  -- Formatting
-  use 'sbdchd/neoformat'
-
-  use 'mhartington/oceanic-next'
-  -- File spcecific support
   use {
-    'jparise/vim-graphql',
-    'hashivim/vim-terraform'
+    "nvim-lualine/lualine.nvim",
+    requires = {"kyazdani42/nvim-web-devicons", opt = true}
   }
-
-  use 'liuchengxu/vim-which-key'
-  use 'lambdalisue/suda.vim'
-
-  use 'nvim-lua/plenary.nvim'
-  use {
-    'jose-elias-alvarez/nvim-lsp-ts-utils',
-    requires = { 'jose-elias-alvarez/null-ls.nvim' }
-  }
-  use 'brooth/far.vim'
-  use 'phaazon/hop.nvim'
-  use 'mhartington/formatter.nvim'
-  use 'lbrayner/vim-rzip'
-  use 'preservim/nerdtree'
 end
 
 return packer.startup(init)
