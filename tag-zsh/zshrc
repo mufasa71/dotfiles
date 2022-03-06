@@ -1,6 +1,13 @@
 autoload -U vcs_info
 autoload -U colors && colors
-autoload -U compinit && compinit
+if type brew &>/dev/null
+then
+  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+
+  autoload -Uz compinit && compinit
+fi
+
+# autoload -U compinit && compinit
 autoload -U bashcompinit && bashcompinit
 autoload zsh/terminfo
 
@@ -91,6 +98,7 @@ setprompt() {
 setprompt
 
 [ -f ~/.zsh/aliases.zsh ] && source ~/.zsh/aliases.zsh
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -f /usr/share/fzf/completion.zsh ] && source /usr/share/fzf/completion.zsh
 [ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
 [ -f /etc/profile.d//autojump.zsh ] && source /etc/profile.d/autojump.zsh
@@ -138,7 +146,8 @@ for config_file ($ZSH_CUSTOM/*.zsh(N)); do
 done
 unset config_file
 
-[[ -f /usr/bin/direnv ]] && eval "$(direnv hook zsh)"
+[[ -f /opt/homebrew/bin/direnv ]] && eval "$(direnv hook zsh)"
+[[ -f /opt/homebrew/bin/zoxide ]] && eval "$(zoxide init zsh)"
 [[ -f /usr/bin/hub ]] && eval "$(hub alias -s)"
 
 # OPAM configuration
@@ -153,3 +162,7 @@ unset config_file
 
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
+export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+autoload -Uz add-zsh-hook
+export PATH="/opt/homebrew/opt/php@7.4/bin:$PATH"
+export PATH="/opt/homebrew/opt/php@7.4/sbin:$PATH"
