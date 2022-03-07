@@ -35,7 +35,10 @@ local init = function()
     config = "require('treesitter')"
   }
 
-  use {"neovim/nvim-lspconfig", "williamboman/nvim-lsp-installer"}
+  use {
+    "neovim/nvim-lspconfig", "williamboman/nvim-lsp-installer",
+    "simrat39/rust-tools.nvim"
+  }
 
   use {"kosayoda/nvim-lightbulb"}
 
