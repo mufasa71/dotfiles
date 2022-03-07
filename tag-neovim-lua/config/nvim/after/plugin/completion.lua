@@ -1,3 +1,4 @@
+local cmp_autopairs = require "nvim-autopairs.completion.cmp"
 local cmp = require "cmp"
 require("lspkind").init({preset = "codicons"})
 
@@ -42,7 +43,7 @@ cmp.setup {
     end, {"i", "s"})
   },
   sources = cmp.config.sources({
-    {name = "nvim_lsp"}, {name = "vsnip"} -- For vsnip users.
+    {name = "nvim_lsp"}, {name = "nvim_lsp_signature_help"}, {name = "vsnip"} -- For vsnip users.
   }, {{name = "buffer"}}),
   formatting = {
     format = require"lspkind".cmp_format({mode = "symbol", maxwidth = 50})
@@ -63,6 +64,9 @@ cmp.setup.cmdline("/", {sources = {{name = "buffer"}}})
 cmp.setup.cmdline(":", {
   sources = cmp.config.sources({{name = "path"}}, {{name = "cmdline"}})
 })
+
+cmp.event:on("confirm_done",
+             cmp_autopairs.on_confirm_done({map_char = {tex = ""}}))
 
 -- Setup lspconfig.
 local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp

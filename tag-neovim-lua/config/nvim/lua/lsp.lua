@@ -2,6 +2,15 @@ local lsp_installer = require "nvim-lsp-installer"
 local ts_utils = require "nvim-lsp-ts-utils"
 local wk = require "which-key"
 
+wk.register({
+  ["<space>e"] = {vim.diagnostic.open_float, "Open float"},
+  ["<space>q"] = {vim.diagnostic.setloclist, "Set loc list"},
+  ["[d"] = {vim.diagnostic.goto_prev, ""},
+  ["]d"] = {vim.diagnostic.goto_next, ""},
+  ["]D"] = {function() vim.diagnostic.goto_prev {wrap = false} end, ""},
+  ["[D"] = {function() vim.diagnostic.goto_next {wrap = false} end, ""}
+})
+
 local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
@@ -26,8 +35,8 @@ local on_attach = function(client, bufnr)
         "List workspace"
       }
     },
-    e = {vim.lsp.diagnostic.show_line_diagnostics, "Show line diagnostics"},
-    q = {vim.lsp.diagnostic.set_loclist, "LocList"},
+    e = {vim.diagnostic.show_line_diagnostics, "Show line diagnostics"},
+    q = {vim.diagnostic.set_loclist, "LocList"},
     ["so"] = {
       function() require("telescope.builtin").lsp_document_symbols() end,
       "Show symbols"
@@ -41,10 +50,6 @@ local on_attach = function(client, bufnr)
     ["<C-k"] = {vim.lsp.buf.type_definition, "Definition"},
     ["1gd"] = {vim.lsp.buf.document_symbol, "Document symbol"},
     ["1gD"] = {vim.lsp.buf.workspace_symbol, ""},
-    ["[d"] = {vim.lsp.diagnostic.goto_prev, ""},
-    ["]d"] = {vim.lsp.diagnostic.goto_next, ""},
-    ["]D"] = {function() vim.lsp.diagnostic.goto_prev {wrap = false} end, ""},
-    ["[D"] = {function() vim.lsp.diagnostic.goto_next {wrap = false} end, ""},
     ["gq"] = {
       function()
         if client.resolved_capabilities.document_formatting then
