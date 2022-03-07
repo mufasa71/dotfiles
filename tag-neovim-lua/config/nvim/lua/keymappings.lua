@@ -25,8 +25,13 @@ wk.register({
     l = {"<cmd>Trouble loclist<cr>", "Open location list"},
     q = {"<cmd>Trouble quickfix<cr>", "Open quickfix list"},
     R = {"<cmd>Trouble lsp_references<cr>", "Open quickfix list"}
-  }
+  },
+
+  r = {"<cmd>NvimTreeRefresh<cr>", "Tree refresh"},
+  n = {"<cmd>NvimTreeFindFile<cr>", "Find file in tree"}
 }, {prefix = "<leader>"})
+
+wk.register({["<C-n>"] = {"<cmd>NvimTreeToggle<cr>", "Open tree"}});
 
 -- Remap comma as leader key
 vim.keymap.set("", "<Space>", "<Nop>", {noremap = true, silent = true})

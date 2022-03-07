@@ -20,15 +20,31 @@ local lua = function()
   }
 end
 
+local rust = function()
+  return {
+    exe = "rustfmt",
+    args = {"--emit=stdout", "--edition=2021"},
+    stdin = true
+  }
+end
+
+local terraform = function()
+  return {exe = "terraform", args = {"fmt", "-"}, stdin = true}
+end
+
+local go = function() return {exe = "gofmt", args = {"-w"}, stdin = true} end
+
 require("formatter").setup({
   filetype = {
     javascript = {prettier},
+    json = {prettier},
     typescript = {prettier},
     typescriptreact = {prettier},
-    lua = {lua}
+    terraform = {terraform},
+    go={go},
+    lua = {lua},
+    rust = {rust}
   }
 })
 
-local remap = vim.api.nvim_set_keymap
-
-remap("n", "<Leader>F", "<cmd>Format<cr>", {noremap = true, silent = true})
+wk.register({F = {"<cmd>Format<cr>", "Format"}}, {prefix = "<leader>"})

@@ -47,7 +47,8 @@ local init = function()
     requires = {
       {"onsails/lspkind-nvim"}, {"hrsh7th/cmp-vsnip"}, {"hrsh7th/cmp-nvim-lsp"},
       {"hrsh7th/cmp-buffer"}, {"hrsh7th/cmp-path"}, {"hrsh7th/cmp-cmdline"},
-      {"hrsh7th/vim-vsnip"}
+      {"hrsh7th/cmp-nvim-lsp-signature-help"},
+      {"hrsh7th/vim-vsnip", "hrsh7th/vim-vsnip-integ"}
     }
   }
 
@@ -65,7 +66,6 @@ local init = function()
   use "brooth/far.vim"
   use "mhartington/formatter.nvim"
   use "lbrayner/vim-rzip"
-  use "preservim/nerdtree"
   use "rebelot/kanagawa.nvim"
   use {
     "folke/trouble.nvim",
@@ -75,6 +75,27 @@ local init = function()
   use {
     "nvim-lualine/lualine.nvim",
     requires = {"kyazdani42/nvim-web-devicons", opt = true}
+  }
+  use {
+    "kyazdani42/nvim-tree.lua",
+    config = function() require"nvim-tree".setup {} end,
+    requires = {
+      "kyazdani42/nvim-web-devicons" -- optional, for file icon
+    }
+  }
+  use "rafamadriz/friendly-snippets"
+  use {
+    "windwp/nvim-autopairs",
+    config = function()
+      require("nvim-autopairs").setup {
+        check_ts = true,
+        ts_config = {
+          lua = {"string"}, -- it will not add a pair on that treesitter node
+          javascript = {"template_string"},
+          java = false -- don't check treesitter on java
+        }
+      }
+    end
   }
 end
 
