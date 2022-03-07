@@ -145,6 +145,18 @@ lsp_installer.on_server_ready(function(server)
   -- if server.name == 'rust-analyzer' then end
   if server.name == "sumneko_lua" then opts.settings = lua_settings end
   if server.name == "tsserver" then opts.init_options = ts_utils.init_options end
+  if server.name == "rust_analyzer" then
+    opts.inlay_hints = true;
+    require("rust-tools").setup {
+      -- The "server" property provided in rust-tools setup function are the
+      -- settings rust-tools will provide to lspconfig during init.
+      -- We merge the necessary settings from nvim-lsp-installer (server:get_default_options())
+      -- with the user's own settings (opts).
+      server = vim.tbl_deep_extend("force", server:get_default_options(), opts)
+    }
+    server:attach_buffers()
+  else
+    server:setup(opts)
+  end
 
-  server:setup(opts)
 end)
