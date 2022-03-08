@@ -12,6 +12,7 @@ wk.register({
 })
 
 local on_attach = function(client, bufnr)
+  -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
   if client.config.flags then
@@ -20,11 +21,12 @@ local on_attach = function(client, bufnr)
   end
 
   wk.register({
-    d = {vim.lsp.buf.definition, "Definition"},
-    D = {vim.lsp.buf.declaration, "Declaration"},
-    r = {vim.lsp.buf.references, "References"},
-    i = {vim.lsp.buf.implementation, "Implementation"}
-  }, {prefix = "g"})
+    ["gd"] = {"<cmd>lsp vim.lsp.buf.definition()</cr>", "Definition"},
+    ["gD"] = {vim.lsp.buf.declaration, "Declaration"},
+    ["gr"] = {vim.lsp.buf.references, "References"},
+    ["gi"] = {vim.lsp.buf.implementation, "Implementation"},
+    ["gq"] = {vim.lsp.buf.formatting, "Format"}
+  })
 
   wk.register({
     w = {
@@ -47,18 +49,9 @@ local on_attach = function(client, bufnr)
 
   wk.register({
     K = {vim.lsp.buf.hover, "Hover"},
-    ["<C-k"] = {vim.lsp.buf.type_definition, "Definition"},
+    ["<C-k>"] = {vim.lsp.buf.type_definition, "Definition"},
     ["1gd"] = {vim.lsp.buf.document_symbol, "Document symbol"},
     ["1gD"] = {vim.lsp.buf.workspace_symbol, ""},
-    ["gq"] = {
-      function()
-        if client.resolved_capabilities.document_formatting then
-          vim.lsp.buf.formatting()
-        elseif client.resolved_capabilities.document_range_formatting then
-          vim.lsp.buf.formatting()
-        end
-      end
-    }
   })
 
   wk.register({["ca"] = {vim.lsp.buf.range_code_action}},
@@ -92,6 +85,7 @@ local on_attach = function(client, bufnr)
       eslint_enable_diagnostics = true,
       eslint_config_fallback = nil,
 
+      auto_inlay_hints = false,
       enable_formatting = true,
       formatter = "prettier",
       formatter_config_fallback = nil,
@@ -147,7 +141,6 @@ end
 lsp_installer.on_server_ready(function(server)
   local opts = make_config()
 
-  -- if server.name == 'rust-analyzer' then end
   if server.name == "sumneko_lua" then opts.settings = lua_settings end
   if server.name == "tsserver" then opts.init_options = ts_utils.init_options end
   if server.name == "rust_analyzer" then
