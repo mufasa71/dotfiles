@@ -29,11 +29,8 @@ local init = function()
   use {"nvim-telescope/telescope.nvim", requires = {{"nvim-lua/plenary.nvim"}}}
   use {"nvim-telescope/telescope-fzf-native.nvim", run = "make"}
 
-  use {
-    "nvim-treesitter/nvim-treesitter-textobjects",
-    requires = {"nvim-treesitter/nvim-treesitter"},
-    config = "require('treesitter')"
-  }
+  use {"lukas-reineke/indent-blankline.nvim"}
+  use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
 
   use {
     "neovim/nvim-lspconfig", "williamboman/nvim-lsp-installer",
@@ -87,14 +84,7 @@ local init = function()
   use {
     "windwp/nvim-autopairs",
     config = function()
-      require("nvim-autopairs").setup {
-        check_ts = true,
-        ts_config = {
-          lua = {"string"}, -- it will not add a pair on that treesitter node
-          javascript = {"template_string"},
-          java = false -- don't check treesitter on java
-        }
-      }
+      require("nvim-autopairs").setup {check_ts = true, ts_config = {}}
     end
   }
 end
