@@ -19,6 +19,7 @@ wk.register({
   ["]B"] = {"<cmd>:blast<cr>", "Last buffer"},
 
   x = {
+    name = "Trouble",
     x = {"<cmd>Trouble<cr>", "Open the list"},
     w = {"<cmd>Trouble workspace_diagnostics<cr>", "Open workspace"},
     d = {"<cmd>Trouble document_diagnostics<cr>", "Open diagnostics"},
