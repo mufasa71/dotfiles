@@ -21,7 +21,7 @@ local on_attach = function(client, bufnr)
   end
 
   wk.register({
-    ["gd"] = {"<cmd>lsp vim.lsp.buf.definition()</cr>", "Definition"},
+    ["gd"] = {vim.lsp.buf.definition, "Definition"},
     ["gD"] = {vim.lsp.buf.declaration, "Declaration"},
     ["gr"] = {vim.lsp.buf.references, "References"},
     ["gi"] = {vim.lsp.buf.implementation, "Implementation"},
@@ -37,8 +37,6 @@ local on_attach = function(client, bufnr)
         "List workspace"
       }
     },
-    e = {vim.diagnostic.show_line_diagnostics, "Show line diagnostics"},
-    q = {vim.diagnostic.set_loclist, "LocList"},
     ["so"] = {
       function() require("telescope.builtin").lsp_document_symbols() end,
       "Show symbols"
@@ -67,7 +65,7 @@ local on_attach = function(client, bufnr)
     ts_utils.setup {
       debug = false,
       disable_commands = false,
-      enable_import_on_completion = false,
+      enable_import_on_completion = true,
 
       import_all_timeout = 5000,
       import_all_scan_buffers = 100,
