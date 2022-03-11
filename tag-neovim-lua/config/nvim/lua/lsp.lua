@@ -98,7 +98,7 @@ local on_attach = function(client, bufnr)
     wk.register({
       s = {"<cmd>TSLspOrganize<cr>", "Import sort"},
       r = {"<cmd>TSLspRenameFile<cr>", "Rename file"},
-      i = {"<cmd>TSLspImportAll<cr>", "Import all"}
+      I = {"<cmd>TSLspImportAll<cr>", "Import all"}
     }, {prefix = "g"})
   end
 
