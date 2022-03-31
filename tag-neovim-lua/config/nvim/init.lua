@@ -10,6 +10,7 @@ vim.o.smartcase = true
 vim.o.updatetime = 250 --decrease update time
 vim.wo.signcolumn = 'yes'
 vim.o.termguicolors = true --set colorscheme (order is important here)
+vim.o.exrc = true
 vim.cmd [[set undofile]] --save undo history
 
 -- Map leader

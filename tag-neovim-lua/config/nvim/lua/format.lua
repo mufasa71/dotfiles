@@ -1,10 +1,20 @@
+local util = require "lspconfig.util"
 local wk = require "which-key"
 local escape = vim.fn.fnameescape
 local buf_name = vim.api.nvim_buf_get_name
 
 local prettier = function()
+  local root_dir = vim.fn.getcwd()
+  local pnp_cjs = util.path.join(root_dir, ".pnp.cjs")
+  local pnp_js = util.path.join(root_dir, ".pnp.loader.mjs")
+  local exe = "prettier"
+
+  if util.path.exists(pnp_cjs) or util.path.exists(pnp_js) then
+    exe = "yarn exec prettier"
+  end
+
   return {
-    exe = "prettier",
+    exe = exe,
     args = {"--stdin-filepath", escape(buf_name(0)), ""},
     stdin = true
   }
@@ -41,7 +51,7 @@ require("formatter").setup({
     typescript = {prettier},
     typescriptreact = {prettier},
     terraform = {terraform},
-    go={go},
+    go = {go},
     lua = {lua},
     rust = {rust}
   }
