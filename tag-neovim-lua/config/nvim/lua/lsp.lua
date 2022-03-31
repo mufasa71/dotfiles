@@ -1,3 +1,5 @@
+local lsp_config = require "lspconfig"
+local util = require "lspconfig.util"
 local lsp_installer = require "nvim-lsp-installer"
 local ts_utils = require "nvim-lsp-ts-utils"
 local wk = require "which-key"
@@ -49,7 +51,7 @@ local on_attach = function(client, bufnr)
     K = {vim.lsp.buf.hover, "Hover"},
     ["<C-k>"] = {vim.lsp.buf.type_definition, "Definition"},
     ["1gd"] = {vim.lsp.buf.document_symbol, "Document symbol"},
-    ["1gD"] = {vim.lsp.buf.workspace_symbol, ""},
+    ["1gD"] = {vim.lsp.buf.workspace_symbol, ""}
   })
 
   wk.register({["ca"] = {vim.lsp.buf.range_code_action}},
@@ -97,7 +99,7 @@ local on_attach = function(client, bufnr)
 
     wk.register({
       s = {"<cmd>TSLspOrganize<cr>", "Import sort"},
-      r = {"<cmd>TSLspRenameFile<cr>", "Rename file"},
+      R = {"<cmd>TSLspRenameFile<cr>", "Rename file"},
       I = {"<cmd>TSLspImportAll<cr>", "Import all"}
     }, {prefix = "g"})
   end
@@ -138,9 +140,22 @@ end
 
 lsp_installer.on_server_ready(function(server)
   local opts = make_config()
-
   if server.name == "sumneko_lua" then opts.settings = lua_settings end
-  if server.name == "tsserver" then opts.init_options = ts_utils.init_options end
+  if server.name == "tsserver" then
+    opts.root_dir = function(fname)
+      return util.root_pattern "tsconfig.json"(fname)
+    end
+    opts.init_options = ts_utils.init_options
+  end
+  if server.name == "eslint" then
+    local root_dir = vim.fn.getcwd()
+    local pnp_js = util.path.join(root_dir, ".pnp.loader.mjs")
+    local eslint_config = require("lspconfig.server_configurations.eslint")
+
+    if util.path.exists(pnp_js) then
+      opts.cmd = {"yarn", "exec", unpack(eslint_config.default_config.cmd)};
+    end
+  end
   if server.name == "rust_analyzer" then
     opts.inlay_hints = true;
     require("rust-tools").setup {
@@ -156,3 +171,11 @@ lsp_installer.on_server_ready(function(server)
   end
 
 end)
+
+ lsp_config.flow.setup {
+    on_attach = on_attach,
+    flags = {
+      -- This will be the default in neovim 0.7+
+      debounce_text_changes = 150,
+    }
+  }
