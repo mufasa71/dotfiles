@@ -240,7 +240,7 @@ alias gwx='git rm -r'
 alias gwX='git rm -rf'
 
 alias fixture="curl -s -H 'X-Response-Control: minified' -X GET http://api.football-data.org/v1/competitions/426/fixtures?timeFrame\=n3\ | jq '.fixtures[] | {home: .homeTeamName, away: .awayTeamName, date: .date, goalsHomeTeam: .result.goalsHomeTeam, goalsAwayTeam: .result.goalsAwayTeam}'"
-alias weather="curl wttr.in/Tashkent"
+alias weather="curl wttr.in/Berlin"
 alias mellowplayer="lxc exec arch-gui -- sudo -ib -u archie MellowPlayer"
 
 alias mutt=neomutt
