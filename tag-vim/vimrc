@@ -47,140 +47,138 @@ set updatetime=100
 
 syntax enable                         " enable syntax highlighting
 
-silent! packadd minpac
-if !exists('*minpac#init')
-else
-    call minpac#init()
-    call minpac#add('k-takata/minpac', {'type': 'opt'})
-    call minpac#add('mattn/webapi-vim', {'type': 'opt'})
-    call minpac#add('editorconfig/editorconfig-vim')
-    "
-    """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-    " => EasyMotion
-    call minpac#add('easymotion/vim-easymotion')
+packadd minpac
+call minpac#init()
+call minpac#init()
+call minpac#add('k-takata/minpac', {'type': 'opt'})
+call minpac#add('mattn/webapi-vim', {'type': 'opt'})
+call minpac#add('editorconfig/editorconfig-vim')
+"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => EasyMotion
+call minpac#add('easymotion/vim-easymotion')
 
-    " move to line
-    map <leader>L <Plug>(easymotion-bd-jk)
-    nmap <leader>L <Plug>(easymotion-overwin-line)
-    " move to word
-    map  <leader>w <Plug>(easymotion-bd-w)
-    nmap <leader>w <Plug>(easymotion-overwin-w)
-    map <leader><leader>l <Plug>(easymotion-lineforward)
-    map <leader>j <Plug>(easymotion-j)
-    map <leader>k <Plug>(easymotion-k)
-    map <leader><leader>h <Plug>(easymotion-linebackward)
-    " s{char}{char} to move to {char}{char}
-    nmap s <Plug>(easymotion-overwin-f2)
-    nmap t <Plug>(easymotion-t2)
-    " <leader>f{char} to move to {char}
-    map  <leader>f <Plug>(easymotion-bd-f)
-    nmap <leader>f <Plug>(easymotion-overwin-f)
-    """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" move to line
+map <leader>L <Plug>(easymotion-bd-jk)
+nmap <leader>L <Plug>(easymotion-overwin-line)
+" move to word
+map  <leader>w <Plug>(easymotion-bd-w)
+nmap <leader>w <Plug>(easymotion-overwin-w)
+map <leader><leader>l <Plug>(easymotion-lineforward)
+map <leader>j <Plug>(easymotion-j)
+map <leader>k <Plug>(easymotion-k)
+map <leader><leader>h <Plug>(easymotion-linebackward)
+" s{char}{char} to move to {char}{char}
+nmap s <Plug>(easymotion-overwin-f2)
+nmap t <Plug>(easymotion-t2)
+" <leader>f{char} to move to {char}
+map  <leader>f <Plug>(easymotion-bd-f)
+nmap <leader>f <Plug>(easymotion-overwin-f)
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-    " call minpac#add('rust-lang/rust.vim', {'type': 'opt'})
+" call minpac#add('rust-lang/rust.vim', {'type': 'opt'})
 
-    " => vim-racer
-    """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-    " call minpac#add('racer-rust/vim-racer', {'type': 'opt'})
-    " let g:racer_cmd = '~/.cargo/bin/racer'
-    " au FileType rust nmap gd <Plug>(rust-def)
-    " au FileType rust nmap gs <Plug>(rust-def-split)
-    " au FileType rust nmap gx <Plug>(rust-def-vertical)
-    " au FileType rust nmap <leader>gd <Plug>(rust-doc)
-    """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => vim-racer
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" call minpac#add('racer-rust/vim-racer', {'type': 'opt'})
+" let g:racer_cmd = '~/.cargo/bin/racer'
+" au FileType rust nmap gd <Plug>(rust-def)
+" au FileType rust nmap gs <Plug>(rust-def-split)
+" au FileType rust nmap gx <Plug>(rust-def-vertical)
+" au FileType rust nmap <leader>gd <Plug>(rust-doc)
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-    call minpac#add('tomasr/molokai')
-    call minpac#add('joshdick/onedark.vim')
-    call minpac#add('mhartington/oceanic-next')
+call minpac#add('tomasr/molokai')
+call minpac#add('joshdick/onedark.vim')
+call minpac#add('mhartington/oceanic-next')
 
-    """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-    " => Airline
-    call minpac#add('vim-airline/vim-airline')
-    call minpac#add('vim-airline/vim-airline-themes')
-    """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Airline
+call minpac#add('vim-airline/vim-airline')
+call minpac#add('vim-airline/vim-airline-themes')
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-    call minpac#add('tpope/vim-unimpaired')
+call minpac#add('tpope/vim-unimpaired')
 
-    """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-    " => fzf-vim
-    call minpac#add('junegunn/fzf.vim')
-    nmap <leader>t :FZF<CR>
-    nmap <leader>b :Buffers<CR>
-    """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => fzf-vim
+call minpac#add('junegunn/fzf.vim')
+nmap <leader>t :FZF<CR>
+nmap <leader>b :Buffers<CR>
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-    call minpac#add('kana/vim-textobj-entire')
-    call minpac#add('kana/vim-textobj-user')
-    call minpac#add('airblade/vim-gitgutter')
-    call minpac#add('wincent/ferret')
-    call minpac#add('tpope/vim-surround')
-    call minpac#add('tpope/vim-fugitive')
-    call minpac#add('tpope/vim-repeat')
-    call minpac#add('tpope/vim-commentary')
-    call minpac#add('tpope/vim-abolish')
-    packadd webapi-vim
-    let g:user_emmet_settings = webapi#json#decode(join(readfile(expand('~/.snippets.json')), "\n"))
-    call minpac#add('mattn/emmet-vim')
-    call minpac#add('chiel92/vim-autoformat')
-    call minpac#add('moll/vim-bbye')
-    call minpac#add('google/vim-searchindex')
-    call minpac#add('tommcdo/vim-exchange')
-    call minpac#add('chilicuil/vim-sprunge')
-    call minpac#add('janko-m/vim-test')
-    " call minpac#add('cakebaker/scss-syntax.vim')
-    " call minpac#add('leafgarland/typescript-vim')
-    " call minpac#add('ianks/vim-tsx')
-    call minpac#add('lifepillar/vim-cheat40')
+call minpac#add('kana/vim-textobj-entire')
+call minpac#add('kana/vim-textobj-user')
+call minpac#add('airblade/vim-gitgutter')
+call minpac#add('wincent/ferret')
+call minpac#add('tpope/vim-surround')
+call minpac#add('tpope/vim-fugitive')
+call minpac#add('tpope/vim-repeat')
+call minpac#add('tpope/vim-commentary')
+call minpac#add('tpope/vim-abolish')
+packadd webapi-vim
+let g:user_emmet_settings = webapi#json#decode(join(readfile(expand('~/.snippets.json')), "\n"))
+call minpac#add('mattn/emmet-vim')
+call minpac#add('chiel92/vim-autoformat')
+call minpac#add('moll/vim-bbye')
+call minpac#add('google/vim-searchindex')
+call minpac#add('tommcdo/vim-exchange')
+call minpac#add('chilicuil/vim-sprunge')
+call minpac#add('janko-m/vim-test')
+" call minpac#add('cakebaker/scss-syntax.vim')
+" call minpac#add('leafgarland/typescript-vim')
+" call minpac#add('ianks/vim-tsx')
+call minpac#add('lifepillar/vim-cheat40')
 
-    call minpac#add('styled-components/vim-styled-components')
-    call minpac#add('hail2u/vim-css3-syntax')
-    call minpac#add('othree/yajs.vim')
-    " call minpac#add('yuezk/vim-js')
-    " call minpac#add('peitalin/vim-jsx-typescript')
-    call minpac#add('maxmellon/vim-jsx-pretty')
+call minpac#add('styled-components/vim-styled-components')
+call minpac#add('hail2u/vim-css3-syntax')
+call minpac#add('othree/yajs.vim')
+" call minpac#add('yuezk/vim-js')
+" call minpac#add('peitalin/vim-jsx-typescript')
+call minpac#add('maxmellon/vim-jsx-pretty')
 
-    """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-    " => deoplete
-    call minpac#add('Shougo/deoplete.nvim')
-    call minpac#add('roxma/nvim-yarp')
-    call minpac#add('roxma/vim-hug-neovim-rpc')
-    let g:deoplete#enable_at_startup = 1
-    
-    """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-    " => ale
-    let g:ale_linters = {
-          \    'javascript': ['prettier', 'eslint', 'flow']
-          \}
-    let g:ale_fixers = {
-          \   '*': ['remove_trailing_lines', 'trim_whitespace'],
-          \   'javascript': ['eslint', 'importjs', 'prettier'],
-          \   'typescript': ['eslint', 'prettier']
-          \}
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => deoplete
+call minpac#add('Shougo/deoplete.nvim')
+call minpac#add('roxma/nvim-yarp')
+call minpac#add('roxma/vim-hug-neovim-rpc')
+let g:deoplete#enable_at_startup = 1
 
-    call minpac#add('w0rp/ale')
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => ale
+let g:ale_linters = {
+      \    'javascript': ['prettier', 'eslint', 'flow']
+      \}
+let g:ale_fixers = {
+      \   '*': ['remove_trailing_lines', 'trim_whitespace'],
+      \   'javascript': ['eslint', 'importjs', 'prettier'],
+      \   'typescript': ['eslint', 'prettier']
+      \}
 
-    """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-    " => language client
-    let g:LanguageClient_serverCommands = {
-          \ 'javascript': ['npx', 'flow', 'lsp'],
-          \ 'javascript.jsx': ['npx', 'flow', 'lsp'],
-          \ 'typescript': ['javascript-typescript-stdio']
-          \ }
-    let g:LanguageClient_rootMarkers = {
-          \ 'javascript': ['.flowconfig']
-          \ }
-    call minpac#add('autozimu/LanguageClient-neovim', {'do': 'silent! !bash install.sh', 'branch': 'next'})
-    " nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+call minpac#add('w0rp/ale')
 
-    """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-    packloadall
-    colorscheme OceanicNext
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => language client
+let g:LanguageClient_serverCommands = {
+      \ 'javascript': ['npx', 'flow', 'lsp'],
+      \ 'javascript.jsx': ['npx', 'flow', 'lsp'],
+      \ 'typescript': ['javascript-typescript-stdio']
+      \ }
+let g:LanguageClient_rootMarkers = {
+      \ 'javascript': ['.flowconfig']
+      \ }
+call minpac#add('autozimu/LanguageClient-neovim', {'do': 'silent! !bash install.sh', 'branch': 'next'})
+" nnoremap <F5> :call LanguageClient_contextMenu()<CR>
 
-    nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-    nmap <silent> <C-j> <Plug>(ale_next_wrap)
-    inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-    inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-    inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
-endif
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+packloadall
+colorscheme OceanicNext
+
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
 
 hi Normal guibg=NONE ctermbg=NONE
 
