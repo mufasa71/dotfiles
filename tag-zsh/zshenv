@@ -4,16 +4,16 @@ typeset -U path
 
 # Ensure that a non-login, non-interactive shell has a defined environment.
 if [[ "$SHLVL" -eq 1 && ! -o LOGIN && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; then
-  source "${ZDOTDIR:-$HOME}/.zprofile"
+	source "${ZDOTDIR:-$HOME}/.zprofile"
 fi
 
-if (( $+commands[ruby] )); then
+if (($ + commands[ruby])); then
 	export GEM_HOME="$(ruby -e 'print Gem.user_dir')"
 	path=($GEM_HOME/bin $path)
 fi
 
 if [[ -z "$LANG" && -d /usr/share/java ]]; then
-	for name in /usr/share/java/*.jar ; do
+	for name in /usr/share/java/*.jar; do
 		CP=$CP:$name
 	done
 
@@ -25,7 +25,7 @@ if [[ -z "$LANG" ]]; then
 fi
 
 if [[ -z "$ZSH_CUSTOM" ]]; then
-    ZSH_CUSTOM="${ZDOTDIR:-$HOME}/.zsh/custom"
+	ZSH_CUSTOM="${ZDOTDIR:-$HOME}/.zsh/custom"
 fi
 
 if [[ -d "${ZDOTDIR:-$HOME}/node" ]]; then
@@ -36,12 +36,10 @@ if [[ -d "${ZDOTDIR:-$HOME}/go" ]]; then
 	export GOPATH="${ZDOTDIR:-$HOME}/go"
 fi
 
-if (( $+commands[gpg-connect-agent] && $+commands[tty] )); then
+if (($ + commands[gpg - connect - agent] && $ + commands[tty])); then
 	export GPG_TTY=$(tty)
 	# Refresh gpg-agent tty in case user switches into an X session
 	gpg-connect-agent updatestartuptty /bye >/dev/null
 fi
 
 export SCRIPT_DIR="${ZDOTDIR:-$HOME}/.config/i3blocks"
-export VOLTA_HOME=$HOME/.volta
-#
