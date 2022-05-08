@@ -68,13 +68,6 @@ cmp.setup.cmdline(":", {
 cmp.event:on("confirm_done",
              cmp_autopairs.on_confirm_done({map_char = {tex = ""}}))
 
--- Setup lspconfig.
-local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp
-                                                                     .protocol
-                                                                     .make_client_capabilities())
--- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
-require("lspconfig")["tsserver"].setup {capabilities = capabilities}
-
 vim.keymap.set("i", "<C-j>",
                "vsnip#expandable() ? '<Plug>(vsnip-expand)' : '<C-j>'",
                {expr = true})
