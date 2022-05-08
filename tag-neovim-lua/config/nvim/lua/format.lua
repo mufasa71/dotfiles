@@ -50,6 +50,7 @@ require("formatter").setup({
     json = {prettier},
     typescript = {prettier},
     typescriptreact = {prettier},
+    css = {prettier},
     terraform = {terraform},
     go = {go},
     lua = {lua},

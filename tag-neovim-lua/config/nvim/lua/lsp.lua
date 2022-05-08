@@ -3,6 +3,20 @@ local util = require "lspconfig.util"
 local lsp_installer = require "nvim-lsp-installer"
 local ts_utils = require "nvim-lsp-ts-utils"
 local wk = require "which-key"
+local rust_tools = require "rust-tools"
+local cmp_capabilities = require "cmp_nvim_lsp"
+
+lsp_installer.setup {
+  ensure_installed = {"tsserver", "sumneko_lua", "eslint"}, -- ensure these servers are always installed
+  automatic_installation = true, -- automatically detect which servers to install (based on which servers are set up via lspconfig)
+  ui = {
+    icons = {
+      server_installed = "✓",
+      server_pending = "➜",
+      server_uninstalled = "✗"
+    }
+  }
+}
 
 wk.register({
   ["<space>e"] = {vim.diagnostic.open_float, "Open float"},
@@ -57,7 +71,7 @@ local on_attach = function(client, bufnr)
   wk.register({["ca"] = {vim.lsp.buf.range_code_action}},
               {mode = "v", prefix = "<leader>"})
 
-  if client.resolved_capabilities.code_lens then
+  if client.server_capabilities.code_lens then
     wk.register({["gl"] = {vim.lsp.codelens.run, "Code lens"}});
     vim.api
         .nvim_command [[autocmd CursorHold,CursorHoldI,InsertLeave <buffer> lua vim.lsp.codelens.refresh()]]
@@ -107,75 +121,60 @@ local on_attach = function(client, bufnr)
   vim.cmd [[autocmd CursorHold,CursorHoldI <buffer> lua require'nvim-lightbulb'.update_lightbulb()]]
 end
 
-local lua_settings = {
-  Lua = {
-    runtime = {
-      -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-      version = "LuaJIT"
-      -- Setup your lua path
-      -- path = runtime_path,
-    },
-    diagnostics = {
-      -- Get the language server to recognize the `vim` global
-      globals = {"vim", "use"}
-    },
-    workspace = {
-      -- Make the server aware of Neovim runtime files
-      library = vim.api.nvim_get_runtime_file("", true)
-    },
-    -- Do not send telemetry data containing a randomized but unique identifier
-    telemetry = {enable = false}
-  }
-}
-
-local function make_config()
+local function make_capabilities()
   local capabilities = vim.lsp.protocol.make_client_capabilities()
   capabilities.textDocument.completion.completionItem.snippetSupport = true
   capabilities.textDocument.completion.completionItem.resolveSupport = {
     properties = {"documentation", "detail", "additionalTextEdits"}
   }
+  cmp_capabilities.update_capabilities(capabilities)
 
-  return {on_attach = on_attach, capabilities = capabilities}
+  return capabilities
 end
 
-lsp_installer.on_server_ready(function(server)
-  local opts = make_config()
-  if server.name == "sumneko_lua" then opts.settings = lua_settings end
-  if server.name == "tsserver" then
-    opts.root_dir = function(fname)
-      return util.root_pattern "tsconfig.json"(fname)
-    end
-    opts.init_options = ts_utils.init_options
-  end
-  if server.name == "eslint" then
-    local root_dir = vim.fn.getcwd()
+util.default_config = vim.tbl_extend("force", util.default_config, {
+  capabilities = make_capabilities(),
+  on_attach = on_attach
+})
+
+lsp_config.tsserver.setup {
+  init_options = ts_utils.init_options,
+  root_dir = util.root_pattern("tsconfig.json")
+}
+
+lsp_config.eslint.setup {
+  on_new_config = function(config, root_dir)
     local pnp_js = util.path.join(root_dir, ".pnp.loader.mjs")
     local eslint_config = require("lspconfig.server_configurations.eslint")
 
     if util.path.exists(pnp_js) then
-      opts.cmd = {"yarn", "exec", unpack(eslint_config.default_config.cmd)};
+      config.cmd = {"yarn", "exec", unpack(eslint_config.default_config.cmd)};
     end
   end
-  if server.name == "rust_analyzer" then
-    opts.inlay_hints = true;
-    require("rust-tools").setup {
-      -- The "server" property provided in rust-tools setup function are the
-      -- settings rust-tools will provide to lspconfig during init.
-      -- We merge the necessary settings from nvim-lsp-installer (server:get_default_options())
-      -- with the user's own settings (opts).
-      server = vim.tbl_deep_extend("force", server:get_default_options(), opts)
-    }
-    server:attach_buffers()
-  else
-    server:setup(opts)
-  end
+}
 
-end)
-
- lsp_config.flow.setup {
-    on_attach = on_attach,
-    flags = {
-      -- This will be the default in neovim 0.7+
-      debounce_text_changes = 150,
+lsp_config.sumneko_lua.setup {
+  settings = {
+    Lua = {
+      runtime = {
+        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+        version = "LuaJIT"
+        -- Setup your lua path
+        -- path = runtime_path,
+      },
+      diagnostics = {
+        -- Get the language server to recognize the `vim` global
+        globals = {"vim", "use"}
+      },
+      workspace = {
+        -- Make the server aware of Neovim runtime files
+        library = vim.api.nvim_get_runtime_file("", true)
+      },
+      -- Do not send telemetry data containing a randomized but unique identifier
+      telemetry = {enable = false}
     }
   }
+}
+
+rust_tools.setup {server = {on_attach = on_attach}}
+lsp_config.flow.setup {}
