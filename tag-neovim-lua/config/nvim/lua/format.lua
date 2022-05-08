@@ -44,6 +44,10 @@ end
 
 local go = function() return {exe = "gofmt", args = {"-w"}, stdin = true} end
 
+local shfmt = function()
+  return {exe = "shfmt", args = {"-w"}, stdin = false}
+end
+
 require("formatter").setup({
   filetype = {
     javascript = {prettier},
@@ -54,7 +58,8 @@ require("formatter").setup({
     terraform = {terraform},
     go = {go},
     lua = {lua},
-    rust = {rust}
+    rust = {rust},
+    sh = {shfmt}
   }
 })
 
