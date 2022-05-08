@@ -20,6 +20,7 @@ local init = function()
   use "wbthomason/packer.nvim"
 
   use "tpope/vim-fugitive"
+  use "tpope/vim-rhubarb"
   use "lewis6991/gitsigns.nvim"
 
   use {"tpope/vim-surround", "tommcdo/vim-exchange"}
@@ -31,6 +32,7 @@ local init = function()
 
   use {"lukas-reineke/indent-blankline.nvim"}
   use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
+  use "nvim-treesitter/nvim-treesitter-textobjects"
 
   use {
     "neovim/nvim-lspconfig", "williamboman/nvim-lsp-installer",
@@ -42,12 +44,13 @@ local init = function()
   use {
     "hrsh7th/nvim-cmp",
     requires = {
-      {"onsails/lspkind-nvim"}, {"hrsh7th/cmp-vsnip"}, {"hrsh7th/cmp-nvim-lsp"},
-      {"hrsh7th/cmp-buffer"}, {"hrsh7th/cmp-path"}, {"hrsh7th/cmp-cmdline"},
-      {"hrsh7th/cmp-nvim-lsp-signature-help"},
-      {"hrsh7th/vim-vsnip", "hrsh7th/vim-vsnip-integ"}
+      {"onsails/lspkind-nvim"}, {"hrsh7th/cmp-nvim-lsp"},
+      -- {"hrsh7th/cmp-buffer"}, {"hrsh7th/cmp-path"}, {"hrsh7th/cmp-cmdline"},
+      {"saadparwaiz1/cmp_luasnip"}
     }
   }
+
+  use "L3MON4D3/LuaSnip" -- Snippets plugin
 
   use "sbdchd/neoformat"
   use {"jparise/vim-graphql", "hashivim/vim-terraform"}
