@@ -6,7 +6,7 @@
     indicate_hidden = true
     # geometry = "x5"
     idle_threshold = 0
-    geometry = "300x5-20+20"
+    geometry = "500x10-1680+20"
     alignment = center
     show_age_threshold = 60
     sticky_history = yes
@@ -19,8 +19,8 @@
     dmenu = "/usr/bin/dmenu -p dunst: -nb #FFFFFF -nf #000000 -sb #94DBFF -sf #000000"
     browser = firefox
     icon_position = left
-    icon_path = /usr/share/icons/gnome/32x32/status/:/home/eagle/.covers/
-    max_icon_size = 32
+    icon_path = /usr/share/icons/Adwaita/16x16/status/:/usr/share/icons/Adwaita/16x16/devices/:/usr/share/icons/Adwaita/16x16/legacy/
+    max_icon_size = 64
     frame_width = 3
     frame_color = "#000000"
 
