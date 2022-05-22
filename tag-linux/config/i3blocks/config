@@ -39,6 +39,17 @@ markup=none
 label=Layout
 interval=30
 
+[xkb_layout]
+font=monospace
+font_weight=bold
+interval=persist
+markup=pango
+
+[github]
+interval=60
+format=json
+markup=pango
+
 [volume]
 # label=♪
 label=VOL
@@ -100,10 +111,10 @@ separator=false
 #
 # The script may be called with -w and -c switches to specify thresholds,
 # see the script for details.
-[cpu_usage]
-label=CPU
-interval=10
-min_width=CPU 100.00%
+# [cpu_usage]
+# label=CPU
+# interval=10
+# min_width=CPU 100.00%
 #separator=false
 
 [load_average]
@@ -113,10 +124,10 @@ interval=10
 # Battery indicator
 #
 # The battery instance defaults to 0.
-[battery-poly]
-label=BAT
-#label=⚡
-interval=5
+# [battery-poly]
+# label=BAT
+# label=⚡
+# interval=5
 
 # Date Time
 #
