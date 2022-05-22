@@ -1,4 +1,5 @@
 local lsp_config = require "lspconfig"
+
 local util = require "lspconfig.util"
 local lsp_installer = require "nvim-lsp-installer"
 local wk = require "which-key"
