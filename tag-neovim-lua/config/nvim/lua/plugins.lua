@@ -90,6 +90,13 @@ local init = function()
       require("nvim-autopairs").setup {check_ts = true, ts_config = {}}
     end
   }
+  use {"EdenEast/nightfox.nvim"}
+  use {
+    "folke/todo-comments.nvim",
+    requires = "nvim-lua/plenary.nvim",
+    -- config = function() require("todo-comments").setup {} end
+  }
+  use "jose-elias-alvarez/typescript.nvim"
 end
 
 return packer.startup(init)
