@@ -1,10 +1,10 @@
 local lsp_config = require "lspconfig"
 local util = require "lspconfig.util"
 local lsp_installer = require "nvim-lsp-installer"
-local ts_utils = require "nvim-lsp-ts-utils"
 local wk = require "which-key"
 local rust_tools = require "rust-tools"
 local cmp_capabilities = require "cmp_nvim_lsp"
+local typescript = require "typescript"
 
 lsp_installer.setup {
   ensure_installed = {"tsserver", "sumneko_lua", "eslint"}, -- ensure these servers are always installed
@@ -77,47 +77,6 @@ local on_attach = function(client, bufnr)
         .nvim_command [[autocmd CursorHold,CursorHoldI,InsertLeave <buffer> lua vim.lsp.codelens.refresh()]]
   end
 
-  if client.name == "tsserver" then
-    ts_utils.setup {
-      debug = false,
-      disable_commands = false,
-      enable_import_on_completion = true,
-
-      import_all_timeout = 5000,
-      import_all_scan_buffers = 100,
-      import_all_select_source = false,
-      import_all_priorities = {
-        buffers = 4, -- loaded buffer names
-        buffer_content = 3, -- loaded buffer content
-        local_files = 2, -- git files or files with relative path markers
-        same_file = 1 -- add to existing import statement
-      },
-
-      eslint_enable_code_actions = true,
-      eslint_bin = "eslint",
-      eslint_enable_disable_comments = true,
-      eslint_enable_diagnostics = true,
-      eslint_config_fallback = nil,
-
-      auto_inlay_hints = false,
-      enable_formatting = true,
-      formatter = "prettier",
-      formatter_config_fallback = nil,
-
-      update_imports_on_move = false,
-      require_confirmation_on_move = false,
-      watch_dir = nil
-    }
-
-    ts_utils.setup_client(client)
-
-    wk.register({
-      s = {"<cmd>TSLspOrganize<cr>", "Import sort"},
-      R = {"<cmd>TSLspRenameFile<cr>", "Rename file"},
-      I = {"<cmd>TSLspImportAll<cr>", "Import all"}
-    }, {prefix = "g"})
-  end
-
   vim.cmd [[autocmd CursorHold,CursorHoldI <buffer> lua require'nvim-lightbulb'.update_lightbulb()]]
 end
 
@@ -138,8 +97,8 @@ util.default_config = vim.tbl_extend("force", util.default_config, {
 })
 
 lsp_config.tsserver.setup {
-  init_options = ts_utils.init_options,
-  root_dir = util.root_pattern("tsconfig.json")
+  root_dir = util.root_pattern("tsconfig.json"),
+  settings = {typescript = {format = {indentSize = 2}}}
 }
 
 lsp_config.eslint.setup {
@@ -178,3 +137,19 @@ lsp_config.sumneko_lua.setup {
 
 rust_tools.setup {server = {on_attach = on_attach}}
 lsp_config.flow.setup {}
+
+typescript.setup({
+  disable_commands = false,
+  debug = false,
+  server = {
+    on_attach = function()
+      wk.register({
+        s = {"<cmd>TypescriptOrganizeImports<cr>", "TS Import sort"},
+        S = {"<cmd>TypescriptRemoveUnused<cr>", "TS Remove unused vars"},
+        F = {"<cmd>TypescriptFixAll<cr>", "TS Fix all"},
+        R = {"<cmd>TypescriptRenameFile<cr>", "TS Rename file"},
+        I = {"<cmd>TypescriptAddMissingImports<cr>", "TS Import all"}
+      }, {prefix = "g"})
+    end
+  }
+})
