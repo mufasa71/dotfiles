@@ -59,10 +59,7 @@ local init = function()
     "folke/which-key.nvim",
     config = function() require("which-key").setup {} end
   }
-  use {
-    "jose-elias-alvarez/nvim-lsp-ts-utils",
-    requires = {"jose-elias-alvarez/null-ls.nvim"}
-  }
+  use {"jose-elias-alvarez/null-ls.nvim", requires = "nvim-lua/plenary.nvim"}
   use "brooth/far.vim"
   use "mhartington/formatter.nvim"
   use "lbrayner/vim-rzip"
@@ -93,10 +90,15 @@ local init = function()
   use {"EdenEast/nightfox.nvim"}
   use {
     "folke/todo-comments.nvim",
-    requires = "nvim-lua/plenary.nvim",
+    requires = "nvim-lua/plenary.nvim"
     -- config = function() require("todo-comments").setup {} end
   }
   use "jose-elias-alvarez/typescript.nvim"
+  use {
+    "ThePrimeagen/refactoring.nvim",
+    requires = {{"nvim-lua/plenary.nvim"}, {"nvim-treesitter/nvim-treesitter"}}
+  }
+  use "github/copilot.vim"
 end
 
 return packer.startup(init)

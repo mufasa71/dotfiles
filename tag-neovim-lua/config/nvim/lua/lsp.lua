@@ -5,6 +5,9 @@ local wk = require "which-key"
 local rust_tools = require "rust-tools"
 local cmp_capabilities = require "cmp_nvim_lsp"
 local typescript = require "typescript"
+local null_ls = require "null-ls"
+local command_resolver = require "null-ls.helpers.command_resolver"
+local refactoring = require "refactoring"
 
 lsp_installer.setup {
   ensure_installed = {"tsserver", "sumneko_lua", "eslint"}, -- ensure these servers are always installed
@@ -153,3 +156,25 @@ typescript.setup({
     end
   }
 })
+
+local function dynamic_command(params)
+  return command_resolver.from_node_modules(params) or
+             command_resolver.from_yarn_pnp(params) or
+             vim.fn.executable(params.command) == 1 and params.command
+end
+
+null_ls.setup({
+  sources = {
+    null_ls.builtins.formatting.stylua,
+    null_ls.builtins.diagnostics.eslint
+        .with({dynamic_command = dynamic_command}),
+    -- null_ls.builtins.completion.spell,
+    null_ls.builtins.code_actions.gitsigns,
+    null_ls.builtins.code_actions.refactoring,
+    null_ls.builtins.diagnostics.tsc.with({dynamic_command = dynamic_command}),
+    null_ls.builtins.code_actions.eslint
+        .with({dynamic_command = dynamic_command})
+  }
+})
+
+refactoring.setup({})
