@@ -7,7 +7,7 @@ remap("n", "Y", "y$", {noremap = true, silent = true})
 
 wk.register({
   name = "General",
-  w = {"<esc>:w<cr>", "Write current buffer"},
+  -- w = {"<esc>:w<cr>", "Write current buffer"}, -- conflicts with workspace
   ["c."] = {":%s/\\<<C-r><C-w>\\>//g<Left><Left>", "Search and replace"},
   -- x = {"<esc>:x<cr>", "Write if changes and quite"},
   q = {"<esc>:q<cr>", "Quit current buffer"},
@@ -39,4 +39,4 @@ remap("i", "<C-J>", "copilot#Accept(\"<CR>\")",
 vim.g.copilot_no_tab_map = true
 
 -- Remap comma as leader key
-vim.keymap.set("", "<Space>", "<Nop>", {noremap = true, silent = true})
+-- vim.keymap.set("", "<Space>", "<Nop>", {noremap = true, silent = true})

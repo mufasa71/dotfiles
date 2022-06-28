@@ -1,4 +1,5 @@
 local telescope = require "telescope"
+local actions = require "telescope.actions"
 local wk = require "which-key"
 
 telescope.setup {
@@ -8,8 +9,8 @@ telescope.setup {
       theme = "dropdown",
       previewer = false,
       mappings = {
-        i = {["<c-d>"] = "delete_buffer"},
-        n = {["<c-d>"] = "delete_buffer"}
+        i = {["<c-d>"] = actions.delete_buffer + actions.move_to_top},
+        n = {["<c-d>"] = actions.delete_buffer + actions.move_to_top}
       }
     }
   },
@@ -47,6 +48,7 @@ wk.register({
   g = {
     name = "git",
     s = {"<cmd>Telescope git_status<cr>", "List current changes"},
-    c = {"<cmd>Telescope git_commits<cr>", "List commits"}
+    c = {"<cmd>Telescope git_commits<cr>", "List commits"},
+    p = {"<cmd>Telescope gh pull_request<cr>", "List pull requests"}
   }
 }, {prefix = "<leader>"})
