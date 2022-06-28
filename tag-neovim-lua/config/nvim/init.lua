@@ -49,4 +49,3 @@ require "format"
 vim.api.nvim_command("colorscheme dayfox")
 
 require("luasnip.loaders.from_vscode").lazy_load()
-require("todo-comments").setup {}

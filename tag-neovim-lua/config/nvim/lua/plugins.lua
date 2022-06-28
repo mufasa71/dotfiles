@@ -23,11 +23,14 @@ local init = function()
   use "tpope/vim-rhubarb"
   use "lewis6991/gitsigns.nvim"
 
-  use {"tpope/vim-surround", "tommcdo/vim-exchange"}
+  use {"tpope/vim-sleuth", "tpope/vim-repeat"}
 
-  use {"tpope/vim-commentary", "tpope/vim-sleuth", "tpope/vim-repeat"}
-
-  use {"nvim-telescope/telescope.nvim", requires = {{"nvim-lua/plenary.nvim"}}}
+  use {
+    "nvim-telescope/telescope.nvim",
+    requires = {
+      {"nvim-lua/plenary.nvim"}, {"nvim-telescope/telescope-github.nvim"}
+    }
+  }
   use {"nvim-telescope/telescope-fzf-native.nvim", run = "make"}
 
   use {"lukas-reineke/indent-blankline.nvim"}
@@ -90,15 +93,52 @@ local init = function()
   use {"EdenEast/nightfox.nvim"}
   use {
     "folke/todo-comments.nvim",
-    requires = "nvim-lua/plenary.nvim"
-    -- config = function() require("todo-comments").setup {} end
+    requires = "nvim-lua/plenary.nvim",
+    config = function() require("todo-comments").setup {} end
   }
   use "jose-elias-alvarez/typescript.nvim"
-  use {
-    "ThePrimeagen/refactoring.nvim",
-    requires = {{"nvim-lua/plenary.nvim"}, {"nvim-treesitter/nvim-treesitter"}}
-  }
+  -- use {
+  --   "ThePrimeagen/refactoring.nvim",
+  --   requires = {{"nvim-lua/plenary.nvim"}, {"nvim-treesitter/nvim-treesitter"}}
+  -- }
   use "github/copilot.vim"
+  use {
+    "numToStr/Comment.nvim",
+    requires = {{"JoosepAlviste/nvim-ts-context-commentstring"}},
+    config = function()
+      require("Comment").setup {
+        pre_hook = function(ctx)
+          -- Only calculate commentstring for tsx filetypes
+          if vim.bo.filetype == "typescriptreact" then
+            local U = require("Comment.utils")
+
+            -- Determine whether to use linewise or blockwise commentstring
+            local type = ctx.ctype == U.ctype.line and "__default" or
+                             "__multiline"
+
+            -- Determine the location where to calculate commentstring from
+            local location = nil
+            if ctx.ctype == U.ctype.block then
+              location =
+                  require("ts_context_commentstring.utils").get_cursor_location()
+            elseif ctx.cmotion == U.cmotion.v or ctx.cmotion == U.cmotion.V then
+              location =
+                  require("ts_context_commentstring.utils").get_visual_start_location()
+            end
+
+            return
+                require("ts_context_commentstring.internal").calculate_commentstring(
+                    {key = type, location = location})
+          end
+        end
+      }
+    end
+  }
+  use {
+    "echasnovski/mini.nvim",
+    branch = "stable",
+    config = function() require("mini.surround").setup {} end
+  }
 end
 
 return packer.startup(init)
