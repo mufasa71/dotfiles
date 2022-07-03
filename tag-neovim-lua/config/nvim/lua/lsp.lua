@@ -3,7 +3,7 @@ local util = require "lspconfig.util"
 local lsp_installer = require "nvim-lsp-installer"
 local wk = require "which-key"
 local rust_tools = require "rust-tools"
-local cmp_capabilities = require "cmp_nvim_lsp"
+-- local cmp_capabilities = require "cmp_nvim_lsp"
 local typescript = require "typescript"
 local null_ls = require "null-ls"
 local command_resolver = require "null-ls.helpers.command_resolver"
@@ -32,7 +32,9 @@ wk.register({
 
 local on_attach = function(client, bufnr)
   -- Enable completion triggered by <c-x><c-o>
-  vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+  -- vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+  vim.api.nvim_buf_set_option(bufnr, "omnifunc",
+                              "v:lua.MiniCompletion.completefunc_lsp")
 
   if client.config.flags then
     client.config.flags.allow_incremental_sync = true
@@ -89,7 +91,7 @@ local function make_capabilities()
   capabilities.textDocument.completion.completionItem.resolveSupport = {
     properties = {"documentation", "detail", "additionalTextEdits"}
   }
-  cmp_capabilities.update_capabilities(capabilities)
+  -- cmp_capabilities.update_capabilities(capabilities)
 
   return capabilities
 end
@@ -145,7 +147,7 @@ typescript.setup({
   disable_commands = false,
   debug = false,
   server = {
-    on_attach = function()
+    on_attach = function(client, bufnr)
       wk.register({
         s = {"<cmd>TypescriptOrganizeImports<cr>", "TS Import sort"},
         S = {"<cmd>TypescriptRemoveUnused<cr>", "TS Remove unused vars"},
@@ -153,6 +155,7 @@ typescript.setup({
         R = {"<cmd>TypescriptRenameFile<cr>", "TS Rename file"},
         I = {"<cmd>TypescriptAddMissingImports<cr>", "TS Import all"}
       }, {prefix = "g"})
+      on_attach(client, bufnr)
     end
   }
 })
