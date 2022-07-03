@@ -44,8 +44,30 @@ require "finder"
 require "keymappings"
 require "lsp"
 require "format"
+require "terminal"
 
 -- vim.api.nvim_command("colorscheme kanagawa")
-vim.api.nvim_command("colorscheme dayfox")
+vim.api.nvim_command("colorscheme nordfox")
 
-require("luasnip.loaders.from_vscode").lazy_load()
+-- require("luasnip.loaders.from_vscode").lazy_load()
+
+local keys = {
+  ["cr"] = vim.api.nvim_replace_termcodes("<CR>", true, true, true),
+  ["ctrl-y"] = vim.api.nvim_replace_termcodes("<C-y>", true, true, true),
+  ["ctrl-y_cr"] = vim.api.nvim_replace_termcodes("<C-y><CR>", true, true, true)
+}
+_G.cr_action = function()
+  if vim.fn.pumvisible() ~= 0 then
+    -- If popup is visible, confirm selected item or add new line otherwise
+    local item_selected = vim.fn.complete_info()["selected"] ~= -1
+    return item_selected and keys["ctrl-y"] or keys["ctrl-y_cr"]
+  else
+    -- If popup is not visible, use plain `<CR>`. You might want to customize
+    -- according to other plugins. For example, to use 'mini.pairs', replace
+    -- next line with `return require('mini.pairs').cr()`
+    -- return keys["cr"]
+    return require("mini.pairs").cr()
+  end
+end
+vim.api.nvim_set_keymap("i", "<CR>", "v:lua._G.cr_action()",
+                        {noremap = true, expr = true})
