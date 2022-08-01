@@ -4,13 +4,14 @@ local util = require "lspconfig.util"
 local lsp_installer = require "nvim-lsp-installer"
 local wk = require "which-key"
 local rust_tools = require "rust-tools"
--- local cmp_capabilities = require "cmp_nvim_lsp"
 local typescript = require "typescript"
 local null_ls = require "null-ls"
 -- local refactoring = require "refactoring"
 
 lsp_installer.setup {
-  ensure_installed = {"tsserver", "sumneko_lua", "eslint", "flow"}, -- ensure these servers are always installed
+  ensure_installed = {
+    "tsserver", "sumneko_lua", "eslint", "flow", "rust_analyzer"
+  }, -- ensure these servers are always installed
   automatic_installation = true, -- automatically detect which servers to install (based on which servers are set up via lspconfig)
   ui = {
     icons = {
@@ -150,6 +151,8 @@ typescript.setup({
   disable_commands = false,
   debug = false,
   server = {
+    root_dir = util.root_pattern("tsconfig.json"),
+    settings = {typescript = {format = {indentSize = 2}}},
     on_attach = function(client, bufnr)
       wk.register({
         s = {"<cmd>TypescriptOrganizeImports<cr>", "TS Import sort"},

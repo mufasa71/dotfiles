@@ -55,6 +55,7 @@ require("formatter").setup({
     typescript = {prettier},
     typescriptreact = {prettier},
     css = {prettier},
+    html = {prettier},
     terraform = {terraform},
     go = {go},
     lua = {lua},
