@@ -10,16 +10,6 @@ require("gitsigns").setup {
     local gs = package.loaded.gitsigns
     local wk = require "which-key"
 
-    local function map(mode, l, r, opts)
-      opts = opts or {}
-      opts.buffer = bufnr
-      vim.keymap.set(mode, l, r, opts)
-    end
-
-    -- Navigation
-    map("n", "]c", "&diff ? ']c' : '<cmd>Gitsigns next_hunk<CR>'", {expr = true})
-    map("n", "[c", "&diff ? '[c' : '<cmd>Gitsigns prev_hunk<CR>'", {expr = true})
-
     -- Actions
     wk.register({
       h = {
@@ -41,11 +31,40 @@ require("gitsigns").setup {
     }, {prefix = "<leader>", buffer = bufnr})
 
     wk.register({
+      ["]c"] = {
+        function()
+          if vim.wo.diff then return "]c" end
+          vim.schedule(function() gs.next_hunk() end)
+          return "<Ignore>"
+        end, "Next hunk"
+      },
+      ["[c"] = {
+        function()
+          if vim.wo.diff then return "[c" end
+          vim.schedule(function() gs.next_hunk() end)
+          return "<Ignore>"
+        end, "Prev hunk"
+      }
+    }, {buffer = bufnr})
+
+    wk.register({
       h = {
         name = "Git",
         s = {"<cmd>Gitsigns stage_hunk<cr>", "Stage the hunk"},
         r = {"<cmd>Gitsigns reset_hunk<cr>", "Reset the lines of the hunk"}
       }
     }, {prefix = "<leader>", mode = "v", buffer = bufnr})
+
+    -- Text object
+    -- wk.register({
+    --   name = "Git",
+    --   ["ih"] = {"<cmd><c-u>Gitsigns select_hunk<cr>", "Select hunk"}
+    -- }, {mode = "o", buffer = bufnr})
+    local function map(mode, l, r, opts)
+      opts = opts or {}
+      opts.buffer = bufnr
+      vim.keymap.set(mode, l, r, opts)
+    end
+    map({"o", "x"}, "ih", ":<C-U>Gitsigns select_hunk<CR>")
   end
 }
