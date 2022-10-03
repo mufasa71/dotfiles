@@ -1,6 +1,7 @@
 -- Parsers must be installed manually via :TSInstall
 require("nvim-treesitter.configs").setup {
-  -- ensure_installed = "maintained",
+  autoinstall = true,
+  ensure_installed = { "c", "lua", "rust", "typescript", "javascript", "css" },
   highlight = {enable = true, additional_vim_regex_highlighting = false},
   incremental_selection = {
     enable = true,
