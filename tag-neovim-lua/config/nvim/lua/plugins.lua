@@ -177,7 +177,6 @@ local init = function()
   }
   use {
     "akinsho/toggleterm.nvim",
-    tag = "v1.*",
     config = function()
       require("toggleterm").setup {
         terminal_mappings = false,
