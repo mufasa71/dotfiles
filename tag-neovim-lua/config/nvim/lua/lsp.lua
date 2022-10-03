@@ -7,11 +7,10 @@ local rust_tools = require "rust-tools"
 -- local cmp_capabilities = require "cmp_nvim_lsp"
 local typescript = require "typescript"
 local null_ls = require "null-ls"
-local command_resolver = require "null-ls.helpers.command_resolver"
 -- local refactoring = require "refactoring"
 
 lsp_installer.setup {
-  ensure_installed = {"tsserver", "sumneko_lua", "eslint"}, -- ensure these servers are always installed
+  ensure_installed = {"tsserver", "sumneko_lua", "eslint", "flow"}, -- ensure these servers are always installed
   automatic_installation = true, -- automatically detect which servers to install (based on which servers are set up via lspconfig)
   ui = {
     icons = {
@@ -23,6 +22,7 @@ lsp_installer.setup {
 }
 
 wk.register({
+  ["<space>f"] = {vim.lsp.buf.format, "Format with lsp"},
   ["<space>e"] = {vim.diagnostic.open_float, "Open float"},
   ["<space>q"] = {vim.diagnostic.setloclist, "Set loc list"},
   ["[d"] = {vim.diagnostic.goto_prev, ""},
@@ -102,21 +102,23 @@ util.default_config = vim.tbl_extend("force", util.default_config, {
   on_attach = on_attach
 })
 
-lsp_config.tsserver.setup {
-  root_dir = util.root_pattern("tsconfig.json"),
-  settings = {typescript = {format = {indentSize = 2}}}
-}
+-- lsp_config.tsserver.setup {
+--   root_dir = util.root_pattern("tsconfig.json"),
+--   settings = {
+--     typescript = {format = {indentSize = 2}, enableJavascript = false}
+--   }
+-- }
 
-lsp_config.eslint.setup {
-  on_new_config = function(config, root_dir)
-    local pnp_js = util.path.join(root_dir, ".pnp.loader.mjs")
-    local eslint_config = require("lspconfig.server_configurations.eslint")
-
-    if util.path.exists(pnp_js) then
-      config.cmd = {"yarn", "exec", unpack(eslint_config.default_config.cmd)};
-    end
-  end
-}
+-- lsp_config.eslint.setup {
+--   on_new_config = function(config, root_dir)
+--     local pnp_js = util.path.join(root_dir, ".pnp.loader.mjs")
+--     local eslint_config = require("lspconfig.server_configurations.eslint")
+--
+--     if util.path.exists(pnp_js) then
+--       config.cmd = {"yarn", "exec", unpack(eslint_config.default_config.cmd)};
+--     end
+--   end
+-- }
 
 lsp_config.sumneko_lua.setup {
   settings = {
@@ -161,20 +163,6 @@ typescript.setup({
   }
 })
 
-local result_command = {};
-
-local function dynamic_command(params)
-  if result_command[params.command] then
-    return result_command[params.command];
-  else
-    result_command[params.command] =
-        command_resolver.from_node_modules(params) or
-            command_resolver.from_yarn_pnp(params) or
-            vim.fn.executable(params.command) == 1 and params.command
-  end
-  return result_command[params.command];
-end
-
 null_ls.setup({
   sources = {
     -- null_ls.builtins.formatting.stylua,
@@ -183,11 +171,11 @@ null_ls.setup({
     -- null_ls.builtins.diagnostics.proselint,
     -- null_ls.builtins.code_actions.proselint,
     null_ls.builtins.code_actions.gitsigns,
-    null_ls.builtins.diagnostics.tsc.with({dynamic_command = dynamic_command}),
-    null_ls.builtins.diagnostics.eslint
-        .with({dynamic_command = dynamic_command}),
-    null_ls.builtins.code_actions.eslint
-        .with({dynamic_command = dynamic_command})
+    null_ls.builtins.diagnostics.tsc,
+    null_ls.builtins.diagnostics.actionlint,
+    null_ls.builtins.diagnostics.eslint,
+    null_ls.builtins.code_actions.eslint,
+    null_ls.builtins.formatting.prettier,
   }
 })
 
