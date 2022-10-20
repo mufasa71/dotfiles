@@ -163,6 +163,10 @@ typescript.setup({
   }
 })
 
+local function has_eslint_configured(utils)
+  return utils.root_has_file(".eslintrc.js")
+end
+
 null_ls.setup({
   sources = {
     -- null_ls.builtins.formatting.stylua,
@@ -170,12 +174,13 @@ null_ls.setup({
     -- null_ls.builtins.code_actions.refactoring,
     -- null_ls.builtins.diagnostics.proselint,
     -- null_ls.builtins.code_actions.proselint,
-    null_ls.builtins.code_actions.gitsigns,
-    null_ls.builtins.diagnostics.tsc,
+    null_ls.builtins.code_actions.gitsigns, null_ls.builtins.diagnostics.tsc,
     null_ls.builtins.diagnostics.actionlint,
-    null_ls.builtins.diagnostics.eslint,
-    null_ls.builtins.code_actions.eslint,
-    null_ls.builtins.formatting.prettier,
+    null_ls.builtins.diagnostics.eslint
+        .with({condition = has_eslint_configured}),
+    null_ls.builtins.code_actions.eslint
+        .with({condition = has_eslint_configured}),
+    null_ls.builtins.formatting.prettier
   }
 })
 
