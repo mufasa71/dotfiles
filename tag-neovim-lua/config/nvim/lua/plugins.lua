@@ -1,27 +1,9 @@
--- Add the in built Cfilter plugin. Replaces QFGrep.
-vim.cmd "packadd cfilter"
-vim.cmd "packadd packer.nvim"
+return require("packer").startup(function(use)
+  use {"wbthomason/packer.nvim"}
 
--- Install packer if needed
-local install_path = vim.fn.stdpath "data" ..
-                         "/site/pack/packer/start/packer.nvim"
-
-if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-  vim.fn.execute("!git clone https://github.com/wbthomason/packer.nvim " ..
-                     install_path)
-end
-
-local packer = require("packer")
-local use = packer.use
-
-packer.init {git = {clone_timeout = 60}}
-
-local init = function()
-  use "wbthomason/packer.nvim"
-
-  use "tpope/vim-fugitive"
-  use "tpope/vim-rhubarb"
-  use "lewis6991/gitsigns.nvim"
+  use {"tpope/vim-fugitive"}
+  use {"tpope/vim-rhubarb"}
+  use {"lewis6991/gitsigns.nvim"}
 
   use {"tpope/vim-sleuth", "tpope/vim-repeat"}
 
@@ -45,65 +27,6 @@ local init = function()
   use {"kosayoda/nvim-lightbulb"}
 
   use {"onsails/lspkind-nvim"}
-  use {
-    "hrsh7th/nvim-cmp",
-    requires = {
-      {"onsails/lspkind-nvim"}, {"hrsh7th/cmp-nvim-lsp"}, {"hrsh7th/cmp-path"}
-      -- {"hrsh7th/cmp-buffer"},
-      -- {"hrsh7th/cmp-cmdline"},
-    },
-    disable = true,
-    config = function()
-      local cmp = require "cmp"
-      local luasnip = require "luasnip"
-
-      local has_words_before = function()
-        local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-        return col ~= 0 and
-                   vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(
-                       col, col):match("%s") == nil
-      end
-
-      cmp.setup {
-        snippet = {expand = function(args) luasnip.lsp_expand(args.body) end},
-        sources = {
-          {name = "nvim_lsp"}, {name = "luasnip"}
-          -- more sources
-        },
-        mappings = {
-          ["<Tab>"] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-              cmp.select_next_item()
-            elseif luasnip.expand_or_locally_jumpable() then
-              luasnip.expand_or_jump()
-            elseif has_words_before() then
-              cmp.complete()
-            else
-              fallback()
-            end
-          end, {"i", "s"}),
-          ["<S-Tab>"] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-              cmp.select_prev_item()
-            elseif luasnip.jumpable(-1) then
-              luasnip.jump(-1)
-            else
-              fallback()
-            end
-          end, {"i", "s"})
-        }
-      }
-    end
-  }
-
-  ------ Snippets
-
-  use {"L3MON4D3/LuaSnip", disable = true} -- Snippets plugin
-  use {"rafamadriz/friendly-snippets", disable = true}
-  use {"saadparwaiz1/cmp_luasnip", disable = true}
-
-  ------
-
   use {"sbdchd/neoformat"}
   use {"jparise/vim-graphql", "hashivim/vim-terraform"}
 
@@ -132,22 +55,11 @@ local init = function()
     }
   }
   use {
-    "windwp/nvim-autopairs",
-    disable = true,
-    config = function()
-      require("nvim-autopairs").setup {check_ts = true, ts_config = {}}
-    end
-  }
-  use {
     "folke/todo-comments.nvim",
     requires = "nvim-lua/plenary.nvim",
     config = function() require("todo-comments").setup {} end
   }
   use {"jose-elias-alvarez/typescript.nvim"}
-  -- use {
-  --   "ThePrimeagen/refactoring.nvim",
-  --   requires = {{"nvim-lua/plenary.nvim"}, {"nvim-treesitter/nvim-treesitter"}}
-  -- }
   use {"github/copilot.vim"}
   use {
     "echasnovski/mini.nvim",
@@ -188,6 +100,4 @@ local init = function()
   -- Theme
   use {"EdenEast/nightfox.nvim"}
   use {"rebelot/kanagawa.nvim"}
-end
-
-return packer.startup(init)
+end)

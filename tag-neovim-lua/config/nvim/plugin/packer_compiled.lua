@@ -115,7 +115,7 @@ _G.packer_plugins = {
     url = "https://github.com/nvim-lualine/lualine.nvim"
   },
   ["mini.nvim"] = {
-    config = { "\27LJ\2\nb\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\25update_commentstring&ts_context_commentstring.internal\frequire„\4\1\0\6\0\25\00056\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\6\0005\3\4\0003\4\3\0=\4\5\3=\3\a\2B\0\2\0016\0\0\0'\2\b\0B\0\2\0029\0\2\0004\2\0\0B\0\2\0016\0\0\0'\2\t\0B\0\2\0029\0\2\0004\2\0\0B\0\2\0016\0\0\0'\2\n\0B\0\2\0029\0\2\0004\2\0\0B\0\2\0016\0\0\0'\2\v\0B\0\2\0029\0\2\0005\2\r\0005\3\f\0=\3\14\2B\0\2\0016\0\15\0009\0\16\0009\0\17\0'\2\18\0'\3\19\0'\4\20\0005\5\21\0B\0\5\0016\0\15\0009\0\16\0009\0\17\0'\2\18\0'\3\22\0'\4\23\0005\5\24\0B\0\5\1K\0\1\0\1\0\2\texpr\2\fnoremap\2)pumvisible() ? \"\\<C-p>\" : \"\\<S-Tab>\"\f<S-Tab>\1\0\2\texpr\2\fnoremap\2'pumvisible() ? \"\\<C-n>\" : \"\\<Tab>\"\n<Tab>\6i\20nvim_set_keymap\bapi\bvim\19lsp_completion\1\0\0\1\0\2\15auto_setup\1\16source_func\romnifunc\20mini.completion\15mini.pairs\18mini.surround\14mini.jump\nhooks\1\0\0\bpre\1\0\0\0\nsetup\17mini.comment\frequire\0" },
+    config = { "\27LJ\2\nb\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\25update_commentstring&ts_context_commentstring.internal\frequire„\4\1\0\6\0\25\00056\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\6\0005\3\4\0003\4\3\0=\4\5\3=\3\a\2B\0\2\0016\0\0\0'\2\b\0B\0\2\0029\0\2\0004\2\0\0B\0\2\0016\0\0\0'\2\t\0B\0\2\0029\0\2\0004\2\0\0B\0\2\0016\0\0\0'\2\n\0B\0\2\0029\0\2\0004\2\0\0B\0\2\0016\0\0\0'\2\v\0B\0\2\0029\0\2\0005\2\r\0005\3\f\0=\3\14\2B\0\2\0016\0\15\0009\0\16\0009\0\17\0'\2\18\0'\3\19\0'\4\20\0005\5\21\0B\0\5\0016\0\15\0009\0\16\0009\0\17\0'\2\18\0'\3\22\0'\4\23\0005\5\24\0B\0\5\1K\0\1\0\1\0\2\fnoremap\2\texpr\2)pumvisible() ? \"\\<C-p>\" : \"\\<S-Tab>\"\f<S-Tab>\1\0\2\fnoremap\2\texpr\2'pumvisible() ? \"\\<C-n>\" : \"\\<Tab>\"\n<Tab>\6i\20nvim_set_keymap\bapi\bvim\19lsp_completion\1\0\0\1\0\2\16source_func\romnifunc\15auto_setup\1\20mini.completion\15mini.pairs\18mini.surround\14mini.jump\nhooks\1\0\0\bpre\1\0\0\0\nsetup\17mini.comment\frequire\0" },
     loaded = true,
     path = "/home/eagle/.local/share/nvim/site/pack/packer/start/mini.nvim",
     url = "https://github.com/echasnovski/mini.nvim"
@@ -213,7 +213,7 @@ _G.packer_plugins = {
     url = "https://github.com/folke/todo-comments.nvim"
   },
   ["toggleterm.nvim"] = {
-    config = { "\27LJ\2\ne\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\2\22terminal_mappings\1\17open_mapping\n<c-\\>\nsetup\15toggleterm\frequire\0" },
+    config = { "\27LJ\2\ne\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\2\17open_mapping\n<c-\\>\22terminal_mappings\1\nsetup\15toggleterm\frequire\0" },
     loaded = true,
     path = "/home/eagle/.local/share/nvim/site/pack/packer/start/toggleterm.nvim",
     url = "https://github.com/akinsho/toggleterm.nvim"
@@ -273,30 +273,30 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: toggleterm.nvim
-time([[Config for toggleterm.nvim]], true)
-try_loadstring("\27LJ\2\ne\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\2\22terminal_mappings\1\17open_mapping\n<c-\\>\nsetup\15toggleterm\frequire\0", "config", "toggleterm.nvim")
-time([[Config for toggleterm.nvim]], false)
--- Config for: mini.nvim
-time([[Config for mini.nvim]], true)
-try_loadstring("\27LJ\2\nb\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\25update_commentstring&ts_context_commentstring.internal\frequire„\4\1\0\6\0\25\00056\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\6\0005\3\4\0003\4\3\0=\4\5\3=\3\a\2B\0\2\0016\0\0\0'\2\b\0B\0\2\0029\0\2\0004\2\0\0B\0\2\0016\0\0\0'\2\t\0B\0\2\0029\0\2\0004\2\0\0B\0\2\0016\0\0\0'\2\n\0B\0\2\0029\0\2\0004\2\0\0B\0\2\0016\0\0\0'\2\v\0B\0\2\0029\0\2\0005\2\r\0005\3\f\0=\3\14\2B\0\2\0016\0\15\0009\0\16\0009\0\17\0'\2\18\0'\3\19\0'\4\20\0005\5\21\0B\0\5\0016\0\15\0009\0\16\0009\0\17\0'\2\18\0'\3\22\0'\4\23\0005\5\24\0B\0\5\1K\0\1\0\1\0\2\texpr\2\fnoremap\2)pumvisible() ? \"\\<C-p>\" : \"\\<S-Tab>\"\f<S-Tab>\1\0\2\texpr\2\fnoremap\2'pumvisible() ? \"\\<C-n>\" : \"\\<Tab>\"\n<Tab>\6i\20nvim_set_keymap\bapi\bvim\19lsp_completion\1\0\0\1\0\2\15auto_setup\1\16source_func\romnifunc\20mini.completion\15mini.pairs\18mini.surround\14mini.jump\nhooks\1\0\0\bpre\1\0\0\0\nsetup\17mini.comment\frequire\0", "config", "mini.nvim")
-time([[Config for mini.nvim]], false)
--- Config for: trouble.nvim
-time([[Config for trouble.nvim]], true)
-try_loadstring("\27LJ\2\n9\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\ftrouble\frequire\0", "config", "trouble.nvim")
-time([[Config for trouble.nvim]], false)
 -- Config for: todo-comments.nvim
 time([[Config for todo-comments.nvim]], true)
 try_loadstring("\27LJ\2\n?\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\18todo-comments\frequire\0", "config", "todo-comments.nvim")
 time([[Config for todo-comments.nvim]], false)
--- Config for: which-key.nvim
-time([[Config for which-key.nvim]], true)
-try_loadstring("\27LJ\2\n;\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\14which-key\frequire\0", "config", "which-key.nvim")
-time([[Config for which-key.nvim]], false)
+-- Config for: trouble.nvim
+time([[Config for trouble.nvim]], true)
+try_loadstring("\27LJ\2\n9\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\ftrouble\frequire\0", "config", "trouble.nvim")
+time([[Config for trouble.nvim]], false)
+-- Config for: mini.nvim
+time([[Config for mini.nvim]], true)
+try_loadstring("\27LJ\2\nb\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\25update_commentstring&ts_context_commentstring.internal\frequire„\4\1\0\6\0\25\00056\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\6\0005\3\4\0003\4\3\0=\4\5\3=\3\a\2B\0\2\0016\0\0\0'\2\b\0B\0\2\0029\0\2\0004\2\0\0B\0\2\0016\0\0\0'\2\t\0B\0\2\0029\0\2\0004\2\0\0B\0\2\0016\0\0\0'\2\n\0B\0\2\0029\0\2\0004\2\0\0B\0\2\0016\0\0\0'\2\v\0B\0\2\0029\0\2\0005\2\r\0005\3\f\0=\3\14\2B\0\2\0016\0\15\0009\0\16\0009\0\17\0'\2\18\0'\3\19\0'\4\20\0005\5\21\0B\0\5\0016\0\15\0009\0\16\0009\0\17\0'\2\18\0'\3\22\0'\4\23\0005\5\24\0B\0\5\1K\0\1\0\1\0\2\fnoremap\2\texpr\2)pumvisible() ? \"\\<C-p>\" : \"\\<S-Tab>\"\f<S-Tab>\1\0\2\fnoremap\2\texpr\2'pumvisible() ? \"\\<C-n>\" : \"\\<Tab>\"\n<Tab>\6i\20nvim_set_keymap\bapi\bvim\19lsp_completion\1\0\0\1\0\2\16source_func\romnifunc\15auto_setup\1\20mini.completion\15mini.pairs\18mini.surround\14mini.jump\nhooks\1\0\0\bpre\1\0\0\0\nsetup\17mini.comment\frequire\0", "config", "mini.nvim")
+time([[Config for mini.nvim]], false)
 -- Config for: nvim-tree.lua
 time([[Config for nvim-tree.lua]], true)
 try_loadstring("\27LJ\2\n;\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\14nvim-tree\frequire\0", "config", "nvim-tree.lua")
 time([[Config for nvim-tree.lua]], false)
+-- Config for: which-key.nvim
+time([[Config for which-key.nvim]], true)
+try_loadstring("\27LJ\2\n;\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\14which-key\frequire\0", "config", "which-key.nvim")
+time([[Config for which-key.nvim]], false)
+-- Config for: toggleterm.nvim
+time([[Config for toggleterm.nvim]], true)
+try_loadstring("\27LJ\2\ne\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\2\17open_mapping\n<c-\\>\22terminal_mappings\1\nsetup\15toggleterm\frequire\0", "config", "toggleterm.nvim")
+time([[Config for toggleterm.nvim]], false)
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then

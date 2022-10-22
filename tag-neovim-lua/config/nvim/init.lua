@@ -4,7 +4,7 @@ vim.wo.number = true -- make line numbers default
 vim.o.hidden = true -- do not save when switching buffers
 vim.o.mouse = "a" -- enable mouse mode
 vim.o.breakindent = true -- enable break indent
--- vim.o.completeopt = "menuone,noselect" -- set completeopt to have a better completion experience
+vim.o.completeopt = "menuone,noselect" -- set completeopt to have a better completion experience
 vim.o.ignorecase = true -- case insensitive searching UNLESS /C or capital in search
 vim.o.mousescroll = "ver:5,hor:2" -- mouse scroll speed
 vim.o.smartcase = true
@@ -46,6 +46,7 @@ require "keymappings"
 require "lsp"
 require "format"
 require "terminal"
+require "status"
 
 -- vim.api.nvim_command("colorscheme kanagawa")
 vim.api.nvim_command("colorscheme nordfox")
@@ -57,6 +58,7 @@ local keys = {
   ["ctrl-y"] = vim.api.nvim_replace_termcodes("<C-y>", true, true, true),
   ["ctrl-y_cr"] = vim.api.nvim_replace_termcodes("<C-y><CR>", true, true, true)
 }
+
 _G.cr_action = function()
   if vim.fn.pumvisible() ~= 0 then
     -- If popup is visible, confirm selected item or add new line otherwise
