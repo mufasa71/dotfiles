@@ -75,8 +75,9 @@ local on_attach = function(client, bufnr)
     ["1gD"] = {vim.lsp.buf.workspace_symbol, ""}
   })
 
-  wk.register({["ca"] = {vim.lsp.buf.range_code_action}},
-              {mode = "v", prefix = "<leader>"})
+  wk.register({
+    ["ca"] = {vim.lsp.buf.range_code_action, "Code action on selected lines"}
+  }, {mode = "v", prefix = "<leader>"})
 
   if client.server_capabilities.code_lens then
     wk.register({["gl"] = {vim.lsp.codelens.run, "Code lens"}});
