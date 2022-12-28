@@ -27,7 +27,13 @@ require("lspconfig").sumneko_lua.setup {
   }
 }
 
-require("rust-tools").setup {capabilities = capabilities}
+require("rust-tools").setup {
+  capabilities = capabilities,
+  server = {
+    -- disable inlayHints until resolved https://github.com/simrat39/rust-tools.nvim/issues/300
+    settings = {["rust-analyzer"] = {inlayHints = {locationLinks = false}}}
+  }
+}
 
 null_ls.setup({
   sources = {
