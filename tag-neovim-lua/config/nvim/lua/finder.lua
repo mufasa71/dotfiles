@@ -4,17 +4,16 @@ local wk = require "which-key"
 
 telescope.setup {
   pickers = {
+    find_files = {theme = "dropdown"},
     buffers = {
       sort_lastused = true,
       theme = "dropdown",
-      previewer = false,
       mappings = {
         i = {["<c-d>"] = actions.delete_buffer + actions.move_to_top},
         n = {["<c-d>"] = actions.delete_buffer + actions.move_to_top}
       }
     }
   },
-  defaults = {mappings = {i = {["<C-u>"] = false, ["<C-d>"] = false}}},
   extensions = {
     fzf = {
       fuzzy = true, -- false will only do exact matching

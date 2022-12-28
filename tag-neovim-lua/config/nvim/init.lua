@@ -1,5 +1,5 @@
 vim.o.inccommand = "nosplit" -- incremental live completion
-vim.o.hlsearch = false -- set highlight on search
+vim.o.hlsearch = true -- set highlight on search
 vim.wo.number = true -- make line numbers default
 vim.o.hidden = true -- do not save when switching buffers
 vim.o.mouse = "a" -- enable mouse mode
@@ -11,6 +11,7 @@ vim.o.smartcase = true
 vim.o.updatetime = 250 -- decrease update time
 vim.wo.signcolumn = "yes"
 vim.o.termguicolors = true -- set colorscheme (order is important here)
+vim.o.list = true
 vim.cmd [[set undofile]] -- save undo history
 
 -- Map leader
@@ -48,10 +49,7 @@ require "format"
 require "terminal"
 require "status"
 
--- vim.api.nvim_command("colorscheme kanagawa")
-vim.api.nvim_command("colorscheme nordfox")
-
--- require("luasnip.loaders.from_vscode").lazy_load()
+vim.api.nvim_command("colorscheme tokyonight")
 
 local keys = {
   ["cr"] = vim.api.nvim_replace_termcodes("<CR>", true, true, true),
@@ -65,11 +63,7 @@ _G.cr_action = function()
     local item_selected = vim.fn.complete_info()["selected"] ~= -1
     return item_selected and keys["ctrl-y"] or keys["ctrl-y_cr"]
   else
-    -- If popup is not visible, use plain `<CR>`. You might want to customize
-    -- according to other plugins. For example, to use 'mini.pairs', replace
-    -- next line with `return require('mini.pairs').cr()`
-    -- return keys["cr"]
-    return require("mini.pairs").cr()
+    return keys["cr"]
   end
 end
 vim.api.nvim_set_keymap("i", "<CR>", "v:lua._G.cr_action()",
