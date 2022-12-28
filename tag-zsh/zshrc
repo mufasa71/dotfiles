@@ -164,9 +164,13 @@ unset config_file
 # uninstall by removing these lines or running `tabtab uninstall sls`
 [[ -f /home/eagle/.config/yarn/global/node_modules/tabtab/.completions/sls.zsh ]] && . /home/eagle/.config/yarn/global/node_modules/tabtab/.completions/sls.zsh
 
+export SDKMAN_DIR="$HOME/.sdkman"
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 autoload -Uz add-zsh-hook
 export PATH="/opt/homebrew/opt/php@7.4/bin:$PATH"
 export PATH="/opt/homebrew/opt/php@7.4/sbin:$PATH"
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
