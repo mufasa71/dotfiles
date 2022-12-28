@@ -74,7 +74,13 @@ typescript.setup({
   disable_commands = false,
   server = {
     root_dir = require("lspconfig.util").root_pattern("tsconfig.json"),
-    -- settings = {typescript = {format = {indentSize = 2}}},
+    settings = {
+      typescript = {
+        format = {
+          -- indentSize = 2
+        },
+      },
+    },
     capabilities,
     on_attach = function(client, bufnr)
       on_attach(client, bufnr)
@@ -133,5 +139,6 @@ wk.register({
   S = { "<cmd>TypescriptRemoveUnused<cr>", "TS Remove unused vars" },
   F = { "<cmd>TypescriptFixAll<cr>", "TS Fix all" },
   R = { "<cmd>TypescriptRenameFile<cr>", "TS Rename file" },
-  I = { "<cmd>TypescriptAddMissingImports<cr>", "TS Import all" }
+  I = { "<cmd>TypescriptAddMissingImports<cr>", "TS Import all" },
+  G = { "<cmd>TypescriptGoToSourceDefinition<cr>", "TS Go to source definition" }
 }, { prefix = "g" })
