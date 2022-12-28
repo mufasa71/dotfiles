@@ -1,17 +1,17 @@
 return require("packer").startup(function(use)
-  use {"wbthomason/packer.nvim"}
+  use { "wbthomason/packer.nvim" }
 
-  use {"tpope/vim-fugitive"}
-  use {"tpope/vim-rhubarb"}
-  use {"tpope/vim-sleuth", "tpope/vim-repeat"}
+  use { "tpope/vim-fugitive" }
+  use { "tpope/vim-rhubarb" }
+  use { "tpope/vim-sleuth", "tpope/vim-repeat" }
   use {
     "nvim-telescope/telescope.nvim",
     requires = {
-      {"nvim-lua/plenary.nvim"}, {"nvim-telescope/telescope-github.nvim"}
+      { "nvim-lua/plenary.nvim" }, { "nvim-telescope/telescope-github.nvim" }
     }
   }
-  use {"lewis6991/gitsigns.nvim"}
-  use {"nvim-telescope/telescope-fzf-native.nvim", run = "make"}
+  use { "lewis6991/gitsigns.nvim" }
+  use { "nvim-telescope/telescope-fzf-native.nvim", run = "make" }
   use {
     "lukas-reineke/indent-blankline.nvim",
     config = function()
@@ -22,24 +22,24 @@ return require("packer").startup(function(use)
       }
     end
   }
-  use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
-  use {"nvim-treesitter/nvim-treesitter-textobjects"}
+  use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
+  use { "nvim-treesitter/nvim-treesitter-textobjects" }
   use {
     "williamboman/mason.nvim", "williamboman/mason-lspconfig.nvim",
-    "neovim/nvim-lspconfig", "simrat39/rust-tools.nvim"
+    "neovim/nvim-lspconfig", "simrat39/rust-tools.nvim",
   }
-  use {"kosayoda/nvim-lightbulb"}
-  use {"onsails/lspkind-nvim"}
-  use {"sbdchd/neoformat"}
-  use {"jparise/vim-graphql", "hashivim/vim-terraform"}
+  use { "kosayoda/nvim-lightbulb" }
+  use { "onsails/lspkind-nvim" }
+  use { "sbdchd/neoformat" }
+  use { "jparise/vim-graphql", "hashivim/vim-terraform" }
   use {
     "folke/which-key.nvim",
     config = function() require("which-key").setup {} end
   }
-  use {"jose-elias-alvarez/null-ls.nvim", requires = "nvim-lua/plenary.nvim"}
-  use {"brooth/far.vim"}
-  use {"mhartington/formatter.nvim"}
-  use {"lbrayner/vim-rzip"}
+  use { "jose-elias-alvarez/null-ls.nvim", requires = "nvim-lua/plenary.nvim" }
+  use { "brooth/far.vim" }
+  use { "mhartington/formatter.nvim" }
+  use { "lbrayner/vim-rzip" }
   use {
     "folke/trouble.nvim",
     requires = "kyazdani42/nvim-web-devicons",
@@ -47,11 +47,11 @@ return require("packer").startup(function(use)
   }
   use {
     "nvim-lualine/lualine.nvim",
-    requires = {"kyazdani42/nvim-web-devicons", opt = true}
+    requires = { "kyazdani42/nvim-web-devicons", opt = true }
   }
   use {
     "kyazdani42/nvim-tree.lua",
-    config = function() require"nvim-tree".setup {} end,
+    config = function() require "nvim-tree".setup {} end,
     requires = {
       "kyazdani42/nvim-web-devicons" -- optional, for file icon
     }
@@ -61,10 +61,10 @@ return require("packer").startup(function(use)
     requires = "nvim-lua/plenary.nvim",
     config = function() require("todo-comments").setup {} end
   }
-  use {"jose-elias-alvarez/typescript.nvim"}
-  use {"github/copilot.vim"}
+  use { "jose-elias-alvarez/typescript.nvim" }
+  use { "github/copilot.vim" }
   use {
-    "neovim/nvim-lspconfig", "hrsh7th/cmp-nvim-lsp", "hrsh7th/cmp-buffer",
+    "hrsh7th/cmp-nvim-lsp", "hrsh7th/cmp-buffer",
     "hrsh7th/cmp-path", "hrsh7th/cmp-cmdline", "hrsh7th/nvim-cmp",
     "hrsh7th/cmp-vsnip", "hrsh7th/vim-vsnip"
   }
@@ -95,7 +95,7 @@ return require("packer").startup(function(use)
       "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim",
       "kyazdani42/nvim-web-devicons"
     },
-    config = function() require"octo".setup() end
+    config = function() require "octo".setup() end
   }
-  use {"folke/tokyonight.nvim"}
+  use { "folke/tokyonight.nvim" }
 end)
