@@ -33,9 +33,3 @@ wk.register({
 }, {prefix = "<leader>"})
 
 wk.register({["<C-n>"] = {"<cmd>NvimTreeToggle<cr>", "Open tree"}});
-
--- remap("i", "<C-J>", "copilot#Accept(\"<CR>\")", {expr = true, silent = true, script = true})
--- vim.g.copilot_no_tab_map = true
-
--- Remap comma as leader key
--- vim.keymap.set("", "<Space>", "<Nop>", {noremap = true, silent = true})

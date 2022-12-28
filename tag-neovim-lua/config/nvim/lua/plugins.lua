@@ -25,8 +25,8 @@ return require("packer").startup(function(use)
   use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
   use {"nvim-treesitter/nvim-treesitter-textobjects"}
   use {
-    "neovim/nvim-lspconfig", "williamboman/nvim-lsp-installer",
-    "simrat39/rust-tools.nvim"
+    "williamboman/mason.nvim", "williamboman/mason-lspconfig.nvim",
+    "neovim/nvim-lspconfig", "simrat39/rust-tools.nvim"
   }
   use {"kosayoda/nvim-lightbulb"}
   use {"onsails/lspkind-nvim"}
@@ -64,19 +64,9 @@ return require("packer").startup(function(use)
   use {"jose-elias-alvarez/typescript.nvim"}
   use {"github/copilot.vim"}
   use {
-    "echasnovski/mini.nvim",
-    config = function()
-      require("mini.jump").setup {}
-      require("mini.completion").setup {
-        lsp_completion = {source_func = "omnifunc", auto_setup = false}
-      }
-      vim.api.nvim_set_keymap("i", "<Tab>",
-                              [[pumvisible() ? "\<C-n>" : "\<Tab>"]],
-                              {noremap = true, expr = true})
-      vim.api.nvim_set_keymap("i", "<S-Tab>",
-                              [[pumvisible() ? "\<C-p>" : "\<S-Tab>"]],
-                              {noremap = true, expr = true})
-    end
+    "neovim/nvim-lspconfig", "hrsh7th/cmp-nvim-lsp", "hrsh7th/cmp-buffer",
+    "hrsh7th/cmp-path", "hrsh7th/cmp-cmdline", "hrsh7th/nvim-cmp",
+    "hrsh7th/cmp-vsnip", "hrsh7th/vim-vsnip"
   }
   use {
     "windwp/nvim-autopairs",
@@ -88,10 +78,7 @@ return require("packer").startup(function(use)
   }
   use({
     "kylechui/nvim-surround",
-    config = function()
-      require("nvim-surround").setup({
-      })
-    end
+    config = function() require("nvim-surround").setup({}) end
   })
   use {
     "akinsho/toggleterm.nvim",
@@ -110,8 +97,5 @@ return require("packer").startup(function(use)
     },
     config = function() require"octo".setup() end
   }
-  -- Theme
-  use {"EdenEast/nightfox.nvim"}
-  use {"rebelot/kanagawa.nvim"}
-  use {"folke/tokyonight.nvim", {branch = "main"}}
+  use {"folke/tokyonight.nvim"}
 end)
