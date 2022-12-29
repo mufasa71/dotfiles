@@ -3,7 +3,7 @@ local typescript = require "typescript"
 local null_ls = require "null-ls"
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+local augroup = vim.api.nvim_create_augroup("LspFormatting", { clear = true })
 local lsp_formatting = function(bufnr)
   vim.lsp.buf.format({
     filter = function(client)
@@ -18,7 +18,12 @@ local on_attach = function(client, bufnr)
     vim.api.nvim_create_autocmd("BufWritePre", {
       group = augroup,
       buffer = bufnr,
-      callback = function() lsp_formatting(bufnr) end
+      callback = function()
+        lsp_formatting(bufnr)
+        if client.name == "tsserver" then
+          vim.cmd("TypescriptOrganizeImports!")
+        end
+      end
     })
   end
 end
@@ -34,7 +39,10 @@ require("mason").setup({
 })
 
 require("mason-lspconfig").setup()
-require("lspconfig").flow.setup { capabilities = capabilities }
+require("lspconfig").flow.setup { capabilities }
+require("lspconfig").denols.setup { capabilities,
+  root_dir = require("lspconfig.util").root_pattern("deno.json"),
+}
 require("lspconfig").sumneko_lua.setup {
   capabilities,
   on_attach = function(client, bufnr)
@@ -58,6 +66,10 @@ require("rust-tools").setup {
   }
 }
 
+local function has_eslint_configured(utils)
+  return utils.root_has_file({ ".eslintrc.js", "eslint.config.js" })
+end
+
 null_ls.setup({
   debug = true,
   on_attach = function(client, bufnr) on_attach(client, bufnr) end,
@@ -65,7 +77,8 @@ null_ls.setup({
     null_ls.builtins.formatting.prettier,
     null_ls.builtins.code_actions.gitsigns,
     null_ls.builtins.diagnostics.actionlint,
-    null_ls.builtins.diagnostics.eslint, null_ls.builtins.code_actions.eslint,
+    null_ls.builtins.diagnostics.eslint.with({ condition = has_eslint_configured }),
+    null_ls.builtins.code_actions.eslint.with({ condition = has_eslint_configured }),
     require("typescript.extensions.null-ls.code-actions")
   }
 })
