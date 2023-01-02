@@ -20,13 +20,14 @@ vim.g.maplocalleader = ","
 
 -- Needs to set before loading treesitter
 vim.g.indent_blankline_char = "┊"
-vim.g.indent_blankline_filetype_exclude = {"help", "packer"}
-vim.g.indent_blankline_buftype_exclude = {"terminal", "nofile"}
+vim.g.indent_blankline_filetype_exclude = { "help", "packer" }
+vim.g.indent_blankline_buftype_exclude = { "terminal", "nofile" }
 vim.g.indent_blankline_char_highlight = "LineNr"
 vim.g.indent_blankline_show_trailing_blankline_indent = false
 
 -- Needs to set before shell formatter
 vim.g.shfmt_opt = "-ci"
+vim.g.copilot_no_tab_map = true
 
 -- We do this to prevent the loading of the system fzf.vim plugin. This is
 -- present at least on Arch/Manjaro
@@ -35,7 +36,7 @@ vim.api.nvim_command("set rtp-=/usr/share/vim/vimfiles")
 -- We do this to load volta as nodejs manager if exists
 if vim.fn.executable("volta") then
   vim.g.node_host_prog = vim.fn.trim(vim.fn.system(
-                                         "volta which neovim-node-host"))
+    "volta which neovim-node-host"))
 end
 
 require "plugins"
