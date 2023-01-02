@@ -19,10 +19,10 @@ local on_attach = function(client, bufnr)
       group = augroup,
       buffer = bufnr,
       callback = function()
-        lsp_formatting(bufnr)
         if client.name == "tsserver" then
           vim.cmd("TypescriptOrganizeImports!")
         end
+        lsp_formatting(bufnr)
       end
     })
   end
@@ -71,7 +71,6 @@ local function has_eslint_configured(utils)
 end
 
 null_ls.setup({
-  debug = true,
   on_attach = function(client, bufnr) on_attach(client, bufnr) end,
   sources = {
     null_ls.builtins.formatting.prettier,
