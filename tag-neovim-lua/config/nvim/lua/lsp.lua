@@ -131,8 +131,8 @@ wk.register({
     function() require("telescope.builtin").lsp_document_symbols() end,
     "Show symbols"
   },
-  ["ca"] = { vim.lsp.buf.code_action, "Code action" },
-  ["rn"] = { vim.lsp.buf.rename, "Rename" }
+  ["ca"] = { vim.lsp.buf.code_action, "LSP Code action" },
+  ["rn"] = { vim.lsp.buf.rename, "LSP Rename" }
 }, { prefix = "<leader>" })
 
 wk.register({
