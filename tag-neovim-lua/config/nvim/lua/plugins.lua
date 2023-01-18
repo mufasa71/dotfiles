@@ -50,11 +50,12 @@ return require("packer").startup(function(use)
     requires = { "kyazdani42/nvim-web-devicons", opt = true }
   }
   use {
-    "kyazdani42/nvim-tree.lua",
+    "nvim-tree/nvim-tree.lua",
     config = function() require "nvim-tree".setup {} end,
     requires = {
-      "kyazdani42/nvim-web-devicons" -- optional, for file icon
-    }
+      "nvim-tree/nvim-web-devicons" -- optional, for file icon
+    },
+    tag = 'nightly'
   }
   use {
     "folke/todo-comments.nvim",
