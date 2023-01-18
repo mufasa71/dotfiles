@@ -28,9 +28,8 @@ wk.register({
     R = { "<cmd>Trouble lsp_references<cr>", "Open quickfix list" }
   },
 
-  r = { "<cmd>NvimTreeRefresh<cr>", "Tree refresh" },
   n = { "<cmd>NvimTreeFindFile<cr>", "Find file in tree" },
-  s = { "<cmd>YarnStart<cr>", "Run dev server" },
+  N = { "<cmd>NvimTreeToggle<cr>", "Open or close the tree" },
   T = { "<cmd>YarnTest<cr>", "Run test" }
 }, { prefix = "<leader>" })
 
