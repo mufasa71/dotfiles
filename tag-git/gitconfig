@@ -1,5 +1,5 @@
 [user]
-	email = shukhrat.mukimov@auto1.com
+  email = shukhrat.mukimov@auto1.com
   name = Shukhrat Mukimov
 
 [push]
@@ -40,8 +40,9 @@
 
 [rerere]
   enabled = true
+
 [filter "lfs"]
-	required = true
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
+  required = true
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
