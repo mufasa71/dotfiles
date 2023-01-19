@@ -8,3 +8,4 @@ plug.vim
 history.cmdline
 tag-vim/vim/doc
 history.search
+packer_compiled.lua
