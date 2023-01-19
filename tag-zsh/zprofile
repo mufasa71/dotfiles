@@ -8,6 +8,7 @@ path=(
 	$path
 	"${ZDOTDIR:-$HOME}/go/bin"
 	"${ZDOTDIR:-$HOME}/.bin"
+	"${ZDOTDIR:-$HOME}/.local/bin"
 	"${ZDOTDIR:-$HOME}/.yarn/bin"
 	"${ZDOTDIR:-$HOME}/.cargo/bin"
 	"${ZDOTDIR:-$HOME}/google-cloud-sdk/bin"
