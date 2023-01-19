@@ -1,5 +1,10 @@
-autoload -U vcs_info
-autoload -U colors && colors
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 if type brew &>/dev/null
 then
   FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
@@ -52,7 +57,7 @@ unsetopt \
 	flow_control
 
 
-export BROWSER='firefox'
+# export BROWSER='firefox'
 export EDITOR='vim'
 export VISUAL='vim'
 export PAGER='less'
@@ -62,44 +67,7 @@ export FZF_DEFAULT_COMMAND='ag -g ""'
 # Ensure path arrays do not contain duplicates.
 typeset -gU cdpath fpath mailpath path
 
-[[ -f ~/.dircolors ]] && source <(dircolors ~/.dircolors)
-
-precmd () { 
-	vcs_info
-	print -Pn '\e];%n@%m %~\a'
-}
-
-zstyle ':vcs_info:*' disable hg
-
-zstyle ':vcs_info:*' check-for-changes true
-zstyle ':vcs_info:hg*:*' get-revision true
-zstyle ':vcs_info:*' formats "%{${fg[cyan]}%}[%{${fg[green]}%}%s%{${fg[cyan]}%}][%{${fg[yellow]}%}%r/%S%%{${fg[cyan]}%}][%{${fg[yellow]}%}%b%{${fg[green]}%}%m%u%c%{${fg[cyan]}%}]%{$reset_color%}"
-zstyle ':vcs_info:*' actionformats "%{${fg[cyan]}%}[%{${fg[green]}%}%s%{${fg[cyan]}%}][%{${fg[yellow]}%}%r/%S%%{${fg[cyan]}%}][%{${fg[yellow]}%}%b|%a%{${fg[green]}%}%m%u%c%{${fg[cyan]}%}]%{$reset_color%}"
-zstyle ':vcs_info:hg*:*' hgrevformat "%h"
-
-setprompt() {
-	if [[ -n "$SSH_CLIENT"  ||  -n "$SSH2_CLIENT" ]]; then 
-		p_host='%F{yellow}%M%f'
-	else
-		p_host='%F{green}%M%f'
-	fi
-
-	PS1=${(j::Q)${(Z:Cn:):-$'
-		%F{cyan}[%f
-		%F{yellow}%~%f
-		%F{cyan}]%f
-		%(!.%F{red}%#%f.%F{green}%#%f)
-		" "
-	'}}
-
-	PS2=$'%_>'
-	RPROMPT=$'${vcs_info_msg_0_}%F{cyan}'
-}
-
-setprompt
-
 [ -f ~/.zsh/aliases.zsh ] && source ~/.zsh/aliases.zsh
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -f /usr/share/fzf/completion.zsh ] && source /usr/share/fzf/completion.zsh
 [ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
 [ -f /usr/share/doc/git-extras/git-extras-completion.zsh ] && source /usr/share/doc/git-extras/git-extras-completion.zsh
@@ -107,70 +75,20 @@ setprompt
 [ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] && source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 [ -f /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh ] && source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-if [[ -f /usr/share/bash-completion/completions/lxc ]]; then
-	_have() {
-		PATH=$PATH:/usr/sbin:/sbin:/usr/local/sbin type $1 &>/dev/null
-	}
-	source /usr/share/bash-completion/completions/lxc
-fi
-
-zstyle ':completion::complete:*' use-cache on
-
-# Group matches and describe.
-zstyle ':completion:*:*:*:*:*' menu select
-zstyle ':completion:*:matches' group 'yes'
-zstyle ':completion:*:options' description 'yes'
-zstyle ':completion:*:options' auto-description '%d'
-zstyle ':completion:*:corrections' format ' %F{green}-- %d (errors: %e) --%f'
-zstyle ':completion:*:descriptions' format ' %F{yellow}-- %d --%f'
-zstyle ':completion:*:messages' format ' %F{purple} -- %d --%f'
-zstyle ':completion:*:warnings' format ' %F{red}-- no matches found --%f'
-zstyle ':completion:*:default' list-prompt '%S%M matches%s'
-zstyle ':completion:*' group-name ''
-zstyle ':completion:*' verbose yes
-
-# Directories
-zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
-zstyle ':completion:*:*:cd:*' tag-order local-directories directory-stack path-directories
-zstyle ':completion:*:*:cd:*:directory-stack' menu yes select
-zstyle ':completion:*:-tilde-:*' group-order 'named-directories' 'path-directories' 'users' 'expand'
-zstyle ':completion:*' squeeze-slashes true
-
-# Fuzzy match mistyped completions.
-zstyle ':completion:*' completer _complete _match _approximate
-zstyle ':completion:*:match:*' original only
-zstyle ':completion:*:approximate:*' max-errors 1 numeric
-
-# Increase the number of errors based on the length of the typed word.
-zstyle -e ':completion:*:approximate:*' max-errors 'reply=($((($#PREFIX+$#SUFFIX)/3))numeric)'
-
-# Load all of your custom configurations from custom/
-for config_file ($ZSH_CUSTOM/*.zsh(N)); do
-  source $config_file
-done
-unset config_file
-
-[[ -f /opt/homebrew/bin/direnv ]] && eval "$(direnv hook zsh)"
-[[ -f /opt/homebrew/bin/zoxide ]] && eval "$(zoxide init zsh)"
-[[ -f /usr/bin/hub ]] && eval "$(hub alias -s)"
-
+[[ -f /usr/local/bin/direnv ]] && eval "$(direnv hook zsh)"
+# [[ -f /opt/homebrew/bin/zoxide ]] && eval "$(zoxide init zsh)"
 # OPAM configuration
 . ~/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
-
-# tabtab source for serverless package
-# uninstall by removing these lines or running `tabtab uninstall serverless`
-[[ -f /home/eagle/.config/yarn/global/node_modules/tabtab/.completions/serverless.zsh ]] && . /home/eagle/.config/yarn/global/node_modules/tabtab/.completions/serverless.zsh
-# tabtab source for sls package
-# uninstall by removing these lines or running `tabtab uninstall sls`
-[[ -f /home/eagle/.config/yarn/global/node_modules/tabtab/.completions/sls.zsh ]] && . /home/eagle/.config/yarn/global/node_modules/tabtab/.completions/sls.zsh
 
 export SDKMAN_DIR="$HOME/.sdkman"
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
-export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+# export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 autoload -Uz add-zsh-hook
-export PATH="/opt/homebrew/opt/php@7.4/bin:$PATH"
-export PATH="/opt/homebrew/opt/php@7.4/sbin:$PATH"
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+source ~/powerlevel10k/powerlevel10k.zsh-theme
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
