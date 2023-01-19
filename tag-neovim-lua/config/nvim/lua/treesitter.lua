@@ -1,8 +1,8 @@
 -- Parsers must be installed manually via :TSInstall
 require("nvim-treesitter.configs").setup {
   autoinstall = true,
-  ensure_installed = { "c", "lua", "rust", "typescript", "javascript", "css" },
-  highlight = {enable = true, additional_vim_regex_highlighting = false},
+  ensure_installed = { "c", "lua", "rust", "typescript", "javascript", "css", "bash" },
+  highlight = { enable = true, additional_vim_regex_highlighting = false },
   incremental_selection = {
     enable = true,
     keymaps = {
@@ -12,7 +12,7 @@ require("nvim-treesitter.configs").setup {
       node_decremental = "grm"
     }
   },
-  indent = {enable = true},
+  indent = { enable = true },
   textobjects = {
     select = {
       enable = true,
@@ -41,14 +41,14 @@ require("nvim-treesitter.configs").setup {
     move = {
       enable = true,
       set_jumps = true, -- whether to set jumps in the jumplist
-      goto_next_start = {["]m"] = "@function.outer", ["]]"] = "@class.outer"},
-      goto_next_end = {["]M"] = "@function.outer", ["]["] = "@class.outer"},
+      goto_next_start = { ["]m"] = "@function.outer", ["]]"] = "@class.outer" },
+      goto_next_end = { ["]M"] = "@function.outer", ["]["] = "@class.outer" },
       goto_previous_start = {
         ["[m"] = "@function.outer",
         ["[["] = "@class.outer"
       },
-      goto_previous_end = {["[M"] = "@function.outer", ["[]"] = "@class.outer"}
+      goto_previous_end = { ["[M"] = "@function.outer", ["[]"] = "@class.outer" }
     }
   },
-  context_commentstring = {enable = true, enable_autocmd = false}
+  context_commentstring = { enable = true, enable_autocmd = false }
 }
