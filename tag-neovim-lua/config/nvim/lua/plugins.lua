@@ -42,12 +42,12 @@ return require("packer").startup(function(use)
   use { "lbrayner/vim-rzip" }
   use {
     "folke/trouble.nvim",
-    requires = "kyazdani42/nvim-web-devicons",
+    requires = "nvim-tree/nvim-web-devicons",
     config = function() require("trouble").setup {} end
   }
   use {
     "nvim-lualine/lualine.nvim",
-    requires = { "kyazdani42/nvim-web-devicons", opt = true }
+    requires = { "nvim-tree/nvim-web-devicons", opt = true }
   }
   use {
     "nvim-tree/nvim-tree.lua",
@@ -94,9 +94,10 @@ return require("packer").startup(function(use)
     "pwntester/octo.nvim",
     requires = {
       "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim",
-      "kyazdani42/nvim-web-devicons"
+      "nvim-tree/nvim-web-devicons"
     },
     config = function() require "octo".setup() end
   }
   use { "folke/tokyonight.nvim" }
+  use { "sindrets/diffview.nvim" }
 end)
