@@ -5,9 +5,9 @@ local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 local on_attach = function(client, bufnr)
   if client.supports_method("textDocument/formatting") then
-    vim.api.nvim_create_augroup('AutoFormatting', {})
+    vim.api.nvim_create_augroup("AutoFormatting", {})
     vim.api.nvim_create_autocmd("BufWritePre", {
-      group = 'AutoFormatting',
+      group = "AutoFormatting",
       buffer = bufnr,
       callback = function() vim.lsp.buf.format { async = false } end
     })
@@ -46,13 +46,16 @@ lspconfig.lua_ls.setup {
       format = { enable = true },
       runtime = { version = "LuaJIT" },
       diagnostics = { globals = { "vim", "use" } },
-      workspace = { library = vim.api.nvim_get_runtime_file("", true) },
+      workspace = {
+        library = vim.api.nvim_get_runtime_file("", true),
+        checkThirdParty = false
+      },
       telemetry = { enable = false }
     }
   }
 }
 
-require("rust-tools").setup { capabilities }
+require("rust-tools").setup { capabilities, on_attach }
 
 local function has_eslint_configured(utils)
   return utils.root_has_file({ ".eslintrc.js", "eslint.config.js" }) or
@@ -66,9 +69,9 @@ null_ls.setup({
     null_ls.builtins.code_actions.gitsigns,
     null_ls.builtins.diagnostics.actionlint,
     null_ls.builtins.diagnostics.eslint
-        .with({ condition = has_eslint_configured }),
+    .with({ condition = has_eslint_configured }),
     null_ls.builtins.code_actions.eslint
-        .with({ condition = has_eslint_configured }),
+    .with({ condition = has_eslint_configured }),
     require("typescript.extensions.null-ls.code-actions")
   }
 })
