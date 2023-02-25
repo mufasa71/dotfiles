@@ -60,6 +60,7 @@
         "/Users/smukimov/.local/share/nvim/site/pack/packer/start/vim-graphql/after",
         "/Users/smukimov/.local/share/nvim/site/pack/packer/start/vim-rzip/after",
         "/Users/smukimov/.config/nvim/after",
-        "${3rd}/luassert/library"
+        "${3rd}/luassert/library",
+        "${3rd}/luv/library"
     ]
 }

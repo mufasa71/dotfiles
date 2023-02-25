@@ -27,7 +27,20 @@ vim.g.indent_blankline_show_trailing_blankline_indent = false
 
 -- Needs to set before shell formatter
 vim.g.shfmt_opt = "-ci"
-vim.g.copilot_no_tab_map = true
+-- vim.g.copilot_no_tab_map = true
+vim.g.copilot_assume_mapped = true
+vim.g.copilot_filetypes = {
+  ["*"] = false,
+  ["javascript"] = true,
+  ["typescript"] = true,
+  ["lua"] = false,
+  ["rust"] = true,
+  ["c"] = true,
+  ["c#"] = true,
+  ["c++"] = true,
+  ["go"] = true,
+  ["python"] = true
+}
 
 -- We do this to prevent the loading of the system fzf.vim plugin. This is
 -- present at least on Arch/Manjaro

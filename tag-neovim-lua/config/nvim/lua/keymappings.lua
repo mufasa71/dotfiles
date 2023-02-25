@@ -35,4 +35,4 @@ wk.register({
 
 wk.register({ ["<C-n>"] = { "<cmd>NvimTreeToggle<cr>", "Open tree" } });
 
-remap("i", "vimrc:copilot-dummy-map", "copilot#Accept(\"<Tab>\")", { expr = true, silent = true, script = true })
+-- remap("i", "vimrc:copilot-dummy-map", "copilot#Accept(\"<Tab>\")", { expr = true, silent = true, script = true })

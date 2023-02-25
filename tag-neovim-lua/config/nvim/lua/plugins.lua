@@ -1,6 +1,5 @@
 return require("packer").startup(function(use)
   use { "wbthomason/packer.nvim" }
-
   use { "tpope/vim-fugitive" }
   use { "tpope/vim-rhubarb" }
   use { "tpope/vim-sleuth", "tpope/vim-repeat" }
@@ -25,13 +24,8 @@ return require("packer").startup(function(use)
   use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
   use { "nvim-treesitter/nvim-treesitter-textobjects" }
   use {
-    "m-demare/hlargs.nvim",
-    requires = { "nvim-treesitter/nvim-treesitter" },
-    config = function() require("hlargs").setup() end
-  }
-  use {
     "williamboman/mason.nvim", "williamboman/mason-lspconfig.nvim",
-    "neovim/nvim-lspconfig", "simrat39/rust-tools.nvim",
+    "neovim/nvim-lspconfig", "simrat39/rust-tools.nvim"
   }
   use { "kosayoda/nvim-lightbulb" }
   use { "onsails/lspkind-nvim" }
@@ -59,8 +53,7 @@ return require("packer").startup(function(use)
     config = function() require "nvim-tree".setup {} end,
     requires = {
       "nvim-tree/nvim-web-devicons" -- optional, for file icon
-    },
-    tag = 'nightly'
+    }
   }
   use {
     "folke/todo-comments.nvim",

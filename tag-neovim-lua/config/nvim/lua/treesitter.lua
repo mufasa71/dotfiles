@@ -3,10 +3,9 @@ require("nvim-treesitter.configs").setup {
   autoinstall = true,
   ensure_installed = {
     "c", "lua", "rust", "typescript", "javascript", "css", "bash", "tsx",
-    "json", "markdown", "jsdoc", "html", "yaml", "dockerfile", "jenkinsfile",
-    "terraform"
+    "json", "markdown", "jsdoc", "html", "yaml", "dockerfile", "terraform"
   },
-  highlight = {enable = true, additional_vim_regex_highlighting = false},
+  highlight = { enable = true, additional_vim_regex_highlighting = false },
   incremental_selection = {
     enable = true,
     keymaps = {
@@ -16,7 +15,7 @@ require("nvim-treesitter.configs").setup {
       node_decremental = "grm"
     }
   },
-  indent = {enable = true},
+  indent = { enable = true },
   textobjects = {
     select = {
       enable = true,
@@ -47,7 +46,7 @@ require("nvim-treesitter.configs").setup {
       set_jumps = true, -- whether to set jumps in the jumplist
       goto_next_start = {
         ["]m"] = "@function.outer",
-        ["]]"] = {query = "@class.outer", desc = "Next class start"},
+        ["]]"] = { query = "@class.outer", desc = "Next class start" },
         --
         -- You can use regex matching and/or pass a list in a "query" key to group multiple queires.
         ["]o"] = "@loop.*",
@@ -55,15 +54,15 @@ require("nvim-treesitter.configs").setup {
         --
         -- You can pass a query group to use query from `queries/<lang>/<query_group>.scm file in your runtime path.
         -- Below example nvim-treesitter's `locals.scm` and `folds.scm`. They also provide highlights.scm and indent.scm.
-        ["]s"] = {query = "@scope", query_group = "locals", desc = "Next scope"},
-        ["]z"] = {query = "@fold", query_group = "folds", desc = "Next fold"}
+        ["]s"] = { query = "@scope", query_group = "locals", desc = "Next scope" },
+        ["]z"] = { query = "@fold", query_group = "folds", desc = "Next fold" }
       },
-      goto_next_end = {["]M"] = "@function.outer", ["]["] = "@class.outer"},
+      goto_next_end = { ["]M"] = "@function.outer", ["]["] = "@class.outer" },
       goto_previous_start = {
         ["[m"] = "@function.outer",
         ["[["] = "@class.outer"
       },
-      goto_previous_end = {["[M"] = "@function.outer", ["[]"] = "@class.outer"}
+      goto_previous_end = { ["[M"] = "@function.outer", ["[]"] = "@class.outer" }
       -- Below will go to either the start or the end, whichever is closer.
       -- Use if you want more granular movements
       -- Make it even more gradual by adding multiple queries and regex.
@@ -72,9 +71,9 @@ require("nvim-treesitter.configs").setup {
     },
     swap = {
       enable = true,
-      swap_next = {["<leader>a"] = "@parameter.inner"},
-      swap_previous = {["<leader>A"] = "@parameter.inner"}
+      swap_next = { ["<leader>a"] = "@parameter.inner" },
+      swap_previous = { ["<leader>A"] = "@parameter.inner" }
     }
   },
-  context_commentstring = {enable = true, enable_autocmd = false}
+  context_commentstring = { enable = true, enable_autocmd = false }
 }
