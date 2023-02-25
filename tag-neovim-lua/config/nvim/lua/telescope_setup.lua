@@ -4,13 +4,13 @@ local wk = require "which-key"
 
 telescope.setup {
   pickers = {
-    find_files = {theme = "dropdown"},
+    find_files = { theme = "dropdown" },
     buffers = {
       sort_lastused = true,
       theme = "dropdown",
       mappings = {
-        i = {["<c-d>"] = actions.delete_buffer + actions.move_to_top},
-        n = {["<c-d>"] = actions.delete_buffer + actions.move_to_top}
+        i = { ["<c-d>"] = actions.delete_buffer + actions.move_to_top },
+        n = { ["<c-d>"] = actions.delete_buffer + actions.move_to_top }
       }
     }
   },
@@ -30,15 +30,15 @@ telescope.load_extension("fzf")
 wk.register({
   f = {
     name = "file",
-    f = {"<cmd>Telescope find_files<cr>", "Find File"},
-    b = {"<cmd>Telescope buffers<cr>", "Find Buffer"},
-    r = {"<cmd>Telescope oldfiles<cr>", "Open Recent File"},
+    f = { "<cmd>Telescope find_files<cr>", "Find File" },
+    b = { "<cmd>Telescope buffers<cr>", "Find Buffer" },
+    r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
     c = {
       "<cmd>Telescope current_buffer_fuzzy_find<cr>", "Find in current buffer"
     },
-    h = {"<cmd>Telescope help_tags<cr>", "Find help tags"},
-    t = {"<cmd>Telescope tags<cr>", "Find tags"},
-    d = {"<cmd>Telescope grep_string<cr>", "Searches for the string in cwd"},
+    h = { "<cmd>Telescope help_tags<cr>", "Find help tags" },
+    t = { "<cmd>Telescope tags<cr>", "Find tags" },
+    d = { "<cmd>Telescope grep_string<cr>", "Searches for the string in cwd" },
     g = {
       "<cmd>Telescope live_grep<cr>",
       "Search for a string in cwd and get live result"
@@ -46,8 +46,8 @@ wk.register({
   },
   g = {
     name = "git",
-    s = {"<cmd>Telescope git_status<cr>", "List current changes"},
-    c = {"<cmd>Telescope git_commits<cr>", "List commits"},
-    p = {"<cmd>Telescope gh pull_request<cr>", "List pull requests"}
+    s = { "<cmd>Telescope git_status<cr>", "List current changes" },
+    c = { "<cmd>Telescope git_commits<cr>", "List commits" },
+    p = { "<cmd>Telescope gh pull_request<cr>", "List pull requests" }
   }
-}, {prefix = "<leader>"})
+}, { prefix = "<leader>" })
