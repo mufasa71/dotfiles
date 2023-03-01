@@ -12,6 +12,7 @@ vim.o.updatetime = 250 -- decrease update time
 vim.wo.signcolumn = "yes"
 vim.o.termguicolors = true -- set colorscheme (order is important here)
 vim.o.list = true
+vim.o.mousemoveevent = true
 vim.cmd [[set undofile]] -- save undo history
 
 -- Map leader
