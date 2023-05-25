@@ -1,16 +1,16 @@
-vim.o.inccommand = "nosplit" -- incremental live completion
-vim.o.hlsearch = true -- set highlight on search
-vim.wo.number = true -- make line numbers default
-vim.o.hidden = true -- do not save when switching buffers
-vim.o.mouse = "a" -- enable mouse mode
-vim.o.breakindent = true -- enable break indent
+vim.o.inccommand = "nosplit"           -- incremental live completion
+vim.o.hlsearch = true                  -- set highlight on search
+vim.wo.number = true                   -- make line numbers default
+vim.o.hidden = true                    -- do not save when switching buffers
+vim.o.mouse = "a"                      -- enable mouse mode
+vim.o.breakindent = true               -- enable break indent
 vim.o.completeopt = "menuone,noselect" -- set completeopt to have a better completion experience
-vim.o.ignorecase = true -- case insensitive searching UNLESS /C or capital in search
-vim.o.mousescroll = "ver:5,hor:2" -- mouse scroll speed
+vim.o.ignorecase = true                -- case insensitive searching UNLESS /C or capital in search
+vim.o.mousescroll = "ver:5,hor:2"      -- mouse scroll speed
 vim.o.smartcase = true
-vim.o.updatetime = 250 -- decrease update time
+vim.o.updatetime = 250                 -- decrease update time
 vim.wo.signcolumn = "yes"
-vim.o.termguicolors = true -- set colorscheme (order is important here)
+vim.o.termguicolors = true             -- set colorscheme (order is important here)
 vim.o.list = true
 vim.o.mousemoveevent = true
 vim.cmd [[set undofile]] -- save undo history

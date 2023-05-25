@@ -23,5 +23,4 @@ local autocmds = {
     { "TextYankPost", "*", "silent! lua vim.highlight.on_yank(timeout=2000)" }
   }
 }
-
 nvim_create_augroups(autocmds)

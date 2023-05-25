@@ -31,6 +31,7 @@ lspconfig.volar.setup { capabilities }
 lspconfig.flow.setup { capabilities }
 lspconfig.ocamllsp.setup { capabilities }
 lspconfig.tailwindcss.setup { capabilities }
+lspconfig.groovyls.setup { capabilities }
 lspconfig.denols
     .setup { capabilities, root_dir = util.root_pattern("deno.json") }
 util.on_setup = lspconfig.util.add_hook_before(util.on_setup, function(config)
@@ -71,9 +72,9 @@ null_ls.setup({
     null_ls.builtins.code_actions.gitsigns,
     null_ls.builtins.diagnostics.actionlint,
     null_ls.builtins.diagnostics.eslint
-    .with({ condition = has_eslint_configured }),
+        .with({ condition = has_eslint_configured }),
     null_ls.builtins.code_actions.eslint
-    .with({ condition = has_eslint_configured }),
+        .with({ condition = has_eslint_configured }),
     require("typescript.extensions.null-ls.code-actions")
   }
 })
