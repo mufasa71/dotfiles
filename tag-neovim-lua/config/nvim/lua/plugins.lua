@@ -24,6 +24,10 @@ return require("packer").startup(function(use)
   use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
   use { "nvim-treesitter/nvim-treesitter-textobjects" }
   use {
+    "windwp/nvim-ts-autotag",
+    config = function() require("nvim-ts-autotag").setup {} end
+  }
+  use {
     "williamboman/mason.nvim", "williamboman/mason-lspconfig.nvim",
     "neovim/nvim-lspconfig", "simrat39/rust-tools.nvim"
   }
@@ -106,11 +110,7 @@ return require("packer").startup(function(use)
       require "bufferline".setup {
         options = {
           diagnostics = "nvim_lsp",
-          hover = {
-            enabled = true,
-            delay = 200,
-            reveal = { 'close' }
-          },
+          hover = { enabled = true, delay = 200, reveal = { "close" } },
           separator_style = "slant",
           offsets = {
             {
