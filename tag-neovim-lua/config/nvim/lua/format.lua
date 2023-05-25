@@ -38,11 +38,12 @@ end
 local go = function() return { exe = "gofmt", args = { "-w" }, stdin = true } end
 
 local shfmt =
-function() return { exe = "shfmt", args = { "-w" }, stdin = false } end
+    function() return { exe = "shfmt", args = { "-w" }, stdin = false } end
 
 require("formatter").setup({
   filetype = {
     javascript = { prettier },
+    vue = { require("formatter.filetypes.vue").prettier },
     json = { prettier },
     typescript = { prettier },
     typescriptreact = { prettier },
@@ -56,5 +57,5 @@ require("formatter").setup({
   }
 })
 
-wk.register({ F = { "<cmd>Format<cr>", "Format" } }, { prefix = "<leader>" })
-wk.register({ F = { "<cmd>Format<cr>", "Format" } }, { prefix = "<leader>" })
+-- wk.register({ F = { "<cmd>Format<cr>", "Format" } }, { prefix = "<leader>" })
+wk.register({ F = { "<cmd>FormatWrite<cr>", "Format" } }, { prefix = "<leader>" })
