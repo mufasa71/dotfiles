@@ -61,7 +61,7 @@ lspconfig.lua_ls.setup {
 require("rust-tools").setup { capabilities, on_attach }
 
 local function has_eslint_configured(utils)
-  return utils.root_has_file({ ".eslintrc.js", "eslint.config.js" }) or
+  return utils.root_has_file({ ".eslintrc.js", "eslint.config.js", ".eslintrc" }) or
       utils.has_file("eslint.config.js")
 end
 

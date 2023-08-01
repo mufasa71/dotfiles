@@ -40,7 +40,7 @@ return require("packer").startup(function(use)
     config = function() require("which-key").setup {} end
   }
   use { "jose-elias-alvarez/null-ls.nvim", requires = "nvim-lua/plenary.nvim" }
-  use { "brooth/far.vim" }
+  use { "nvim-pack/nvim-spectre" }
   use { "mhartington/formatter.nvim" }
   use { "lbrayner/vim-rzip" }
   use {
