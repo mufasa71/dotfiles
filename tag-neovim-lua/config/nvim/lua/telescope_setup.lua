@@ -27,12 +27,24 @@ telescope.setup {
 
 telescope.load_extension("fzf")
 
+local function find_files()
+  require("telescope_pickers").prettyFilesPicker({ picker = "find_files" })
+end
+
+local function oldfiles()
+  require("telescope_pickers").prettyFilesPicker({ picker = "oldfiles" })
+end
+
+local function git_files()
+  require("telescope_pickers").prettyFilesPicker({ picker = "git_files" })
+end
+
 wk.register({
   f = {
     name = "file",
-    f = { "<cmd>Telescope find_files<cr>", "Find File" },
+    f = { find_files, "Find File" },
     b = { "<cmd>Telescope buffers<cr>", "Find Buffer" },
-    r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
+    r = { oldfiles, "Open Recent File" },
     c = {
       "<cmd>Telescope current_buffer_fuzzy_find<cr>", "Find in current buffer"
     },
@@ -42,11 +54,16 @@ wk.register({
     g = {
       "<cmd>Telescope live_grep<cr>",
       "Search for a string in cwd and get live result"
+    },
+    G = {
+      "<cmd>Telescope grep_string<cr>",
+      "Search for a string in cwd and get live result"
     }
   },
   g = {
     name = "git",
     s = { "<cmd>Telescope git_status<cr>", "List current changes" },
+    f = { git_files, "List git files" },
     c = { "<cmd>Telescope git_commits<cr>", "List commits" },
     p = { "<cmd>Telescope gh pull_request<cr>", "List pull requests" }
   }
