@@ -33,6 +33,7 @@ lspconfig.ocamllsp.setup { capabilities }
 lspconfig.tailwindcss.setup { capabilities }
 lspconfig.groovyls.setup { capabilities }
 lspconfig.jsonls.setup { capabilities }
+lspconfig.prismals.setup { capabilities }
 lspconfig.denols
     .setup { capabilities, root_dir = util.root_pattern("deno.json") }
 util.on_setup = lspconfig.util.add_hook_before(util.on_setup, function(config)
