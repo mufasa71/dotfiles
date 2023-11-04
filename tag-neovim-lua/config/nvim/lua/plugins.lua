@@ -14,11 +14,7 @@ return require("packer").startup(function(use)
   use {
     "lukas-reineke/indent-blankline.nvim",
     config = function()
-      require("indent_blankline").setup {
-        space_char_blankline = " ",
-        show_current_context = true,
-        show_current_context_start = false
-      }
+      require("ibl").setup()
     end
   }
   use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
@@ -54,7 +50,9 @@ return require("packer").startup(function(use)
   }
   use {
     "nvim-tree/nvim-tree.lua",
-    config = function() require "nvim-tree".setup {} end,
+    config = function()
+      require "nvim-tree".setup { sort = { files_first = true, sorter = "name" } }
+    end,
     requires = {
       "nvim-tree/nvim-web-devicons" -- optional, for file icon
     }
