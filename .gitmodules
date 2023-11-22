@@ -1,6 +1,0 @@
-[submodule "tag-zsh/antigen"]
-	path = tag-zsh/antigen
-	url = https://github.com/zsh-users/antigen
-[submodule "tag-vim/vim/pack/minpac/opt/minpac"]
-	path = tag-vim/vim/pack/minpac/opt/minpac
-	url = https://github.com/k-takata/minpac.git

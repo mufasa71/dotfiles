@@ -1,6 +1,0 @@
-#/bin/bash
-
-RESULT=$(curl -s https://news.ycombinator.com/ | pup 'table table tr:nth-last-of-type(n+2) td.title a text{}')
-(echo "Hacker News"
- echo "$RESULT") | dzen2 -p -x "1350" -y "20" -w "570" -l "30" -sa 'l' -ta 'c' -fg yellow -m\
-  -title-name 'APL Fixtures' -e 'onstart=uncollapse;button1=exit;button3=exit'

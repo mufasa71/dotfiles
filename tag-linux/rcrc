@@ -1,4 +1,0 @@
-TAGS="git"
-EXCLUDES="README.md build base16-monokai.dark.256.xresources etc"
-HOSTNAME="eagle"
-SYMLINK_DIRS=""

@@ -1,5 +1,0 @@
-#!/bin/bash
-for i in *.mp4
-do
-  ffmpeg -i "$i" -ab 256k "${i%mp4}mp3"
-done

@@ -1,8 +1,0 @@
-#/bin/bash
-RESULT=$(curl -s http://fantasy.premierleague.com/fixtures/ \
-  | pup 'table#ismFixtureTable tr json{}' \
-  | jq -r '.[].children | .[0].text + " " + .[1].text + " " + .[3].text + " " + .[5].text')
-
-(echo "Barclays Premier League Fixtures"
- echo "$RESULT") | dzen2 -p -x "1500" -y "20" -w "300" -l "20" -sa 'l' -ta 'c' -fg yellow \
-  -title-name 'APL Fixtures' -e 'onstart=uncollapse;button1=exit;button3=exit'

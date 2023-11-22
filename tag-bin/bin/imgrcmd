@@ -1,5 +1,0 @@
-#!/bin/bash
-
-sleep 0.5
-notify-send -u normal -t 2000 'Imgur screenshot' 'Please select area:'
-imgur-screenshot
