@@ -1,5 +1,6 @@
-vim.g.mapleader = " "
+-- Enable the experimental new loader.
+vim.loader.enable()
+-- Load the plugins
+require("config.lazy").setup()
 
-require("config.lazy")
-
-vim.cmd[[colorscheme tokyonight-moon]]
+vim.cmd [[colorscheme tokyonight-moon]]
