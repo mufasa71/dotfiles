@@ -1,0 +1,16 @@
+[".vim/pack/plugins/start/nerdtree"]
+  type = "git-repo"
+  url = "https://github.com/preservim/nerdtree.git"
+  refreshPeriod = "168h"
+[".vim/colors/onedark.vim"]
+  type = "file"
+  url = "https://raw.githubusercontent.com/joshdick/onedark.vim/main/colors/onedark.vim"
+  refreshPeriod = "168h"
+[".vim/autoload/onedark.vim"]
+  type = "file"
+  url = "https://raw.githubusercontent.com/joshdick/onedark.vim/main/autoload/onedark.vim"
+  refreshPeriod = "168h"
+[".vim/pack/plugins/opt/chezmoi.vim"]
+  type = "git-repo"
+  url = "https://github.com/alker0/chezmoi.vim"
+  refreshPeriod = "168h"

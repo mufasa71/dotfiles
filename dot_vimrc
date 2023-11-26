@@ -1,0 +1,7 @@
+packadd chezmoi.vim
+
+filetype on
+syntax on
+colorscheme onedark
+
+autocmd BufWritePost ~/.local/share/chezmoi/* ! chezmoi apply --source-path "%"
