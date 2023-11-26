@@ -5,4 +5,6 @@ sudo pacman -S \
 	ttf-jetbrains-mono \
 	ttf-jetbrains-mono-nerd \
 	zoxide \
-	fzf
+	fzf \
+	xclip \
+	tree-sitter

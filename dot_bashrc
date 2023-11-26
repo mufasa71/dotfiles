@@ -1,0 +1,25 @@
+#
+# ~/.bashrc
+#
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+PS1='[\u@\h \W]\$ '
+
+complete -c man which
+
+add_to_path() {
+	if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then
+		export PATH=$PATH:$1
+		echo "Added $1 to PATH"
+	else
+		echo "Directory $1 does not exist or is already in PATH"
+	fi
+}
+
+VOLTA_HOME=$HOME/.volta
+
+add_to_path $VOLTA_HOME/bin

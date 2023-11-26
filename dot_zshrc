@@ -22,3 +22,7 @@ eval "$(zoxide init zsh)"
 
 [ -f /usr/share/fzf/completion.zsh ] && source /usr/share/fzf/completion.zsh
 [ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
+
+
+alias cat=bat
+alias ls=eza
