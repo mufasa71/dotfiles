@@ -1,0 +1,6 @@
+# vim: filetype=zsh
+
+typeset -U path PATH
+path=(~/.local/bin ~/.volta/bin/ $path)
+export PATH
+export EDITOR=vim

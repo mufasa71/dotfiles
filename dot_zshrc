@@ -1,0 +1,21 @@
+zstyle ':completion:*' menu select
+zstyle ':completion::complete:*' gain-privileges 1
+autoload -U select-word-style && select-word-style bash
+autoload -Uz compinit promptinit && compinit && promptinit
+
+prompt fire
+HISTFILE=~/.histfile
+HISTSIZE=10000
+SAVEHIST=10000
+bindkey -e
+
+# History search
+autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+
+[[ -n "${key[Up]}"   ]] && bindkey -- "${key[Up]}"   up-line-or-beginning-search
+[[ -n "${key[Down]}" ]] && bindkey -- "${key[Down]}" down-line-or-beginning-search
+# End
+
+eval "$(zoxide init zsh)"
