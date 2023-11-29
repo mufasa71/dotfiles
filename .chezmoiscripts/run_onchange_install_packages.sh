@@ -10,4 +10,5 @@ sudo pacman -S \
 	tree-sitter \
 	trash-cli \
 	xdotool \
-	pass
+	pass \
+	gtk2
