@@ -1,30 +1,9 @@
-zstyle ':completion:*' menu select
-zstyle ':completion::complete:*' gain-privileges 1
-autoload -U select-word-style && select-word-style bash
-autoload -Uz compinit promptinit && compinit && promptinit
+export ZSH=$HOME/.oh-my-zsh
 
-prompt fire
-HISTFILE=~/.histfile
-HISTSIZE=10000
-SAVEHIST=10000
-bindkey -e
+ZSH_THEME="robbyrussell"
+ENABLE_CORRECTION="true"
+ZSH_CUSTOM=$HOME/.config/zsh
 
-# History search
-autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
-zle -N up-line-or-beginning-search
-zle -N down-line-or-beginning-search
+plugins=(git zsh-syntax-highlighting)
 
-[[ -n "${key[Up]}"   ]] && bindkey -- "${key[Up]}"   up-line-or-beginning-search
-[[ -n "${key[Down]}" ]] && bindkey -- "${key[Down]}" down-line-or-beginning-search
-# End
-
-eval "$(zoxide init zsh)"
-
-[ -f /usr/share/fzf/completion.zsh ] && source /usr/share/fzf/completion.zsh
-[ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
-
-
-alias cat=bat
-alias ls=eza
-alias batfm='fzf --preview "bat --color=always --style=numbers --line-range=:500 {}"'
-alias batdiff="git diff --name-only --relative --diff-filter=d | xargs bat --diff"
+source $ZSH/oh-my-zsh.sh

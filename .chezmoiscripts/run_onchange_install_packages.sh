@@ -7,4 +7,7 @@ sudo pacman -S \
 	zoxide \
 	fzf \
 	xclip \
-	tree-sitter
+	tree-sitter \
+	trash-cli \
+	xdotool \
+	pass

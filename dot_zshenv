@@ -4,3 +4,4 @@ typeset -U path PATH
 path=(~/.local/bin ~/.volta/bin/ $path)
 export PATH
 export EDITOR=vim
+export GPG_TTY=$(tty)
