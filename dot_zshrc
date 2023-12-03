@@ -4,6 +4,6 @@ ZSH_THEME="robbyrussell"
 ENABLE_CORRECTION="true"
 ZSH_CUSTOM=$HOME/.config/zsh
 
-plugins=(git zsh-syntax-highlighting)
+plugins=(git docker zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh

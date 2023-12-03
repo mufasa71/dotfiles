@@ -11,4 +11,5 @@ sudo pacman -S \
 	trash-cli \
 	xdotool \
 	pass \
+	dunst \
 	gtk2
