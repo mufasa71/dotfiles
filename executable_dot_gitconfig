@@ -1,0 +1,42 @@
+[user]
+  email = shukhrat.mukimov@auto1.com
+  name = Shukhrat Mukimov
+
+[push]
+  default = current
+
+[color]
+  ui = auto
+
+[alias]
+  cleanup = ! rm -rf .git/refs/original/ && git reflog expire --expire=now --all && git gc --prune=now && git gc --aggressive --prune=now
+  rank = shortlog -sn --no-merges
+  hist = log --graph --pretty=format:\"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset %C(blue)[%an]%Creset\" --abbrev-commit --date=relative
+
+[core]
+  excludesfile = ~/.gitignore
+  editor = vim
+
+[merge]
+  tool = nvimdiff
+
+[commit]
+  template = ~/.gitmessage
+
+[apply]
+  whitespace = fix
+
+[github]
+  user = mufasa71
+
+[init]
+  defaultBranch = main
+
+[rerere]
+  enabled = true
+
+[filter "lfs"]
+  required = true
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process

@@ -1,0 +1,29 @@
+# Increase volume
+# "pactl set-sink-volume @DEFAULT_SINK@ +1000"
+"amixer sset Master playback 10%+"
+  XF86AudioRaiseVolume
+
+# Decrease volume
+# "pactl set-sink-volume @DEFAULT_SINK@ -1000"
+"amixer sset Master playback 10%-"
+  XF86AudioLowerVolume
+
+# Mute volume
+# "pactl set-sink-mute @DEFAULT_SINK@ toggle"
+"amixer sset Master toggle"
+  XF86AudioMute
+
+# Play/Pause
+"playerctl play-pause"
+  XF86AudioPlay
+
+# Next
+"playerctl next"
+  XF86AudioNext
+
+# Previous
+"playerctl previous"
+  XF86AudioPrev
+
+"flameshot gui"
+  Print

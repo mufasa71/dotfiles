@@ -12,4 +12,5 @@ sudo pacman -S \
 	xdotool \
 	pass \
 	dunst \
+	greenclip \
 	gtk2
