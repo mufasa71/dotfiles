@@ -21,7 +21,7 @@ unset markers
   set pager_index_lines = 10
   set pager_stop
   set pipe_decode
-  set realname = "***REMOVED***"
+  set realname = "***Removed***"
 unset record
   set reply_to
   set reverse_name

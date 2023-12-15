@@ -21,7 +21,7 @@ unset markers
   set pager_index_lines = 10
   set pager_stop
   set pipe_decode
-  set realname = "***REMOVED***"
+  set realname = "***Removed***"
 unset record
   set reply_to
   set reverse_name
@@ -48,9 +48,9 @@ unset record
 	set sidebar_indent_string="  "          # Indent with two spaces
     named-mailboxes "Personal" =gmail/Inbox
     named-mailboxes "Github" =gmail/github
-    named-mailboxes "Auto1" =***REMOVED***/Inbox
-    named-mailboxes "Auto1-Technical" =***REMOVED***/technical
-    named-mailboxes "Auto1-Github" =***REMOVED***/github
+    named-mailboxes "***REMOVED***" =***REMOVED***/Inbox
+    named-mailboxes "***REMOVED***-Technical" =***REMOVED***/technical
+    named-mailboxes "***REMOVED***-Github" =***REMOVED***/github
 
 auto_view text/html
 alternative_order text/plain text/enriched text/html

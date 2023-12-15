@@ -38,7 +38,7 @@ let PLUGIN_INFO = xml`
   <name>{NAME}</name>
   <description>Write a link to the specified file.</description>
   <version>1.0.0</version>
-  <author mail="***REMOVED***" homepage="http://***REMOVED***.github.com">s***REMOVED***</author>
+  <author mail="***REMOVED***" homepage="http://***REMOVED***.github.com">***REMOVED***</author>
   <license>new BSD License (Please read the source code comments of this plugin)</license>
   <minVersion>2.0pre</minVersion>
   <maxVersion>2.4</maxVersion>
