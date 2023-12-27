@@ -13,4 +13,5 @@ sudo pacman -S \
 	pass \
 	dunst \
 	greenclip \
-	gtk2
+	gtk2 \
+	inotify-tools

@@ -5,4 +5,3 @@ path=(~/.local/bin ~/.volta/bin/ ~/.dotnet/tools /opt/google-cloud-cli/bin $path
 export PATH
 export EDITOR=vim
 export GPG_TTY=$(tty)
-export QT_LOGGING_RULES='*=false'
