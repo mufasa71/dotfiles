@@ -12,6 +12,4 @@ sudo pacman -S \
 	xdotool \
 	pass \
 	dunst \
-	greenclip \
-	gtk2 \
 	inotify-tools

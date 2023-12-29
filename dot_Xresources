@@ -1,6 +1,6 @@
 # Xcursor.theme: Bluecurve
-# Xft.dpi: 288
-Xft.dpi: 192
+Xft.dpi: 288
+# Xft.dpi: 192
 
 Xft.autohint: 0
 Xft.lcdfilter: lcddefault
