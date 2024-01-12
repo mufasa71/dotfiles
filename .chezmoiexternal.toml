@@ -14,6 +14,14 @@
   type = "git-repo"
   url = "https://github.com/alker0/chezmoi.vim"
   refreshPeriod = "168h"
+[".vim/pack/plugins/opt/lightline.vim"]
+  type = "git-repo"
+  url = "https://github.com/itchyny/lightline.vim"
+  refreshPeriod = "168h"
+[".vim/pack/plugins/opt/vim-gitbranch.vim"]
+  type = "git-repo"
+  url = "https://github.com/itchyny/vim-gitbranch"
+  refreshPeriod = "168h"
 [".oh-my-zsh"]
     type = "archive"
     url = "https://github.com/ohmyzsh/ohmyzsh/archive/master.tar.gz"

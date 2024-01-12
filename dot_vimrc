@@ -1,7 +1,23 @@
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'gitbranch#name'
+      \ },
+      \ }
+
 packadd chezmoi.vim
+packadd vim-gitbranch.vim
+packadd lightline.vim
 
 filetype on
 syntax on
 colorscheme onedark
 
+set laststatus=2
+
 autocmd BufWritePost ~/.local/share/chezmoi/* ! chezmoi apply --source-path "%"
+
