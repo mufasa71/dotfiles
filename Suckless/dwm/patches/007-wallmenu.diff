@@ -1,0 +1,20 @@
+Index: dwm/config.def.h
+===================================================================
+--- dwm.orig/config.def.h	2024-01-14 19:18:38.555943486 +0500
++++ dwm/config.def.h	2024-01-14 19:22:18.099141663 +0500
+@@ -69,6 +69,7 @@
+ static const char *clipcmd[] = { "dmenu_clip", "-m", dmenumon, "-fn",dmenufont, "-nb", norm_bg, "-nf", norm_fg, "-sb", sel_bg, "-sf", sel_fg, NULL };
+ static const char *haltcmd[] = { "haltmenu", "-m", dmenumon, "-fn",dmenufont, "-nb", norm_bg, "-nf", norm_fg, "-sb", sel_bg, "-sf", sel_fg, NULL };
+ static const char *passcmd[] = { "passmenu", "--type", "-m", dmenumon, "-fn",dmenufont, "-nb", norm_bg, "-nf", norm_fg, "-sb", sel_bg, "-sf", sel_fg, NULL };
++static const char *wallcmd[] = { "wallmenu", "-m", dmenumon, "-fn",dmenufont, "-nb", norm_bg, "-nf", norm_fg, "-sb", sel_bg, "-sf", sel_fg, NULL };
+ static const char *termcmd[]  = { "st", NULL };
+ 
+ static const Key keys[] = {
+@@ -78,6 +79,7 @@
+ 	{ MODKEY,                       XK_Escape, spawn,          {.v = haltcmd } },
+ 	{ MODKEY|ControlMask,           XK_p,      spawn,          {.v = passcmd } },
+ 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
++	{ MODKEY,                       XK_w,      spawn,          {.v = wallcmd } },
+ 	{ MODKEY,                       XK_b,      togglebar,      {0} },
+ 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
+ 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },

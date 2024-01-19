@@ -4,3 +4,6 @@
 003-clipboard-cmd.diff
 004-passmenu-cmd.diff
 004-haltmenu-cmd.diff
+005-systray.diff
+006-bar-height.diff
+007-wallmenu.diff
