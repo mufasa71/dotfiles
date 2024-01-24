@@ -12,4 +12,5 @@ sudo pacman -S \
 	xdotool \
 	pass \
 	dunst \
-	inotify-tools
+	inotify-tools \
+	eza
