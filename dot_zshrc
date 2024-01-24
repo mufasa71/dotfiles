@@ -4,6 +4,6 @@ ZSH_THEME="robbyrussell"
 ENABLE_CORRECTION="true"
 ZSH_CUSTOM=$HOME/.config/zsh
 
-plugins=(git docker zsh-syntax-highlighting pass direnv cp)
+plugins=(git docker pass direnv cp zsh-syntax-highlighting zsh-completions zsh-autosuggestions zsh-history-substring-search)
 
 source $ZSH/oh-my-zsh.sh

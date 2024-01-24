@@ -34,6 +34,24 @@
     exact = true
     stripComponents = 1
     refreshPeriod = "168h"
+[".config/zsh/plugins/zsh-completions"]
+    type = "archive"
+    url = "https://github.com/zsh-users/zsh-completions/archive/master.tar.gz"
+    exact = true
+    stripComponents = 1
+    refreshPeriod = "168h"
+[".config/zsh/plugins/zsh-autosuggestions"]
+    type = "archive"
+    url = "https://github.com/zsh-users/zsh-autosuggestions/archive/master.tar.gz"
+    exact = true
+    stripComponents = 1
+    refreshPeriod = "168h"
+[".config/zsh/plugins/zsh-history-substring-search"]
+    type = "archive"
+    url = "https://github.com/zsh-users/zsh-history-substring-search/archive/master.tar.gz"
+    exact = true
+    stripComponents = 1
+    refreshPeriod = "168h"
 ["AUR"]
     type = "archive"
     url = "https://aur.archlinux.org/cgit/aur.git/snapshot/rofi-greenclip.tar.gz"

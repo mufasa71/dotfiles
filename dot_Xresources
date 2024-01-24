@@ -1,10 +1,18 @@
-# Xcursor.theme: Bluecurve
-Xft.dpi: 288
-# Xft.dpi: 192
-
-Xft.autohint: 0
-Xft.lcdfilter: lcddefault
-Xft.hintstyle: hintfull
-Xft.hinting: 1
+Xcursor.theme: Bluecurve
 Xft.antialias: 1
+Xft.autohint: 0
+Xft.dpi: 192
+Xft.hinting: 1
+Xft.hintstyle: hintfull
+Xft.lcdfilter: lcddefault
 Xft.rgba: rgb
+
+Xautolock.time: 2
+Xautolock.locker: autolock lock
+Xautolock.killtime: 10
+Xautolock.killer: autolock suspend
+Xautolock.notify: 30
+Xautolock.notifier: autolock notify
+Xautolock.detectsleep: true
+Xautolock.secure: true
+Xautolock.noclose: true

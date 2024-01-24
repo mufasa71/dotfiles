@@ -1,0 +1,16 @@
+{{ if ne .chezmoi.os "darwin" }}
+Library/Application Support/App/file.conf
+{{ end }}
+{{ if ne .chezmoi.os "linux" }}
+.xinitrc
+.Xresources
+.Xresources.nord
+.xbindkeysrc
+.rtorrent.rc
+Suckless
+.config/flameshot
+.config/dunst
+.config/greenclip.toml
+.local/bin
+{{ end }}
+.oh-my-zsh/cache
