@@ -1,3 +1,4 @@
+{{ if eq .chezmoi.os "linux" -}}
 #!/bin/bash
 
 sudo pacman -S \
@@ -13,4 +14,10 @@ sudo pacman -S \
 	pass \
 	dunst \
 	inotify-tools \
+	kitty \
 	eza
+{{ else if eq .chezmoi.os "darwin" -}}
+#!/bin/sh
+brew install ripgrep
+{{ end -}}
+
