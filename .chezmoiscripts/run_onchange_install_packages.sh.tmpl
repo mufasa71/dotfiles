@@ -18,6 +18,6 @@ sudo pacman -S \
 	eza
 {{ else if eq .chezmoi.os "darwin" -}}
 #!/bin/sh
-brew install ripgrep
+brew install ripgrep eza
 {{ end -}}
 
