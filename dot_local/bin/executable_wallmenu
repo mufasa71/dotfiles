@@ -1,6 +1,6 @@
 #!/bin/bash
 
-wallpaper_dir="$HOME/Pictures"
+wallpaper_dir="$HOME/Pictures/Wallpapers"
 
 wallpaper_files=$(ls -t $wallpaper_dir/*.jpg | xargs -n1 basename)
 

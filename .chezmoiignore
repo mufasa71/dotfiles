@@ -14,3 +14,4 @@ Suckless
 .local/bin
 {{ end }}
 .oh-my-zsh/cache
+.config/zsh/themes/powerlevel10k/**/*.zwc

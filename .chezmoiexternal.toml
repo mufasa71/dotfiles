@@ -52,6 +52,18 @@
     exact = true
     stripComponents = 1
     refreshPeriod = "168h"
+[".config/zsh/plugins/zsh_codex"]
+    type = "archive"
+    url = "https://github.com/luodian/zsh_codex/archive/master.tar.gz"
+    exact = true
+    stripComponents = 1
+    refreshPeriod = "168h"
+[".config/zsh/themes/powerlevel10k"]
+    type = "archive"
+    url = "https://github.com/romkatv/powerlevel10k/archive/master.tar.gz"
+    exact = true
+    stripComponents = 1
+    refreshPeriod = "168h"
 ["AUR"]
     type = "archive"
     url = "https://aur.archlinux.org/cgit/aur.git/snapshot/rofi-greenclip.tar.gz"
