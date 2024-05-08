@@ -1,0 +1,122 @@
+Index: dwm/config.def.h
+===================================================================
+--- dwm.orig/config.def.h	2024-01-14 19:22:18.099141663 +0500
++++ dwm/config.def.h	2024-05-08 13:22:36.527288059 +0500
+@@ -3,6 +3,7 @@
+ /* appearance */
+ static const unsigned int borderpx  = 1;        /* border pixel of windows */
+ static const unsigned int snap      = 32;       /* snap pixel */
++static const unsigned int minwsz    = 20;       /* Minimal heigt of a client for smfact */
+ static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
+ static const unsigned int systrayonleft = 0;    /* 0: systray in the right corner, >0: systray on left of status text */
+ static const unsigned int systrayspacing = 4;   /* systray spacing */
+@@ -41,6 +42,7 @@
+ 
+ /* layout(s) */
+ static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
++static const float smfact    = 0.00; /* factor of tiled clients [0.00..0.95] */
+ static const int nmaster     = 1;    /* number of clients in master area */
+ static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
+ static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
+@@ -87,6 +89,8 @@
+ 	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
+ 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
+ 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
++	{ MODKEY|ShiftMask,             XK_h,      setsmfact,      {.f = +0.05} },
++	{ MODKEY|ShiftMask,             XK_l,      setsmfact,      {.f = -0.05} },
+ 	{ MODKEY,                       XK_Return, zoom,           {0} },
+ 	{ MODKEY,                       XK_Tab,    view,           {0} },
+ 	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
+Index: dwm/dwm.c
+===================================================================
+--- dwm.orig/dwm.c	2024-01-14 19:18:38.555943486 +0500
++++ dwm/dwm.c	2024-05-08 13:26:57.704092257 +0500
+@@ -86,6 +86,7 @@
+ 	int i;
+ 	unsigned int ui;
+ 	float f;
++	float sf;
+ 	const void *v;
+ } Arg;
+ 
+@@ -129,6 +130,7 @@
+ struct Monitor {
+ 	char ltsymbol[16];
+ 	float mfact;
++	float smfact;
+ 	int nmaster;
+ 	int num;
+ 	int by;               /* bar geometry */
+@@ -227,6 +229,7 @@
+ static void setfullscreen(Client *c, int fullscreen);
+ static void setlayout(const Arg *arg);
+ static void setmfact(const Arg *arg);
++static void setsmfact(const Arg *arg);
+ static void setup(void);
+ static void seturgent(Client *c, int urg);
+ static void showhide(Client *c);
+@@ -726,6 +729,7 @@
+ 	m = ecalloc(1, sizeof(Monitor));
+ 	m->tagset[0] = m->tagset[1] = 1;
+ 	m->mfact = mfact;
++	m->smfact = smfact;
+ 	m->nmaster = nmaster;
+ 	m->showbar = showbar;
+ 	m->topbar = topbar;
+@@ -1589,6 +1593,19 @@
+ }
+ 
+ void
++setsmfact(const Arg *arg) {
++	float sf;
++
++	if(!arg || !selmon->lt[selmon->sellt]->arrange)
++		return;
++	sf = arg->sf < 1.0 ? arg->sf + selmon->smfact : arg->sf - 1.0;
++	if(sf < 0 || sf > 0.9)
++		return;
++	selmon->smfact = sf;
++	arrange(selmon);
++}
++
++void
+ sendmon(Client *c, Monitor *m)
+ {
+ 	if (c->mon == m)
+@@ -1878,7 +1895,7 @@
+ void
+ tile(Monitor *m)
+ {
+-	unsigned int i, n, h, mw, my, ty;
++	unsigned int i, n, h, smh, mw, my, ty;
+ 	Client *c;
+ 
+ 	for (n = 0, c = nexttiled(m->clients); c; c = nexttiled(c->next), n++);
+@@ -1896,10 +1913,23 @@
+ 			if (my + HEIGHT(c) < m->wh)
+ 				my += HEIGHT(c);
+ 		} else {
+-			h = (m->wh - ty) / (n - i);
+-			resize(c, m->wx + mw, m->wy + ty, m->ww - mw - (2*c->bw), h - (2*c->bw), 0);
+-			if (ty + HEIGHT(c) < m->wh)
+-				ty += HEIGHT(c);
++      smh = m->mh * m->smfact;
++      if(!(nexttiled(c->next)))
++        h = (m->wh - ty) / (n - i);
++      else
++        h = (m->wh - smh - ty) / (n - i);
++      if(h < minwsz) {
++        c->isfloating = True;
++        XRaiseWindow(dpy, c->win);
++        resize(c, m->mx + (m->mw / 2 - WIDTH(c) / 2), m->my + (m->mh / 2 - HEIGHT(c) / 2), m->ww - mw - (2*c->bw), h - (2*c->bw), False);
++        ty -= HEIGHT(c);
++      }
++      else
++        resize(c, m->wx + mw, m->wy + ty, m->ww - mw - (2*c->bw), h - (2*c->bw), False);
++      if(!(nexttiled(c->next)))
++        ty += HEIGHT(c) + smh;
++      else
++        ty += HEIGHT(c);
+ 		}
+ }
+ 
