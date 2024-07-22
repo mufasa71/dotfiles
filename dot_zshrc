@@ -21,6 +21,7 @@ plugins=(
 	git
 	gpg-agent
 	pass
+	jira
 	zoxide
 	zsh-autosuggestions
 	zsh-completions
