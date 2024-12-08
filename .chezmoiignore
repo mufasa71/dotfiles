@@ -1,7 +1,7 @@
 {{ if ne .chezmoi.os "darwin" }}
 Library/Application Support/App/file.conf
 {{ end }}
-{{ if ne .chezmoi.os "linux" }}
+{{ if or (ne .chezmoi.os "linux") (ne .chezmoi.hostname "eagle") }}
 .xinitrc
 .Xresources
 .Xresources.nord
