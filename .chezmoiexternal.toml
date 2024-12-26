@@ -70,3 +70,9 @@
     url = "https://aur.archlinux.org/cgit/aur.git/snapshot/rofi-greenclip.tar.gz"
     refreshPeriod = "168h"
 {{ end }}
+{{ if eq .chezmoi.os "linux" -}}
+["AUR"]
+    type = "archive"
+    url = "https://aur.archlinux.org/cgit/aur.git/snapshot/volta-bin.tar.gz"
+    refreshPeriod = "168h"
+{{ end }}
