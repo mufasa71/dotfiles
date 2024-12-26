@@ -64,7 +64,7 @@
     exact = true
     stripComponents = 1
     refreshPeriod = "168h"
-{{ if eq .chezmoi.os "linux" -}}
+{{ if and (eq .chezmoi.os "linux") (eq .chezmoi.hostname "eagle") -}}
 ["AUR"]
     type = "archive"
     url = "https://aur.archlinux.org/cgit/aur.git/snapshot/rofi-greenclip.tar.gz"

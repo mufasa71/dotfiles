@@ -2,17 +2,19 @@
 Library/Application Support/App/file.conf
 {{ end }}
 {{ if or (ne .chezmoi.os "linux") (ne .chezmoi.hostname "eagle") }}
-.xinitrc
 .Xresources
 .Xresources.nord
-.xbindkeysrc
-.rtorrent.rc
-Suckless
-.config/flameshot
 .config/dunst
+.config/flameshot
 .config/greenclip.toml
 .config/ranger
+.gnupg/gpg-agent.conf
 .local/bin
+.rtorrent.rc
+.xbindkeysrc
+.xinitrc
+.zprofile
+Suckless
 {{ end }}
 .oh-my-zsh/cache/*
 .oh-my-zsh/plugins/aliases/__pycache__/*

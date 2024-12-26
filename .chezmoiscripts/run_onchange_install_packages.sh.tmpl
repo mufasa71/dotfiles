@@ -7,15 +7,21 @@ sudo pacman -S \
 	ttf-jetbrains-mono-nerd \
 	zoxide \
 	fzf \
-	xclip \
 	tree-sitter \
 	trash-cli \
-	xdotool \
 	pass \
+	eza
+{{ end -}}
+
+{{ if and (eq .chezmoi.os "linux") (eq .chezmoi.hostname "eagle") -}}
+#!/bin/bash
+
+sudo pacman -S \
+	xclip \
+	xdotool \
 	dunst \
 	inotify-tools \
-	kitty \
-	eza
+	kitty
 {{ else if eq .chezmoi.os "darwin" -}}
 #!/bin/sh
 brew install ripgrep eza
