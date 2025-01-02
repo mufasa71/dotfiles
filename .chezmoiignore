@@ -1,9 +1,10 @@
 {{ if ne .chezmoi.os "darwin" }}
-Library/Application Support/App/file.conf
+Library/Application Support/lazygit/config.yml
 {{ end }}
 {{ if or (ne .chezmoi.os "linux") (ne .chezmoi.hostname "eagle") }}
 .Xresources
 .Xresources.nord
+.config/lazygit
 .config/dunst
 .config/flameshot
 .config/greenclip.toml
