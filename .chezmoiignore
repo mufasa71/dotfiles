@@ -9,6 +9,7 @@ Library/Application Support/lazygit/config.yml
 .config/flameshot
 .config/greenclip.toml
 .config/ranger
+.config/mimeapps.list
 .gnupg/gpg-agent.conf
 .local/bin
 .rtorrent.rc
