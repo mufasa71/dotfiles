@@ -1,7 +1,7 @@
 # vim: filetype=zsh
 
 typeset -U path PATH
-path=(~/.local/bin ~/.deno/bin ~/.volta/bin/ ~/.dotnet/tools /opt/google-cloud-cli/bin $path)
+path=(~/.local/bin ~/.deno/bin ~/.volta/bin/ ~/.dotnet/tools ~/.jsvu/bin /opt/google-cloud-cli/bin $path)
 export PATH
 export EDITOR=vim
 export GPG_TTY=$(tty)
