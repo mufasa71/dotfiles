@@ -1,0 +1,14 @@
+configuration {
+  font: "JetBrainsMono 10";
+  show-icons: true;
+  icon-theme: "Papirus";
+  display-drun: " ";
+  drun-display-format: "{name}";
+  disable-history: false;
+  fullscreen: false;
+  hide-scrollbar: true;
+	sidebar-mode: false;
+  dpi: 192;
+}
+
+@theme "simple-tokyonight"
