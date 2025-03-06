@@ -89,8 +89,19 @@ font pango:JetBrains Mono 10
 # exec --no-startup-id nm-applet
 # exec --no-startup-id cbatticon
 
-exec --no-startup-id greenclip daemon>/dev/null
-# exec --no-startup-id cbatticon
+
+# Clipcat clipboard manager
+exec_always --no-startup-id clipcatd
+set $launcher-clipboard-insert clipcat-menu insert
+set $launcher-clipboard-remove clipcat-menu remove
+
+bindsym $mod+p exec $launcher-clipboard-insert
+bindsym $mod+o exec $launcher-clipboard-remove
+
+#######
+
+exec_always "setxkbmap -model pc104 -layout us,ru -variant ,, -option grp:alt_shift_toggle"
+exec_always ~/.config/polybar/launch.sh --grayblocks &
 
 # Use pactl to adjust volume in PulseAudio.
 # set $refresh_i3status killall -SIGUSR1 i3status
@@ -254,8 +265,6 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 bindsym $mod+Tab workspace next
 bindsym $mod+Shift+p exec "passmenu --type -m dmenumon"
-bindsym $mod+p exec "rofi -modi 'clipboard:greenclip print' -show clipboard -run-command '{cmd}'"
-# bindsym $mod+o exec --no-startup-id "rofi -show drun -font \\"DejaVu 9\\" -run-shell-command '{terminal} -e \\" {cmd}; read -n 1 -s\\"'"
 bindsym $mod+Shift+Return exec "rofimoji -a type"
 bindsym $mod+Shift+Ctrl+Return exec "./.config/kaomoji-rofi/kaomoji.sh"
 bindsym $mod+Ctrl+Return exec "./.config/deutsch-rofi/deutsch.sh"
@@ -279,5 +288,3 @@ assign [class="Telegram"] → number 4
 assign [class="chromium"] → number 1
 assign [class="Slack"] → number 4
 # for_window [class="Telegram"] move to workspace number 4
-
-exec_always ~/.config/polybar/launch.sh --grayblocks &
