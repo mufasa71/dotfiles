@@ -2,32 +2,35 @@
 #!/bin/bash
 
 sudo pacman -S \
-	ripgrep \
-	ttf-jetbrains-mono \
-	ttf-jetbrains-mono-nerd \
-	zoxide \
-	fzf \
-	tree-sitter \
-	trash-cli \
-	pass \
-	debugedit \
+  base-devel \
+  bat \
+  clipcat \
+  curl \
+  debugedit \
+  direnv \
+  dunst \
+  eza \
+  feh \
+  fzf \
+  inotify-tools \
+  kitty \
+  lazygit \
+  neovim \
+  pass \
+  ripgrep \
+  rofi \
+  trash-cli \
+  tree-sitter \
+  ttf-jetbrains-mono \
+  ttf-jetbrains-mono-nerd \
+  wget \
+  xclip \
+  xdotool \
+  xorg-server \
+  xorg-xrandr \
   zig \
-	neovim \
-	bat \
-	eza
-{{ end -}}
-
-{{ if and (eq .chezmoi.os "linux") (eq .chezmoi.hostname "eagle") -}}
-#!/bin/bash
-
-sudo pacman -S \
-	xclip \
-	xdotool \
-	dunst \
-	inotify-tools \
-	kitty
+  zoxide
 {{ else if eq .chezmoi.os "darwin" -}}
 #!/bin/sh
 brew install ripgrep eza
 {{ end -}}
-
