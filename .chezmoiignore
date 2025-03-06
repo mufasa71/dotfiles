@@ -1,20 +1,25 @@
 {{ if ne .chezmoi.os "darwin" }}
 Library/Application Support/lazygit/config.yml
 {{ end }}
-{{ if or (ne .chezmoi.os "linux") (ne .chezmoi.hostname "eagle") }}
+{{ if ne .chezmoi.os "linux" }}
 .Xresources
 .Xresources.nord
-.config/lazygit
 .config/dunst
 .config/flameshot
 .config/greenclip.toml
-.config/ranger
+.config/i3
+.config/lazygit
 .config/mimeapps.list
-.gnupg/gpg-agent.conf
+.config/polybar
+.config/rofi
 .local/bin
-.rtorrent.rc
 .xbindkeysrc
 .xinitrc
+{{ end }}
+{{ if or (ne .chezmoi.os "linux") (ne .chezmoi.hostname "eagle") }}
+.config/ranger
+.gnupg/gpg-agent.conf
+.rtorrent.rc
 .zprofile
 Suckless
 {{ end }}
