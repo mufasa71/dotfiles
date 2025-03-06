@@ -14,14 +14,21 @@ ZSH_CUSTOM=$HOME/.config/zsh
 plugins=(
 	aliases
 	brew
+	chezmoi
 	cp
+	deno
 	direnv
 	docker
+	eza
+	fig
 	fzf
+	gh
 	git
+	git-prompt
 	gpg-agent
-	pass
 	jira
+	pass
+	volta
 	zoxide
 	zsh-autosuggestions
 	zsh-completions
