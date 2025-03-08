@@ -266,7 +266,7 @@ bindsym $mod+r mode "resize"
 bindsym $mod+Tab workspace next
 bindsym $mod+Shift+p exec "passmenu --type -dmenu"
 bindsym $mod+Shift+Return exec "rofimoji -a type"
-bindsym $mod+Shift+Ctrl+Return exec "./.config/kaomoji-rofi/kaomoji.sh"
+bindsym $mod+Shift+Ctrl+Return exec "rofi_kaomoji"
 bindsym $mod+Ctrl+Return exec "rofi_umlaut"
 bindsym $mod+Shift+w exec "wallmenu --type -dmenu"
 bindsym $mod+Shift+m exec "rofi_weather"
