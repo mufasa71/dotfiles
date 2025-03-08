@@ -1,0 +1,7 @@
+ö﻿ o umlaut
+Ö﻿ O umlaut
+ä﻿ a umlaut
+Ä﻿ A umlaut
+ü﻿ u umlaut
+Ü﻿ U umlaut
+ß﻿ eszett

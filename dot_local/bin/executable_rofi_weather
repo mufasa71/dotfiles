@@ -1,0 +1,13 @@
+#!/bin/bash
+
+tashkent_weather=$(~/Github/weather-polybar-plugin/target/release/weather_polybar -q="Tashkent UZ")
+nalchik_weather=$(~/Github/weather-polybar-plugin/target/release/weather_polybar -q="Nalchik RU")
+berlin_weather=$(~/Github/weather-polybar-plugin/target/release/weather_polybar -q="Berlin DE")
+
+# Combine the weather information into a single string
+weather_info="Tashkent: $tashkent_weather\nNalchik: $nalchik_weather\nBerlin: $berlin_weather"
+
+# Display the weather information using rofi in dmenu mode
+echo -e "$weather_info" | rofi -dmenu -p "Weather Info"
+
+

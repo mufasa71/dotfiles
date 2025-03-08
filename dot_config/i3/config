@@ -267,7 +267,7 @@ bindsym $mod+Tab workspace next
 bindsym $mod+Shift+p exec "passmenu --type -dmenu"
 bindsym $mod+Shift+Return exec "rofimoji -a type"
 bindsym $mod+Shift+Ctrl+Return exec "./.config/kaomoji-rofi/kaomoji.sh"
-bindsym $mod+Ctrl+Return exec "./.config/deutsch-rofi/deutsch.sh"
+bindsym $mod+Ctrl+Return exec "deutsch.sh"
 bindsym $mod+Shift+w exec "wallmenu --type -dmenu"
 bindsym $mod+Shift+m exec "rofi_weather"
 bindsym $mod+Shift+h exec "haltmenu"
