@@ -1,17 +1,17 @@
 #!/bin/sh
-cmd=$(echo -e "poweroff\nreboot\nsuspend\nlock" | dmenu "$@")
+cmd=$(echo -e "poweroff\nreboot\nsuspend\nlock" | dmenu -dmenu "$@")
 
 case $cmd in
-  poweroff)
-    systemctl poweroff
-    ;;
-  reboot)
-    systemctl reboot
-    ;;
-  suspend)
-    systemctl suspend
-    ;;
-  lock)
-    loginctl lock-session c1
-    ;;
+poweroff)
+  systemctl poweroff
+  ;;
+reboot)
+  systemctl reboot
+  ;;
+suspend)
+  systemctl suspend
+  ;;
+lock)
+  loginctl lock-session c1
+  ;;
 esac

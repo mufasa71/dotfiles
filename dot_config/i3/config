@@ -264,23 +264,13 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 bindsym $mod+Tab workspace next
-bindsym $mod+Shift+p exec "passmenu --type -m dmenumon"
+bindsym $mod+Shift+p exec "passmenu --type -dmenu"
 bindsym $mod+Shift+Return exec "rofimoji -a type"
 bindsym $mod+Shift+Ctrl+Return exec "./.config/kaomoji-rofi/kaomoji.sh"
 bindsym $mod+Ctrl+Return exec "./.config/deutsch-rofi/deutsch.sh"
-bindsym $mod+Shift+w exec "wallmenu --type -m dmenumon"
+bindsym $mod+Shift+w exec "wallmenu --type -dmenu"
 bindsym $mod+Shift+m exec "rofi_weather"
-
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-# bar {
-#         status_command SCRIPT_DIR=~/i3blocks-contrib i3blocks
-# }
-
-# bar {
-#         output nonprimary
-#         position top
-# }
+bindsym $mod+Shift+h exec "haltmenu"
 
 assign [class="code"] → number 5
 assign [class="firefox"] → number 3
