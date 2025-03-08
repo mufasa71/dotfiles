@@ -26,13 +26,17 @@ sudo pacman -S \
   ttf-jetbrains-mono-nerd \
   wget \
   xclip \
+  xdo \
   xdotool \
   xorg-server \
   xorg-xrandr \
   zig \
   zoxide
 
-ln -s /usr/bin/rofi /usr/bin/dmenu
+# check if dmenu file exists otherwise create a symlink to rofi
+if [ ! -f /usr/bin/dmenu ]; then
+  ln -s /usr/bin/rofi /usr/bin/dmenu
+fi
 {{ else if eq .chezmoi.os "darwin" -}}
 #!/bin/sh
 brew install ripgrep eza
