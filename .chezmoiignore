@@ -11,15 +11,12 @@ Library/Application Support/lazygit/config.yml
 .config/lazygit
 .config/mimeapps.list
 .config/polybar
+.config/ranger
 .config/rofi
 .local/bin
+.rtorrent.rc
 .xbindkeysrc
 .xinitrc
-{{ end }}
-{{ if or (ne .chezmoi.os "linux") (ne .chezmoi.hostname "eagle") }}
-.config/ranger
-.gnupg/gpg-agent.conf
-.rtorrent.rc
 .zprofile
 Suckless
 {{ end }}
